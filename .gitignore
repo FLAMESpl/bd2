@@ -235,10 +235,10 @@ _Pvt_Extensions
 GeneratedArtifacts/
 ModelManifest.xml
 
-# Paket dependency manager
+# Paket dependency managergit a
 .paket/paket.exe
 
 # FAKE - F# Make
 .fake/
 
-.\Clinic\Clinic.Data\app.config
+Clinic/Clinic.Data/app.config
