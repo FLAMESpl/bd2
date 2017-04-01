@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinic.Interface", "Clinic.Interface\Clinic.Interface.csproj", "{5C97AFDC-BFDE-4EF7-9A28-BA17EAE2E723}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinic.Data", "Clinic.Data\Clinic.Data.csproj", "{3CABF8B4-29A3-4A6B-8AF4-CB1A576F7238}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clinic.Facades", "Clinic.Facades\Clinic.Facades.csproj", "{2C305DF4-873A-459D-8674-CD3E8A4939A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{5C97AFDC-BFDE-4EF7-9A28-BA17EAE2E723}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C97AFDC-BFDE-4EF7-9A28-BA17EAE2E723}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C97AFDC-BFDE-4EF7-9A28-BA17EAE2E723}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CABF8B4-29A3-4A6B-8AF4-CB1A576F7238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CABF8B4-29A3-4A6B-8AF4-CB1A576F7238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CABF8B4-29A3-4A6B-8AF4-CB1A576F7238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CABF8B4-29A3-4A6B-8AF4-CB1A576F7238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C305DF4-873A-459D-8674-CD3E8A4939A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C305DF4-873A-459D-8674-CD3E8A4939A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C305DF4-873A-459D-8674-CD3E8A4939A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C305DF4-873A-459D-8674-CD3E8A4939A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
