@@ -21,8 +21,8 @@
       <Column Name="id_reg" Member="RegistratorId" Storage="_id_reg" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="id_pat" Member="PatientId" Storage="_id_pat" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="id_doc" Member="DoctorId" Storage="_id_doc" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="Visit_Test_laboratory" Member="LabolatoryTests" Storage="_Test_laboratories" ThisKey="Id" OtherKey="VisitId" Type="LabolatoryTest" />
-      <Association Name="Visit_Test_physical" Member="PhysicalTests" Storage="_Test_physicals" ThisKey="Id" OtherKey="VisitId" Type="PhysicalTest" />
+      <Association Name="Visit_LabolatoryTest" Member="LaboratoryTests" Storage="_Test_laboratories" ThisKey="Id" OtherKey="VisitId" Type="LaboratoryTest" />
+      <Association Name="Visit_PhysicalTest" Member="PhysicalTests" Storage="_Test_physicals" ThisKey="Id" OtherKey="VisitId" Type="PhysicalTest" />
       <Association Name="Doctor_Visit" Member="Doctor" ThisKey="DoctorId" OtherKey="Id" Type="Doctor" IsForeignKey="true" />
       <Association Name="Patient_Visit" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
       <Association Name="Registrator_Visit" Member="Registrator" ThisKey="RegistratorId" OtherKey="Id" Type="Registrator" IsForeignKey="true" />
@@ -43,8 +43,8 @@
       <Column Name="id_lab_ass" Member="Id" Storage="_id_lab_ass" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="name" Member="Name" Storage="_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="surname" Member="Surname" Storage="_surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Lab_assistant_Test_laboratory" Member="LabolatoryTests" Storage="_Test_laboratories" ThisKey="Id" OtherKey="LabAssistantId" Type="LabolatoryTest" />
-      <Association Name="User_Lab_assistant" Member="User" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="LabAssistant_LabolatoryTest" Member="LaboratoryTests" Storage="_Test_laboratories" ThisKey="Id" OtherKey="LabAssistantId" Type="LaboratoryTest" />
+      <Association Name="User_LabAssistant" Member="User" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Lab_manager" Member="LabManagers">
@@ -52,8 +52,8 @@
       <Column Name="id_lab_manag" Member="Id" Storage="_id_lab_manag" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="name" Member="Name" Storage="_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="surname" Member="Surname" Storage="_surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Lab_manager_Test_laboratory" Member="LabolatoryTests" Storage="_Test_laboratories" ThisKey="Id" OtherKey="LabManagerId" Type="LabolatoryTest" />
-      <Association Name="User_Lab_manager" Member="User" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="LabManager_LabolatoryTest" Member="LaboratoryTests" Storage="_Test_laboratories" ThisKey="Id" OtherKey="LabManagerId" Type="LaboratoryTest" />
+      <Association Name="User_LabManager" Member="User" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Patient" Member="Patients">
@@ -80,12 +80,12 @@
       <Column Name="code" Member="Code" Storage="_code" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="type" Member="Type" Storage="_type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="name" Member="Name" Storage="_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="test_dict_Test_laboratory" Member="LabolatoryTests" Storage="_Test_laboratories" ThisKey="Code" OtherKey="Code" Type="LabolatoryTest" />
-      <Association Name="test_dict_Test_physical" Member="PhysicalTests" Storage="_Test_physicals" ThisKey="Code" OtherKey="Code" Type="PhysicalTest" />
+      <Association Name="TestDictionary_LabolatoryTest" Member="LaboratoryTests" Storage="_Test_laboratories" ThisKey="Code" OtherKey="Code" Type="LaboratoryTest" />
+      <Association Name="TestDictionary_PhysicalTest" Member="PhysicalTests" Storage="_Test_physicals" ThisKey="Code" OtherKey="Code" Type="PhysicalTest" />
     </Type>
   </Table>
-  <Table Name="dbo.Test_laboratory" Member="LabolatoryTests">
-    <Type Name="LabolatoryTest">
+  <Table Name="dbo.Test_laboratory" Member="LaboratoryTests">
+    <Type Name="LaboratoryTest">
       <Column Name="id_test_lab" Member="Id" Storage="_id_test_lab" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="doc_notes" Member="DoctorNotes" Storage="_doc_notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="dt_commis" Member="ComissionDate" Storage="_dt_commis" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
@@ -98,10 +98,10 @@
       <Column Name="id_lab_manag" Member="LabManagerId" Storage="_id_lab_manag" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="id_lab_ass" Member="LabAssistantId" Storage="_id_lab_ass" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="code" Member="Code" Storage="_code" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Association Name="Lab_assistant_Test_laboratory" Member="LabAssistant" Storage="_Lab_assistant" ThisKey="LabAssistantId" OtherKey="Id" Type="LabAssistant" IsForeignKey="true" />
-      <Association Name="Lab_manager_Test_laboratory" Member="LabManager" Storage="_Lab_manager" ThisKey="LabManagerId" OtherKey="Id" Type="LabManager" IsForeignKey="true" />
-      <Association Name="test_dict_Test_laboratory" Member="TestDictionary" Storage="_test_dict" ThisKey="Code" OtherKey="Code" Type="TestDictionary" IsForeignKey="true" />
-      <Association Name="Visit_Test_laboratory" Member="Visit" ThisKey="VisitId" OtherKey="Id" Type="Visit" IsForeignKey="true" />
+      <Association Name="LabAssistant_LabolatoryTest" Member="LabAssistant" Storage="_Lab_assistant" ThisKey="LabAssistantId" OtherKey="Id" Type="LabAssistant" IsForeignKey="true" />
+      <Association Name="LabManager_LabolatoryTest" Member="LabManager" Storage="_Lab_manager" ThisKey="LabManagerId" OtherKey="Id" Type="LabManager" IsForeignKey="true" />
+      <Association Name="TestDictionary_LabolatoryTest" Member="TestDictionary" Storage="_test_dict" ThisKey="Code" OtherKey="Code" Type="TestDictionary" IsForeignKey="true" />
+      <Association Name="Visit_LabolatoryTest" Member="Visit" ThisKey="VisitId" OtherKey="Id" Type="Visit" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Test_physical" Member="PhysicalTests">
@@ -110,20 +110,20 @@
       <Column Name="result" Member="Result" Storage="_result" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="id_visit" Member="VisitId" Storage="_id_visit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="code" Member="Code" Storage="_code" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Association Name="test_dict_Test_physical" Member="TestDictionary" Storage="_test_dict" ThisKey="Code" OtherKey="Code" Type="TestDictionary" IsForeignKey="true" />
-      <Association Name="Visit_Test_physical" Member="Visit" ThisKey="VisitId" OtherKey="Id" Type="Visit" IsForeignKey="true" />
+      <Association Name="TestDictionary_PhysicalTest" Member="TestDictionary" Storage="_test_dict" ThisKey="Code" OtherKey="Code" Type="TestDictionary" IsForeignKey="true" />
+      <Association Name="Visit_PhysicalTest" Member="Visit" ThisKey="VisitId" OtherKey="Id" Type="Visit" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.[User]" Member="Users">
     <Type Name="User">
       <Column Name="username" Member="Username" Storage="_username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="pass" Member="Pass" Storage="_pass" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pass" Member="Password" Storage="_pass" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="dt_registry" Member="RegistrationDate" Storage="_dt_registry" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="role" Member="Role" Storage="_role" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="id_user" Member="Id" Storage="_id_user" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="User_Doctor" Member="Doctor" ThisKey="Id" OtherKey="Id" Type="Doctor" Cardinality="One" />
-      <Association Name="User_Lab_assistant" Member="Lab_assistant" ThisKey="Id" OtherKey="Id" Type="LabAssistant" Cardinality="One" />
-      <Association Name="User_Lab_manager" Member="Lab_manager" ThisKey="Id" OtherKey="Id" Type="LabManager" Cardinality="One" />
+      <Association Name="User_LabAssistant" Member="Lab_assistant" ThisKey="Id" OtherKey="Id" Type="LabAssistant" Cardinality="One" />
+      <Association Name="User_LabManager" Member="Lab_manager" ThisKey="Id" OtherKey="Id" Type="LabManager" Cardinality="One" />
       <Association Name="User_Registrator" Member="Registrator" ThisKey="Id" OtherKey="Id" Type="Registrator" Cardinality="One" />
     </Type>
   </Table>

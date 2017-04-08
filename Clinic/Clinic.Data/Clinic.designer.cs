@@ -51,9 +51,9 @@ namespace Clinic.Data
     partial void InsertTestDictionary(TestDictionary instance);
     partial void UpdateTestDictionary(TestDictionary instance);
     partial void DeleteTestDictionary(TestDictionary instance);
-    partial void InsertLabolatoryTest(LabolatoryTest instance);
-    partial void UpdateLabolatoryTest(LabolatoryTest instance);
-    partial void DeleteLabolatoryTest(LabolatoryTest instance);
+    partial void InsertLaboratoryTest(LaboratoryTest instance);
+    partial void UpdateLaboratoryTest(LaboratoryTest instance);
+    partial void DeleteLaboratoryTest(LaboratoryTest instance);
     partial void InsertPhysicalTest(PhysicalTest instance);
     partial void UpdatePhysicalTest(PhysicalTest instance);
     partial void DeletePhysicalTest(PhysicalTest instance);
@@ -156,11 +156,11 @@ namespace Clinic.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<LabolatoryTest> LabolatoryTests
+		public System.Data.Linq.Table<LaboratoryTest> LaboratoryTests
 		{
 			get
 			{
-				return this.GetTable<LabolatoryTest>();
+				return this.GetTable<LaboratoryTest>();
 			}
 		}
 		
@@ -304,7 +304,7 @@ namespace Clinic.Data
 		
 		private System.Nullable<long> _id_doc;
 		
-		private EntitySet<LabolatoryTest> _Test_laboratories;
+		private EntitySet<LaboratoryTest> _Test_laboratories;
 		
 		private EntitySet<PhysicalTest> _Test_physicals;
 		
@@ -340,7 +340,7 @@ namespace Clinic.Data
 		
 		public Visit()
 		{
-			this._Test_laboratories = new EntitySet<LabolatoryTest>(new Action<LabolatoryTest>(this.attach_Test_laboratories), new Action<LabolatoryTest>(this.detach_Test_laboratories));
+			this._Test_laboratories = new EntitySet<LaboratoryTest>(new Action<LaboratoryTest>(this.attach_Test_laboratories), new Action<LaboratoryTest>(this.detach_Test_laboratories));
 			this._Test_physicals = new EntitySet<PhysicalTest>(new Action<PhysicalTest>(this.attach_Test_physicals), new Action<PhysicalTest>(this.detach_Test_physicals));
 			this._Doctor = default(EntityRef<Doctor>);
 			this._Patient = default(EntityRef<Patient>);
@@ -528,8 +528,8 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Visit_Test_laboratory", Storage="_Test_laboratories", ThisKey="Id", OtherKey="VisitId")]
-		public EntitySet<LabolatoryTest> LabolatoryTests
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Visit_LabolatoryTest", Storage="_Test_laboratories", ThisKey="Id", OtherKey="VisitId")]
+		public EntitySet<LaboratoryTest> LaboratoryTests
 		{
 			get
 			{
@@ -541,7 +541,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Visit_Test_physical", Storage="_Test_physicals", ThisKey="Id", OtherKey="VisitId")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Visit_PhysicalTest", Storage="_Test_physicals", ThisKey="Id", OtherKey="VisitId")]
 		public EntitySet<PhysicalTest> PhysicalTests
 		{
 			get
@@ -676,13 +676,13 @@ namespace Clinic.Data
 			}
 		}
 		
-		private void attach_Test_laboratories(LabolatoryTest entity)
+		private void attach_Test_laboratories(LaboratoryTest entity)
 		{
 			this.SendPropertyChanging();
 			entity.Visit = this;
 		}
 		
-		private void detach_Test_laboratories(LabolatoryTest entity)
+		private void detach_Test_laboratories(LaboratoryTest entity)
 		{
 			this.SendPropertyChanging();
 			entity.Visit = null;
@@ -912,7 +912,7 @@ namespace Clinic.Data
 		
 		private string _surname;
 		
-		private EntitySet<LabolatoryTest> _Test_laboratories;
+		private EntitySet<LaboratoryTest> _Test_laboratories;
 		
 		private EntityRef<User> _User;
 		
@@ -930,7 +930,7 @@ namespace Clinic.Data
 		
 		public LabAssistant()
 		{
-			this._Test_laboratories = new EntitySet<LabolatoryTest>(new Action<LabolatoryTest>(this.attach_Test_laboratories), new Action<LabolatoryTest>(this.detach_Test_laboratories));
+			this._Test_laboratories = new EntitySet<LaboratoryTest>(new Action<LaboratoryTest>(this.attach_Test_laboratories), new Action<LaboratoryTest>(this.detach_Test_laboratories));
 			this._User = default(EntityRef<User>);
 			OnCreated();
 		}
@@ -995,8 +995,8 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lab_assistant_Test_laboratory", Storage="_Test_laboratories", ThisKey="Id", OtherKey="LabAssistantId")]
-		public EntitySet<LabolatoryTest> LabolatoryTests
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LabAssistant_LabolatoryTest", Storage="_Test_laboratories", ThisKey="Id", OtherKey="LabAssistantId")]
+		public EntitySet<LaboratoryTest> LaboratoryTests
 		{
 			get
 			{
@@ -1008,7 +1008,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Lab_assistant", Storage="_User", ThisKey="Id", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LabAssistant", Storage="_User", ThisKey="Id", OtherKey="Id", IsForeignKey=true)]
 		public User User
 		{
 			get
@@ -1062,13 +1062,13 @@ namespace Clinic.Data
 			}
 		}
 		
-		private void attach_Test_laboratories(LabolatoryTest entity)
+		private void attach_Test_laboratories(LaboratoryTest entity)
 		{
 			this.SendPropertyChanging();
 			entity.LabAssistant = this;
 		}
 		
-		private void detach_Test_laboratories(LabolatoryTest entity)
+		private void detach_Test_laboratories(LaboratoryTest entity)
 		{
 			this.SendPropertyChanging();
 			entity.LabAssistant = null;
@@ -1087,7 +1087,7 @@ namespace Clinic.Data
 		
 		private string _surname;
 		
-		private EntitySet<LabolatoryTest> _Test_laboratories;
+		private EntitySet<LaboratoryTest> _Test_laboratories;
 		
 		private EntityRef<User> _User;
 		
@@ -1105,7 +1105,7 @@ namespace Clinic.Data
 		
 		public LabManager()
 		{
-			this._Test_laboratories = new EntitySet<LabolatoryTest>(new Action<LabolatoryTest>(this.attach_Test_laboratories), new Action<LabolatoryTest>(this.detach_Test_laboratories));
+			this._Test_laboratories = new EntitySet<LaboratoryTest>(new Action<LaboratoryTest>(this.attach_Test_laboratories), new Action<LaboratoryTest>(this.detach_Test_laboratories));
 			this._User = default(EntityRef<User>);
 			OnCreated();
 		}
@@ -1170,8 +1170,8 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lab_manager_Test_laboratory", Storage="_Test_laboratories", ThisKey="Id", OtherKey="LabManagerId")]
-		public EntitySet<LabolatoryTest> LabolatoryTests
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LabManager_LabolatoryTest", Storage="_Test_laboratories", ThisKey="Id", OtherKey="LabManagerId")]
+		public EntitySet<LaboratoryTest> LaboratoryTests
 		{
 			get
 			{
@@ -1183,7 +1183,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Lab_manager", Storage="_User", ThisKey="Id", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LabManager", Storage="_User", ThisKey="Id", OtherKey="Id", IsForeignKey=true)]
 		public User User
 		{
 			get
@@ -1237,13 +1237,13 @@ namespace Clinic.Data
 			}
 		}
 		
-		private void attach_Test_laboratories(LabolatoryTest entity)
+		private void attach_Test_laboratories(LaboratoryTest entity)
 		{
 			this.SendPropertyChanging();
 			entity.LabManager = this;
 		}
 		
-		private void detach_Test_laboratories(LabolatoryTest entity)
+		private void detach_Test_laboratories(LaboratoryTest entity)
 		{
 			this.SendPropertyChanging();
 			entity.LabManager = null;
@@ -1599,7 +1599,7 @@ namespace Clinic.Data
 		
 		private string _name;
 		
-		private EntitySet<LabolatoryTest> _Test_laboratories;
+		private EntitySet<LaboratoryTest> _Test_laboratories;
 		
 		private EntitySet<PhysicalTest> _Test_physicals;
 		
@@ -1617,7 +1617,7 @@ namespace Clinic.Data
 		
 		public TestDictionary()
 		{
-			this._Test_laboratories = new EntitySet<LabolatoryTest>(new Action<LabolatoryTest>(this.attach_Test_laboratories), new Action<LabolatoryTest>(this.detach_Test_laboratories));
+			this._Test_laboratories = new EntitySet<LaboratoryTest>(new Action<LaboratoryTest>(this.attach_Test_laboratories), new Action<LaboratoryTest>(this.detach_Test_laboratories));
 			this._Test_physicals = new EntitySet<PhysicalTest>(new Action<PhysicalTest>(this.attach_Test_physicals), new Action<PhysicalTest>(this.detach_Test_physicals));
 			OnCreated();
 		}
@@ -1682,8 +1682,8 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="test_dict_Test_laboratory", Storage="_Test_laboratories", ThisKey="Code", OtherKey="Code")]
-		public EntitySet<LabolatoryTest> LabolatoryTests
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TestDictionary_LabolatoryTest", Storage="_Test_laboratories", ThisKey="Code", OtherKey="Code")]
+		public EntitySet<LaboratoryTest> LaboratoryTests
 		{
 			get
 			{
@@ -1695,7 +1695,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="test_dict_Test_physical", Storage="_Test_physicals", ThisKey="Code", OtherKey="Code")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TestDictionary_PhysicalTest", Storage="_Test_physicals", ThisKey="Code", OtherKey="Code")]
 		public EntitySet<PhysicalTest> PhysicalTests
 		{
 			get
@@ -1728,13 +1728,13 @@ namespace Clinic.Data
 			}
 		}
 		
-		private void attach_Test_laboratories(LabolatoryTest entity)
+		private void attach_Test_laboratories(LaboratoryTest entity)
 		{
 			this.SendPropertyChanging();
 			entity.TestDictionary = this;
 		}
 		
-		private void detach_Test_laboratories(LabolatoryTest entity)
+		private void detach_Test_laboratories(LaboratoryTest entity)
 		{
 			this.SendPropertyChanging();
 			entity.TestDictionary = null;
@@ -1754,7 +1754,7 @@ namespace Clinic.Data
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Test_laboratory")]
-	public partial class LabolatoryTest : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class LaboratoryTest : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -1821,7 +1821,7 @@ namespace Clinic.Data
     partial void OnCodeChanged();
     #endregion
 		
-		public LabolatoryTest()
+		public LaboratoryTest()
 		{
 			this._Lab_assistant = default(EntityRef<LabAssistant>);
 			this._Lab_manager = default(EntityRef<LabManager>);
@@ -2070,7 +2070,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lab_assistant_Test_laboratory", Storage="_Lab_assistant", ThisKey="LabAssistantId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LabAssistant_LabolatoryTest", Storage="_Lab_assistant", ThisKey="LabAssistantId", OtherKey="Id", IsForeignKey=true)]
 		public LabAssistant LabAssistant
 		{
 			get
@@ -2087,12 +2087,12 @@ namespace Clinic.Data
 					if ((previousValue != null))
 					{
 						this._Lab_assistant.Entity = null;
-						previousValue.LabolatoryTests.Remove(this);
+						previousValue.LaboratoryTests.Remove(this);
 					}
 					this._Lab_assistant.Entity = value;
 					if ((value != null))
 					{
-						value.LabolatoryTests.Add(this);
+						value.LaboratoryTests.Add(this);
 						this._id_lab_ass = value.Id;
 					}
 					else
@@ -2104,7 +2104,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Lab_manager_Test_laboratory", Storage="_Lab_manager", ThisKey="LabManagerId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LabManager_LabolatoryTest", Storage="_Lab_manager", ThisKey="LabManagerId", OtherKey="Id", IsForeignKey=true)]
 		public LabManager LabManager
 		{
 			get
@@ -2121,12 +2121,12 @@ namespace Clinic.Data
 					if ((previousValue != null))
 					{
 						this._Lab_manager.Entity = null;
-						previousValue.LabolatoryTests.Remove(this);
+						previousValue.LaboratoryTests.Remove(this);
 					}
 					this._Lab_manager.Entity = value;
 					if ((value != null))
 					{
-						value.LabolatoryTests.Add(this);
+						value.LaboratoryTests.Add(this);
 						this._id_lab_manag = value.Id;
 					}
 					else
@@ -2138,7 +2138,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="test_dict_Test_laboratory", Storage="_test_dict", ThisKey="Code", OtherKey="Code", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TestDictionary_LabolatoryTest", Storage="_test_dict", ThisKey="Code", OtherKey="Code", IsForeignKey=true)]
 		public TestDictionary TestDictionary
 		{
 			get
@@ -2155,12 +2155,12 @@ namespace Clinic.Data
 					if ((previousValue != null))
 					{
 						this._test_dict.Entity = null;
-						previousValue.LabolatoryTests.Remove(this);
+						previousValue.LaboratoryTests.Remove(this);
 					}
 					this._test_dict.Entity = value;
 					if ((value != null))
 					{
-						value.LabolatoryTests.Add(this);
+						value.LaboratoryTests.Add(this);
 						this._code = value.Code;
 					}
 					else
@@ -2172,7 +2172,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Visit_Test_laboratory", Storage="_Visit", ThisKey="VisitId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Visit_LabolatoryTest", Storage="_Visit", ThisKey="VisitId", OtherKey="Id", IsForeignKey=true)]
 		public Visit Visit
 		{
 			get
@@ -2189,12 +2189,12 @@ namespace Clinic.Data
 					if ((previousValue != null))
 					{
 						this._Visit.Entity = null;
-						previousValue.LabolatoryTests.Remove(this);
+						previousValue.LaboratoryTests.Remove(this);
 					}
 					this._Visit.Entity = value;
 					if ((value != null))
 					{
-						value.LabolatoryTests.Add(this);
+						value.LaboratoryTests.Add(this);
 						this._id_visit = value.Id;
 					}
 					else
@@ -2346,7 +2346,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="test_dict_Test_physical", Storage="_test_dict", ThisKey="Code", OtherKey="Code", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TestDictionary_PhysicalTest", Storage="_test_dict", ThisKey="Code", OtherKey="Code", IsForeignKey=true)]
 		public TestDictionary TestDictionary
 		{
 			get
@@ -2380,7 +2380,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Visit_Test_physical", Storage="_Visit", ThisKey="VisitId", OtherKey="Id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Visit_PhysicalTest", Storage="_Visit", ThisKey="VisitId", OtherKey="Id", IsForeignKey=true)]
 		public Visit Visit
 		{
 			get
@@ -2465,8 +2465,8 @@ namespace Clinic.Data
     partial void OnCreated();
     partial void OnUsernameChanging(string value);
     partial void OnUsernameChanged();
-    partial void OnPassChanging(string value);
-    partial void OnPassChanged();
+    partial void OnPasswordChanging(string value);
+    partial void OnPasswordChanged();
     partial void OnRegistrationDateChanging(System.DateTime value);
     partial void OnRegistrationDateChanged();
     partial void OnRoleChanging(string value);
@@ -2505,7 +2505,7 @@ namespace Clinic.Data
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="pass", Storage="_pass", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Pass
+		public string Password
 		{
 			get
 			{
@@ -2515,11 +2515,11 @@ namespace Clinic.Data
 			{
 				if ((this._pass != value))
 				{
-					this.OnPassChanging(value);
+					this.OnPasswordChanging(value);
 					this.SendPropertyChanging();
 					this._pass = value;
-					this.SendPropertyChanged("Pass");
-					this.OnPassChanged();
+					this.SendPropertyChanged("Password");
+					this.OnPasswordChanged();
 				}
 			}
 		}
@@ -2613,7 +2613,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Lab_assistant", Storage="_Lab_assistant", ThisKey="Id", OtherKey="Id", IsUnique=true, IsForeignKey=false)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LabAssistant", Storage="_Lab_assistant", ThisKey="Id", OtherKey="Id", IsUnique=true, IsForeignKey=false)]
 		public LabAssistant Lab_assistant
 		{
 			get
@@ -2642,7 +2642,7 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_Lab_manager", Storage="_Lab_manager", ThisKey="Id", OtherKey="Id", IsUnique=true, IsForeignKey=false)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="User_LabManager", Storage="_Lab_manager", ThisKey="Id", OtherKey="Id", IsUnique=true, IsForeignKey=false)]
 		public LabManager Lab_manager
 		{
 			get

@@ -13,10 +13,10 @@ namespace Clinic.Interface.Forms
 
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
-            var result = AuthenticationService.Authenticate(textBoxLogin.Text, textBoxLogin.Text);
+            var result = AuthenticationService.Authenticate(textBoxLogin.Text, textBoxPassword.Text);
             if (result.Success)
             {
-                MessageBox.Show("Successfully logged in");
+                MessageBox.Show($"Logged in as {result.Role.Value.ToDisplayName()}");
             }
             else
             {
