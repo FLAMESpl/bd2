@@ -1,4 +1,4 @@
-﻿namespace Clinic.Interface.Forms
+﻿namespace Clinic.Interface.Registrator
 {
     partial class FormRegistrator
     {

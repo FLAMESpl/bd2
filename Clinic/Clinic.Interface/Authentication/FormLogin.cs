@@ -1,8 +1,9 @@
 ﻿using Clinic.Facades.Auth;
+using Clinic.Interface.Registrator;
 using System;
 using System.Windows.Forms;
 
-namespace Clinic.Interface.Forms
+namespace Clinic.Interface.Authentication
 {
     public partial class FormLogin : Form
     {
@@ -49,7 +50,7 @@ namespace Clinic.Interface.Forms
             if (form != null)
             {
                 Hide();
-                form.Show();
+                form.ShowDialog();
                 Close();
             }
         }

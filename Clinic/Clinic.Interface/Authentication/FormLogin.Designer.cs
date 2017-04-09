@@ -1,4 +1,4 @@
-﻿namespace Clinic.Interface.Forms
+﻿namespace Clinic.Interface.Authentication
 {
     partial class FormLogin
     {
