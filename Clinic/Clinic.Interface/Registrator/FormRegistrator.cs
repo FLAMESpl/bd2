@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Clinic.Interface.Forms
+namespace Clinic.Interface.Registrator
 {
     public partial class FormRegistrator : Form
     {
