@@ -111,6 +111,7 @@
     <EmbeddedResource Include="Registrator\MatchingPatients.resx">
       <DependentUpon>MatchingPatients.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\Clinic.Data.Address.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -125,6 +126,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clinic.Data\Clinic.Data.csproj">
+      <Project>{3cabf8b4-29a3-4a6b-8af4-cb1a576f7238}</Project>
+      <Name>Clinic.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clinic.Facades\Clinic.Facades.csproj">
       <Project>{2C305DF4-873A-459D-8674-CD3E8A4939A6}</Project>
       <Name>Clinic.Facades</Name>
