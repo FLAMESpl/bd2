@@ -52,6 +52,12 @@
     <Compile Include="Authentication\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\LabelledInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\LabelledInput.Designer.cs">
+      <DependentUpon>LabelledInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrator\FormRegistrator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,8 +66,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrator\MatchingPatients.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Registrator\MatchingPatients.Designer.cs">
+      <DependentUpon>MatchingPatients.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Authentication\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\LabelledInput.resx">
+      <DependentUpon>LabelledInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrator\FormRegistrator.resx">
       <DependentUpon>FormRegistrator.cs</DependentUpon>
@@ -75,6 +90,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registrator\MatchingPatients.resx">
+      <DependentUpon>MatchingPatients.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
