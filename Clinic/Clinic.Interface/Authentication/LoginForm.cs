@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace Clinic.Interface.Authentication
 {
-    public partial class FormLogin : Form
+    public partial class LoginForm : Form
     {
-        public FormLogin()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -37,7 +37,7 @@ namespace Clinic.Interface.Authentication
                 case Role.Doctor:
                     break;
                 case Role.Registrator:
-                    form = new FormRegistrator();
+                    form = new RegistratorHomeForm();
                     break;
                 case Role.LabAssistant:
                     break;

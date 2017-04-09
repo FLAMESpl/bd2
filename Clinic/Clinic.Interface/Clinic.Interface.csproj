@@ -46,25 +46,58 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Authentication\FormLogin.cs">
+    <Compile Include="Authentication\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authentication\FormLogin.Designer.cs">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <Compile Include="Authentication\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registrator\FormRegistrator.cs">
+    <Compile Include="Common\DoneCancelDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\DoneCancelDialog.Designer.cs">
+      <DependentUpon>DoneCancelDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LabelledInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\LabelledInput.Designer.cs">
+      <DependentUpon>LabelledInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrator\RegistratorHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrator\FormRegistrator.Designer.cs">
-      <DependentUpon>FormRegistrator.cs</DependentUpon>
+    <Compile Include="Registrator\RegistratorHomeForm.Designer.cs">
+      <DependentUpon>RegistratorHomeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Authentication\FormLogin.resx">
-      <DependentUpon>FormLogin.cs</DependentUpon>
+    <Compile Include="Registrator\MatchingPatients.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Registrator\MatchingPatients.Designer.cs">
+      <DependentUpon>MatchingPatients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrator\NewPatientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrator\NewPatientForm.Designer.cs">
+      <DependentUpon>NewPatientForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Authentication\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registrator\FormRegistrator.resx">
-      <DependentUpon>FormRegistrator.cs</DependentUpon>
+    <EmbeddedResource Include="Common\DoneCancelDialog.resx">
+      <DependentUpon>DoneCancelDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\LabelledInput.resx">
+      <DependentUpon>LabelledInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrator\NewPatientForm.resx">
+      <DependentUpon>NewPatientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrator\RegistratorHomeForm.resx">
+      <DependentUpon>RegistratorHomeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +108,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registrator\MatchingPatients.resx">
+      <DependentUpon>MatchingPatients.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\DataSources\Clinic.Data.Address.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,6 +126,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Clinic.Data\Clinic.Data.csproj">
+      <Project>{3cabf8b4-29a3-4a6b-8af4-cb1a576f7238}</Project>
+      <Name>Clinic.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clinic.Facades\Clinic.Facades.csproj">
       <Project>{2C305DF4-873A-459D-8674-CD3E8A4939A6}</Project>
       <Name>Clinic.Facades</Name>

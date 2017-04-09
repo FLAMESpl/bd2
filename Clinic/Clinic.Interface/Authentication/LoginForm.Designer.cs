@@ -1,6 +1,6 @@
 ﻿namespace Clinic.Interface.Authentication
 {
-    partial class FormLogin
+    partial class LoginForm
     {
         /// <summary>
         /// Required designer variable.
@@ -113,13 +113,13 @@
             this.buttonLogIn.UseVisualStyleBackColor = true;
             this.buttonLogIn.Click += new System.EventHandler(this.buttonLogIn_Click);
             // 
-            // FormLogin
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(253, 185);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "FormLogin";
+            this.Name = "LoginForm";
             this.Text = "Home";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
