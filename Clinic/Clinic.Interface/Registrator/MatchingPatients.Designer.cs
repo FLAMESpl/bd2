@@ -30,10 +30,10 @@
         {
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanelInputs = new System.Windows.Forms.FlowLayoutPanel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.labelledInputFirstName = new Clinic.Interface.Common.LabelledInput();
             this.labelledInputLastName = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputPesel = new Clinic.Interface.Common.LabelledInput();
+            this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledInput();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonAddPatient = new System.Windows.Forms.Button();
             this.tableLayoutPanelMain.SuspendLayout();
             this.flowLayoutPanelInputs.SuspendLayout();
@@ -61,21 +61,12 @@
             // 
             this.flowLayoutPanelInputs.Controls.Add(this.labelledInputFirstName);
             this.flowLayoutPanelInputs.Controls.Add(this.labelledInputLastName);
-            this.flowLayoutPanelInputs.Controls.Add(this.labelledInputPesel);
+            this.flowLayoutPanelInputs.Controls.Add(this.labelledInputEvidenceNumber);
             this.flowLayoutPanelInputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelInputs.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanelInputs.Name = "flowLayoutPanelInputs";
             this.flowLayoutPanelInputs.Size = new System.Drawing.Size(470, 49);
             this.flowLayoutPanelInputs.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 98);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(470, 236);
-            this.dataGridView1.TabIndex = 2;
             // 
             // labelledInputFirstName
             // 
@@ -95,14 +86,23 @@
             this.labelledInputLastName.Size = new System.Drawing.Size(143, 44);
             this.labelledInputLastName.TabIndex = 1;
             // 
-            // labelledInputPesel
+            // labelledInputEvidenceNumber
             // 
-            this.labelledInputPesel.Input = "";
-            this.labelledInputPesel.Label = "Evidence number";
-            this.labelledInputPesel.Location = new System.Drawing.Point(291, 3);
-            this.labelledInputPesel.Name = "labelledInputPesel";
-            this.labelledInputPesel.Size = new System.Drawing.Size(149, 44);
-            this.labelledInputPesel.TabIndex = 2;
+            this.labelledInputEvidenceNumber.Input = "";
+            this.labelledInputEvidenceNumber.Label = "Evidence number";
+            this.labelledInputEvidenceNumber.Location = new System.Drawing.Point(291, 3);
+            this.labelledInputEvidenceNumber.Name = "labelledInputEvidenceNumber";
+            this.labelledInputEvidenceNumber.Size = new System.Drawing.Size(149, 44);
+            this.labelledInputEvidenceNumber.TabIndex = 2;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 98);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(470, 236);
+            this.dataGridView1.TabIndex = 2;
             // 
             // buttonAddPatient
             // 
@@ -135,7 +135,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelInputs;
         private Common.LabelledInput labelledInputFirstName;
         private Common.LabelledInput labelledInputLastName;
-        private Common.LabelledInput labelledInputPesel;
+        private Common.LabelledInput labelledInputEvidenceNumber;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button buttonAddPatient;
     }
