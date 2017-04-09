@@ -13,7 +13,7 @@ namespace Clinic.Interface
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Authentication.FormLogin());
+            Application.Run(new Authentication.LoginForm());
         }
     }
 }

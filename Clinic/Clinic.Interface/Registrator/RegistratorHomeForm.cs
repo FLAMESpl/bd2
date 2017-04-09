@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
-    public partial class FormRegistrator : Form
+    public partial class RegistratorHomeForm : Form
     {
-        public FormRegistrator()
+        public RegistratorHomeForm()
         {
             InitializeComponent();
         }
