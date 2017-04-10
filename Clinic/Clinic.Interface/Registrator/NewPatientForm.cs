@@ -1,6 +1,7 @@
 ﻿using Clinic.Data;
 using Clinic.Facades.Patients;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
@@ -33,11 +34,12 @@ namespace Clinic.Interface.Registrator
         {
             var patient = new Patient
             {
-                Name = labelledInputFirstName.Input,
+                name = labelledInputFirstName.Input,
                 PESEL = int.Parse(labelledInputEvidenceNumber.Input),
-                Surname = labelledInputLastName.Input
+                surname = labelledInputLastName.Input
             };
 
+            patient.Addresses.AddRange(bindingSourceAddresses.List.Cast<Address>());
             PatientsService.AddPatient(patient);
         }
 
