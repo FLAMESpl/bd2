@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Clinic.Data;
+using Clinic.Interface.Common;
+using System;
 using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
@@ -12,7 +14,11 @@ namespace Clinic.Interface.Registrator
 
         private void buttonAddPatient_Click(object sender, EventArgs e)
         {
-            var form = new NewPatientForm(labelledInputFirstName.Input, labelledInputLastName.Input, labelledInputEvidenceNumber.Input);
+            var form = new UpdatePatientForm(
+                firstName: labelledInputFirstName.Input,
+                lastName: labelledInputLastName.Input,
+                evidenceNumber: labelledInputEvidenceNumber.Input);
+
             form.ShowDialog();
         }
 
@@ -21,6 +27,13 @@ namespace Clinic.Interface.Registrator
             labelledInputFirstName.Input = "";
             labelledInputLastName.Input = "";
             labelledInputEvidenceNumber.Input = "";
+        }
+
+        private void buttonEditPatient_Click(object sender, EventArgs e)
+        {
+            var form = new UpdatePatientForm(new Patient());
+
+            form.ShowDialog();
         }
     }
 }
