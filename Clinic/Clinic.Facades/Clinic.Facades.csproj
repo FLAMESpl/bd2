@@ -44,6 +44,7 @@
     <Compile Include="Auth\AuthenticationResult.cs" />
     <Compile Include="Auth\AuthenticationService.cs" />
     <Compile Include="Auth\Role.cs" />
+    <Compile Include="Patients\PatientsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

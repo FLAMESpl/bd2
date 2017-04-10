@@ -15,8 +15,8 @@ namespace Clinic.Facades.Auth
         {
             using (var db = new ClinicDataContext())
             {
-                var user = db.Users.Where(u => u.Username == username && u.Password == password).SingleOrDefault();
-                Role? role = (user == null) ? null : GetRoleFromCode(user.Role);
+                var user = db.Users.Where(u => u.username == username && u.pass == password).SingleOrDefault();
+                Role? role = (user == null) ? null : GetRoleFromCode(user.role);
                 return new AuthenticationResult(role);
             }
         }
