@@ -65,6 +65,12 @@
     <Compile Include="Common\LabelledInput.Designer.cs">
       <DependentUpon>LabelledInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registrator\MatchingDoctors.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Registrator\MatchingDoctors.Designer.cs">
+      <DependentUpon>MatchingDoctors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrator\RegistratorHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     <EmbeddedResource Include="Common\LabelledInput.resx">
       <DependentUpon>LabelledInput.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registrator\MatchingDoctors.resx">
+      <DependentUpon>MatchingDoctors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registrator\NewPatientForm.resx">
       <DependentUpon>NewPatientForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -113,6 +122,8 @@
       <DependentUpon>MatchingPatients.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Clinic.Data.Address.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
