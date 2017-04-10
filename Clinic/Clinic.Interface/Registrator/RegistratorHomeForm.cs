@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clinic.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,15 @@ namespace Clinic.Interface.Registrator
         public RegistratorHomeForm()
         {
             InitializeComponent();
+        }
+
+        private void buttonAddVisit_Click(object sender, EventArgs e)
+        {
+            var patient = new Patient();
+            patient.name = "Jan";
+            patient.surname = "Kowalski";
+            var form = new NewVisitForm(patient);
+            form.ShowDialog();
         }
     }
 }

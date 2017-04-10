@@ -72,6 +72,12 @@
     <Compile Include="Registrator\MatchingDoctors.Designer.cs">
       <DependentUpon>MatchingDoctors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registrator\NewVisitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrator\NewVisitForm.Designer.cs">
+      <DependentUpon>NewVisitForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrator\RegistratorHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <EmbeddedResource Include="Registrator\MatchingDoctors.resx">
       <DependentUpon>MatchingDoctors.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registrator\NewVisitForm.resx">
+      <DependentUpon>NewVisitForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registrator\UpdatePatientForm.resx">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +132,7 @@
       <DependentUpon>MatchingPatients.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Clinic.Data.Address.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
     <None Include="Properties\Settings.settings">

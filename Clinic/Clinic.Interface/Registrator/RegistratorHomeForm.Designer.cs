@@ -31,9 +31,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxPatients = new System.Windows.Forms.GroupBox();
+            this.matchingPatients1 = new Clinic.Interface.Registrator.MatchingPatients();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAddVisit = new System.Windows.Forms.Button();
-            this.matchingPatients1 = new Clinic.Interface.Registrator.MatchingPatients();
             this.buttonSearchAndUpdate = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -80,6 +80,14 @@
             this.groupBoxPatients.TabStop = false;
             this.groupBoxPatients.Text = "Patient";
             // 
+            // matchingPatients1
+            // 
+            this.matchingPatients1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchingPatients1.Location = new System.Drawing.Point(3, 16);
+            this.matchingPatients1.Name = "matchingPatients1";
+            this.matchingPatients1.Size = new System.Drawing.Size(457, 341);
+            this.matchingPatients1.TabIndex = 0;
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Controls.Add(this.buttonAddVisit);
@@ -98,14 +106,7 @@
             this.buttonAddVisit.TabIndex = 0;
             this.buttonAddVisit.Text = "Add visit";
             this.buttonAddVisit.UseVisualStyleBackColor = true;
-            // 
-            // matchingPatients1
-            // 
-            this.matchingPatients1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchingPatients1.Location = new System.Drawing.Point(3, 16);
-            this.matchingPatients1.Name = "matchingPatients1";
-            this.matchingPatients1.Size = new System.Drawing.Size(457, 341);
-            this.matchingPatients1.TabIndex = 0;
+            this.buttonAddVisit.Click += new System.EventHandler(this.buttonAddVisit_Click);
             // 
             // buttonSearchAndUpdate
             // 
