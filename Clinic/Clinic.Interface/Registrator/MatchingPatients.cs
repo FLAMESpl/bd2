@@ -76,10 +76,5 @@ namespace Clinic.Interface.Registrator
             MatchPatients();
             //Task.Run((Action)MatchPatients);
         }
-
-        private void MatchingPatients_Load(object sender, EventArgs e)
-        {
-            MatchPatients();
-        }
     }
 }

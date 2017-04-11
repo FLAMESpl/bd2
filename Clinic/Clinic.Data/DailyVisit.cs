@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 
 namespace Clinic.Data
 {
@@ -22,8 +21,5 @@ namespace Clinic.Data
             Patient = visit.Patient.name + visit.Patient.surname;
             Status = VisitStatusExtensions.GetFromCode(visit.status);
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event PropertyChangingEventHandler PropertyChanging;
     }
 }

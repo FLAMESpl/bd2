@@ -26,5 +26,11 @@ namespace Clinic.Interface.Registrator
             var form = new NewVisitForm(patient);
             form.ShowDialog();
         }
+
+        private void buttonSearchAndUpdate_Click(object sender, EventArgs e)
+        {
+            var form = new BrowseVisitsForm();
+            form.ShowDialog();
+        }
     }
 }

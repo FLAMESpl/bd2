@@ -116,6 +116,7 @@
             this.buttonSearchAndUpdate.TabIndex = 1;
             this.buttonSearchAndUpdate.Text = "Search and update visits";
             this.buttonSearchAndUpdate.UseVisualStyleBackColor = true;
+            this.buttonSearchAndUpdate.Click += new System.EventHandler(this.buttonSearchAndUpdate_Click);
             // 
             // RegistratorHomeForm
             // 

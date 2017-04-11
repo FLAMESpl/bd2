@@ -193,7 +193,6 @@
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Name = "MatchingPatients";
             this.Size = new System.Drawing.Size(476, 337);
-            this.Load += new System.EventHandler(this.MatchingPatients_Load);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.flowLayoutPanelInputs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
