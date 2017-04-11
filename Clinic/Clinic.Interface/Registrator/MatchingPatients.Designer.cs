@@ -96,6 +96,7 @@
             this.labelledInputLastName.Name = "labelledInputLastName";
             this.labelledInputLastName.Size = new System.Drawing.Size(143, 44);
             this.labelledInputLastName.TabIndex = 1;
+            this.labelledInputLastName.InputChanged += new System.EventHandler(this.labelledInputLastName_InputChanged);
             // 
             // labelledInputEvidenceNumber
             // 

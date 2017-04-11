@@ -1,4 +1,5 @@
 ﻿using Clinic.Facades.Auth;
+using Clinic.Interface.LabManager;
 using Clinic.Interface.Registrator;
 using System;
 using System.Windows.Forms;
@@ -42,6 +43,7 @@ namespace Clinic.Interface.Authentication
                 case Role.LabAssistant:
                     break;
                 case Role.LabManager:
+                    form = new ManagerForm();
                     break;
                 default:
                     break;

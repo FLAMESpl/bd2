@@ -1,5 +1,6 @@
 ﻿using Clinic.Data;
 using Clinic.Facades.Patients;
+using Clinic.Interface.Common.Helpers;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -61,8 +62,12 @@ namespace Clinic.Interface.Registrator
 
         private void labelledInputFirstName_InputChanged(object sender, EventArgs e)
         {
-            timer.Stop();
-            timer.Start();
+            timer.Reset();
+        }
+
+        private void labelledInputLastName_InputChanged(object sender, EventArgs e)
+        {
+            timer.Reset();
         }
 
         private void InactivityTimeElapsed(object sender, EventArgs e)

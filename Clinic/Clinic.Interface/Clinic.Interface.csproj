@@ -61,12 +61,17 @@
       <DependentUpon>DoneCancelDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Events\InputChangedEventArgs.cs" />
+    <Compile Include="Common\Helpers\TimerExtensions.cs" />
     <Compile Include="Common\LabelledInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Common\LabelledInput.Designer.cs">
       <DependentUpon>LabelledInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\ManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\ManagerForm.Designer.cs" />
     <Compile Include="Registrator\MatchingDoctors.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +113,7 @@
     <EmbeddedResource Include="Common\LabelledInput.resx">
       <DependentUpon>LabelledInput.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab\ManagerForm.resx" />
     <EmbeddedResource Include="Registrator\MatchingDoctors.resx">
       <DependentUpon>MatchingDoctors.cs</DependentUpon>
     </EmbeddedResource>
