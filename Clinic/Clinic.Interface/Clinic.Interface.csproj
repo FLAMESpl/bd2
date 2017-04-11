@@ -72,6 +72,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab\ManagerForm.Designer.cs" />
+    <Compile Include="Registrator\BrowseVisitsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrator\BrowseVisitsForm.Designer.cs">
+      <DependentUpon>BrowseVisitsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrator\MatchingDoctors.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -114,6 +120,9 @@
       <DependentUpon>LabelledInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\ManagerForm.resx" />
+    <EmbeddedResource Include="Registrator\BrowseVisitsForm.resx">
+      <DependentUpon>BrowseVisitsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registrator\MatchingDoctors.resx">
       <DependentUpon>MatchingDoctors.cs</DependentUpon>
     </EmbeddedResource>
