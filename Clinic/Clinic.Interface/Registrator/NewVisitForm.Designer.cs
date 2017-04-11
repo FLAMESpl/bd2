@@ -32,20 +32,20 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxDoctor = new System.Windows.Forms.GroupBox();
-            this.groupBoxDate = new System.Windows.Forms.GroupBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.dataGridViewDailyVisits = new System.Windows.Forms.DataGridView();
-            this.bindingSourceDailyVisit = new System.Windows.Forms.BindingSource(this.components);
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.labelPatientName = new System.Windows.Forms.Label();
-            this.labelPatient = new System.Windows.Forms.Label();
             this.matchingDoctors1 = new Clinic.Interface.Registrator.MatchingDoctors();
+            this.groupBoxDate = new System.Windows.Forms.GroupBox();
+            this.monthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.dataGridViewDailyVisits = new System.Windows.Forms.DataGridView();
             this.visitHourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnButtonAddVisit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.bindingSourceDailyVisit = new System.Windows.Forms.BindingSource(this.components);
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.labelPatientName = new System.Windows.Forms.Label();
+            this.labelPatient = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBoxDoctor.SuspendLayout();
@@ -98,9 +98,17 @@
             this.groupBoxDoctor.TabStop = false;
             this.groupBoxDoctor.Text = "Doctor";
             // 
+            // matchingDoctors1
+            // 
+            this.matchingDoctors1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchingDoctors1.Location = new System.Drawing.Point(3, 16);
+            this.matchingDoctors1.Name = "matchingDoctors1";
+            this.matchingDoctors1.Size = new System.Drawing.Size(260, 174);
+            this.matchingDoctors1.TabIndex = 1;
+            // 
             // groupBoxDate
             // 
-            this.groupBoxDate.Controls.Add(this.monthCalendar1);
+            this.groupBoxDate.Controls.Add(this.monthCalendar);
             this.groupBoxDate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxDate.Location = new System.Drawing.Point(275, 3);
             this.groupBoxDate.Name = "groupBoxDate";
@@ -109,12 +117,12 @@
             this.groupBoxDate.TabStop = false;
             this.groupBoxDate.Text = "Visit date";
             // 
-            // monthCalendar1
+            // monthCalendar
             // 
-            this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.monthCalendar1.Location = new System.Drawing.Point(3, 28);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 2;
+            this.monthCalendar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.monthCalendar.Location = new System.Drawing.Point(3, 28);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 2;
             // 
             // dataGridViewDailyVisits
             // 
@@ -132,67 +140,6 @@
             this.dataGridViewDailyVisits.Name = "dataGridViewDailyVisits";
             this.dataGridViewDailyVisits.Size = new System.Drawing.Size(575, 178);
             this.dataGridViewDailyVisits.TabIndex = 1;
-            // 
-            // bindingSourceDailyVisit
-            // 
-            this.bindingSourceDailyVisit.DataSource = typeof(Clinic.Data.DailyVisit);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 4;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 141F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel3.Controls.Add(this.button1, 3, 0);
-            this.tableLayoutPanel3.Controls.Add(this.labelPatientName, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.labelPatient, 1, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(575, 30);
-            this.tableLayoutPanel3.TabIndex = 2;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(498, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // labelPatientName
-            // 
-            this.labelPatientName.AutoSize = true;
-            this.labelPatientName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPatientName.Location = new System.Drawing.Point(357, 0);
-            this.labelPatientName.Name = "labelPatientName";
-            this.labelPatientName.Size = new System.Drawing.Size(135, 30);
-            this.labelPatientName.TabIndex = 1;
-            this.labelPatientName.Text = "Patient name";
-            this.labelPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labelPatient
-            // 
-            this.labelPatient.AutoSize = true;
-            this.labelPatient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelPatient.Location = new System.Drawing.Point(292, 0);
-            this.labelPatient.Name = "labelPatient";
-            this.labelPatient.Size = new System.Drawing.Size(59, 30);
-            this.labelPatient.TabIndex = 2;
-            this.labelPatient.Text = "Patient:";
-            this.labelPatient.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // matchingDoctors1
-            // 
-            this.matchingDoctors1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchingDoctors1.Location = new System.Drawing.Point(3, 16);
-            this.matchingDoctors1.Name = "matchingDoctors1";
-            this.matchingDoctors1.Size = new System.Drawing.Size(260, 174);
-            this.matchingDoctors1.TabIndex = 1;
             // 
             // visitHourDataGridViewTextBoxColumn
             // 
@@ -229,6 +176,60 @@
             this.ColumnButtonAddVisit.UseColumnTextForButtonValue = true;
             this.ColumnButtonAddVisit.Width = 50;
             // 
+            // bindingSourceDailyVisit
+            // 
+            this.bindingSourceDailyVisit.DataSource = typeof(Clinic.Data.DailyVisit);
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 4;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 141F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel3.Controls.Add(this.buttonBack, 3, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelPatientName, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelPatient, 1, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(575, 30);
+            this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Location = new System.Drawing.Point(498, 3);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(74, 23);
+            this.buttonBack.TabIndex = 0;
+            this.buttonBack.Text = "Back";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // labelPatientName
+            // 
+            this.labelPatientName.AutoSize = true;
+            this.labelPatientName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPatientName.Location = new System.Drawing.Point(357, 0);
+            this.labelPatientName.Name = "labelPatientName";
+            this.labelPatientName.Size = new System.Drawing.Size(135, 30);
+            this.labelPatientName.TabIndex = 1;
+            this.labelPatientName.Text = "Patient name";
+            this.labelPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelPatient
+            // 
+            this.labelPatient.AutoSize = true;
+            this.labelPatient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPatient.Location = new System.Drawing.Point(292, 0);
+            this.labelPatient.Name = "labelPatient";
+            this.labelPatient.Size = new System.Drawing.Size(59, 30);
+            this.labelPatient.TabIndex = 2;
+            this.labelPatient.Text = "Patient:";
+            this.labelPatient.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // NewVisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,11 +257,11 @@
         private System.Windows.Forms.GroupBox groupBoxDoctor;
         private MatchingDoctors matchingDoctors1;
         private System.Windows.Forms.GroupBox groupBoxDate;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar monthCalendar;
         private System.Windows.Forms.BindingSource bindingSourceDailyVisit;
         private System.Windows.Forms.DataGridView dataGridViewDailyVisits;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Label labelPatientName;
         private System.Windows.Forms.Label labelPatient;
         private System.Windows.Forms.DataGridViewTextBoxColumn visitHourDataGridViewTextBoxColumn;

@@ -86,6 +86,7 @@
             this.labelledInputFirstName.Name = "labelledInputFirstName";
             this.labelledInputFirstName.Size = new System.Drawing.Size(133, 44);
             this.labelledInputFirstName.TabIndex = 0;
+            this.labelledInputFirstName.InputChanged += new System.EventHandler(this.labelledInputFirstName_InputChanged);
             // 
             // labelledInputLastName
             // 
@@ -191,6 +192,7 @@
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Name = "MatchingPatients";
             this.Size = new System.Drawing.Size(476, 337);
+            this.Load += new System.EventHandler(this.MatchingPatients_Load);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.flowLayoutPanelInputs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

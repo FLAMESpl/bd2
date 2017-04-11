@@ -1,9 +1,13 @@
-﻿using System.Windows.Forms;
+﻿using Clinic.Interface.Common.Events;
+using System;
+using System.Windows.Forms;
 
 namespace Clinic.Interface.Common
 {
     public partial class LabelledInput : UserControl
     {
+        public event EventHandler InputChanged;
+
         public string Label
         {
             get { return label.Text; }
@@ -19,6 +23,11 @@ namespace Clinic.Interface.Common
         public LabelledInput()
         {
             InitializeComponent();
+        }
+
+        private void textBox_TextChanged(object sender, EventArgs e)
+        {
+            InputChanged?.Invoke(this, new InputChangedEventArgs(textBox.Text));
         }
     }
 }

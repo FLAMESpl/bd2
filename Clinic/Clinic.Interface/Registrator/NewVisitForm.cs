@@ -36,8 +36,11 @@ namespace Clinic.Interface.Registrator
                 bindingSourceDailyVisit.Add(dailyVisit);
                 actualTime = actualTime.AddMinutes(minutesPerVisit);
             }
+        }
 
-            //bindingSourceDailyVisit.ResetBindings(false);
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
