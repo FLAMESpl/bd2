@@ -1,15 +1,39 @@
 ﻿using Clinic.Data;
-using Clinic.Interface.Common;
+using Clinic.Facades.Patients;
+using Clinic.Interface.Common.Helpers;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
     public partial class MatchingPatients : UserControl
     {
+        private Timer timer = new Timer();
+        private bool pendingMatching = false;
+
         public MatchingPatients()
         {
             InitializeComponent();
+
+            timer.Stop();
+            timer.Interval = 2000;
+            timer.Tick += InactivityTimeElapsed;
+        }
+
+        public void MatchPatients()
+        {
+            var searchCriteria = new Patient
+            {
+                name = labelledInputFirstName.Input,
+                surname = labelledInputLastName.Input,
+            };
+
+            bindingSourcePatients.Clear();
+            foreach (var patient in PatientsService.MatchPatients(searchCriteria))
+            {
+                bindingSourcePatients.Add(patient);
+            }
         }
 
         private void buttonAddPatient_Click(object sender, EventArgs e)
@@ -34,6 +58,23 @@ namespace Clinic.Interface.Registrator
             var form = new UpdatePatientForm(new Patient());
 
             form.ShowDialog();
+        }
+
+        private void labelledInputFirstName_InputChanged(object sender, EventArgs e)
+        {
+            timer.Reset();
+        }
+
+        private void labelledInputLastName_InputChanged(object sender, EventArgs e)
+        {
+            timer.Reset();
+        }
+
+        private void InactivityTimeElapsed(object sender, EventArgs e)
+        {
+            timer.Stop();
+            MatchPatients();
+            //Task.Run((Action)MatchPatients);
         }
     }
 }

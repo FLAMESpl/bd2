@@ -31,9 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanelInputs = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelledInputFirstName = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputLastName = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledInput();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,6 +40,9 @@
             this.buttonNewPatient = new System.Windows.Forms.Button();
             this.buttonEditPatient = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
+            this.labelledInputFirstName = new Clinic.Interface.Common.LabelledInput();
+            this.labelledInputLastName = new Clinic.Interface.Common.LabelledInput();
+            this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledInput();
             this.tableLayoutPanelMain.SuspendLayout();
             this.flowLayoutPanelInputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -77,33 +77,6 @@
             this.flowLayoutPanelInputs.Name = "flowLayoutPanelInputs";
             this.flowLayoutPanelInputs.Size = new System.Drawing.Size(470, 49);
             this.flowLayoutPanelInputs.TabIndex = 0;
-            // 
-            // labelledInputFirstName
-            // 
-            this.labelledInputFirstName.Input = "";
-            this.labelledInputFirstName.Label = "First name";
-            this.labelledInputFirstName.Location = new System.Drawing.Point(3, 3);
-            this.labelledInputFirstName.Name = "labelledInputFirstName";
-            this.labelledInputFirstName.Size = new System.Drawing.Size(133, 44);
-            this.labelledInputFirstName.TabIndex = 0;
-            // 
-            // labelledInputLastName
-            // 
-            this.labelledInputLastName.Input = "";
-            this.labelledInputLastName.Label = "Last name";
-            this.labelledInputLastName.Location = new System.Drawing.Point(142, 3);
-            this.labelledInputLastName.Name = "labelledInputLastName";
-            this.labelledInputLastName.Size = new System.Drawing.Size(143, 44);
-            this.labelledInputLastName.TabIndex = 1;
-            // 
-            // labelledInputEvidenceNumber
-            // 
-            this.labelledInputEvidenceNumber.Input = "";
-            this.labelledInputEvidenceNumber.Label = "Evidence number";
-            this.labelledInputEvidenceNumber.Location = new System.Drawing.Point(291, 3);
-            this.labelledInputEvidenceNumber.Name = "labelledInputEvidenceNumber";
-            this.labelledInputEvidenceNumber.Size = new System.Drawing.Size(149, 44);
-            this.labelledInputEvidenceNumber.TabIndex = 2;
             // 
             // dataGridView1
             // 
@@ -183,6 +156,35 @@
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // labelledInputFirstName
+            // 
+            this.labelledInputFirstName.Input = "";
+            this.labelledInputFirstName.Label = "First name";
+            this.labelledInputFirstName.Location = new System.Drawing.Point(3, 3);
+            this.labelledInputFirstName.Name = "labelledInputFirstName";
+            this.labelledInputFirstName.Size = new System.Drawing.Size(133, 44);
+            this.labelledInputFirstName.TabIndex = 0;
+            this.labelledInputFirstName.InputChanged += new System.EventHandler(this.labelledInputFirstName_InputChanged);
+            // 
+            // labelledInputLastName
+            // 
+            this.labelledInputLastName.Input = "";
+            this.labelledInputLastName.Label = "Last name";
+            this.labelledInputLastName.Location = new System.Drawing.Point(142, 3);
+            this.labelledInputLastName.Name = "labelledInputLastName";
+            this.labelledInputLastName.Size = new System.Drawing.Size(143, 44);
+            this.labelledInputLastName.TabIndex = 1;
+            this.labelledInputLastName.InputChanged += new System.EventHandler(this.labelledInputLastName_InputChanged);
+            // 
+            // labelledInputEvidenceNumber
+            // 
+            this.labelledInputEvidenceNumber.Input = "";
+            this.labelledInputEvidenceNumber.Label = "Evidence number";
+            this.labelledInputEvidenceNumber.Location = new System.Drawing.Point(291, 3);
+            this.labelledInputEvidenceNumber.Name = "labelledInputEvidenceNumber";
+            this.labelledInputEvidenceNumber.Size = new System.Drawing.Size(149, 44);
+            this.labelledInputEvidenceNumber.TabIndex = 2;
             // 
             // MatchingPatients
             // 

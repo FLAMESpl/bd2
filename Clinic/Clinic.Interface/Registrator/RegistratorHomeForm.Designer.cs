@@ -31,9 +31,9 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxPatients = new System.Windows.Forms.GroupBox();
+            this.matchingPatients = new Clinic.Interface.Registrator.MatchingPatients();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonAddVisit = new System.Windows.Forms.Button();
-            this.matchingPatients1 = new Clinic.Interface.Registrator.MatchingPatients();
             this.buttonSearchAndUpdate = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -71,7 +71,7 @@
             // 
             // groupBoxPatients
             // 
-            this.groupBoxPatients.Controls.Add(this.matchingPatients1);
+            this.groupBoxPatients.Controls.Add(this.matchingPatients);
             this.groupBoxPatients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxPatients.Location = new System.Drawing.Point(3, 3);
             this.groupBoxPatients.Name = "groupBoxPatients";
@@ -79,6 +79,14 @@
             this.groupBoxPatients.TabIndex = 0;
             this.groupBoxPatients.TabStop = false;
             this.groupBoxPatients.Text = "Patient";
+            // 
+            // matchingPatients
+            // 
+            this.matchingPatients.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchingPatients.Location = new System.Drawing.Point(3, 16);
+            this.matchingPatients.Name = "matchingPatients";
+            this.matchingPatients.Size = new System.Drawing.Size(457, 341);
+            this.matchingPatients.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
@@ -98,14 +106,7 @@
             this.buttonAddVisit.TabIndex = 0;
             this.buttonAddVisit.Text = "Add visit";
             this.buttonAddVisit.UseVisualStyleBackColor = true;
-            // 
-            // matchingPatients1
-            // 
-            this.matchingPatients1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchingPatients1.Location = new System.Drawing.Point(3, 16);
-            this.matchingPatients1.Name = "matchingPatients1";
-            this.matchingPatients1.Size = new System.Drawing.Size(457, 341);
-            this.matchingPatients1.TabIndex = 0;
+            this.buttonAddVisit.Click += new System.EventHandler(this.buttonAddVisit_Click);
             // 
             // buttonSearchAndUpdate
             // 
@@ -115,6 +116,7 @@
             this.buttonSearchAndUpdate.TabIndex = 1;
             this.buttonSearchAndUpdate.Text = "Search and update visits";
             this.buttonSearchAndUpdate.UseVisualStyleBackColor = true;
+            this.buttonSearchAndUpdate.Click += new System.EventHandler(this.buttonSearchAndUpdate_Click);
             // 
             // RegistratorHomeForm
             // 
@@ -137,7 +139,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBoxPatients;
-        private MatchingPatients matchingPatients1;
+        private MatchingPatients matchingPatients;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonAddVisit;
         private System.Windows.Forms.Button buttonSearchAndUpdate;

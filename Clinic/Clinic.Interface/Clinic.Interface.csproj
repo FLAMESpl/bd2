@@ -60,17 +60,37 @@
     <Compile Include="Common\DoneCancelDialog.Designer.cs">
       <DependentUpon>DoneCancelDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\Events\InputChangedEventArgs.cs" />
+    <Compile Include="Common\Helpers\TimerExtensions.cs" />
     <Compile Include="Common\LabelledInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Common\LabelledInput.Designer.cs">
       <DependentUpon>LabelledInput.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\ManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\ManagerForm.Designer.cs">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrator\BrowseVisitsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrator\BrowseVisitsForm.Designer.cs">
+      <DependentUpon>BrowseVisitsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrator\MatchingDoctors.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Registrator\MatchingDoctors.Designer.cs">
       <DependentUpon>MatchingDoctors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrator\NewVisitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrator\NewVisitForm.Designer.cs">
+      <DependentUpon>NewVisitForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrator\RegistratorHomeForm.cs">
       <SubType>Form</SubType>
@@ -101,8 +121,17 @@
     <EmbeddedResource Include="Common\LabelledInput.resx">
       <DependentUpon>LabelledInput.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lab\ManagerForm.resx">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrator\BrowseVisitsForm.resx">
+      <DependentUpon>BrowseVisitsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registrator\MatchingDoctors.resx">
       <DependentUpon>MatchingDoctors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrator\NewVisitForm.resx">
+      <DependentUpon>NewVisitForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrator\UpdatePatientForm.resx">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
@@ -123,6 +152,7 @@
       <DependentUpon>MatchingPatients.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Clinic.Data.Address.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
     <None Include="Properties\Settings.settings">
