@@ -1,20 +1,23 @@
 ﻿using Clinic.Data;
 using Clinic.Facades.Patients;
+using Clinic.Interface.Common;
 using System;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
-    public partial class NewPatientForm : Form
+    public partial class UpdatePatientForm : Form
     {
-        public NewPatientForm()
+        private ActionType actionType;
+
+        public UpdatePatientForm()
         {
             InitializeComponent();
             SetupComponent();
         }
 
-        public NewPatientForm(string firstName, string lastName, string evidenceNumber)
+        public UpdatePatientForm(string firstName, string lastName, string evidenceNumber)
         {
             InitializeComponent();
             SetupComponent();
@@ -22,6 +25,20 @@ namespace Clinic.Interface.Registrator
             labelledInputFirstName.Input = firstName;
             labelledInputLastName.Input = lastName;
             labelledInputEvidenceNumber.Input = evidenceNumber;
+
+            actionType = ActionType.Insert;
+        }
+
+        public UpdatePatientForm(Patient patient)
+        {
+            InitializeComponent();
+            SetupComponent();
+
+            labelledInputFirstName.Input = patient.name;
+            labelledInputLastName.Input = patient.surname;
+            labelledInputEvidenceNumber.Input = patient.PESEL.ToString();
+
+            actionType = ActionType.Update;
         }
 
         private void SetupComponent()
@@ -43,6 +60,11 @@ namespace Clinic.Interface.Registrator
             PatientsService.AddPatient(patient);
         }
 
+        private void UpdatePatient()
+        {
+
+        }
+
         private void Cancel(object sender, EventArgs e)
         {
             Close();
@@ -50,7 +72,18 @@ namespace Clinic.Interface.Registrator
 
         private void Done(object sender, EventArgs e)
         {
-            CreatePatient();
+            switch (actionType)
+            {
+                case ActionType.Insert:
+                    CreatePatient();
+                    break;
+                case ActionType.Update:
+                    UpdatePatient();
+                    break;
+                default:
+                    break;
+            }
+
             Close();
         }
     }

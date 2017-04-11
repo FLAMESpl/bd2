@@ -1,6 +1,6 @@
 ﻿namespace Clinic.Interface.Registrator
 {
-    partial class NewPatientForm
+    partial class UpdatePatientForm
     {
         /// <summary>
         /// Required designer variable.

@@ -53,6 +53,7 @@
     <Compile Include="Authentication\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\ActionType.cs" />
     <Compile Include="Common\DoneCancelDialog.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,11 +86,11 @@
     <Compile Include="Registrator\MatchingPatients.Designer.cs">
       <DependentUpon>MatchingPatients.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registrator\NewPatientForm.cs">
+    <Compile Include="Registrator\UpdatePatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrator\NewPatientForm.Designer.cs">
-      <DependentUpon>NewPatientForm.cs</DependentUpon>
+    <Compile Include="Registrator\UpdatePatientForm.Designer.cs">
+      <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Authentication\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -103,8 +104,8 @@
     <EmbeddedResource Include="Registrator\MatchingDoctors.resx">
       <DependentUpon>MatchingDoctors.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registrator\NewPatientForm.resx">
-      <DependentUpon>NewPatientForm.cs</DependentUpon>
+    <EmbeddedResource Include="Registrator\UpdatePatientForm.resx">
+      <DependentUpon>UpdatePatientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrator\RegistratorHomeForm.resx">
       <DependentUpon>RegistratorHomeForm.cs</DependentUpon>

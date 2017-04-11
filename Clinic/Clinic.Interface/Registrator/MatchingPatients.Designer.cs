@@ -41,8 +41,8 @@
             this.bindingSourcePatients = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonNewPatient = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
             this.buttonEditPatient = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.tableLayoutPanelMain.SuspendLayout();
             this.flowLayoutPanelInputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -164,6 +164,16 @@
             this.buttonNewPatient.UseVisualStyleBackColor = true;
             this.buttonNewPatient.Click += new System.EventHandler(this.buttonAddPatient_Click);
             // 
+            // buttonEditPatient
+            // 
+            this.buttonEditPatient.Location = new System.Drawing.Point(103, 3);
+            this.buttonEditPatient.Name = "buttonEditPatient";
+            this.buttonEditPatient.Size = new System.Drawing.Size(96, 23);
+            this.buttonEditPatient.TabIndex = 2;
+            this.buttonEditPatient.Text = "Edit patient";
+            this.buttonEditPatient.UseVisualStyleBackColor = true;
+            this.buttonEditPatient.Click += new System.EventHandler(this.buttonEditPatient_Click);
+            // 
             // buttonClear
             // 
             this.buttonClear.Location = new System.Drawing.Point(205, 3);
@@ -173,15 +183,6 @@
             this.buttonClear.Text = "Clear";
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // buttonEditPatient
-            // 
-            this.buttonEditPatient.Location = new System.Drawing.Point(103, 3);
-            this.buttonEditPatient.Name = "buttonEditPatient";
-            this.buttonEditPatient.Size = new System.Drawing.Size(96, 23);
-            this.buttonEditPatient.TabIndex = 2;
-            this.buttonEditPatient.Text = "Edit patient";
-            this.buttonEditPatient.UseVisualStyleBackColor = true;
             // 
             // MatchingPatients
             // 

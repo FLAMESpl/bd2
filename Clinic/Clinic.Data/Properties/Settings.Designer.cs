@@ -26,7 +26,7 @@ namespace Clinic.Data.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=L-SZAFIRSKI;Initial Catalog=Clinic;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-3DN61GH;Initial Catalog=clinic;Integrated Security=True")]
         public string clinicConnectionString {
             get {
                 return ((string)(this["clinicConnectionString"]));
