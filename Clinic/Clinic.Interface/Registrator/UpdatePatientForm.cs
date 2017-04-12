@@ -26,7 +26,7 @@ namespace Clinic.Interface.Registrator
             labelledInputLastName.Input = lastName;
             labelledInputEvidenceNumber.Input = evidenceNumber;
 
-            actionType = ActionType.Insert;
+            actionType = ActionType.Create;
         }
 
         public UpdatePatientForm(Patient patient)
@@ -74,7 +74,7 @@ namespace Clinic.Interface.Registrator
         {
             switch (actionType)
             {
-                case ActionType.Insert:
+                case ActionType.Create:
                     CreatePatient();
                     break;
                 case ActionType.Update:
