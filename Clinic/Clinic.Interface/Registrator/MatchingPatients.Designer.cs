@@ -31,15 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanelInputs = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelledInputFirstName = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputLastName = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledInput();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.bindingSourcePatients = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewPatients = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanelButtons = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonNewPatient = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonSearchPatients = new System.Windows.Forms.Button();
+            this.bindingSourcePatients = new System.Windows.Forms.BindingSource(this.components);
+            this.labelledInputFirstName = new Clinic.Interface.Common.LabelledInput();
+            this.labelledInputLastName = new Clinic.Interface.Common.LabelledInput();
+            this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledInput();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pESELDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,9 +47,9 @@
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanelMain.SuspendLayout();
             this.flowLayoutPanelInputs.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatients)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients)).BeginInit();
             this.flowLayoutPanelButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatients)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMain
@@ -57,7 +57,7 @@
             this.tableLayoutPanelMain.ColumnCount = 1;
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMain.Controls.Add(this.flowLayoutPanelInputs, 0, 0);
-            this.tableLayoutPanelMain.Controls.Add(this.dataGridView1, 0, 2);
+            this.tableLayoutPanelMain.Controls.Add(this.dataGridViewPatients, 0, 2);
             this.tableLayoutPanelMain.Controls.Add(this.flowLayoutPanelButtons, 0, 1);
             this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
@@ -80,59 +80,25 @@
             this.flowLayoutPanelInputs.Size = new System.Drawing.Size(470, 49);
             this.flowLayoutPanelInputs.TabIndex = 0;
             // 
-            // labelledInputFirstName
+            // dataGridViewPatients
             // 
-            this.labelledInputFirstName.Input = "";
-            this.labelledInputFirstName.Label = "First name";
-            this.labelledInputFirstName.Location = new System.Drawing.Point(3, 3);
-            this.labelledInputFirstName.Name = "labelledInputFirstName";
-            this.labelledInputFirstName.Size = new System.Drawing.Size(133, 44);
-            this.labelledInputFirstName.TabIndex = 0;
-            this.labelledInputFirstName.InputChanged += new System.EventHandler(this.labelledInputFirstName_InputChanged);
-            // 
-            // labelledInputLastName
-            // 
-            this.labelledInputLastName.Input = "";
-            this.labelledInputLastName.Label = "Last name";
-            this.labelledInputLastName.Location = new System.Drawing.Point(142, 3);
-            this.labelledInputLastName.Name = "labelledInputLastName";
-            this.labelledInputLastName.Size = new System.Drawing.Size(143, 44);
-            this.labelledInputLastName.TabIndex = 1;
-            this.labelledInputLastName.InputChanged += new System.EventHandler(this.labelledInputLastName_InputChanged);
-            // 
-            // labelledInputEvidenceNumber
-            // 
-            this.labelledInputEvidenceNumber.Input = "";
-            this.labelledInputEvidenceNumber.Label = "Evidence number";
-            this.labelledInputEvidenceNumber.Location = new System.Drawing.Point(291, 3);
-            this.labelledInputEvidenceNumber.Name = "labelledInputEvidenceNumber";
-            this.labelledInputEvidenceNumber.Size = new System.Drawing.Size(149, 44);
-            this.labelledInputEvidenceNumber.TabIndex = 2;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewPatients.AllowUserToAddRows = false;
+            this.dataGridViewPatients.AllowUserToDeleteRows = false;
+            this.dataGridViewPatients.AutoGenerateColumns = false;
+            this.dataGridViewPatients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewPatients.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
             this.surnameDataGridViewTextBoxColumn,
             this.pESELDataGridViewTextBoxColumn,
             this.Edit,
             this.Delete});
-            this.dataGridView1.DataSource = this.bindingSourcePatients;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 98);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(470, 236);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // bindingSourcePatients
-            // 
-            this.bindingSourcePatients.DataSource = typeof(Clinic.Data.Patient);
+            this.dataGridViewPatients.DataSource = this.bindingSourcePatients;
+            this.dataGridViewPatients.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewPatients.Location = new System.Drawing.Point(3, 98);
+            this.dataGridViewPatients.Name = "dataGridViewPatients";
+            this.dataGridViewPatients.ReadOnly = true;
+            this.dataGridViewPatients.Size = new System.Drawing.Size(470, 236);
+            this.dataGridViewPatients.TabIndex = 2;
             // 
             // flowLayoutPanelButtons
             // 
@@ -174,6 +140,39 @@
             this.buttonSearchPatients.Text = "Search";
             this.buttonSearchPatients.UseVisualStyleBackColor = true;
             // 
+            // bindingSourcePatients
+            // 
+            this.bindingSourcePatients.DataSource = typeof(Clinic.Data.Patient);
+            // 
+            // labelledInputFirstName
+            // 
+            this.labelledInputFirstName.Input = "";
+            this.labelledInputFirstName.Label = "First name";
+            this.labelledInputFirstName.Location = new System.Drawing.Point(3, 3);
+            this.labelledInputFirstName.Name = "labelledInputFirstName";
+            this.labelledInputFirstName.Size = new System.Drawing.Size(133, 44);
+            this.labelledInputFirstName.TabIndex = 0;
+            this.labelledInputFirstName.InputChanged += new System.EventHandler(this.labelledInputFirstName_InputChanged);
+            // 
+            // labelledInputLastName
+            // 
+            this.labelledInputLastName.Input = "";
+            this.labelledInputLastName.Label = "Last name";
+            this.labelledInputLastName.Location = new System.Drawing.Point(142, 3);
+            this.labelledInputLastName.Name = "labelledInputLastName";
+            this.labelledInputLastName.Size = new System.Drawing.Size(143, 44);
+            this.labelledInputLastName.TabIndex = 1;
+            this.labelledInputLastName.InputChanged += new System.EventHandler(this.labelledInputLastName_InputChanged);
+            // 
+            // labelledInputEvidenceNumber
+            // 
+            this.labelledInputEvidenceNumber.Input = "";
+            this.labelledInputEvidenceNumber.Label = "Evidence number";
+            this.labelledInputEvidenceNumber.Location = new System.Drawing.Point(291, 3);
+            this.labelledInputEvidenceNumber.Name = "labelledInputEvidenceNumber";
+            this.labelledInputEvidenceNumber.Size = new System.Drawing.Size(149, 44);
+            this.labelledInputEvidenceNumber.TabIndex = 2;
+            // 
             // nameDataGridViewTextBoxColumn
             // 
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "name";
@@ -200,21 +199,27 @@
             // 
             // Edit
             // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Edit.FillWeight = 125.7337F;
-            this.Edit.HeaderText = "Edit";
+            this.Edit.HeaderText = "";
             this.Edit.Name = "Edit";
             this.Edit.ReadOnly = true;
+            this.Edit.Text = "Edit";
             this.Edit.UseColumnTextForButtonValue = true;
+            this.Edit.Width = 50;
             // 
             // Delete
             // 
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Delete.FillWeight = 126.9036F;
-            this.Delete.HeaderText = "Delete";
+            this.Delete.HeaderText = "";
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Delete.Text = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
+            this.Delete.Width = 50;
             // 
             // MatchingPatients
             // 
@@ -225,9 +230,9 @@
             this.Size = new System.Drawing.Size(476, 337);
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.flowLayoutPanelInputs.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatients)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients)).EndInit();
             this.flowLayoutPanelButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatients)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,16 +244,16 @@
         private Common.LabelledInput labelledInputFirstName;
         private Common.LabelledInput labelledInputLastName;
         private Common.LabelledInput labelledInputEvidenceNumber;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewPatients;
         private System.Windows.Forms.BindingSource bindingSourcePatients;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelButtons;
         private System.Windows.Forms.Button buttonNewPatient;
         private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonSearchPatients;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pESELDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
-        private System.Windows.Forms.Button buttonSearchPatients;
     }
 }
