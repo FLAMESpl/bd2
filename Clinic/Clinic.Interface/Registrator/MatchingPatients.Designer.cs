@@ -31,25 +31,25 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanelInputs = new System.Windows.Forms.FlowLayoutPanel();
-            this.dataGridViewPatients = new System.Windows.Forms.DataGridView();
-            this.flowLayoutPanelButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonNewPatient = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonSearchPatients = new System.Windows.Forms.Button();
-            this.bindingSourcePatients = new System.Windows.Forms.BindingSource(this.components);
             this.labelledInputFirstName = new Clinic.Interface.Common.LabelledInput();
             this.labelledInputLastName = new Clinic.Interface.Common.LabelledInput();
             this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledInput();
+            this.dataGridViewPatients = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pESELDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.bindingSourcePatients = new System.Windows.Forms.BindingSource(this.components);
+            this.flowLayoutPanelButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.buttonNewPatient = new System.Windows.Forms.Button();
+            this.buttonSearchPatients = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
             this.tableLayoutPanelMain.SuspendLayout();
             this.flowLayoutPanelInputs.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients)).BeginInit();
-            this.flowLayoutPanelButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatients)).BeginInit();
+            this.flowLayoutPanelButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMain
@@ -80,6 +80,33 @@
             this.flowLayoutPanelInputs.Size = new System.Drawing.Size(470, 49);
             this.flowLayoutPanelInputs.TabIndex = 0;
             // 
+            // labelledInputFirstName
+            // 
+            this.labelledInputFirstName.Input = "";
+            this.labelledInputFirstName.Label = "First name";
+            this.labelledInputFirstName.Location = new System.Drawing.Point(3, 3);
+            this.labelledInputFirstName.Name = "labelledInputFirstName";
+            this.labelledInputFirstName.Size = new System.Drawing.Size(133, 44);
+            this.labelledInputFirstName.TabIndex = 0;
+            // 
+            // labelledInputLastName
+            // 
+            this.labelledInputLastName.Input = "";
+            this.labelledInputLastName.Label = "Last name";
+            this.labelledInputLastName.Location = new System.Drawing.Point(142, 3);
+            this.labelledInputLastName.Name = "labelledInputLastName";
+            this.labelledInputLastName.Size = new System.Drawing.Size(143, 44);
+            this.labelledInputLastName.TabIndex = 1;
+            // 
+            // labelledInputEvidenceNumber
+            // 
+            this.labelledInputEvidenceNumber.Input = "";
+            this.labelledInputEvidenceNumber.Label = "Evidence number";
+            this.labelledInputEvidenceNumber.Location = new System.Drawing.Point(291, 3);
+            this.labelledInputEvidenceNumber.Name = "labelledInputEvidenceNumber";
+            this.labelledInputEvidenceNumber.Size = new System.Drawing.Size(149, 44);
+            this.labelledInputEvidenceNumber.TabIndex = 2;
+            // 
             // dataGridViewPatients
             // 
             this.dataGridViewPatients.AllowUserToAddRows = false;
@@ -99,79 +126,7 @@
             this.dataGridViewPatients.ReadOnly = true;
             this.dataGridViewPatients.Size = new System.Drawing.Size(470, 236);
             this.dataGridViewPatients.TabIndex = 2;
-            // 
-            // flowLayoutPanelButtons
-            // 
-            this.flowLayoutPanelButtons.Controls.Add(this.buttonNewPatient);
-            this.flowLayoutPanelButtons.Controls.Add(this.buttonSearchPatients);
-            this.flowLayoutPanelButtons.Controls.Add(this.buttonClear);
-            this.flowLayoutPanelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelButtons.Location = new System.Drawing.Point(3, 58);
-            this.flowLayoutPanelButtons.Name = "flowLayoutPanelButtons";
-            this.flowLayoutPanelButtons.Size = new System.Drawing.Size(470, 34);
-            this.flowLayoutPanelButtons.TabIndex = 3;
-            // 
-            // buttonNewPatient
-            // 
-            this.buttonNewPatient.Location = new System.Drawing.Point(3, 3);
-            this.buttonNewPatient.Name = "buttonNewPatient";
-            this.buttonNewPatient.Size = new System.Drawing.Size(75, 23);
-            this.buttonNewPatient.TabIndex = 0;
-            this.buttonNewPatient.Text = "Add";
-            this.buttonNewPatient.UseVisualStyleBackColor = true;
-            this.buttonNewPatient.Click += new System.EventHandler(this.buttonAddPatient_Click);
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(165, 3);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(75, 23);
-            this.buttonClear.TabIndex = 1;
-            this.buttonClear.Text = "Clear";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // buttonSearchPatients
-            // 
-            this.buttonSearchPatients.Location = new System.Drawing.Point(84, 3);
-            this.buttonSearchPatients.Name = "buttonSearchPatients";
-            this.buttonSearchPatients.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearchPatients.TabIndex = 2;
-            this.buttonSearchPatients.Text = "Search";
-            this.buttonSearchPatients.UseVisualStyleBackColor = true;
-            // 
-            // bindingSourcePatients
-            // 
-            this.bindingSourcePatients.DataSource = typeof(Clinic.Data.Patient);
-            // 
-            // labelledInputFirstName
-            // 
-            this.labelledInputFirstName.Input = "";
-            this.labelledInputFirstName.Label = "First name";
-            this.labelledInputFirstName.Location = new System.Drawing.Point(3, 3);
-            this.labelledInputFirstName.Name = "labelledInputFirstName";
-            this.labelledInputFirstName.Size = new System.Drawing.Size(133, 44);
-            this.labelledInputFirstName.TabIndex = 0;
-            this.labelledInputFirstName.InputChanged += new System.EventHandler(this.labelledInputFirstName_InputChanged);
-            // 
-            // labelledInputLastName
-            // 
-            this.labelledInputLastName.Input = "";
-            this.labelledInputLastName.Label = "Last name";
-            this.labelledInputLastName.Location = new System.Drawing.Point(142, 3);
-            this.labelledInputLastName.Name = "labelledInputLastName";
-            this.labelledInputLastName.Size = new System.Drawing.Size(143, 44);
-            this.labelledInputLastName.TabIndex = 1;
-            this.labelledInputLastName.InputChanged += new System.EventHandler(this.labelledInputLastName_InputChanged);
-            // 
-            // labelledInputEvidenceNumber
-            // 
-            this.labelledInputEvidenceNumber.Input = "";
-            this.labelledInputEvidenceNumber.Label = "Evidence number";
-            this.labelledInputEvidenceNumber.Location = new System.Drawing.Point(291, 3);
-            this.labelledInputEvidenceNumber.Name = "labelledInputEvidenceNumber";
-            this.labelledInputEvidenceNumber.Size = new System.Drawing.Size(149, 44);
-            this.labelledInputEvidenceNumber.TabIndex = 2;
+            this.dataGridViewPatients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatients_CellContentClick);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -221,6 +176,51 @@
             this.Delete.UseColumnTextForButtonValue = true;
             this.Delete.Width = 50;
             // 
+            // bindingSourcePatients
+            // 
+            this.bindingSourcePatients.DataSource = typeof(Clinic.Data.Patient);
+            // 
+            // flowLayoutPanelButtons
+            // 
+            this.flowLayoutPanelButtons.Controls.Add(this.buttonNewPatient);
+            this.flowLayoutPanelButtons.Controls.Add(this.buttonSearchPatients);
+            this.flowLayoutPanelButtons.Controls.Add(this.buttonClear);
+            this.flowLayoutPanelButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelButtons.Location = new System.Drawing.Point(3, 58);
+            this.flowLayoutPanelButtons.Name = "flowLayoutPanelButtons";
+            this.flowLayoutPanelButtons.Size = new System.Drawing.Size(470, 34);
+            this.flowLayoutPanelButtons.TabIndex = 3;
+            // 
+            // buttonNewPatient
+            // 
+            this.buttonNewPatient.Location = new System.Drawing.Point(3, 3);
+            this.buttonNewPatient.Name = "buttonNewPatient";
+            this.buttonNewPatient.Size = new System.Drawing.Size(75, 23);
+            this.buttonNewPatient.TabIndex = 0;
+            this.buttonNewPatient.Text = "Add";
+            this.buttonNewPatient.UseVisualStyleBackColor = true;
+            this.buttonNewPatient.Click += new System.EventHandler(this.buttonAddPatient_Click);
+            // 
+            // buttonSearchPatients
+            // 
+            this.buttonSearchPatients.Location = new System.Drawing.Point(84, 3);
+            this.buttonSearchPatients.Name = "buttonSearchPatients";
+            this.buttonSearchPatients.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearchPatients.TabIndex = 2;
+            this.buttonSearchPatients.Text = "Search";
+            this.buttonSearchPatients.UseVisualStyleBackColor = true;
+            this.buttonSearchPatients.Click += new System.EventHandler(this.buttonSearchPatients_Click);
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(165, 3);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 1;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
             // MatchingPatients
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,8 +231,8 @@
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.flowLayoutPanelInputs.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients)).EndInit();
-            this.flowLayoutPanelButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatients)).EndInit();
+            this.flowLayoutPanelButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

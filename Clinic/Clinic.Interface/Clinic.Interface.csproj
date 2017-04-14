@@ -61,6 +61,7 @@
       <DependentUpon>DoneCancelDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Events\InputChangedEventArgs.cs" />
+    <Compile Include="Common\Helpers\BindingSourceExtensions.cs" />
     <Compile Include="Common\Helpers\TimerExtensions.cs" />
     <Compile Include="Common\LabelledInput.cs">
       <SubType>UserControl</SubType>

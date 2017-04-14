@@ -1,4 +1,5 @@
 ﻿using Clinic.Data;
+using Clinic.Data.Helpers;
 using System.Linq;
 
 namespace Clinic.Facades.Auth
@@ -13,7 +14,7 @@ namespace Clinic.Facades.Auth
 
         public static AuthenticationResult Authenticate(string username, string password)
         {
-            using (var db = new ClinicDataContext())
+            using (var db = DataContextFactory.Create())
             {
                 var user = db.Users.Where(u => u.username == username && u.pass == password).SingleOrDefault();
                 Role? role = (user == null) ? null : GetRoleFromCode(user.role);

@@ -1,7 +1,9 @@
 ﻿using Clinic.Data;
 using Clinic.Facades.Patients;
 using Clinic.Interface.Common;
+using Clinic.Interface.Common.Helpers;
 using System;
+using System.Data.Linq;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -10,6 +12,7 @@ namespace Clinic.Interface.Registrator
     public partial class UpdatePatientForm : Form
     {
         private ActionType actionType;
+        private Patient patient;
 
         public UpdatePatientForm()
         {
@@ -17,28 +20,17 @@ namespace Clinic.Interface.Registrator
             SetupComponent();
         }
 
-        public UpdatePatientForm(string firstName, string lastName, string evidenceNumber)
+        public UpdatePatientForm(Patient patient, ActionType actionType)
         {
             InitializeComponent();
             SetupComponent();
 
-            labelledInputFirstName.Input = firstName;
-            labelledInputLastName.Input = lastName;
-            labelledInputEvidenceNumber.Input = evidenceNumber;
-
-            actionType = ActionType.Create;
-        }
-
-        public UpdatePatientForm(Patient patient)
-        {
-            InitializeComponent();
-            SetupComponent();
-
+            this.actionType = actionType;
+            this.patient = patient;
             labelledInputFirstName.Input = patient.name;
             labelledInputLastName.Input = patient.surname;
             labelledInputEvidenceNumber.Input = patient.PESEL.ToString();
-
-            actionType = ActionType.Update;
+            bindingSourceAddresses.AddRange(patient.Addresses);
         }
 
         private void SetupComponent()
@@ -49,20 +41,23 @@ namespace Clinic.Interface.Registrator
 
         private void CreatePatient()
         {
-            var patient = new Patient
-            {
-                name = labelledInputFirstName.Input,
-                PESEL = int.Parse(labelledInputEvidenceNumber.Input),
-                surname = labelledInputLastName.Input
-            };
-
+            patient.name = labelledInputFirstName.Input;
+            patient.PESEL = int.Parse(labelledInputEvidenceNumber.Input);
+            patient.surname = labelledInputLastName.Input;
             patient.Addresses.AddRange(bindingSourceAddresses.List.Cast<Address>());
-            PatientsService.AddPatient(patient);
+
+            PatientsService.Add(patient);
         }
 
         private void UpdatePatient()
         {
+            patient.name = labelledInputFirstName.Input;
+            patient.PESEL = int.Parse(labelledInputEvidenceNumber.Input);
+            patient.surname = labelledInputLastName.Input;
+            patient.Addresses.Clear();
+            patient.Addresses.AddRange(bindingSourceAddresses.List.Cast<Address>());
 
+            PatientsService.Update(patient);
         }
 
         private void Cancel(object sender, EventArgs e)

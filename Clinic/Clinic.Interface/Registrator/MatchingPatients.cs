@@ -1,24 +1,16 @@
 ﻿using Clinic.Data;
 using Clinic.Facades.Patients;
-using Clinic.Interface.Common.Helpers;
+using Clinic.Interface.Common;
 using System;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
     public partial class MatchingPatients : UserControl
     {
-        private Timer timer = new Timer();
-        private bool pendingMatching = false;
-
         public MatchingPatients()
         {
             InitializeComponent();
-
-            timer.Stop();
-            timer.Interval = 2000;
-            timer.Tick += InactivityTimeElapsed;
         }
 
         public void MatchPatients()
@@ -30,19 +22,33 @@ namespace Clinic.Interface.Registrator
             };
 
             bindingSourcePatients.Clear();
-            foreach (var patient in PatientsService.MatchPatients(searchCriteria))
+            foreach (var patient in PatientsService.Match(searchCriteria))
             {
                 bindingSourcePatients.Add(patient);
             }
         }
 
+        private void EditPatient(Patient patient)
+        {
+            var form = new UpdatePatientForm(patient, ActionType.Update);
+            form.ShowDialog();
+        }
+
+        private void DeletePatient(Patient patient)
+        {
+            
+        }
+
         private void buttonAddPatient_Click(object sender, EventArgs e)
         {
-            var form = new UpdatePatientForm(
-                firstName: labelledInputFirstName.Input,
-                lastName: labelledInputLastName.Input,
-                evidenceNumber: labelledInputEvidenceNumber.Input);
+            var patient = new Patient
+            {
+                name = labelledInputFirstName.Input,
+                surname = labelledInputLastName.Input,
+                PESEL = int.Parse(labelledInputEvidenceNumber.Input)
+            };
 
+            var form = new UpdatePatientForm(patient, ActionType.Create);
             form.ShowDialog();
         }
 
@@ -53,28 +59,25 @@ namespace Clinic.Interface.Registrator
             labelledInputEvidenceNumber.Input = "";
         }
 
-        private void buttonEditPatient_Click(object sender, EventArgs e)
+        private void buttonSearchPatients_Click(object sender, EventArgs e)
         {
-            var form = new UpdatePatientForm(new Patient());
-
-            form.ShowDialog();
-        }
-
-        private void labelledInputFirstName_InputChanged(object sender, EventArgs e)
-        {
-            timer.Reset();
-        }
-
-        private void labelledInputLastName_InputChanged(object sender, EventArgs e)
-        {
-            timer.Reset();
-        }
-
-        private void InactivityTimeElapsed(object sender, EventArgs e)
-        {
-            timer.Stop();
             MatchPatients();
-            //Task.Run((Action)MatchPatients);
+        }
+
+        private void dataGridViewPatients_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var grid = sender as DataGridView;
+            var columnName = grid.Columns[e.ColumnIndex].Name;
+
+            switch (columnName)
+            {
+                case "Edit":
+                    EditPatient((Patient)bindingSourcePatients.Current);
+                    break;
+                case "Delete":
+                    DeletePatient((Patient)bindingSourcePatients.Current);
+                    break;
+            }
         }
     }
 }
