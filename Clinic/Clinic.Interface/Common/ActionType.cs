@@ -2,7 +2,8 @@
 {
     public enum ActionType
     {
+        Browse,
         Create,
-        Update
+        Update,
     }
 }

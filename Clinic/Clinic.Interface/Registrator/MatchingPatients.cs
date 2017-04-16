@@ -19,6 +19,7 @@ namespace Clinic.Interface.Registrator
             {
                 Name = labelledInputFirstName.Input,
                 Surname = labelledInputLastName.Input,
+                PESEL = labelledInputEvidenceNumber.Input
             };
 
             bindingSourcePatients.Clear();
@@ -36,7 +37,15 @@ namespace Clinic.Interface.Registrator
 
         private void DeletePatient(Patient patient)
         {
-            
+
+        }
+
+        private void AddVisit(Patient patient)
+        {
+            using (var form = new NewVisitForm(patient, ActionType.Create))
+            {
+                form.ShowDialog();
+            }
         }
 
         private void buttonAddPatient_Click(object sender, EventArgs e)
@@ -76,6 +85,9 @@ namespace Clinic.Interface.Registrator
                     break;
                 case "Delete":
                     DeletePatient((Patient)bindingSourcePatients.Current);
+                    break;
+                case "Visit":
+                    AddVisit((Patient)bindingSourcePatients.Current);
                     break;
             }
         }

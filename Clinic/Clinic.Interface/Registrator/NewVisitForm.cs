@@ -1,4 +1,5 @@
 ﻿using Clinic.Data;
+using Clinic.Interface.Common;
 using System;
 using System.Windows.Forms;
 
@@ -13,7 +14,7 @@ namespace Clinic.Interface.Registrator
             InitializeComponent();
         }
 
-        public NewVisitForm(Patient patient)
+        public NewVisitForm(Patient patient, ActionType actionType)
         {
             InitializeComponent();
 

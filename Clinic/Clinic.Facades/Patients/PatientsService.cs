@@ -36,7 +36,8 @@ namespace Clinic.Facades.Patients
             using (var db = DataContextFactory.Create(x => x.Include<Patient>(p => p.Addresses)))
             {
                 var results = db.Patients.Where(p => p.Name.Contains(searchCriteria.Name)
-                                && p.Surname.Contains(searchCriteria.Surname));
+                                && p.Surname.Contains(searchCriteria.Surname)
+                                && p.PESEL.Contains(searchCriteria.PESEL));
                 return results.ToList();
             }
         }

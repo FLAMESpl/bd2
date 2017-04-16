@@ -1,4 +1,5 @@
 ﻿using Clinic.Data;
+using Clinic.Interface.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,13 +24,7 @@ namespace Clinic.Interface.Registrator
             var patient = new Patient();
             patient.Name = "Jan";
             patient.Surname = "Kowalski";
-            var form = new NewVisitForm(patient);
-            form.ShowDialog();
-        }
-
-        private void buttonSearchAndUpdate_Click(object sender, EventArgs e)
-        {
-            var form = new BrowseVisitsForm();
+            var form = new NewVisitForm(patient, ActionType.Create);
             form.ShowDialog();
         }
     }

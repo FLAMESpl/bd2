@@ -32,7 +32,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxDoctor = new System.Windows.Forms.GroupBox();
-            this.matchingDoctors1 = new Clinic.Interface.Registrator.MatchingDoctors();
             this.groupBoxDate = new System.Windows.Forms.GroupBox();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.dataGridViewDailyVisits = new System.Windows.Forms.DataGridView();
@@ -46,6 +45,7 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.labelPatientName = new System.Windows.Forms.Label();
             this.labelPatient = new System.Windows.Forms.Label();
+            this.matchingDoctors1 = new Clinic.Interface.Registrator.MatchingDoctors();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBoxDoctor.SuspendLayout();
@@ -97,14 +97,6 @@
             this.groupBoxDoctor.TabIndex = 2;
             this.groupBoxDoctor.TabStop = false;
             this.groupBoxDoctor.Text = "Doctor";
-            // 
-            // matchingDoctors1
-            // 
-            this.matchingDoctors1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchingDoctors1.Location = new System.Drawing.Point(3, 16);
-            this.matchingDoctors1.Name = "matchingDoctors1";
-            this.matchingDoctors1.Size = new System.Drawing.Size(260, 174);
-            this.matchingDoctors1.TabIndex = 1;
             // 
             // groupBoxDate
             // 
@@ -230,6 +222,14 @@
             this.labelPatient.Text = "Patient:";
             this.labelPatient.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // matchingDoctors1
+            // 
+            this.matchingDoctors1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.matchingDoctors1.Location = new System.Drawing.Point(3, 16);
+            this.matchingDoctors1.Name = "matchingDoctors1";
+            this.matchingDoctors1.Size = new System.Drawing.Size(260, 174);
+            this.matchingDoctors1.TabIndex = 1;
+            // 
             // NewVisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -237,7 +237,7 @@
             this.ClientSize = new System.Drawing.Size(581, 425);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "NewVisitForm";
-            this.Text = "NewVisitForm";
+            this.Text = "Visists";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.groupBoxDoctor.ResumeLayout(false);
@@ -255,7 +255,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.GroupBox groupBoxDoctor;
-        private MatchingDoctors matchingDoctors1;
         private System.Windows.Forms.GroupBox groupBoxDate;
         private System.Windows.Forms.MonthCalendar monthCalendar;
         private System.Windows.Forms.BindingSource bindingSourceDailyVisit;
@@ -269,5 +268,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnButtonAddVisit;
+        private MatchingDoctors matchingDoctors1;
     }
 }
