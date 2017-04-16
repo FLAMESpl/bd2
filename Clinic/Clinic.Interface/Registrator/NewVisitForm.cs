@@ -18,7 +18,7 @@ namespace Clinic.Interface.Registrator
             InitializeComponent();
 
             this.patient = patient;
-            labelPatientName.Text = $"{patient.name} {patient.surname}";
+            labelPatientName.Text = $"{patient.Name} {patient.Surname}";
 
             FillVisits(new DateTime(1, 1, 1, 8, 0, 0), new DateTime(1, 1, 1, 12, 0, 0), 15);
         }

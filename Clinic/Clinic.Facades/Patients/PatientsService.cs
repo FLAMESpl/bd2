@@ -20,11 +20,11 @@ namespace Clinic.Facades.Patients
         {
             using (var db = DataContextFactory.Create())
             {
-                var oldPatient = db.Patients.Where(p => p.id_pat == patient.id_pat).Single();
+                var oldPatient = db.Patients.Where(p => p.Id == patient.Id).Single();
 
-                oldPatient.name = patient.name;
+                oldPatient.Name = patient.Name;
                 oldPatient.PESEL = patient.PESEL;
-                oldPatient.surname = patient.surname;
+                oldPatient.Surname = patient.Surname;
 
                 db.UpdateAddressesFor(oldPatient, patient.Addresses);
                 db.SubmitChanges();
@@ -35,8 +35,8 @@ namespace Clinic.Facades.Patients
         {
             using (var db = DataContextFactory.Create(x => x.Include<Patient>(p => p.Addresses)))
             {
-                var results = db.Patients.Where(p => p.name.Contains(searchCriteria.name)
-                                && p.surname.Contains(searchCriteria.surname));
+                var results = db.Patients.Where(p => p.Name.Contains(searchCriteria.Name)
+                                && p.Surname.Contains(searchCriteria.Surname));
                 return results.ToList();
             }
         }
@@ -44,7 +44,6 @@ namespace Clinic.Facades.Patients
         private static void UpdateAddressesFor(this ClinicDataContext db, Patient patient, IEnumerable<Address> addresses)
         {
             db.Addresses.DeleteAllOnSubmit(patient.Addresses);
-            //db.Addresses.AttachAndDelete(replicas);
             patient.Addresses.AddRange(addresses);
         }
     }

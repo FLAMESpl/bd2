@@ -17,8 +17,8 @@ namespace Clinic.Interface.Registrator
         {
             var searchCriteria = new Patient
             {
-                name = labelledInputFirstName.Input,
-                surname = labelledInputLastName.Input,
+                Name = labelledInputFirstName.Input,
+                Surname = labelledInputLastName.Input,
             };
 
             bindingSourcePatients.Clear();
@@ -43,9 +43,9 @@ namespace Clinic.Interface.Registrator
         {
             var patient = new Patient
             {
-                name = labelledInputFirstName.Input,
-                surname = labelledInputLastName.Input,
-                PESEL = int.Parse(labelledInputEvidenceNumber.Input)
+                Name = labelledInputFirstName.Input,
+                Surname = labelledInputLastName.Input,
+                PESEL = labelledInputEvidenceNumber.Input
             };
 
             var form = new UpdatePatientForm(patient, ActionType.Create);
