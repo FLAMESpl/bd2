@@ -16,10 +16,10 @@ namespace Clinic.Data
 
         public DailyVisit(Visit visit)
         {
-            VisitId = visit.id_visit;
-            Doctor = visit.Doctor.name + visit.Doctor.surname;
-            Patient = visit.Patient.name + visit.Patient.surname;
-            Status = VisitStatusExtensions.GetFromCode(visit.status);
+            VisitId = visit.Id;
+            Doctor = $"{visit.Doctor.Name} {visit.Doctor.Surname}";
+            Patient = $"{visit.Patient.Name} {visit.Patient.Surname}";
+            Status = VisitStatusExtensions.GetFromCode(visit.Status);
         }
     }
 }

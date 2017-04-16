@@ -27,9 +27,9 @@ namespace Clinic.Interface.Registrator
 
             this.actionType = actionType;
             this.patient = patient;
-            labelledInputFirstName.Input = patient.name;
-            labelledInputLastName.Input = patient.surname;
-            labelledInputEvidenceNumber.Input = patient.PESEL.ToString();
+            labelledInputFirstName.Input = patient.Name;
+            labelledInputLastName.Input = patient.Surname;
+            labelledInputEvidenceNumber.Input = patient.PESEL;
             bindingSourceAddresses.AddRange(patient.Addresses);
         }
 
@@ -41,9 +41,9 @@ namespace Clinic.Interface.Registrator
 
         private void CreatePatient()
         {
-            patient.name = labelledInputFirstName.Input;
-            patient.PESEL = int.Parse(labelledInputEvidenceNumber.Input);
-            patient.surname = labelledInputLastName.Input;
+            patient.Name = labelledInputFirstName.Input;
+            patient.PESEL = labelledInputEvidenceNumber.Input;
+            patient.Surname = labelledInputLastName.Input;
             patient.Addresses.AddRange(bindingSourceAddresses.List.Cast<Address>());
 
             PatientsService.Add(patient);
@@ -51,9 +51,9 @@ namespace Clinic.Interface.Registrator
 
         private void UpdatePatient()
         {
-            patient.name = labelledInputFirstName.Input;
-            patient.PESEL = int.Parse(labelledInputEvidenceNumber.Input);
-            patient.surname = labelledInputLastName.Input;
+            patient.Name = labelledInputFirstName.Input;
+            patient.PESEL = labelledInputEvidenceNumber.Input;
+            patient.Surname = labelledInputLastName.Input;
             patient.Addresses.Clear();
             patient.Addresses.AddRange(bindingSourceAddresses.List.Cast<Address>());
 

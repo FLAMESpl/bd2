@@ -1,131 +1,130 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="clinic" Class="ClinicDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=L-SZAFIRSKI;Initial Catalog=clinic;Integrated Security=True" SettingsObjectName="Clinic.Data.Properties.Settings" SettingsPropertyName="clinicConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Address" Member="Addresses">
-    <Type Name="Address">
-      <Column Name="id_add" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="id_pat" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="city" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="street" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="house_no" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="flat_no" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Patient_Address" Member="Patient" ThisKey="id_pat" OtherKey="id_pat" Type="Patient" IsForeignKey="true" />
-    </Type>
-  </Table>
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Clinic" Class="ClinicDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=Clinic;Integrated Security=True" SettingsObjectName="Clinic.Data.Properties.Settings" SettingsPropertyName="clinicConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Visit" Member="Visits">
     <Type Name="Visit">
-      <Column Name="id_visit" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="diagnosis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="dt_registry" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="[dt_conf|canc]" Member="dt_conf_canc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="id_reg" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="id_pat" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="id_doc" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Association Name="Visit_Test_laboratory" Member="Test_laboratories" ThisKey="id_visit" OtherKey="id_visit" Type="Test_laboratory" />
-      <Association Name="Visit_Test_physical" Member="Test_physicals" ThisKey="id_visit" OtherKey="id_visit" Type="Test_physical" />
-      <Association Name="Doctor_Visit" Member="Doctor" ThisKey="id_doc" OtherKey="id_doc" Type="Doctor" IsForeignKey="true" />
-      <Association Name="Patient_Visit" Member="Patient" ThisKey="id_pat" OtherKey="id_pat" Type="Patient" IsForeignKey="true" />
-      <Association Name="Registrator_Visit" Member="Registrator" ThisKey="id_reg" OtherKey="id_reg" Type="Registrator" IsForeignKey="true" />
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Diagnosis" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RegistrationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ResolutionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PlannedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IdRegistrator" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdPatient" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdDoctor" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="Visit_LaboratoryTest" Member="LaboratoryTests" ThisKey="Id" OtherKey="IdVisit" Type="LaboratoryTest" />
+      <Association Name="Visit_PhysicalTest" Member="PhysicalTests" ThisKey="Id" OtherKey="IdVisit" Type="PhysicalTest" />
+      <Association Name="Doctor_Visit" Member="Doctor" ThisKey="IdDoctor" OtherKey="Id" Type="Doctor" IsForeignKey="true" />
+      <Association Name="Patient_Visit" Member="Patient" ThisKey="IdPatient" OtherKey="Id" Type="Patient" IsForeignKey="true" />
+      <Association Name="Registrator_Visit" Member="Registrator" ThisKey="IdRegistrator" OtherKey="Id" Type="Registrator" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Address" Member="Addresses">
+    <Type Name="Address">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HouseNumber" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="FlatNumber" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Patient_Address" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Doctor" Member="Doctors">
     <Type Name="Doctor">
-      <Column Name="id_doc" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="licence_no" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Doctor_Visit" Member="Visits" ThisKey="id_doc" OtherKey="id_doc" Type="Visit" />
-      <Association Name="User_Doctor" Member="User" ThisKey="id_doc" OtherKey="id_user" Type="User" IsForeignKey="true" />
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="LicenseNumber" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="Doctor_Visit" Member="Visits" ThisKey="Id" OtherKey="IdDoctor" Type="Visit" />
+      <Association Name="User_Doctor" Member="User" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Lab_assistant" Member="Lab_assistants">
-    <Type Name="Lab_assistant">
-      <Column Name="id_lab_ass" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Lab_assistant_Test_laboratory" Member="Test_laboratories" ThisKey="id_lab_ass" OtherKey="id_lab_ass" Type="Test_laboratory" />
-      <Association Name="User_Lab_assistant" Member="User" ThisKey="id_lab_ass" OtherKey="id_user" Type="User" IsForeignKey="true" />
+  <Table Name="dbo.LabAssistant" Member="LabAssistants">
+    <Type Name="LabAssistant">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="LabAssistant_LaboratoryTest" Member="LaboratoryTests" ThisKey="Id" OtherKey="IdLabAssistant" Type="LaboratoryTest" />
+      <Association Name="User_LabAssistant" Member="User" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Lab_manager" Member="Lab_managers">
-    <Type Name="Lab_manager">
-      <Column Name="id_lab_manag" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Association Name="Lab_manager_Test_laboratory" Member="Test_laboratories" ThisKey="id_lab_manag" OtherKey="id_lab_manag" Type="Test_laboratory" />
-      <Association Name="User_Lab_manager" Member="User" ThisKey="id_lab_manag" OtherKey="id_user" Type="User" IsForeignKey="true" />
+  <Table Name="dbo.LabManager" Member="LabManagers">
+    <Type Name="LabManager">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="User_LabManager" Member="User" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LaboratoryTest" Member="LaboratoryTests">
+    <Type Name="LaboratoryTest">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DoctorNotes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ComissionDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ExecutionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ManagerNotes" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ResolutionDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdVisit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdLabManager" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IdLabAssistant" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="LabAssistant_LaboratoryTest" Member="LabAssistant" ThisKey="IdLabAssistant" OtherKey="Id" Type="LabAssistant" IsForeignKey="true" />
+      <Association Name="Visit_LaboratoryTest" Member="Visit" ThisKey="IdVisit" OtherKey="Id" Type="Visit" IsForeignKey="true" />
+      <Association Name="TestDictionary_LaboratoryTest" Member="TestDictionary" ThisKey="Code" OtherKey="Code" Type="TestDictionary" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Patient" Member="Patients">
     <Type Name="Patient">
-      <Column Name="id_pat" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PESEL" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Patient_Address" Member="Addresses" ThisKey="id_pat" OtherKey="id_pat" Type="Address" />
-      <Association Name="Patient_Visit" Member="Visits" ThisKey="id_pat" OtherKey="id_pat" Type="Visit" />
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PESEL" Type="System.String" DbType="NChar(11) NOT NULL" CanBeNull="false" />
+      <Association Name="Patient_Visit" Member="Visits" ThisKey="Id" OtherKey="IdPatient" Type="Visit" />
+      <Association Name="Patient_Address" Member="Addresses" ThisKey="Id" OtherKey="PatientId" Type="Address" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PhysicalTest" Member="PhysicalTests">
+    <Type Name="PhysicalTest">
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Result" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="IdVisit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Visit_PhysicalTest" Member="Visit" ThisKey="IdVisit" OtherKey="Id" Type="Visit" IsForeignKey="true" />
+      <Association Name="TestDictionary_PhysicalTest" Member="TestDictionary" ThisKey="Code" OtherKey="Code" Type="TestDictionary" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Registrator" Member="Registrators">
     <Type Name="Registrator">
-      <Column Name="id_reg" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Registrator_Visit" Member="Visits" ThisKey="id_reg" OtherKey="id_reg" Type="Visit" />
-      <Association Name="User_Registrator" Member="User" ThisKey="id_reg" OtherKey="id_user" Type="User" IsForeignKey="true" />
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Registrator_Visit" Member="Visits" ThisKey="Id" OtherKey="IdRegistrator" Type="Visit" />
+      <Association Name="User_Registrator" Member="User" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.test_dict" Member="test_dicts">
-    <Type Name="test_dict">
-      <Column Name="code" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="test_dict_Test_laboratory" Member="Test_laboratories" ThisKey="code" OtherKey="code" Type="Test_laboratory" />
-      <Association Name="test_dict_Test_physical" Member="Test_physicals" ThisKey="code" OtherKey="code" Type="Test_physical" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Test_laboratory" Member="Test_laboratories">
-    <Type Name="Test_laboratory">
-      <Column Name="id_test_lab" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="doc_notes" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="dt_commis" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="result" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="dt_exe" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="manag_notes" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="[dt_conf|canc]" Member="dt_conf_canc" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="id_visit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="id_lab_manag" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="id_lab_ass" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="code" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Association Name="Lab_assistant_Test_laboratory" Member="Lab_assistant" ThisKey="id_lab_ass" OtherKey="id_lab_ass" Type="Lab_assistant" IsForeignKey="true" />
-      <Association Name="Lab_manager_Test_laboratory" Member="Lab_manager" ThisKey="id_lab_manag" OtherKey="id_lab_manag" Type="Lab_manager" IsForeignKey="true" />
-      <Association Name="test_dict_Test_laboratory" Member="test_dict" ThisKey="code" OtherKey="code" Type="test_dict" IsForeignKey="true" />
-      <Association Name="Visit_Test_laboratory" Member="Visit" ThisKey="id_visit" OtherKey="id_visit" Type="Visit" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Test_physical" Member="Test_physicals">
-    <Type Name="Test_physical">
-      <Column Name="id_test_phys" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="result" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="id_visit" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="code" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Association Name="test_dict_Test_physical" Member="test_dict" ThisKey="code" OtherKey="code" Type="test_dict" IsForeignKey="true" />
-      <Association Name="Visit_Test_physical" Member="Visit" ThisKey="id_visit" OtherKey="id_visit" Type="Visit" IsForeignKey="true" />
+  <Table Name="dbo.TestDictionary" Member="TestDictionaries">
+    <Type Name="TestDictionary">
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="TestDictionary_LaboratoryTest" Member="LaboratoryTests" ThisKey="Code" OtherKey="Code" Type="LaboratoryTest" />
+      <Association Name="TestDictionary_PhysicalTest" Member="PhysicalTests" ThisKey="Code" OtherKey="Code" Type="PhysicalTest" />
     </Type>
   </Table>
   <Table Name="dbo.[User]" Member="Users">
     <Type Name="User">
-      <Column Name="username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="pass" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="dt_registry" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="role" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="id_user" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Association Name="User_Doctor" Member="Doctor" ThisKey="id_user" OtherKey="id_doc" Type="Doctor" Cardinality="One" />
-      <Association Name="User_Lab_assistant" Member="Lab_assistant" ThisKey="id_user" OtherKey="id_lab_ass" Type="Lab_assistant" Cardinality="One" />
-      <Association Name="User_Lab_manager" Member="Lab_manager" ThisKey="id_user" OtherKey="id_lab_manag" Type="Lab_manager" Cardinality="One" />
-      <Association Name="User_Registrator" Member="Registrator" ThisKey="id_user" OtherKey="id_reg" Type="Registrator" Cardinality="One" />
+      <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RegistrationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Role" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Association Name="User_Doctor" Member="Doctor" ThisKey="Id" OtherKey="Id" Type="Doctor" Cardinality="One" />
+      <Association Name="User_LabAssistant" Member="LabAssistant" ThisKey="Id" OtherKey="Id" Type="LabAssistant" Cardinality="One" />
+      <Association Name="User_LabManager" Member="LabManager" ThisKey="Id" OtherKey="Id" Type="LabManager" Cardinality="One" />
+      <Association Name="User_Registrator" Member="Registrator" ThisKey="Id" OtherKey="Id" Type="Registrator" Cardinality="One" />
     </Type>
   </Table>
 </Database>

@@ -21,8 +21,8 @@ namespace Clinic.Interface.Registrator
         private void buttonAddVisit_Click(object sender, EventArgs e)
         {
             var patient = new Patient();
-            patient.name = "Jan";
-            patient.surname = "Kowalski";
+            patient.Name = "Jan";
+            patient.Surname = "Kowalski";
             var form = new NewVisitForm(patient);
             form.ShowDialog();
         }

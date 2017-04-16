@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Clinic]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Database [Clinic]    Script Date: 16.04.2017 13:43:06 ******/
 CREATE DATABASE [Clinic]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -97,7 +97,7 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [Clinic]
 GO
-/****** Object:  Table [dbo].[Address]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[Address]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -116,7 +116,7 @@ CREATE TABLE [dbo].[Address](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Doctor]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[Doctor]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +133,7 @@ CREATE TABLE [dbo].[Doctor](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[LabAssistant]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[LabAssistant]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -149,7 +149,7 @@ CREATE TABLE [dbo].[LabAssistant](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[LabManager]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[LabManager]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[LabManager](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[LaboratoryTest]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[LaboratoryTest]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -182,7 +182,7 @@ CREATE TABLE [dbo].[LaboratoryTest](
 	[IdVisit] [bigint] NOT NULL,
 	[IdLabManager] [bigint] NOT NULL,
 	[IdLabAssistant] [bigint] NULL,
-	[Code] [bigint] NOT NULL,
+	[Code] [nvarchar](10) NOT NULL,
  CONSTRAINT [PK_LaboratoryTest] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -190,7 +190,7 @@ CREATE TABLE [dbo].[LaboratoryTest](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Patient]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[Patient]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,7 +207,7 @@ CREATE TABLE [dbo].[Patient](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[PhysicalTest]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[PhysicalTest]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -216,7 +216,7 @@ CREATE TABLE [dbo].[PhysicalTest](
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[Result] [nvarchar](max) NULL,
 	[IdVisit] [bigint] NOT NULL,
-	[Code] [varchar](10) NOT NULL,
+	[Code] [nvarchar](10) NOT NULL,
  CONSTRAINT [PK_Test_physical] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
@@ -224,7 +224,7 @@ CREATE TABLE [dbo].[PhysicalTest](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Registrator]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[Registrator]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -240,13 +240,13 @@ CREATE TABLE [dbo].[Registrator](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TestDictionary]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[TestDictionary]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[TestDictionary](
-	[Code] [varchar](10) NOT NULL,
+	[Code] [nvarchar](10) NOT NULL,
 	[Type] [nvarchar](50) NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
  CONSTRAINT [PK_test_dict_1] PRIMARY KEY CLUSTERED 
@@ -256,7 +256,7 @@ CREATE TABLE [dbo].[TestDictionary](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[User]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -274,7 +274,7 @@ CREATE TABLE [dbo].[User](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Visit]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Table [dbo].[Visit]    Script Date: 16.04.2017 13:43:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -300,7 +300,7 @@ GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_Address]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Index [IX_Address]    Script Date: 16.04.2017 13:43:06 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Address] ON [dbo].[Address]
 (
 	[PatientId] ASC,
@@ -309,13 +309,13 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_Address] ON [dbo].[Address]
 	[Street] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Lab_assistant]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Index [IX_Lab_assistant]    Script Date: 16.04.2017 13:43:06 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Lab_assistant] ON [dbo].[LabAssistant]
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Lab_manager]    Script Date: 16.04.2017 13:28:10 ******/
+/****** Object:  Index [IX_Lab_manager]    Script Date: 16.04.2017 13:43:06 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Lab_manager] ON [dbo].[LabManager]
 (
 	[Id] ASC
@@ -340,6 +340,11 @@ ALTER TABLE [dbo].[LabManager]  WITH CHECK ADD  CONSTRAINT [FK_Lab_manager_User]
 REFERENCES [dbo].[User] ([Id])
 GO
 ALTER TABLE [dbo].[LabManager] CHECK CONSTRAINT [FK_Lab_manager_User]
+GO
+ALTER TABLE [dbo].[LaboratoryTest]  WITH CHECK ADD  CONSTRAINT [FK_LaboratoryTest_TestDictionary] FOREIGN KEY([Code])
+REFERENCES [dbo].[TestDictionary] ([Code])
+GO
+ALTER TABLE [dbo].[LaboratoryTest] CHECK CONSTRAINT [FK_LaboratoryTest_TestDictionary]
 GO
 ALTER TABLE [dbo].[LaboratoryTest]  WITH CHECK ADD  CONSTRAINT [FK_Test_laboratory_Lab_assistant] FOREIGN KEY([IdLabAssistant])
 REFERENCES [dbo].[LabAssistant] ([Id])
