@@ -1,4 +1,4 @@
-﻿namespace Clinic.Data
+﻿namespace Clinic.Facades.Visits
 {
     public enum VisitStatus
     {

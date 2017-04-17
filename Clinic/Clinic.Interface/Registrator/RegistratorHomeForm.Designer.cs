@@ -40,17 +40,17 @@
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bindingSourcePatients = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxPatient = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.patientFilters = new Clinic.Interface.Registrator.PatientFilters();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.patientFilters = new Clinic.Interface.Registrator.PatientFilters();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatients)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxPatient.SuspendLayout();
             this.tableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +85,7 @@
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 469F));
             this.tableLayoutPanel2.Controls.Add(this.dataGridViewPatients, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.groupBoxPatient, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
@@ -182,16 +182,16 @@
             // 
             this.bindingSourcePatients.DataSource = typeof(Clinic.Data.Patient);
             // 
-            // groupBox1
+            // groupBoxPatient
             // 
-            this.groupBox1.Controls.Add(this.tableLayoutPanel);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(463, 107);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Patient";
+            this.groupBoxPatient.Controls.Add(this.tableLayoutPanel);
+            this.groupBoxPatient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxPatient.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxPatient.Name = "groupBoxPatient";
+            this.groupBoxPatient.Size = new System.Drawing.Size(463, 107);
+            this.groupBoxPatient.TabIndex = 0;
+            this.groupBoxPatient.TabStop = false;
+            this.groupBoxPatient.Text = "Patient";
             // 
             // tableLayoutPanel
             // 
@@ -207,16 +207,6 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(457, 88);
             this.tableLayoutPanel.TabIndex = 0;
-            // 
-            // patientFilters
-            // 
-            this.patientFilters.aMyProperty = null;
-            this.patientFilters.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.patientFilters.Location = new System.Drawing.Point(3, 3);
-            this.patientFilters.MyProperty = 0;
-            this.patientFilters.Name = "patientFilters";
-            this.patientFilters.Size = new System.Drawing.Size(451, 46);
-            this.patientFilters.TabIndex = 0;
             // 
             // tableLayoutPanel3
             // 
@@ -256,6 +246,16 @@
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
+            // patientFilters
+            // 
+            this.patientFilters.aMyProperty = null;
+            this.patientFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.patientFilters.Location = new System.Drawing.Point(3, 3);
+            this.patientFilters.MyProperty = 0;
+            this.patientFilters.Name = "patientFilters";
+            this.patientFilters.Size = new System.Drawing.Size(451, 46);
+            this.patientFilters.TabIndex = 0;
+            // 
             // RegistratorHomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,7 +268,7 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatients)).EndInit();
-            this.groupBox1.ResumeLayout(false);
+            this.groupBoxPatient.ResumeLayout(false);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -279,7 +279,7 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxPatient;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private PatientFilters patientFilters;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;

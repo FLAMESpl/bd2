@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Clinic.Data;
+using System;
 
-namespace Clinic.Data
+namespace Clinic.Facades.Visits
 {
     public class DailyVisit
     {
