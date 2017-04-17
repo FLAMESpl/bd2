@@ -87,6 +87,12 @@
     <Compile Include="Registrator\NewVisitForm.Designer.cs">
       <DependentUpon>NewVisitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registrator\PatientFilters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Registrator\PatientFilters.Designer.cs">
+      <DependentUpon>PatientFilters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrator\RegistratorHomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registrator\NewVisitForm.resx">
       <DependentUpon>NewVisitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrator\PatientFilters.resx">
+      <DependentUpon>PatientFilters.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrator\UpdatePatientForm.resx">
       <DependentUpon>UpdatePatientForm.cs</DependentUpon>
