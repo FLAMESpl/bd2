@@ -1,6 +1,8 @@
-﻿namespace Clinic.Interface.Registrator
+﻿using Clinic.Facades.Visits;
+
+namespace Clinic.Interface.Registrator
 {
-    partial class NewVisitForm
+    partial class VisitForm
     {
         /// <summary>
         /// Required designer variable.
@@ -45,7 +47,6 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.labelPatientName = new System.Windows.Forms.Label();
             this.labelPatient = new System.Windows.Forms.Label();
-            this.matchingDoctors1 = new Clinic.Interface.Registrator.MatchingDoctors();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBoxDoctor.SuspendLayout();
@@ -89,7 +90,6 @@
             // 
             // groupBoxDoctor
             // 
-            this.groupBoxDoctor.Controls.Add(this.matchingDoctors1);
             this.groupBoxDoctor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxDoctor.Location = new System.Drawing.Point(3, 3);
             this.groupBoxDoctor.Name = "groupBoxDoctor";
@@ -170,7 +170,7 @@
             // 
             // bindingSourceDailyVisit
             // 
-            this.bindingSourceDailyVisit.DataSource = typeof(Clinic.Data.DailyVisit);
+            this.bindingSourceDailyVisit.DataSource = typeof(DailyVisit);
             // 
             // tableLayoutPanel3
             // 
@@ -221,15 +221,6 @@
             this.labelPatient.TabIndex = 2;
             this.labelPatient.Text = "Patient:";
             this.labelPatient.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // matchingDoctors1
-            // 
-            this.matchingDoctors1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.matchingDoctors1.Location = new System.Drawing.Point(3, 16);
-            this.matchingDoctors1.Name = "matchingDoctors1";
-            this.matchingDoctors1.Size = new System.Drawing.Size(260, 174);
-            this.matchingDoctors1.TabIndex = 1;
-            // 
             // NewVisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,6 +259,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnButtonAddVisit;
-        private MatchingDoctors matchingDoctors1;
     }
 }

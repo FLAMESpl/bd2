@@ -9,18 +9,18 @@ using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
-    public partial class UpdatePatientForm : Form
+    public partial class PatientForm : Form
     {
         private ActionType actionType;
         private Patient patient;
 
-        public UpdatePatientForm()
+        public PatientForm()
         {
             InitializeComponent();
             SetupComponent();
         }
 
-        public UpdatePatientForm(Patient patient, ActionType actionType)
+        public PatientForm(Patient patient, ActionType actionType)
         {
             InitializeComponent();
             SetupComponent();

@@ -7,16 +7,16 @@ using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
-    public partial class RegistratorHomeForm : Form
+    public partial class RegistratorForm : Form
     {
-        public RegistratorHomeForm()
+        public RegistratorForm()
         {
             InitializeComponent();
         }
 
         private void EditPatient(Patient patient)
         {
-            using (var form = new UpdatePatientForm(patient, ActionType.Update))
+            using (var form = new PatientForm(patient, ActionType.Update))
             { 
                 form.ShowDialog();
             }
@@ -29,7 +29,7 @@ namespace Clinic.Interface.Registrator
 
         private void AddVisit(Patient patient)
         {
-            using (var form = new NewVisitForm(patient, ActionType.Create))
+            using (var form = new VisitForm(patient, ActionType.Create))
             {
                 form.ShowDialog();
             }
@@ -37,7 +37,7 @@ namespace Clinic.Interface.Registrator
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            using (var form = new UpdatePatientForm(patientFilters.GetPatient(), ActionType.Create))
+            using (var form = new PatientForm(patientFilters.GetPatient(), ActionType.Create))
             {
                 form.ShowDialog();
             }

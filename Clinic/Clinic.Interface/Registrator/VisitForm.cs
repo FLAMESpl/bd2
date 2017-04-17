@@ -1,20 +1,21 @@
 ﻿using Clinic.Data;
+using Clinic.Facades.Visits;
 using Clinic.Interface.Common;
 using System;
 using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
-    public partial class NewVisitForm : Form
+    public partial class VisitForm : Form
     {
         private Patient patient;
 
-        public NewVisitForm()
+        public VisitForm()
         {
             InitializeComponent();
         }
 
-        public NewVisitForm(Patient patient, ActionType actionType)
+        public VisitForm(Patient patient, ActionType actionType)
         {
             InitializeComponent();
 

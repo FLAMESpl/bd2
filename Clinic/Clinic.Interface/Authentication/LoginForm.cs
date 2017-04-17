@@ -38,7 +38,7 @@ namespace Clinic.Interface.Authentication
                 case Role.Doctor:
                     break;
                 case Role.Registrator:
-                    form = new RegistratorHomeForm();
+                    form = new RegistratorForm();
                     break;
                 case Role.LabAssistant:
                     break;
