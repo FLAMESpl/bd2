@@ -62,6 +62,7 @@
     </Compile>
     <Compile Include="Common\Events\InputChangedEventArgs.cs" />
     <Compile Include="Common\Helpers\BindingSourceExtensions.cs" />
+    <Compile Include="Common\Helpers\CollectionsExtensions.cs" />
     <Compile Include="Common\Helpers\TimerExtensions.cs" />
     <Compile Include="Common\LabelledInput.cs">
       <SubType>UserControl</SubType>
@@ -74,12 +75,6 @@
     </Compile>
     <Compile Include="Lab\ManagerForm.Designer.cs">
       <DependentUpon>ManagerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Registrator\MatchingDoctors.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Registrator\MatchingDoctors.Designer.cs">
-      <DependentUpon>MatchingDoctors.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrator\NewVisitForm.cs">
       <SubType>Form</SubType>
@@ -101,12 +96,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrator\MatchingPatients.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Registrator\MatchingPatients.Designer.cs">
-      <DependentUpon>MatchingPatients.cs</DependentUpon>
-    </Compile>
     <Compile Include="Registrator\UpdatePatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,9 +113,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Registrator\MatchingDoctors.resx">
-      <DependentUpon>MatchingDoctors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrator\NewVisitForm.resx">
       <DependentUpon>NewVisitForm.cs</DependentUpon>
@@ -149,9 +135,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Registrator\MatchingPatients.resx">
-      <DependentUpon>MatchingPatients.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\DataSources\Clinic.Data.Address.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />

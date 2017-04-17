@@ -2,9 +2,10 @@
 {
     public enum VisitStatus
     {
-        Abandoned,
-        Reserved,
-        Commised,
+        Scheduled,
+        Finalised,
+        Cancelled,
+        Removed,
         Unknown
     }
 
@@ -14,12 +15,14 @@
         {
             switch (code)
             {
-                case "ABANDONED":
-                    return VisitStatus.Abandoned;
-                case "RESERVED":
-                    return VisitStatus.Reserved;
-                case "COMMISED":
-                    return VisitStatus.Commised;
+                case "SCHEDULED":
+                    return VisitStatus.Scheduled;
+                case "CANCELLED":
+                    return VisitStatus.Cancelled;
+                case "FINALISED":
+                    return VisitStatus.Finalised;
+                case "REMOVED":
+                    return VisitStatus.Removed;
                 default:
                     return VisitStatus.Unknown;
             }
