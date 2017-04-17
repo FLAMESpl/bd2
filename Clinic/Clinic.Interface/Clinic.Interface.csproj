@@ -76,6 +76,7 @@
     <Compile Include="Lab\ManagerForm.Designer.cs">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registrator\ListboxDoctorItem.cs" />
     <Compile Include="Registrator\VisitForm.cs">
       <SubType>Form</SubType>
     </Compile>
