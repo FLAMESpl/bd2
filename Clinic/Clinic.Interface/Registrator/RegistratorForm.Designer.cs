@@ -79,6 +79,7 @@
             this.buttonSearchAndUpdate.TabIndex = 2;
             this.buttonSearchAndUpdate.Text = "Browse existing visits";
             this.buttonSearchAndUpdate.UseVisualStyleBackColor = true;
+            this.buttonSearchAndUpdate.Click += new System.EventHandler(this.buttonSearchAndUpdate_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -256,13 +257,13 @@
             this.patientFilters.Size = new System.Drawing.Size(451, 46);
             this.patientFilters.TabIndex = 0;
             // 
-            // RegistratorHomeForm
+            // RegistratorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(473, 411);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "RegistratorHomeForm";
+            this.Name = "RegistratorForm";
             this.Text = "Registrator";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

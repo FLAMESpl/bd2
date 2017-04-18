@@ -50,6 +50,14 @@ namespace Clinic.Interface.Registrator
             bindingSourcePatients.List.AddRange(PatientsService.Match(searchCriteria));
         }
 
+        private void buttonSearchAndUpdate_Click(object sender, EventArgs e)
+        {
+            using (var form = new VisitForm(null, ActionType.Browse))
+            {
+                form.ShowDialog();
+            }
+        }
+
         private void dataGridViewPatients_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var grid = sender as DataGridView;

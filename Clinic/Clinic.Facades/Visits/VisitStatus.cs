@@ -15,16 +15,33 @@
         {
             switch (code)
             {
-                case "SCHEDULED":
+                case "SCH":
                     return VisitStatus.Scheduled;
-                case "CANCELLED":
+                case "CAN":
                     return VisitStatus.Cancelled;
-                case "FINALISED":
+                case "FIN":
                     return VisitStatus.Finalised;
-                case "REMOVED":
+                case "REM":
                     return VisitStatus.Removed;
                 default:
                     return VisitStatus.Unknown;
+            }
+        }
+
+        public static string ToCode(this VisitStatus visit)
+        {
+            switch (visit)
+            {
+                case VisitStatus.Scheduled:
+                    return "SCH";
+                case VisitStatus.Finalised:
+                    return "FIN";
+                case VisitStatus.Cancelled:
+                    return "CAN";
+                case VisitStatus.Removed:
+                    return "REM";
+                default:
+                    return "";
             }
         }
     }
