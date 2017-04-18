@@ -44,10 +44,14 @@
     <Compile Include="Auth\AuthenticationResult.cs" />
     <Compile Include="Auth\AuthenticationService.cs" />
     <Compile Include="Auth\Role.cs" />
+    <Compile Include="Common\DomainException.cs" />
+    <Compile Include="Doctors\DoctorsExtensions.cs" />
     <Compile Include="Doctors\DoctorsService.cs" />
+    <Compile Include="Patients\PatientsExtensions.cs" />
     <Compile Include="Patients\PatientsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Visits\DailyVisit.cs" />
+    <Compile Include="Visits\VisitExtensions.cs" />
     <Compile Include="Visits\VisitsService.cs" />
     <Compile Include="Visits\VisitStatus.cs" />
   </ItemGroup>

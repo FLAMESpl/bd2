@@ -1,7 +1,10 @@
 ﻿using Clinic.Data;
+using Clinic.Facades.Common;
 using Clinic.Facades.Doctors;
+using Clinic.Facades.Patients;
 using Clinic.Facades.Visits;
 using Clinic.Interface.Common;
+using Clinic.Interface.Common.Helpers;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -11,6 +14,10 @@ namespace Clinic.Interface.Registrator
 {
     public partial class VisitForm : Form
     {
+        private const string RESERVE_BUTTON = "Reserve";
+        private const string CANCEL_BUTTON = "Cancel";
+        private const string DELETE_BUTTON = "Delete";
+
         private Patient patient;
         private ActionType actionType;
 
@@ -43,6 +50,8 @@ namespace Clinic.Interface.Registrator
             {
                 var patientFilters = new PatientFilters();
                 groupBoxPatient.Controls.Add(patientFilters);
+
+                dataGridViewDailyVisits.Columns.Remove(RESERVE_BUTTON);
             }
 
             FillVisits(DateTime.Now.Date.AddHours(8), DateTime.Now.Date.AddHours(16), 15);
@@ -70,13 +79,53 @@ namespace Clinic.Interface.Registrator
                 ResolutionDate = null,
                 Status = VisitStatus.Scheduled.ToCode()
             };
+            
+            try
+            {
+                var createdId = VisitsService.Add(visit);
+                dailyVisit.Reserve(createdId, doctor.Name, patient.GetFullName());
+            }
+            catch (DomainException ex)
+            {
+                ex.ShowMessage();
+            }
+        }
 
-            VisitsService.Add(visit);
+        private void CancelVisit(DailyVisit dailyVisit)
+        {
+            try
+            {
+                VisitsService.Cancel(dailyVisit.VisitId.Value);
+                dailyVisit.Cancel();
+            }
+            catch (DomainException ex)
+            {
+                ex.ShowMessage();
+            }
+        }
+
+        private void DeleteVisit(DailyVisit dailyVisit)
+        {
+            var result = MessageBox.Show($"Visit for patient {dailyVisit.Patient} will be deleted. Are you sure?", 
+                null, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.No)
+                return;
+
+            try
+            {
+                VisitsService.Delete(dailyVisit.VisitId.Value);
+                dailyVisit.Delete();
+            }
+            catch(DomainException ex)
+            {
+                ex.ShowMessage();
+            }
         }
 
         private void FillVisits(DateTime startTime, DateTime endTime, int minutesPerVisit)
         {
-            var todayVisits = VisitsService.GetInDate(DateTime.Now);
+            var todayVisits = VisitsService.GetInDate(DateTime.Now).Where(v => v.Status != VisitStatus.Removed.ToCode());
 
             var timeSpan = endTime - startTime;
             var numberOfVisits = timeSpan.TotalMinutes / minutesPerVisit;
@@ -121,12 +170,20 @@ namespace Clinic.Interface.Registrator
 
             switch (columnName)
             {
-                case "Reserve":
+                case RESERVE_BUTTON:
                     ReserveVisit((DailyVisit)bindingSourceDailyVisit.Current);
+                    break;
+                case CANCEL_BUTTON:
+                    CancelVisit((DailyVisit)bindingSourceDailyVisit.Current);
+                    break;
+                case DELETE_BUTTON:
+                    DeleteVisit((DailyVisit)bindingSourceDailyVisit.Current);
                     break;
                 default:
                     break;
             }
+
+            grid.InvalidateRow(e.RowIndex);
         }
     }
 }
