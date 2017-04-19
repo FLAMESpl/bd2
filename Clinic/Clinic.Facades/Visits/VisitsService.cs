@@ -13,8 +13,7 @@ namespace Clinic.Facades.Visits
         {
             using (var db = DataContextFactory.Create())
             {
-                if (db.Visits.HasOverlappingWith(visit))
-                    throw new DomainException("Visit already scheduled for this hour");
+                visit.AssertIsNotOverlappingWithAnotherVisit(db.Visits);
 
                 db.Visits.InsertOnSubmit(visit);
                 db.SubmitChanges();

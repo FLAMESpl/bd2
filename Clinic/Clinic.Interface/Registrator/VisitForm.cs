@@ -62,7 +62,7 @@ namespace Clinic.Interface.Registrator
             FillDoctors();
         }
 
-        private void ReserveVisit(DailyVisit dailyVisit)
+        private void ScheduleVisit(DailyVisit dailyVisit)
         {
             var doctor = (DoctorListItem)listBoxDoctors.SelectedItem;
             if (doctor == null || doctor.Empty)
@@ -200,7 +200,7 @@ namespace Clinic.Interface.Registrator
             switch (columnName)
             {
                 case RESERVE_BUTTON:
-                    ReserveVisit((DailyVisit)bindingSourceDailyVisit.Current);
+                    ScheduleVisit((DailyVisit)bindingSourceDailyVisit.Current);
                     break;
                 case CANCEL_BUTTON:
                     CancelVisit((DailyVisit)bindingSourceDailyVisit.Current);
