@@ -51,11 +51,14 @@ namespace Clinic.Facades.Visits
             }
         }
 
-        public static List<Visit> GetInDate(DateTime day)
+        public static List<Visit> GetInDate(DateTime day, long? doctorId = null)
         {
             using (var db = DataContextFactory.Create(x => x.Include<Visit>(v => v.Patient).Include<Visit>(v => v.Doctor)))
             {
                 var result = db.Visits.Where(v => day.Date == v.PlannedDate.Date);
+                if (doctorId.HasValue)
+                    result = result.Where(v => v.IdDoctor == doctorId.Value);
+
                 return result.ToList();
             }
         }

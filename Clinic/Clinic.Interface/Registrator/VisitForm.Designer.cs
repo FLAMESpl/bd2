@@ -31,7 +31,7 @@ namespace Clinic.Interface.Registrator
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelDoctors = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxDoctor = new System.Windows.Forms.GroupBox();
@@ -39,8 +39,6 @@ namespace Clinic.Interface.Registrator
             this.groupBoxDate = new System.Windows.Forms.GroupBox();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.dataGridViewDailyVisits = new System.Windows.Forms.DataGridView();
-            this.bindingSourceDailyVisit = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBoxPatient = new System.Windows.Forms.GroupBox();
             this.visitHourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,6 +46,8 @@ namespace Clinic.Interface.Registrator
             this.Reserve = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Cancel = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.bindingSourceDailyVisit = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBoxPatient = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelDoctors.SuspendLayout();
             this.groupBoxDoctor.SuspendLayout();
@@ -107,6 +107,7 @@ namespace Clinic.Interface.Registrator
             this.listBoxDoctors.Name = "listBoxDoctors";
             this.listBoxDoctors.Size = new System.Drawing.Size(296, 161);
             this.listBoxDoctors.TabIndex = 0;
+            this.listBoxDoctors.SelectedValueChanged += new System.EventHandler(this.listBoxDoctors_SelectedValueChanged);
             // 
             // groupBoxDate
             // 
@@ -150,27 +151,13 @@ namespace Clinic.Interface.Registrator
             this.dataGridViewDailyVisits.TabIndex = 1;
             this.dataGridViewDailyVisits.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDailyVisits_CellContentClick);
             // 
-            // bindingSourceDailyVisit
-            // 
-            this.bindingSourceDailyVisit.DataSource = typeof(Clinic.Facades.Visits.DailyVisit);
-            // 
-            // groupBoxPatient
-            // 
-            this.groupBoxPatient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxPatient.Location = new System.Drawing.Point(3, 3);
-            this.groupBoxPatient.Name = "groupBoxPatient";
-            this.groupBoxPatient.Size = new System.Drawing.Size(650, 51);
-            this.groupBoxPatient.TabIndex = 2;
-            this.groupBoxPatient.TabStop = false;
-            this.groupBoxPatient.Text = "Patient";
-            // 
             // visitHourDataGridViewTextBoxColumn
             // 
             this.visitHourDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.visitHourDataGridViewTextBoxColumn.DataPropertyName = "VisitHour";
-            dataGridViewCellStyle2.Format = "t";
-            dataGridViewCellStyle2.NullValue = null;
-            this.visitHourDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "t";
+            dataGridViewCellStyle1.NullValue = null;
+            this.visitHourDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.visitHourDataGridViewTextBoxColumn.HeaderText = "Hour";
             this.visitHourDataGridViewTextBoxColumn.Name = "visitHourDataGridViewTextBoxColumn";
             this.visitHourDataGridViewTextBoxColumn.ReadOnly = true;
@@ -181,6 +168,7 @@ namespace Clinic.Interface.Registrator
             this.doctorDataGridViewTextBoxColumn.DataPropertyName = "Doctor";
             this.doctorDataGridViewTextBoxColumn.HeaderText = "Doctor";
             this.doctorDataGridViewTextBoxColumn.Name = "doctorDataGridViewTextBoxColumn";
+            this.doctorDataGridViewTextBoxColumn.ReadOnly = true;
             this.doctorDataGridViewTextBoxColumn.Width = 150;
             // 
             // patientDataGridViewTextBoxColumn
@@ -188,6 +176,7 @@ namespace Clinic.Interface.Registrator
             this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
             this.patientDataGridViewTextBoxColumn.HeaderText = "Patient";
             this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
+            this.patientDataGridViewTextBoxColumn.ReadOnly = true;
             this.patientDataGridViewTextBoxColumn.Width = 150;
             // 
             // statusDataGridViewTextBoxColumn
@@ -195,6 +184,7 @@ namespace Clinic.Interface.Registrator
             this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
             this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
             this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Reserve
             // 
@@ -211,6 +201,7 @@ namespace Clinic.Interface.Registrator
             this.Cancel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Cancel.HeaderText = "";
             this.Cancel.Name = "Cancel";
+            this.Cancel.ReadOnly = true;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseColumnTextForButtonValue = true;
             this.Cancel.Width = 50;
@@ -220,11 +211,26 @@ namespace Clinic.Interface.Registrator
             this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Delete.HeaderText = "";
             this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Delete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Delete.Text = "Delete";
             this.Delete.UseColumnTextForButtonValue = true;
             this.Delete.Width = 50;
+            // 
+            // bindingSourceDailyVisit
+            // 
+            this.bindingSourceDailyVisit.DataSource = typeof(Clinic.Facades.Visits.DailyVisit);
+            // 
+            // groupBoxPatient
+            // 
+            this.groupBoxPatient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxPatient.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxPatient.Name = "groupBoxPatient";
+            this.groupBoxPatient.Size = new System.Drawing.Size(650, 51);
+            this.groupBoxPatient.TabIndex = 2;
+            this.groupBoxPatient.TabStop = false;
+            this.groupBoxPatient.Text = "Patient";
             // 
             // VisitForm
             // 

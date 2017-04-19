@@ -14,6 +14,10 @@ namespace Clinic.Interface.Registrator
 {
     public partial class VisitForm : Form
     {
+        private const int START_WORKING_HOUR = 8;
+        private const int END_WORKING_HOUR = 16;
+        private const int MINUTES_PER_VISIT = 15;
+
         private const string RESERVE_BUTTON = "Reserve";
         private const string CANCEL_BUTTON = "Cancel";
         private const string DELETE_BUTTON = "Delete";
@@ -54,7 +58,7 @@ namespace Clinic.Interface.Registrator
                 dataGridViewDailyVisits.Columns.Remove(RESERVE_BUTTON);
             }
 
-            FillVisits(DateTime.Now.Date.AddHours(8), DateTime.Now.Date.AddHours(16), 15);
+            FillVisits();
             FillDoctors();
         }
 
@@ -123,14 +127,39 @@ namespace Clinic.Interface.Registrator
             }
         }
 
-        private void FillVisits(DateTime startTime, DateTime endTime, int minutesPerVisit)
+        private void FillVisits()
         {
-            var todayVisits = VisitsService.GetInDate(DateTime.Now).Where(v => v.Status != VisitStatus.Removed.ToCode());
+            bindingSourceDailyVisit.Clear();
 
+            var doctorId = ((DoctorListItem)listBoxDoctors.SelectedItem)?.Id;
+
+            var startTime = DateTime.Now.Date.AddHours(START_WORKING_HOUR);
+            var endTime = DateTime.Now.Date.AddHours(END_WORKING_HOUR);
             var timeSpan = endTime - startTime;
-            var numberOfVisits = timeSpan.TotalMinutes / minutesPerVisit;
+            var numberOfVisits = (int)timeSpan.TotalMinutes / MINUTES_PER_VISIT;
 
+            if (actionType == ActionType.Browse)
+            {
+                FillVisitsForBrowsing(doctorId, startTime, numberOfVisits);
+            }
+            else if (actionType == ActionType.Create)
+            {
+                FillVisitsForScheduling(doctorId, startTime, numberOfVisits);
+            }
+        }
+
+        private void FillVisitsForBrowsing(long? doctorId, DateTime startTime, int numberOfVisits)
+        {
+        }
+
+        private void FillVisitsForScheduling(long? doctorId, DateTime startTime, int numberOfVisits)
+        {
+            if (doctorId == null)
+                return;
+
+            var todayVisits = VisitsService.GetInDate(DateTime.Now, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
             var actualTime = startTime;
+
             for (int i = 0; i < numberOfVisits; i++)
             {
                 var visit = todayVisits.SingleOrDefault(v => v.PlannedDate == actualTime);
@@ -145,7 +174,7 @@ namespace Clinic.Interface.Registrator
                 }
 
                 bindingSourceDailyVisit.Add(dailyVisit);
-                actualTime = actualTime.AddMinutes(minutesPerVisit);
+                actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
             }
         }
 
@@ -184,6 +213,11 @@ namespace Clinic.Interface.Registrator
             }
 
             grid.InvalidateRow(e.RowIndex);
+        }
+
+        private void listBoxDoctors_SelectedValueChanged(object sender, EventArgs e)
+        {
+            FillVisits();
         }
     }
 }
