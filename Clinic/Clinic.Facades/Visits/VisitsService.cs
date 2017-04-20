@@ -26,10 +26,9 @@ namespace Clinic.Facades.Visits
             using (var db = DataContextFactory.Create())
             {
                 var visit = db.Visits.Single(v => v.Id == id);
-                if (visit.Status == VisitStatus.Finalised.ToCode())
-                    throw new DomainException("Finalised visits cannot be cancelled");
 
                 visit.Status = VisitStatus.Cancelled.ToCode();
+                visit.ResolutionDate = db.GetSystemDate();
                 db.SubmitChanges();
             }
         }
@@ -46,6 +45,19 @@ namespace Clinic.Facades.Visits
                     throw new DomainException("Cancelled visits cannot be deleted");
 
                 visit.Status = VisitStatus.Removed.ToCode();
+                db.SubmitChanges();
+            }
+        }
+
+        public static void Finalise(long id)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var visit = db.Visits.Single(v => v.Id == id);
+                if (visit.Status != VisitStatus.Scheduled.ToCode())
+                    throw new DomainException("Only scheduled visits can be finalised");
+
+                visit.Status = VisitStatus.Finalised.ToCode();
                 db.SubmitChanges();
             }
         }
