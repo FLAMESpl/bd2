@@ -1,4 +1,4 @@
-﻿using Clinic.Facades.Auth;
+﻿using Clinic.Facades.User;
 using System;
 using System.Windows.Forms;
 
@@ -17,9 +17,21 @@ namespace Clinic.Interface.Admin
             var roles = (Role[])Enum.GetValues(typeof(Role));
             var radio = new RadioButton
             {
-                Text = radio.Text
+                Text = "All",
+                AutoSize = true
             };
+            flowLayoutPanel.Controls.Add(radio);
+            radio.Checked = true;
 
+            foreach (var role in roles)
+            {
+                radio = new RadioButton
+                {
+                    Text = role.ToDisplayName(),
+                    AutoSize = true
+                };
+                flowLayoutPanel.Controls.Add(radio);
+            }
         }
     }
 }

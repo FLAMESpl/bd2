@@ -47,6 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdministratorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\AdministratorForm.Designer.cs">
+      <DependentUpon>AdministratorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SystemRoleSelectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\SystemRoleSelectControl.Designer.cs">
+      <DependentUpon>SystemRoleSelectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserView.cs" />
     <Compile Include="Authentication\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +116,12 @@
     <Compile Include="Registrator\PatientForm.Designer.cs">
       <DependentUpon>PatientForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin\AdministratorForm.resx">
+      <DependentUpon>AdministratorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\SystemRoleSelectControl.resx">
+      <DependentUpon>SystemRoleSelectControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authentication\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,6 +159,7 @@
     <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
+    <None Include="Properties\DataSources\Clinic.Interface.Admin.UserView.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -163,6 +183,7 @@
       <Name>Clinic.Facades</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
