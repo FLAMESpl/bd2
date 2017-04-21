@@ -1,4 +1,4 @@
-﻿using Clinic.Facades.User;
+﻿using Clinic.Facades.Users;
 using Clinic.Interface.Admin;
 using Clinic.Interface.LabManager;
 using Clinic.Interface.Registrator;

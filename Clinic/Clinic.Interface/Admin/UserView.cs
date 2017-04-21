@@ -1,5 +1,5 @@
 ﻿using Clinic.Data;
-using Clinic.Facades.User;
+using Clinic.Facades.Users;
 
 namespace Clinic.Interface.Admin
 {
@@ -7,7 +7,7 @@ namespace Clinic.Interface.Admin
     {
         public long UserId { get; set; }
         public string Username { get; set; }
-        public Role Role { get; set; }
+        public string Role { get; set; }
 
         public UserView()
         {
@@ -17,7 +17,7 @@ namespace Clinic.Interface.Admin
         {
             UserId = user.Id;
             Username = user.Username;
-            Role = RolesExtensions.GetFromCode(user.Role).Value;
+            Role = (RolesExtensions.GetFromCode(user.Role).Value).ToDisplayName();
         }
     }
 }

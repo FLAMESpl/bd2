@@ -37,7 +37,7 @@
             this.groupBoxRole = new System.Windows.Forms.GroupBox();
             this.sourceUsers = new System.Windows.Forms.BindingSource(this.components);
             this.labelledInputUsername = new Clinic.Interface.Common.LabelledInput();
-            this.systemRoleSelectControl1 = new Clinic.Interface.Admin.SystemRoleSelectControl();
+            this.systemRoleSelectControl = new Clinic.Interface.Admin.SystemRoleSelectControl();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -102,6 +102,7 @@
             this.buttonBrowse.TabIndex = 2;
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.UseVisualStyleBackColor = true;
+            this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
             // 
             // dataGridViewUsers
             // 
@@ -124,7 +125,7 @@
             // 
             // groupBoxRole
             // 
-            this.groupBoxRole.Controls.Add(this.systemRoleSelectControl1);
+            this.groupBoxRole.Controls.Add(this.systemRoleSelectControl);
             this.groupBoxRole.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxRole.Location = new System.Drawing.Point(3, 53);
             this.groupBoxRole.Name = "groupBoxRole";
@@ -146,13 +147,13 @@
             this.labelledInputUsername.Size = new System.Drawing.Size(117, 44);
             this.labelledInputUsername.TabIndex = 3;
             // 
-            // systemRoleSelectControl1
+            // systemRoleSelectControl
             // 
-            this.systemRoleSelectControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.systemRoleSelectControl1.Location = new System.Drawing.Point(3, 16);
-            this.systemRoleSelectControl1.Name = "systemRoleSelectControl1";
-            this.systemRoleSelectControl1.Size = new System.Drawing.Size(290, 45);
-            this.systemRoleSelectControl1.TabIndex = 1;
+            this.systemRoleSelectControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.systemRoleSelectControl.Location = new System.Drawing.Point(3, 16);
+            this.systemRoleSelectControl.Name = "systemRoleSelectControl";
+            this.systemRoleSelectControl.Size = new System.Drawing.Size(290, 45);
+            this.systemRoleSelectControl.TabIndex = 1;
             // 
             // usernameDataGridViewTextBoxColumn
             // 
@@ -204,7 +205,7 @@
         private System.Windows.Forms.DataGridView dataGridViewUsers;
         private Common.LabelledInput labelledInputUsername;
         private System.Windows.Forms.GroupBox groupBoxRole;
-        private SystemRoleSelectControl systemRoleSelectControl1;
+        private SystemRoleSelectControl systemRoleSelectControl;
         private System.Windows.Forms.BindingSource sourceUsers;
         private System.Windows.Forms.DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn roleDataGridViewTextBoxColumn;

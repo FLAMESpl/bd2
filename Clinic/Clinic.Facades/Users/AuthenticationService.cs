@@ -1,7 +1,7 @@
 ﻿using Clinic.Data.Helpers;
 using System.Linq;
 
-namespace Clinic.Facades.User
+namespace Clinic.Facades.Users
 {
     public static class AuthenticationService
     {

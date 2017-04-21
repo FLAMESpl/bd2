@@ -1,4 +1,4 @@
-﻿namespace Clinic.Facades.User
+﻿namespace Clinic.Facades.Users
 {
     public enum Role
     {
