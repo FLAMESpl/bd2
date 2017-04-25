@@ -53,11 +53,17 @@
     <Compile Include="Admin\AdministratorForm.Designer.cs">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\SystemRoleSelectControl.cs">
+    <Compile Include="Admin\UserFilters.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Admin\SystemRoleSelectControl.Designer.cs">
-      <DependentUpon>SystemRoleSelectControl.cs</DependentUpon>
+    <Compile Include="Admin\UserFilters.Designer.cs">
+      <DependentUpon>UserFilters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\UserUpdateForm.Designer.cs">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\UserView.cs" />
     <Compile Include="Authentication\LoginForm.cs">
@@ -74,14 +80,25 @@
       <DependentUpon>DoneCancelDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Events\InputChangedEventArgs.cs" />
-    <Compile Include="Common\Helpers\BindingSourceExtensions.cs" />
     <Compile Include="Common\Helpers\CollectionsExtensions.cs" />
     <Compile Include="Common\Helpers\TimerExtensions.cs" />
+    <Compile Include="Common\LabelledComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\LabelledComboBox.Designer.cs">
+      <DependentUpon>LabelledComboBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\LabelledInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Common\LabelledInput.Designer.cs">
       <DependentUpon>LabelledInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LabelledTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\LabelledTextBox.Designer.cs">
+      <DependentUpon>LabelledTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab\ManagerForm.cs">
       <SubType>Form</SubType>
@@ -119,8 +136,11 @@
     <EmbeddedResource Include="Admin\AdministratorForm.resx">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\SystemRoleSelectControl.resx">
-      <DependentUpon>SystemRoleSelectControl.cs</DependentUpon>
+    <EmbeddedResource Include="Admin\UserFilters.resx">
+      <DependentUpon>UserFilters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\UserUpdateForm.resx">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Authentication\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -130,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Common\LabelledInput.resx">
       <DependentUpon>LabelledInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\LabelledTextBox.resx">
+      <DependentUpon>LabelledTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>

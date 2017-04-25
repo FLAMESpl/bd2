@@ -1,5 +1,6 @@
 ﻿using Clinic.Data;
 using Clinic.Data.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,11 +17,14 @@ namespace Clinic.Facades.Users
             }
         }
 
-        public static List<User> Match(string userPattern, Role? role)
+        public static List<User> Match(User searchCriteria)
         {
             using (var db = DataContextFactory.Create())
             {
-                var results = db.Users.Where(u => u.Username.Contains(userPattern));
+                var results = db.Users.Where(u => u.Username.Contains(searchCriteria.Username));
+                if (!String.IsNullOrEmpty(searchCriteria.Role))
+                    results = results.Where(u => u.Role == searchCriteria.Role);
+
                 return results.ToList();
             }
         }

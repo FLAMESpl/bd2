@@ -30,9 +30,9 @@
         {
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.buttonClear = new System.Windows.Forms.Button();
-            this.labelledInputPESEL = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputSurname = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputName = new Clinic.Interface.Common.LabelledInput();
+            this.labelledInputPESEL = new Clinic.Interface.Common.LabelledTextBox();
+            this.labelledInputSurname = new Clinic.Interface.Common.LabelledTextBox();
+            this.labelledInputName = new Clinic.Interface.Common.LabelledTextBox();
             this.tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,9 +111,9 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-        private Common.LabelledInput labelledInputPESEL;
-        private Common.LabelledInput labelledInputSurname;
-        private Common.LabelledInput labelledInputName;
+        private Common.LabelledTextBox labelledInputPESEL;
+        private Common.LabelledTextBox labelledInputSurname;
+        private Common.LabelledTextBox labelledInputName;
         private System.Windows.Forms.Button buttonClear;
     }
 }

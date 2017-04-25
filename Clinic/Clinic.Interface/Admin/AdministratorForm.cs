@@ -14,7 +14,7 @@ namespace Clinic.Interface.Admin
 
         private void buttonBrowse_Click(object sender, System.EventArgs e)
         {
-            var users = UsersService.Match(labelledInputUsername.Input, systemRoleSelectControl.Role);
+            var users = UsersService.Match(userFilters.GetUser());
             sourceUsers.Clear();
             sourceUsers.AddRange(users.Select(u => new UserView(u)));
         }

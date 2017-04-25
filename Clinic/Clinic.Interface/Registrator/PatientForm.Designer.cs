@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanelPatientDetails = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelledInputFirstName = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputLastName = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledInput();
+            this.labelledInputFirstName = new Clinic.Interface.Common.LabelledTextBox();
+            this.labelledInputLastName = new Clinic.Interface.Common.LabelledTextBox();
+            this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledTextBox();
             this.dataGridViewAddresses = new System.Windows.Forms.DataGridView();
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -175,9 +175,9 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPatientDetails;
-        private Common.LabelledInput labelledInputFirstName;
-        private Common.LabelledInput labelledInputLastName;
-        private Common.LabelledInput labelledInputEvidenceNumber;
+        private Common.LabelledTextBox labelledInputFirstName;
+        private Common.LabelledTextBox labelledInputLastName;
+        private Common.LabelledTextBox labelledInputEvidenceNumber;
         private System.Windows.Forms.DataGridView dataGridViewAddresses;
         private Common.DoneCancelDialog doneCancelDialog;
         private System.Windows.Forms.BindingSource bindingSourceAddresses;
