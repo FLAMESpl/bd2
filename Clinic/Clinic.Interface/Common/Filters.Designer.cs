@@ -1,6 +1,6 @@
-﻿namespace Clinic.Interface.Admin
+﻿namespace Clinic.Interface.Common
 {
-    partial class UserFilters
+    partial class Filters
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,18 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // UserFilters
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Size = new System.Drawing.Size(266, 54);
+            this.flowLayoutPanel.TabIndex = 0;
+            // 
+            // Filters
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "UserFilters";
-            this.Size = new System.Drawing.Size(299, 52);
+            this.Controls.Add(this.flowLayoutPanel);
+            this.Name = "Filters";
+            this.Size = new System.Drawing.Size(266, 54);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
     }
 }

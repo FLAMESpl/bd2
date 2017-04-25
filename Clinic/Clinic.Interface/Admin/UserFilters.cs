@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Data;
 using System.Linq;
-using System.Windows.Forms;
 using Clinic.Facades.Users;
 using Clinic.Data;
 using System.Collections.Generic;
+using Clinic.Interface.Common;
 
 namespace Clinic.Interface.Admin
 {
-    public partial class UserFilters : UserControl
+    public partial class UserFilters : Filters
     {
         private Dictionary<int, Role?> rolesMapping = new Dictionary<int, Role?>();
+        private LabelledTextBox inputUsername = new LabelledTextBox();
+        private LabelledComboBox inputRoles = new LabelledComboBox();
 
         public UserFilters()
         {
@@ -23,6 +25,25 @@ namespace Clinic.Interface.Admin
             Username = inputUsername.Input,
             Role = SelectedRole != null ? SelectedRole.Value.ToCode() : null
         };
+
+        protected override void OnClear()
+        {
+            inputUsername.Input = String.Empty;
+            inputRoles.Input.SelectedIndex = 0;
+        }
+
+        protected override void OnCreate()
+        {
+            inputUsername.Label = "Username";
+            inputUsername.Width = 120;
+            AddControl(inputUsername);
+            
+            inputRoles.Label = "Role";
+            inputRoles.Width = 100;
+            AddControl(inputRoles);
+
+            base.OnCreate();
+        }
 
         private Role? SelectedRole => rolesMapping[inputRoles.Input.SelectedIndex];
 
@@ -38,12 +59,6 @@ namespace Clinic.Interface.Admin
             }
             inputRoles.Input.Items.Add("<all>");
             inputRoles.Input.Items.AddRange(roles.Select(r => r.ToDisplayName()).ToArray());
-            inputRoles.Input.SelectedIndex = 0;
-        }
-
-        private void buttonClear_Click(object sender, EventArgs e)
-        {
-            inputUsername.Input = string.Empty;
             inputRoles.Input.SelectedIndex = 0;
         }
     }

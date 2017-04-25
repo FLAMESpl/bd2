@@ -80,6 +80,12 @@
       <DependentUpon>DoneCancelDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Events\InputChangedEventArgs.cs" />
+    <Compile Include="Common\Filters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\Filters.Designer.cs">
+      <DependentUpon>Filters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\Helpers\CollectionsExtensions.cs" />
     <Compile Include="Common\Helpers\TimerExtensions.cs" />
     <Compile Include="Common\LabelledComboBox.cs">
@@ -148,6 +154,9 @@
     <EmbeddedResource Include="Common\DoneCancelDialog.resx">
       <DependentUpon>DoneCancelDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\Filters.resx">
+      <DependentUpon>Filters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Common\LabelledInput.resx">
       <DependentUpon>LabelledInput.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,7 +215,9 @@
       <Name>Clinic.Facades</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Admin\RolesFilters\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

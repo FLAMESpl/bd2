@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clinic.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace Clinic.Interface.Admin
         public UserUpdateForm()
         {
             InitializeComponent();
+        }
+
+        public UserUpdateForm(User user)
+        {
+
         }
     }
 }
