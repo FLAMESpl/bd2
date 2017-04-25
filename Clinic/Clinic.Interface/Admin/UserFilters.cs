@@ -5,11 +5,40 @@ using Clinic.Facades.Users;
 using Clinic.Data;
 using System.Collections.Generic;
 using Clinic.Interface.Common;
+using Clinic.Interface.Admin.Events;
 
 namespace Clinic.Interface.Admin
 {
     public partial class UserFilters : Filters
     {
+        public event EventHandler<SelectedRoleChangedEventArgs> SelectedRoleChanged;
+
+        private bool allRolesEnabled = true;
+        public bool AllRolesEnabled
+        {
+            get { return allRolesEnabled; }
+            set
+            {
+                if (allRolesEnabled == value)
+                    return;
+
+                allRolesEnabled = value;
+                InitializeRoles();
+            }
+        }
+
+        public string Username
+        {
+            get { return inputUsername.Input; }
+            set { inputUsername.Input = value; }
+        }
+
+        public Role? Role
+        {
+            get { return rolesMapping[inputRoles.Input.SelectedIndex]; }
+            set { inputRoles.Input.SelectedIndex = rolesMapping.Where(x => x.Value == value).Single().Key; }
+        }
+
         private Dictionary<int, Role?> rolesMapping = new Dictionary<int, Role?>();
         private LabelledTextBox inputUsername = new LabelledTextBox();
         private LabelledComboBox inputRoles = new LabelledComboBox();
@@ -23,7 +52,7 @@ namespace Clinic.Interface.Admin
         public User GetUser() => new User
         {
             Username = inputUsername.Input,
-            Role = SelectedRole != null ? SelectedRole.Value.ToCode() : null
+            Role = Role != null ? Role.Value.ToCode() : null
         };
 
         protected override void OnClear()
@@ -45,21 +74,34 @@ namespace Clinic.Interface.Admin
             base.OnCreate();
         }
 
-        private Role? SelectedRole => rolesMapping[inputRoles.Input.SelectedIndex];
-
         private void InitializeRoles()
         {
-            var roles = (Role[])Enum.GetValues(typeof(Role));
-            int it = 1;
-            rolesMapping.Add(0, null);
+            var roles = RolesExtensions.VisibleRoles;
+            int it = 0;
+
+            rolesMapping.Clear();
+            inputRoles.Input.Items.Clear();
+
+            if (allRolesEnabled)
+            {
+                rolesMapping.Add(it, null);
+                inputRoles.Input.Items.Add("<all>");
+                it++;
+            }
             foreach (var role in roles)
             {
                 rolesMapping.Add(it, role);
                 it++;
             }
-            inputRoles.Input.Items.Add("<all>");
+
             inputRoles.Input.Items.AddRange(roles.Select(r => r.ToDisplayName()).ToArray());
+            inputRoles.Input.SelectedIndexChanged += RolesComboBoxSelectedItemChanged;
             inputRoles.Input.SelectedIndex = 0;
+        }
+
+        private void RolesComboBoxSelectedItemChanged(object sender, EventArgs e)
+        {
+            SelectedRoleChanged?.Invoke(this, new SelectedRoleChangedEventArgs(Role));
         }
     }
 }

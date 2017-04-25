@@ -1,4 +1,7 @@
-﻿namespace Clinic.Facades.Users
+﻿using Clinic.Facades.Users;
+using System.Collections.Generic;
+
+namespace Clinic.Facades.Users
 {
     public enum Role
     {
@@ -16,6 +19,15 @@
         private const string LABASSISTANT_CODE = "LABASS";
         private const string LABMANAGER_CODE = "LABMAN";
         private const string REGISTRATOR_CODE = "REG";
+
+        private static List<Role> visibleRoles = new List<Role>
+        {
+            Role.Doctor,
+            Role.Registrator,
+            Role.LabAssistant,
+            Role.LabManager
+        };
+        public static IReadOnlyList<Role> VisibleRoles => visibleRoles;
 
         public static string ToDisplayName(this Role role)
         {

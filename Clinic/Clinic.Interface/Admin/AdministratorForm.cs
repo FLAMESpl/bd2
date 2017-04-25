@@ -1,5 +1,6 @@
 ﻿using Clinic.Data;
 using Clinic.Facades.Users;
+using Clinic.Interface.Common;
 using Clinic.Interface.Common.Helpers;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,9 +14,9 @@ namespace Clinic.Interface.Admin
             InitializeComponent();
         }
 
-        private void EditUser(User user)
+        private void EditUser(UserView user)
         {
-            using (var form = new UserUpdateForm(user))
+            using (var form = new UserUpdateForm(user, ActionType.Update))
             {
                 form.ShowDialog();
             }
@@ -36,7 +37,7 @@ namespace Clinic.Interface.Admin
             switch (columnName)
             {
                 case "Edit":
-                    EditUser((User)sourceUsers.Current);
+                    EditUser((UserView)sourceUsers.Current);
                     break;
             }
         }

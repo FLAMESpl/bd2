@@ -53,6 +53,17 @@
     <Compile Include="Admin\AdministratorForm.Designer.cs">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Events\SelectedRoleChangedEventArgs.cs" />
+    <Compile Include="Admin\RolesFilters\DoctorFilters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\RolesFilters\DoctorFilters.Designer.cs">
+      <DependentUpon>DoctorFilters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RolesFilters\RolesFiltersBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\RolesFilters\RolesFiltersBase.Designer.cs" />
     <Compile Include="Admin\UserFilters.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,6 +153,9 @@
     <EmbeddedResource Include="Admin\AdministratorForm.resx">
       <DependentUpon>AdministratorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\RolesFilters\DoctorFilters.resx">
+      <DependentUpon>DoctorFilters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\UserFilters.resx">
       <DependentUpon>UserFilters.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,9 +229,7 @@
       <Name>Clinic.Facades</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Admin\RolesFilters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

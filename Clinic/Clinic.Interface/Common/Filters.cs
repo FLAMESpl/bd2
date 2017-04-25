@@ -7,7 +7,7 @@ namespace Clinic.Interface.Common
         public Filters()
         {
             InitializeComponent();
-            OnCreate();
+            Initialize();
         }
 
         protected virtual void OnClear()
@@ -16,18 +16,22 @@ namespace Clinic.Interface.Common
 
         protected virtual void OnCreate()
         {
+        }
+
+        protected void AddControl(Control control) => flowLayoutPanel.Controls.Add(control);
+
+        private void Initialize()
+        {
+            OnCreate();
             var clearButton = new Button
             {
                 Margin = new Padding(3, 25, 3, 3),
                 Text = "Clear",
                 Width = 50
             };
-
-
+            
             clearButton.Click += (s, e) => OnClear();
             AddControl(clearButton);
         }
-
-        protected void AddControl(Control control) => flowLayoutPanel.Controls.Add(control);
     }
 }
