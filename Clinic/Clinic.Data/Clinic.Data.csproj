@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clinic.cs">
+      <DependentUpon>Clinic.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Clinic.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
