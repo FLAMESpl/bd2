@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Clinic" Class="ClinicDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=Clinic;Integrated Security=True" SettingsObjectName="Clinic.Data.Properties.Settings" SettingsPropertyName="clinicConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Address" Member="Addresses">
+    <Type Name="Address">
+      <Column Name="IsValid" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PatientId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Street" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="HouseNumber" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="FlatNumber" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="Patient_Address" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.Visit" Member="Visits">
     <Type Name="Visit">
       <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -17,17 +29,6 @@
       <Association Name="Doctor_Visit" Member="Doctor" ThisKey="IdDoctor" OtherKey="Id" Type="Doctor" IsForeignKey="true" />
       <Association Name="Patient_Visit" Member="Patient" ThisKey="IdPatient" OtherKey="Id" Type="Patient" IsForeignKey="true" />
       <Association Name="Registrator_Visit" Member="Registrator" ThisKey="IdRegistrator" OtherKey="Id" Type="Registrator" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Address" Member="Addresses">
-    <Type Name="Address">
-      <Column Name="Id" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PatientId" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
-      <Column Name="City" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Street" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="HouseNumber" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="FlatNumber" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Association Name="Patient_Address" Member="Patient" ThisKey="PatientId" OtherKey="Id" Type="Patient" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Doctor" Member="Doctors">
@@ -82,8 +83,8 @@
       <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PESEL" Type="System.String" DbType="NChar(11) NOT NULL" CanBeNull="false" />
-      <Association Name="Patient_Visit" Member="Visits" ThisKey="Id" OtherKey="IdPatient" Type="Visit" />
       <Association Name="Patient_Address" Member="Addresses" ThisKey="Id" OtherKey="PatientId" Type="Address" />
+      <Association Name="Patient_Visit" Member="Visits" ThisKey="Id" OtherKey="IdPatient" Type="Visit" />
     </Type>
   </Table>
   <Table Name="dbo.PhysicalTest" Member="PhysicalTests">
@@ -116,6 +117,7 @@
   </Table>
   <Table Name="dbo.[User]" Member="Users">
     <Type Name="User">
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Username" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Password" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="RegistrationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
