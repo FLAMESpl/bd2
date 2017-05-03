@@ -30,12 +30,12 @@ namespace Clinic.Data
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertVisit(Visit instance);
-    partial void UpdateVisit(Visit instance);
-    partial void DeleteVisit(Visit instance);
     partial void InsertAddress(Address instance);
     partial void UpdateAddress(Address instance);
     partial void DeleteAddress(Address instance);
+    partial void InsertVisit(Visit instance);
+    partial void UpdateVisit(Visit instance);
+    partial void DeleteVisit(Visit instance);
     partial void InsertDoctor(Doctor instance);
     partial void UpdateDoctor(Doctor instance);
     partial void DeleteDoctor(Doctor instance);
@@ -95,19 +95,19 @@ namespace Clinic.Data
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Visit> Visits
-		{
-			get
-			{
-				return this.GetTable<Visit>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Address> Addresses
 		{
 			get
 			{
 				return this.GetTable<Address>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Visit> Visits
+		{
+			get
+			{
+				return this.GetTable<Visit>();
 			}
 		}
 		
@@ -180,6 +180,253 @@ namespace Clinic.Data
 			get
 			{
 				return this.GetTable<User>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Address")]
+	public partial class Address : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private bool _IsValid;
+		
+		private long _Id;
+		
+		private long _PatientId;
+		
+		private string _City;
+		
+		private string _Street;
+		
+		private string _HouseNumber;
+		
+		private string _FlatNumber;
+		
+		private EntityRef<Patient> _Patient;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIsValidChanging(bool value);
+    partial void OnIsValidChanged();
+    partial void OnIdChanging(long value);
+    partial void OnIdChanged();
+    partial void OnPatientIdChanging(long value);
+    partial void OnPatientIdChanged();
+    partial void OnCityChanging(string value);
+    partial void OnCityChanged();
+    partial void OnStreetChanging(string value);
+    partial void OnStreetChanged();
+    partial void OnHouseNumberChanging(string value);
+    partial void OnHouseNumberChanged();
+    partial void OnFlatNumberChanging(string value);
+    partial void OnFlatNumberChanged();
+    #endregion
+		
+		public Address()
+		{
+			this._Patient = default(EntityRef<Patient>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsValid", DbType="Bit NOT NULL")]
+		public bool IsValid
+		{
+			get
+			{
+				return this._IsValid;
+			}
+			set
+			{
+				if ((this._IsValid != value))
+				{
+					this.OnIsValidChanging(value);
+					this.SendPropertyChanging();
+					this._IsValid = value;
+					this.SendPropertyChanged("IsValid");
+					this.OnIsValidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientId", DbType="BigInt NOT NULL")]
+		public long PatientId
+		{
+			get
+			{
+				return this._PatientId;
+			}
+			set
+			{
+				if ((this._PatientId != value))
+				{
+					if (this._Patient.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPatientIdChanging(value);
+					this.SendPropertyChanging();
+					this._PatientId = value;
+					this.SendPropertyChanged("PatientId");
+					this.OnPatientIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string City
+		{
+			get
+			{
+				return this._City;
+			}
+			set
+			{
+				if ((this._City != value))
+				{
+					this.OnCityChanging(value);
+					this.SendPropertyChanging();
+					this._City = value;
+					this.SendPropertyChanged("City");
+					this.OnCityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Street", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string Street
+		{
+			get
+			{
+				return this._Street;
+			}
+			set
+			{
+				if ((this._Street != value))
+				{
+					this.OnStreetChanging(value);
+					this.SendPropertyChanging();
+					this._Street = value;
+					this.SendPropertyChanged("Street");
+					this.OnStreetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HouseNumber", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string HouseNumber
+		{
+			get
+			{
+				return this._HouseNumber;
+			}
+			set
+			{
+				if ((this._HouseNumber != value))
+				{
+					this.OnHouseNumberChanging(value);
+					this.SendPropertyChanging();
+					this._HouseNumber = value;
+					this.SendPropertyChanged("HouseNumber");
+					this.OnHouseNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FlatNumber", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string FlatNumber
+		{
+			get
+			{
+				return this._FlatNumber;
+			}
+			set
+			{
+				if ((this._FlatNumber != value))
+				{
+					this.OnFlatNumberChanging(value);
+					this.SendPropertyChanging();
+					this._FlatNumber = value;
+					this.SendPropertyChanged("FlatNumber");
+					this.OnFlatNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_Address", Storage="_Patient", ThisKey="PatientId", OtherKey="Id", IsForeignKey=true)]
+		public Patient Patient
+		{
+			get
+			{
+				return this._Patient.Entity;
+			}
+			set
+			{
+				Patient previousValue = this._Patient.Entity;
+				if (((previousValue != value) 
+							|| (this._Patient.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Patient.Entity = null;
+						previousValue.Addresses.Remove(this);
+					}
+					this._Patient.Entity = value;
+					if ((value != null))
+					{
+						value.Addresses.Add(this);
+						this._PatientId = value.Id;
+					}
+					else
+					{
+						this._PatientId = default(long);
+					}
+					this.SendPropertyChanged("Patient");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -638,229 +885,6 @@ namespace Clinic.Data
 		{
 			this.SendPropertyChanging();
 			entity.Visit = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Address")]
-	public partial class Address : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private long _Id;
-		
-		private long _PatientId;
-		
-		private string _City;
-		
-		private string _Street;
-		
-		private string _HouseNumber;
-		
-		private string _FlatNumber;
-		
-		private EntityRef<Patient> _Patient;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(long value);
-    partial void OnIdChanged();
-    partial void OnPatientIdChanging(long value);
-    partial void OnPatientIdChanged();
-    partial void OnCityChanging(string value);
-    partial void OnCityChanged();
-    partial void OnStreetChanging(string value);
-    partial void OnStreetChanged();
-    partial void OnHouseNumberChanging(string value);
-    partial void OnHouseNumberChanged();
-    partial void OnFlatNumberChanging(string value);
-    partial void OnFlatNumberChanged();
-    #endregion
-		
-		public Address()
-		{
-			this._Patient = default(EntityRef<Patient>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public long Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PatientId", DbType="BigInt NOT NULL")]
-		public long PatientId
-		{
-			get
-			{
-				return this._PatientId;
-			}
-			set
-			{
-				if ((this._PatientId != value))
-				{
-					if (this._Patient.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPatientIdChanging(value);
-					this.SendPropertyChanging();
-					this._PatientId = value;
-					this.SendPropertyChanged("PatientId");
-					this.OnPatientIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_City", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string City
-		{
-			get
-			{
-				return this._City;
-			}
-			set
-			{
-				if ((this._City != value))
-				{
-					this.OnCityChanging(value);
-					this.SendPropertyChanging();
-					this._City = value;
-					this.SendPropertyChanged("City");
-					this.OnCityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Street", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string Street
-		{
-			get
-			{
-				return this._Street;
-			}
-			set
-			{
-				if ((this._Street != value))
-				{
-					this.OnStreetChanging(value);
-					this.SendPropertyChanging();
-					this._Street = value;
-					this.SendPropertyChanged("Street");
-					this.OnStreetChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HouseNumber", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string HouseNumber
-		{
-			get
-			{
-				return this._HouseNumber;
-			}
-			set
-			{
-				if ((this._HouseNumber != value))
-				{
-					this.OnHouseNumberChanging(value);
-					this.SendPropertyChanging();
-					this._HouseNumber = value;
-					this.SendPropertyChanged("HouseNumber");
-					this.OnHouseNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FlatNumber", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string FlatNumber
-		{
-			get
-			{
-				return this._FlatNumber;
-			}
-			set
-			{
-				if ((this._FlatNumber != value))
-				{
-					this.OnFlatNumberChanging(value);
-					this.SendPropertyChanging();
-					this._FlatNumber = value;
-					this.SendPropertyChanged("FlatNumber");
-					this.OnFlatNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_Address", Storage="_Patient", ThisKey="PatientId", OtherKey="Id", IsForeignKey=true)]
-		public Patient Patient
-		{
-			get
-			{
-				return this._Patient.Entity;
-			}
-			set
-			{
-				Patient previousValue = this._Patient.Entity;
-				if (((previousValue != value) 
-							|| (this._Patient.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Patient.Entity = null;
-						previousValue.Addresses.Remove(this);
-					}
-					this._Patient.Entity = value;
-					if ((value != null))
-					{
-						value.Addresses.Add(this);
-						this._PatientId = value.Id;
-					}
-					else
-					{
-						this._PatientId = default(long);
-					}
-					this.SendPropertyChanged("Patient");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -1860,9 +1884,9 @@ namespace Clinic.Data
 		
 		private string _PESEL;
 		
-		private EntitySet<Visit> _Visits;
-		
 		private EntitySet<Address> _Addresses;
+		
+		private EntitySet<Visit> _Visits;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1880,8 +1904,8 @@ namespace Clinic.Data
 		
 		public Patient()
 		{
-			this._Visits = new EntitySet<Visit>(new Action<Visit>(this.attach_Visits), new Action<Visit>(this.detach_Visits));
 			this._Addresses = new EntitySet<Address>(new Action<Address>(this.attach_Addresses), new Action<Address>(this.detach_Addresses));
+			this._Visits = new EntitySet<Visit>(new Action<Visit>(this.attach_Visits), new Action<Visit>(this.detach_Visits));
 			OnCreated();
 		}
 		
@@ -1965,19 +1989,6 @@ namespace Clinic.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_Visit", Storage="_Visits", ThisKey="Id", OtherKey="IdPatient")]
-		public EntitySet<Visit> Visits
-		{
-			get
-			{
-				return this._Visits;
-			}
-			set
-			{
-				this._Visits.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_Address", Storage="_Addresses", ThisKey="Id", OtherKey="PatientId")]
 		public EntitySet<Address> Addresses
 		{
@@ -1988,6 +1999,19 @@ namespace Clinic.Data
 			set
 			{
 				this._Addresses.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Patient_Visit", Storage="_Visits", ThisKey="Id", OtherKey="IdPatient")]
+		public EntitySet<Visit> Visits
+		{
+			get
+			{
+				return this._Visits;
+			}
+			set
+			{
+				this._Visits.Assign(value);
 			}
 		}
 		
@@ -2011,18 +2035,6 @@ namespace Clinic.Data
 			}
 		}
 		
-		private void attach_Visits(Visit entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = this;
-		}
-		
-		private void detach_Visits(Visit entity)
-		{
-			this.SendPropertyChanging();
-			entity.Patient = null;
-		}
-		
 		private void attach_Addresses(Address entity)
 		{
 			this.SendPropertyChanging();
@@ -2030,6 +2042,18 @@ namespace Clinic.Data
 		}
 		
 		private void detach_Addresses(Address entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = null;
+		}
+		
+		private void attach_Visits(Visit entity)
+		{
+			this.SendPropertyChanging();
+			entity.Patient = this;
+		}
+		
+		private void detach_Visits(Visit entity)
 		{
 			this.SendPropertyChanging();
 			entity.Patient = null;
@@ -2603,6 +2627,8 @@ namespace Clinic.Data
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private bool _IsActive;
+		
 		private string _Username;
 		
 		private string _Password;
@@ -2625,6 +2651,8 @@ namespace Clinic.Data
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnIsActiveChanging(bool value);
+    partial void OnIsActiveChanged();
     partial void OnUsernameChanging(string value);
     partial void OnUsernameChanged();
     partial void OnPasswordChanging(string value);
@@ -2644,6 +2672,26 @@ namespace Clinic.Data
 			this._LabManager = default(EntityRef<LabManager>);
 			this._Registrator = default(EntityRef<Registrator>);
 			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		public bool IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]

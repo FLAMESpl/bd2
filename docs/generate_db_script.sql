@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [Clinic]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Database [Clinic]    Script Date: 03.05.2017 19:45:05 ******/
 CREATE DATABASE [Clinic]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -97,12 +97,13 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [Clinic]
 GO
-/****** Object:  Table [dbo].[Address]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[Address]    Script Date: 03.05.2017 19:45:05 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Address](
+	[IsValid] [bit] NOT NULL,
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[PatientId] [bigint] NOT NULL,
 	[City] [nvarchar](50) NOT NULL,
@@ -116,7 +117,7 @@ CREATE TABLE [dbo].[Address](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Doctor]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[Doctor]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +134,7 @@ CREATE TABLE [dbo].[Doctor](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[LabAssistant]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[LabAssistant]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -149,7 +150,7 @@ CREATE TABLE [dbo].[LabAssistant](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[LabManager]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[LabManager]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +166,7 @@ CREATE TABLE [dbo].[LabManager](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[LaboratoryTest]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[LaboratoryTest]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,7 +191,7 @@ CREATE TABLE [dbo].[LaboratoryTest](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Patient]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[Patient]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -207,7 +208,7 @@ CREATE TABLE [dbo].[Patient](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[PhysicalTest]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[PhysicalTest]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -224,7 +225,7 @@ CREATE TABLE [dbo].[PhysicalTest](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Registrator]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[Registrator]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -240,7 +241,7 @@ CREATE TABLE [dbo].[Registrator](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[TestDictionary]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[TestDictionary]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -256,12 +257,13 @@ CREATE TABLE [dbo].[TestDictionary](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[User]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[User]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[User](
+	[IsActive] [bit] NOT NULL,
 	[Username] [nvarchar](50) NOT NULL,
 	[Password] [nvarchar](50) NOT NULL,
 	[RegistrationDate] [datetime] NOT NULL,
@@ -274,7 +276,7 @@ CREATE TABLE [dbo].[User](
 ) ON [PRIMARY]
 
 GO
-/****** Object:  Table [dbo].[Visit]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Table [dbo].[Visit]    Script Date: 03.05.2017 19:45:06 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -300,7 +302,7 @@ GO
 SET ANSI_PADDING ON
 
 GO
-/****** Object:  Index [IX_Address]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Index [IX_Address]    Script Date: 03.05.2017 19:45:06 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Address] ON [dbo].[Address]
 (
 	[PatientId] ASC,
@@ -309,17 +311,21 @@ CREATE UNIQUE NONCLUSTERED INDEX [IX_Address] ON [dbo].[Address]
 	[Street] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Lab_assistant]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Index [IX_Lab_assistant]    Script Date: 03.05.2017 19:45:06 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Lab_assistant] ON [dbo].[LabAssistant]
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-/****** Object:  Index [IX_Lab_manager]    Script Date: 16.04.2017 13:43:06 ******/
+/****** Object:  Index [IX_Lab_manager]    Script Date: 03.05.2017 19:45:06 ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Lab_manager] ON [dbo].[LabManager]
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Address] ADD  CONSTRAINT [DF_Address_IsValid]  DEFAULT ((1)) FOR [IsValid]
+GO
+ALTER TABLE [dbo].[User] ADD  CONSTRAINT [DF_User_IsActive]  DEFAULT ((1)) FOR [IsActive]
 GO
 ALTER TABLE [dbo].[Address]  WITH CHECK ADD  CONSTRAINT [FK_Address_Patient] FOREIGN KEY([PatientId])
 REFERENCES [dbo].[Patient] ([Id])
