@@ -12,6 +12,7 @@ namespace Clinic.Facades.Users
         {
             using (var db = DataContextFactory.Create())
             {
+                user.RegistrationDate = db.GetSystemDate();
                 db.Users.InsertOnSubmit(user);
                 db.SubmitChanges();
             }
