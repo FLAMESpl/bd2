@@ -63,7 +63,7 @@
     <Compile Include="Common\Events\InputChangedEventArgs.cs" />
     <Compile Include="Common\Helpers\BindingSourceExtensions.cs" />
     <Compile Include="Common\Helpers\CollectionsExtensions.cs" />
-    <Compile Include="Common\Helpers\TimerExtensions.cs" />
+    <Compile Include="Common\Helpers\Messages.cs" />
     <Compile Include="Common\LabelledInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
