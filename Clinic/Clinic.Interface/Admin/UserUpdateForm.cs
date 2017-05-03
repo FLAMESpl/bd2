@@ -1,4 +1,5 @@
-﻿using Clinic.Facades.Users;
+﻿using Clinic.Data;
+using Clinic.Facades.Users;
 using Clinic.Interface.Admin.Events;
 using Clinic.Interface.Admin.RolesFilters;
 using Clinic.Interface.Common;
@@ -14,6 +15,7 @@ namespace Clinic.Interface.Admin
             = new Dictionary<Role, Func<RolesFiltersBase>>();
 
         private ActionType actionType;
+        private long userId;
 
         private RolesFiltersBase RoleFilters
         {
@@ -38,6 +40,7 @@ namespace Clinic.Interface.Admin
             FillUser(userView);
 
             this.actionType = actionType;
+            this.userId = userView.UserId;
         }
 
         private void InitializeRoleFilters()
@@ -55,13 +58,25 @@ namespace Clinic.Interface.Admin
         {
             RoleFilters = new RolesFiltersBase();
 
-            string name, surname;
-            var user = UsersService.Get(userView.UserId);
-            var role = RolesExtensions.GetFromCode(user.Role).Value;
-            user.GetNameAndSurname(out name, out surname);
+            string name, surname, username;
+            var role = Role.Registrator;
+
+            if (actionType == ActionType.Update)
+            {
+                var user = UsersService.Get(userView.UserId);
+                username = user.Username;
+                user.GetNameAndSurname(out name, out surname);
+                role = RolesExtensions.GetFromCode(user.Role) ?? role;
+            }
+            else
+            {
+                name = String.Empty;
+                surname = String.Empty;
+                username = String.Empty;
+            }
 
             userFilters.Role = role;
-            userFilters.Username = user.Username;
+            userFilters.Username = username;
             RoleFilters.Name = name;
             RoleFilters.Surname = surname;
         }
@@ -76,6 +91,74 @@ namespace Clinic.Interface.Admin
 
             groupBoxRole.Text = role.ToDisplayName();
             RoleFilters = roleFilters;
+        }
+
+        private void doneCancelDialog_Done(object sender, EventArgs e)
+        {
+            if (actionType == ActionType.Create)
+            {
+                UsersService.Create(CreateUser());
+            }
+            else if (actionType == ActionType.Update)
+            {
+               
+            }
+
+            Close();
+        }
+
+        private void doneCancelDialog_Cancel(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private User CreateUser()
+        {
+            var role = userFilters.Role.Value;
+            var user = new User
+            {
+                Id = userId,
+                Password = "pass",
+                Username = userFilters.Username,
+                Role = role.ToCode()
+            };
+            
+            switch (role)
+            {
+                case Role.Doctor:
+                    user.Doctor = new Doctor
+                    {
+                        LicenseNumber = ((DoctorFilters)RoleFilters).LicenceNumber,
+                        Name = RoleFilters.Name,
+                        Surname = RoleFilters.Surname
+                    };
+                    break;
+                case Role.Registrator:
+                    user.Registrator = new Data.Registrator
+                    {
+                        Name = RoleFilters.Name,
+                        Surname = RoleFilters.Surname
+                    };
+                    break;
+                case Role.LabAssistant:
+                    user.LabAssistant = new LabAssistant
+                    {
+                        Name = RoleFilters.Name,
+                        Surname = RoleFilters.Surname
+                    };
+                    break;
+                case Role.LabManager:
+                    user.LabManager = new Data.LabManager
+                    {
+                        Name = RoleFilters.Name,
+                        Surname = RoleFilters.Surname
+                    };
+                    break;
+                default:
+                    break;
+            }
+
+            return user;
         }
     }
 }

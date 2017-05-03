@@ -30,9 +30,9 @@
         {
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxUser = new System.Windows.Forms.GroupBox();
-            this.groupBoxRole = new System.Windows.Forms.GroupBox();
             this.userFilters = new Clinic.Interface.Admin.UserFilters();
-            this.doneCancelDialog1 = new Clinic.Interface.Common.DoneCancelDialog();
+            this.groupBoxRole = new System.Windows.Forms.GroupBox();
+            this.doneCancelDialog = new Clinic.Interface.Common.DoneCancelDialog();
             this.buttonResetPassword = new System.Windows.Forms.Button();
             this.tableLayoutPanelMain.SuspendLayout();
             this.groupBoxUser.SuspendLayout();
@@ -44,7 +44,7 @@
             this.tableLayoutPanelMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelMain.Controls.Add(this.groupBoxUser, 0, 0);
             this.tableLayoutPanelMain.Controls.Add(this.groupBoxRole, 0, 1);
-            this.tableLayoutPanelMain.Controls.Add(this.doneCancelDialog1, 0, 3);
+            this.tableLayoutPanelMain.Controls.Add(this.doneCancelDialog, 0, 3);
             this.tableLayoutPanelMain.Controls.Add(this.buttonResetPassword, 0, 2);
             this.tableLayoutPanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelMain.Location = new System.Drawing.Point(0, 0);
@@ -68,16 +68,6 @@
             this.groupBoxUser.TabStop = false;
             this.groupBoxUser.Text = "User";
             // 
-            // groupBoxRole
-            // 
-            this.groupBoxRole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxRole.Location = new System.Drawing.Point(3, 78);
-            this.groupBoxRole.Name = "groupBoxRole";
-            this.groupBoxRole.Size = new System.Drawing.Size(454, 69);
-            this.groupBoxRole.TabIndex = 1;
-            this.groupBoxRole.TabStop = false;
-            this.groupBoxRole.Text = "Role";
-            // 
             // userFilters
             // 
             this.userFilters.AllRolesEnabled = false;
@@ -89,13 +79,25 @@
             this.userFilters.TabIndex = 0;
             this.userFilters.Username = "";
             // 
-            // doneCancelDialog1
+            // groupBoxRole
             // 
-            this.doneCancelDialog1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.doneCancelDialog1.Location = new System.Drawing.Point(244, 186);
-            this.doneCancelDialog1.Name = "doneCancelDialog1";
-            this.doneCancelDialog1.Size = new System.Drawing.Size(213, 31);
-            this.doneCancelDialog1.TabIndex = 2;
+            this.groupBoxRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxRole.Location = new System.Drawing.Point(3, 78);
+            this.groupBoxRole.Name = "groupBoxRole";
+            this.groupBoxRole.Size = new System.Drawing.Size(454, 69);
+            this.groupBoxRole.TabIndex = 1;
+            this.groupBoxRole.TabStop = false;
+            this.groupBoxRole.Text = "Role";
+            // 
+            // doneCancelDialog
+            // 
+            this.doneCancelDialog.Dock = System.Windows.Forms.DockStyle.Right;
+            this.doneCancelDialog.Location = new System.Drawing.Point(244, 186);
+            this.doneCancelDialog.Name = "doneCancelDialog";
+            this.doneCancelDialog.Size = new System.Drawing.Size(213, 31);
+            this.doneCancelDialog.TabIndex = 2;
+            this.doneCancelDialog.Cancel += new System.EventHandler(this.doneCancelDialog_Cancel);
+            this.doneCancelDialog.Done += new System.EventHandler(this.doneCancelDialog_Done);
             // 
             // buttonResetPassword
             // 
@@ -128,7 +130,7 @@
         private System.Windows.Forms.GroupBox groupBoxUser;
         private UserFilters userFilters;
         private System.Windows.Forms.GroupBox groupBoxRole;
-        private Common.DoneCancelDialog doneCancelDialog1;
+        private Common.DoneCancelDialog doneCancelDialog;
         private System.Windows.Forms.Button buttonResetPassword;
     }
 }

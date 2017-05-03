@@ -1,5 +1,4 @@
-﻿using Clinic.Facades.Users;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Clinic.Facades.Users
 {

@@ -1,7 +1,7 @@
-﻿using Clinic.Data;
-using Clinic.Facades.Users;
+﻿using Clinic.Facades.Users;
 using Clinic.Interface.Common;
 using Clinic.Interface.Common.Helpers;
+using System;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -39,6 +39,22 @@ namespace Clinic.Interface.Admin
                 case "Edit":
                     EditUser((UserView)sourceUsers.Current);
                     break;
+            }
+        }
+
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+            var role = userFilters.Role != null ? userFilters.Role.Value.ToCode() : String.Empty;
+            var user = new UserView
+            {
+                Role = role,
+                Username = userFilters.Username
+
+            };
+
+            using (var form = new UserUpdateForm(user, ActionType.Create))
+            {
+                form.ShowDialog();
             }
         }
     }

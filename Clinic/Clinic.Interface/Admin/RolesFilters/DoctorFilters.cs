@@ -6,6 +6,12 @@ namespace Clinic.Interface.Admin.RolesFilters
 {
     public partial class DoctorFilters : RolesFiltersBase
     {
+        public string LicenceNumber
+        {
+            get { return inputLicenceNumber.Input; }
+            set { inputLicenceNumber.Input = value; }
+        }
+
         private LabelledTextBox inputLicenceNumber = new LabelledTextBox();
 
         public DoctorFilters()

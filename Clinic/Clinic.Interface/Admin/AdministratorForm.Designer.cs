@@ -89,6 +89,7 @@
             this.buttonCreate.TabIndex = 0;
             this.buttonCreate.Text = "Create";
             this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // buttonSearch
             // 
@@ -162,11 +163,14 @@
             // 
             // userFilters
             // 
+            this.userFilters.AllRolesEnabled = true;
             this.userFilters.Dock = System.Windows.Forms.DockStyle.Fill;
             this.userFilters.Location = new System.Drawing.Point(3, 16);
             this.userFilters.Name = "userFilters";
+            this.userFilters.Role = null;
             this.userFilters.Size = new System.Drawing.Size(290, 51);
             this.userFilters.TabIndex = 2;
+            this.userFilters.Username = "";
             // 
             // AdministratorForm
             // 

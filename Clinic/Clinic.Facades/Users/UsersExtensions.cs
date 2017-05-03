@@ -44,5 +44,29 @@ namespace Clinic.Facades.Users
                 }
             }
         }
+
+        public static void DeleteRoleForUser(this ClinicDataContext db, User user)
+        {
+            var role = RolesExtensions.GetFromCode(user.Role).Value;
+
+            switch (role)
+            {
+                case Role.Doctor:
+                    db.Doctors.DeleteOnSubmit(user.Doctor);
+                    break;
+                case Role.Registrator:
+                    db.Registrators.DeleteOnSubmit(user.Registrator);
+                    break;
+                case Role.LabAssistant:
+                    db.LabAssistants.DeleteOnSubmit(user.LabAssistant);
+                    break;
+                case Role.LabManager:
+                    db.LabManagers.DeleteOnSubmit(user.LabManager);
+                    break;
+                case Role.Administrator:
+                default:
+                    break;
+            }
+        }
     }
 }
