@@ -1,10 +1,17 @@
-﻿using Clinic.Data;
-using Clinic.Data.Helpers;
-using System.Linq;
+﻿using System.Collections.Generic;
 
-namespace Clinic.Facades.Auth
+namespace Clinic.Facades.Users
 {
-    public static class AuthenticationService
+    public enum Role
+    {
+        Administrator,
+        Doctor,
+        Registrator,
+        LabAssistant,
+        LabManager
+    }
+
+    public static class RolesExtensions
     {
         private const string ADMINSTRATOR_CODE = "ADM";
         private const string DOCTOR_CODE = "DOC";
@@ -12,19 +19,37 @@ namespace Clinic.Facades.Auth
         private const string LABMANAGER_CODE = "LABMAN";
         private const string REGISTRATOR_CODE = "REG";
 
-        public static AuthenticationResult Authenticate(string username, string password)
+        private static List<Role> visibleRoles = new List<Role>
         {
-            using (var db = DataContextFactory.Create())
+            Role.Doctor,
+            Role.Registrator,
+            Role.LabAssistant,
+            Role.LabManager
+        };
+        public static IReadOnlyList<Role> VisibleRoles => visibleRoles;
+
+        public static string ToDisplayName(this Role role)
+        {
+            switch (role)
             {
-                var user = db.Users.Where(u => u.Username == username && u.Password == password).SingleOrDefault();
-                Role? role = (user == null) ? null : GetRoleFromCode(user.Role);
-                return new AuthenticationResult(role);
+                case Role.Administrator:
+                    return "Administrator";
+                case Role.Doctor:
+                    return "Doctor";
+                case Role.Registrator:
+                    return "Registrator";
+                case Role.LabAssistant:
+                    return "Lab assistant";
+                case Role.LabManager:
+                    return "Lab manager";
+                default:
+                    return "unknown";
             }
         }
 
-        private static Role? GetRoleFromCode(string code)
+        public static Role? GetFromCode(string code)
         {
-            switch(code)
+            switch (code)
             {
                 case ADMINSTRATOR_CODE:
                     return Role.Administrator;
@@ -41,7 +66,7 @@ namespace Clinic.Facades.Auth
             }
         }
 
-        private static string GetCodeFromRole(Role role)
+        public static string ToCode(this Role role)
         {
             switch (role)
             {
@@ -60,4 +85,5 @@ namespace Clinic.Facades.Auth
             }
         }
     }
+    
 }

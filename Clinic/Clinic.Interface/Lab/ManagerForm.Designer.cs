@@ -36,8 +36,8 @@
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.labelledInputName = new Clinic.Interface.Common.LabelledInput();
-            this.labelledInputDate = new Clinic.Interface.Common.LabelledInput();
+            this.labelledInputName = new Clinic.Interface.Common.LabelledTextBox();
+            this.labelledInputDate = new Clinic.Interface.Common.LabelledTextBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonCancelTest = new System.Windows.Forms.Button();
@@ -194,8 +194,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private Common.LabelledInput labelledInputName;
-        private Common.LabelledInput labelledInputDate;
+        private Common.LabelledTextBox labelledInputName;
+        private Common.LabelledTextBox labelledInputDate;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonCancelTest;

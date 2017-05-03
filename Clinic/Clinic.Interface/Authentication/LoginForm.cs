@@ -1,4 +1,5 @@
-﻿using Clinic.Facades.Auth;
+﻿using Clinic.Facades.Users;
+using Clinic.Interface.Admin;
 using Clinic.Interface.LabManager;
 using Clinic.Interface.Registrator;
 using System;
@@ -34,6 +35,7 @@ namespace Clinic.Interface.Authentication
             switch (role)
             {
                 case Role.Administrator:
+                    form = new AdministratorForm();
                     break;
                 case Role.Doctor:
                     break;

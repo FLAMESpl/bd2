@@ -1,0 +1,1 @@
+﻿insert into LabManager values (2, 'Janusz', 'Tracz')

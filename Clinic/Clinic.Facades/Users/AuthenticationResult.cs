@@ -1,4 +1,4 @@
-﻿namespace Clinic.Facades.Auth
+﻿namespace Clinic.Facades.Users
 {
     public class AuthenticationResult
     {

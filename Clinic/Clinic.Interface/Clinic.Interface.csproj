@@ -47,6 +47,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AdministratorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\AdministratorForm.Designer.cs">
+      <DependentUpon>AdministratorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Events\SelectedRoleChangedEventArgs.cs" />
+    <Compile Include="Admin\RolesFilters\DoctorFilters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\RolesFilters\DoctorFilters.Designer.cs">
+      <DependentUpon>DoctorFilters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RolesFilters\RolesFiltersBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\RolesFilters\RolesFiltersBase.Designer.cs" />
+    <Compile Include="Admin\UserFilters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Admin\UserFilters.Designer.cs">
+      <DependentUpon>UserFilters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\UserUpdateForm.Designer.cs">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserView.cs" />
     <Compile Include="Authentication\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,14 +91,31 @@
       <DependentUpon>DoneCancelDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Events\InputChangedEventArgs.cs" />
-    <Compile Include="Common\Helpers\BindingSourceExtensions.cs" />
+    <Compile Include="Common\Filters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\Filters.Designer.cs">
+      <DependentUpon>Filters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\Helpers\CollectionsExtensions.cs" />
     <Compile Include="Common\Helpers\Messages.cs" />
+    <Compile Include="Common\LabelledComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\LabelledComboBox.Designer.cs">
+      <DependentUpon>LabelledComboBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\LabelledInput.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Common\LabelledInput.Designer.cs">
       <DependentUpon>LabelledInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LabelledTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Common\LabelledTextBox.Designer.cs">
+      <DependentUpon>LabelledTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab\ManagerForm.cs">
       <SubType>Form</SubType>
@@ -103,14 +150,32 @@
     <Compile Include="Registrator\PatientForm.Designer.cs">
       <DependentUpon>PatientForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin\AdministratorForm.resx">
+      <DependentUpon>AdministratorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\RolesFilters\DoctorFilters.resx">
+      <DependentUpon>DoctorFilters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\UserFilters.resx">
+      <DependentUpon>UserFilters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\UserUpdateForm.resx">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Authentication\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Common\DoneCancelDialog.resx">
       <DependentUpon>DoneCancelDialog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\Filters.resx">
+      <DependentUpon>Filters.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Common\LabelledInput.resx">
       <DependentUpon>LabelledInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\LabelledTextBox.resx">
+      <DependentUpon>LabelledTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
@@ -140,6 +205,7 @@
     <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
+    <None Include="Properties\DataSources\Clinic.Interface.Admin.UserView.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -163,6 +229,7 @@
       <Name>Clinic.Facades</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
