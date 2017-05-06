@@ -20,7 +20,7 @@ namespace Clinic.Facades.Users
 
         public static void Update(User updatedUser)
         {
-            using (var db = CreateContextWithAllRolesIncluded())
+            using (var db = DataContextFactory.Create(u => u.IncludeAllRoles()))
             {
                 var user = db.Users.Single(u => u.Id == updatedUser.Id);
 
@@ -44,7 +44,7 @@ namespace Clinic.Facades.Users
 
         public static User Get(long id)
         {
-            using (var db = CreateContextWithAllRolesIncluded())
+            using (var db = DataContextFactory.Create(u => u.IncludeAllRoles()))
             {
                 var result = db.Users.Single(u => u.Id == id);
                 return result;
@@ -61,15 +61,6 @@ namespace Clinic.Facades.Users
 
                 return results.ToList();
             }
-        }
-
-        private static ClinicDataContext CreateContextWithAllRolesIncluded()
-        {
-            return DataContextFactory.Create(x => x
-                .Include<User>(u => u.Doctor)
-                .Include<User>(u => u.LabAssistant)
-                .Include<User>(u => u.LabManager)
-                .Include<User>(u => u.Registrator));
         }
     }
 }

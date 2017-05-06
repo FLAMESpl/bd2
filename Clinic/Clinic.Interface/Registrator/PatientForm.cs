@@ -3,13 +3,11 @@ using Clinic.Facades.Patients;
 using Clinic.Interface.Common;
 using Clinic.Interface.Common.Helpers;
 using System;
-using System.Data.Linq;
 using System.Linq;
-using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
-    public partial class PatientForm : Form
+    public partial class PatientForm : ClinicForm
     {
         private ActionType actionType;
         private Patient patient;

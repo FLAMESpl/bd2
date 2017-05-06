@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Clinic.Interface.Admin
 {
-    public partial class AdministratorForm : Form
+    public partial class AdministratorForm : ClinicForm
     {
         public AdministratorForm()
         {
