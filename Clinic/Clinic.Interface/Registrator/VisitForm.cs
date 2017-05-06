@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
-    public partial class VisitForm : Form
+    public partial class VisitForm : ClinicForm
     {
         private const int START_WORKING_HOUR = 8;
         private const int END_WORKING_HOUR = 16;
@@ -77,7 +77,7 @@ namespace Clinic.Interface.Registrator
                 Diagnosis = null,
                 IdDoctor = doctor.Id,
                 IdPatient = patient.Id,
-                IdRegistrator = 1,
+                IdRegistrator = ActiveUser.Id,
                 PlannedDate = dailyVisit.VisitHour,
                 RegistrationDate = DateTime.Now,
                 ResolutionDate = null,

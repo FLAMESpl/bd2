@@ -31,7 +31,7 @@ namespace Clinic.Interface.Registrator
         {
             using (var form = new VisitForm(patient, ActionType.Create))
             {
-                form.ShowDialog();
+                form.ShowDialog(ActiveUser);
             }
         }
 
@@ -54,7 +54,7 @@ namespace Clinic.Interface.Registrator
         {
             using (var form = new VisitForm(null, ActionType.Browse))
             {
-                form.ShowDialog();
+                form.ShowDialog(ActiveUser);
             }
         }
 
