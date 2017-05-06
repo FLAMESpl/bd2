@@ -168,6 +168,9 @@
     <EmbeddedResource Include="Authentication\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\ClinicForm.resx">
+      <DependentUpon>ClinicForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Common\DoneCancelDialog.resx">
       <DependentUpon>DoneCancelDialog.cs</DependentUpon>
     </EmbeddedResource>

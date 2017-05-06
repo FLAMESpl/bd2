@@ -1,5 +1,7 @@
-﻿using Clinic.Data;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
+using System;
+using Clinic.Data;
+using Clinic.Facades.Users;
 
 namespace Clinic.Interface.Common
 {
@@ -11,6 +13,27 @@ namespace Clinic.Interface.Common
         {
             ActiveUser = user;
             ShowDialog();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            if (ActiveUser != null && ActiveUser.Role != Role.Administrator.ToCode()) // in case it is called by designer
+            {
+                string name, surname;
+                ActiveUser.GetNameAndSurname(out name, out surname);
+
+                var statusStripLabel = new ToolStripStatusLabel
+                {
+                    Text = $"{name} {surname}"
+                };
+
+                var statusStip = new StatusStrip();
+                statusStip.Items.Add(statusStripLabel);
+
+                Controls.Add(statusStip);
+            }
+
+            base.OnLoad(e);
         }
     }
 }
