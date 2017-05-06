@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
-    public partial class RegistratorForm : Form
+    public partial class RegistratorForm : ClinicForm
     {
         public RegistratorForm()
         {

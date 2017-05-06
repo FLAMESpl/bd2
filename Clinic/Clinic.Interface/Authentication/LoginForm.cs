@@ -1,5 +1,7 @@
-﻿using Clinic.Facades.Users;
+﻿using Clinic.Data;
+using Clinic.Facades.Users;
 using Clinic.Interface.Admin;
+using Clinic.Interface.Common;
 using Clinic.Interface.LabManager;
 using Clinic.Interface.Registrator;
 using System;
@@ -20,7 +22,7 @@ namespace Clinic.Interface.Authentication
             if (result.Success)
             {
                 MessageBox.Show($"Logged in as {result.Role.Value.ToDisplayName()}");
-                ShowUserWindow(result.Role.Value);
+                ShowUserWindow(result.Role.Value, result.User);
             }
             else
             {
@@ -28,9 +30,12 @@ namespace Clinic.Interface.Authentication
             }
         }
 
-        private void ShowUserWindow(Role role)
+        private void ShowUserWindow(Role role, User user)
         {
-            Form form = null;
+            if (user == null)
+                throw new ArgumentException("User cannot be null", nameof(user));
+
+            ClinicForm form = null;
 
             switch (role)
             {
@@ -45,7 +50,7 @@ namespace Clinic.Interface.Authentication
                 case Role.LabAssistant:
                     break;
                 case Role.LabManager:
-                    form = new ManagerForm();
+                    //form = new ManagerForm();
                     break;
                 default:
                     break;
@@ -54,9 +59,16 @@ namespace Clinic.Interface.Authentication
             if (form != null)
             {
                 Hide();
-                form.ShowDialog();
-                Close();
+                form.ShowDialog(user);
+                ClearInputs();
+                Show();
             }
+        }
+
+        private void ClearInputs()
+        {
+            textBoxLogin.Text = String.Empty;
+            textBoxPassword.Text = String.Empty;
         }
     }
 }

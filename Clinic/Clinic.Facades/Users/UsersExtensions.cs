@@ -1,4 +1,5 @@
 ﻿using Clinic.Data;
+using Clinic.Data.Helpers;
 using System;
 
 namespace Clinic.Facades.Users
@@ -67,6 +68,15 @@ namespace Clinic.Facades.Users
                 default:
                     break;
             }
+        }
+
+        public static DataContextLoaderDescriptor IncludeAllRoles(this DataContextLoaderDescriptor desc)
+        {
+            return desc
+                .Include<User>(u => u.Doctor)
+                .Include<User>(u => u.LabAssistant)
+                .Include<User>(u => u.LabManager)
+                .Include<User>(u => u.Registrator);
         }
     }
 }

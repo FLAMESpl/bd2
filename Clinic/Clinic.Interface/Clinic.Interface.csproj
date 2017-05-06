@@ -84,6 +84,9 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\ActionType.cs" />
+    <Compile Include="Common\ClinicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Common\DoneCancelDialog.cs">
       <SubType>UserControl</SubType>
     </Compile>
