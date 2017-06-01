@@ -42,7 +42,7 @@ namespace Clinic.Facades.Visits
 
         public void Delete()
         {
-            Status = VisitStatus.Scheduled;
+            Status = VisitStatus.Free;
             VisitId = null;
             Doctor = null;
             Patient = null;
