@@ -34,7 +34,7 @@
             this.buttonAcceptTest = new System.Windows.Forms.Button();
             this.PatientFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PatientSurname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TestName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CommissionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExecutionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +49,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PatientFirstName,
             this.PatientSurname,
-            this.Name,
+            this.TestName,
             this.CommissionDate,
             this.ExecutionDate,
             this.Result,
@@ -98,11 +98,11 @@
             this.PatientSurname.Name = "PatientSurname";
             this.PatientSurname.ReadOnly = true;
             // 
-            // Name
+            // TestName
             // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
+            this.TestName.HeaderText = "Test Name";
+            this.TestName.Name = "TestName";
+            this.TestName.ReadOnly = true;
             // 
             // CommissionDate
             // 
@@ -150,16 +150,16 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn AssignmentDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonCancelTest;
         private System.Windows.Forms.Button buttonAcceptTest;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PatientSurname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TestName;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommissionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExecutionDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Result;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }
