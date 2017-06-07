@@ -7,10 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Clinic.Interface.Common;
+using Clinic.Data;
+using Clinic.Interface.Lab;
 
 namespace Clinic.Interface.LabManager
 {
-    public partial class ManagerForm : Form
+    public partial class ManagerForm : ClinicForm
     {
         public ManagerForm()
         {
@@ -19,7 +22,11 @@ namespace Clinic.Interface.LabManager
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            LaboratoryTest test = new LaboratoryTest();
+            using (var form = new TestForm(test))
+            {
+                form.ShowDialog(ActiveUser);
+            }
         }
     }
 }

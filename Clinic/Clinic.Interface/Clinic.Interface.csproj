@@ -126,6 +126,12 @@
     <Compile Include="Lab\ManagerForm.Designer.cs">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\TestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\TestForm.Designer.cs">
+      <DependentUpon>TestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrator\DoctorListItem.cs" />
     <Compile Include="Registrator\VisitForm.cs">
       <SubType>Form</SubType>
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\TestForm.resx">
+      <DependentUpon>TestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrator\VisitForm.resx">
       <DependentUpon>VisitForm.cs</DependentUpon>

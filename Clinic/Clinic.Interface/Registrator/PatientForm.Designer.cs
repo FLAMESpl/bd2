@@ -35,12 +35,12 @@
             this.labelledInputLastName = new Clinic.Interface.Common.LabelledTextBox();
             this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledTextBox();
             this.dataGridViewAddresses = new System.Windows.Forms.DataGridView();
+            this.doneCancelDialog = new Clinic.Interface.Common.DoneCancelDialog();
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.houseNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.flatNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceAddresses = new System.Windows.Forms.BindingSource(this.components);
-            this.doneCancelDialog = new Clinic.Interface.Common.DoneCancelDialog();
             this.tableLayoutPanel.SuspendLayout();
             this.flowLayoutPanelPatientDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddresses)).BeginInit();
@@ -119,6 +119,14 @@
             this.dataGridViewAddresses.Size = new System.Drawing.Size(444, 168);
             this.dataGridViewAddresses.TabIndex = 1;
             // 
+            // doneCancelDialog
+            // 
+            this.doneCancelDialog.Dock = System.Windows.Forms.DockStyle.Right;
+            this.doneCancelDialog.Location = new System.Drawing.Point(208, 233);
+            this.doneCancelDialog.Name = "doneCancelDialog";
+            this.doneCancelDialog.Size = new System.Drawing.Size(239, 33);
+            this.doneCancelDialog.TabIndex = 2;
+            // 
             // cityDataGridViewTextBoxColumn
             // 
             this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
@@ -147,21 +155,13 @@
             // 
             this.bindingSourceAddresses.DataSource = typeof(Clinic.Data.Address);
             // 
-            // doneCancelDialog
-            // 
-            this.doneCancelDialog.Dock = System.Windows.Forms.DockStyle.Right;
-            this.doneCancelDialog.Location = new System.Drawing.Point(208, 233);
-            this.doneCancelDialog.Name = "doneCancelDialog";
-            this.doneCancelDialog.Size = new System.Drawing.Size(239, 33);
-            this.doneCancelDialog.TabIndex = 2;
-            // 
-            // UpdatePatientForm
+            // PatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 269);
             this.Controls.Add(this.tableLayoutPanel);
-            this.Name = "UpdatePatientForm";
+            this.Name = "PatientForm";
             this.Text = "Patient";
             this.tableLayoutPanel.ResumeLayout(false);
             this.flowLayoutPanelPatientDetails.ResumeLayout(false);

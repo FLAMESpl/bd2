@@ -50,7 +50,7 @@ namespace Clinic.Interface.Authentication
                 case Role.LabAssistant:
                     break;
                 case Role.LabManager:
-                    //form = new ManagerForm();
+                    form = new ManagerForm();
                     break;
                 default:
                     break;
