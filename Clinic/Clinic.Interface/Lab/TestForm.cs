@@ -14,6 +14,8 @@ namespace Clinic.Interface.Lab
 {
     public partial class TestForm : ClinicForm
     {
+        private LaboratoryTest test;
+
         public TestForm()
         {
             InitializeComponent();
@@ -21,7 +23,27 @@ namespace Clinic.Interface.Lab
 
         public TestForm(LaboratoryTest laboratoryTest)
         {
+            test = laboratoryTest;
             InitializeComponent();
+        }
+
+        private void buttonAcceptTest_Click(object sender, EventArgs e)
+        {
+            test.Status = "ACCEPTED";
+            test.ManagerNotes = labelledTextBoxComment.Input;
+            Close();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void buttonCancelTest_Click(object sender, EventArgs e)
+        {
+            test.Status = "CANCELLED";
+            test.ManagerNotes = labelledTextBoxComment.Input;
+            Close();
         }
     }
 }
