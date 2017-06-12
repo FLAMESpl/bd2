@@ -72,13 +72,30 @@ namespace Clinic.Interface.Doctors
 
         private void refreshVisitsAtThisMoment()
         {
-            sourceDailyVisists.Clear();
+            DateTime currently = DateTime.Now;
+            DateTime currently2 = DateTime.Today;
+            currently2.AddHours(START_WORKING_HOUR);
+            DateTime currently3 = DateTime.Today;
+            currently3.AddHours(END_WORKING_HOUR);
+            if ((currently2 < currently) && (currently < currently3))
+            {
+                sourceDailyVisists.Clear();
 
-            DateTime roundedNow = new DateTime((DateTime.Now.Ticks / TimeSpan.FromMinutes(15).Ticks) * TimeSpan.FromMinutes(15).Ticks);
-            FillVisitsForScheduling(doctorId, roundedNow, 10);
-            System.Windows.Forms.MessageBox.Show("Visits refreshed (this moment)!");
-            monthCalendar1.SelectionStart = DateTime.Today;
-            Console.WriteLine("AtThisMoment\tCalendar: " + monthCalendar1.SelectionStart);
+                DateTime roundedNow = new DateTime((DateTime.Now.Ticks / TimeSpan.FromMinutes(15).Ticks) * TimeSpan.FromMinutes(15).Ticks);
+                FillVisitsForScheduling(doctorId, roundedNow, 10);
+                System.Windows.Forms.MessageBox.Show("Visits refreshed (this moment)!");
+                monthCalendar1.SelectionStart = DateTime.Today;
+                Console.WriteLine("AtThisMoment\tCalendar: " + monthCalendar1.SelectionStart);
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show(
+                    "Clinic is not operational now",
+                    "Clinic is not operating at this hour.",
+                    System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Warning
+                    );
+            }
         }
 
         private void refreshCurrentVisitsShowed(object sender, EventArgs e)

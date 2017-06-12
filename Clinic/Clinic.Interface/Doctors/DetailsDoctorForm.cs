@@ -18,6 +18,12 @@ namespace Clinic.Interface.Doctors
             SelectedVisits = datGridVisits.SelectedRows;
             StatusColumnIndex = datGridVisits.Columns["statusDataGridViewTextBoxColumn"].Index;
             Console.WriteLine(StatusColumnIndex);
+            //int gridindex = 0;
+            //foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
+            //{
+            //    this.DatGridDetailsSelectedRows.Rows.Insert(gridindex, SelectedVisits);
+            //    gridindex++;
+            //}
         }
 
         void NoRowsSelectedMessage()
@@ -68,7 +74,7 @@ namespace Clinic.Interface.Doctors
                         updatedcount++;
                     }
                 }
-                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots Cancelled!");
+                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots cancelled!");
                 btnDoctorReturn_Click(sender, e);
             }
             else
