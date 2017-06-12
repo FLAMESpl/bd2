@@ -17,7 +17,6 @@ namespace Clinic.Interface.Doctors
             InitializeComponent();
             SelectedVisits = datGridVisits.SelectedRows;
             StatusColumnIndex = datGridVisits.Columns["statusDataGridViewTextBoxColumn"].Index;
-            Console.WriteLine(StatusColumnIndex);
             //int gridindex = 0;
             //foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
             //{
