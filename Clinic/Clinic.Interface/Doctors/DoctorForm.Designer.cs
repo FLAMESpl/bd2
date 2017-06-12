@@ -186,7 +186,7 @@
             this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRefresh.Location = new System.Drawing.Point(3, 3);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(159, 27);
+            this.btnRefresh.Size = new System.Drawing.Size(160, 27);
             this.btnRefresh.TabIndex = 2;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -195,16 +195,17 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(168, 3);
+            this.button1.Location = new System.Drawing.Point(169, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 27);
+            this.button1.Size = new System.Drawing.Size(160, 27);
             this.button1.TabIndex = 3;
             this.button1.Text = "Details and actions";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.clickShowDetailsAndActions);
             // 
             // btnShowCurrent
             // 
-            this.btnShowCurrent.Location = new System.Drawing.Point(333, 3);
+            this.btnShowCurrent.Location = new System.Drawing.Point(335, 3);
             this.btnShowCurrent.Name = "btnShowCurrent";
             this.btnShowCurrent.Size = new System.Drawing.Size(159, 27);
             this.btnShowCurrent.TabIndex = 4;

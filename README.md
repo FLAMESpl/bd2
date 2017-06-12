@@ -6,9 +6,9 @@ Witamy w projekcie z baz danych. Za³o¿eniem projektu jest stworzenie bazy danych
 
 TODO:
 1. Stworzyæ i do³¹czyæ formatki dla (obecnie nie ma dla nich nic):
-* doktora
-* asystenta laboratorium
-* kierownika laboratorium
+* doktora (miszczu siê tym zajmuje)
+* asystenta laboratorium (lechu)
+* kierownika laboratorium (lechu?)
 2. Dokoñczyæ formatkê dla registratorki (jest tam du¿o zrobione, a ja nie ogariam jeszcze co __~miszczu__)
 
 Notatki z ostatniego spotkania (Niektóre s¹ niezrozumia³e, za co przepraszam. Sam czasem nie rozumiem o co biega³o, ale myœlê ¿e wymó¿d¿ymy jakoœ znaczenie __~miszczu__):
