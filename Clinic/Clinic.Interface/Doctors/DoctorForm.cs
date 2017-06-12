@@ -126,8 +126,8 @@ namespace Clinic.Interface.Doctors
 
         private void clickShowDetailsAndActions(object sender, EventArgs e)
         {
-            var detailsForm = new DetailsDoctorForm();
-            detailsForm.ShowDialog(ActiveUser, /* wizyta jakas konkretna*/);
+            var detailsForm = new DetailsDoctorForm(datgridVisits);
+            detailsForm.ShowDialog(ActiveUser);
         }
     }
 }

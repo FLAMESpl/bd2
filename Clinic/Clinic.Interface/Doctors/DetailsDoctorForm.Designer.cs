@@ -28,56 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnDoctorCancelVisit = new System.Windows.Forms.Button();
+            this.btnDoctorFinalizeVisit = new System.Windows.Forms.Button();
+            this.btnDoctorReturn = new System.Windows.Forms.Button();
+            this.lblChooseInfo = new System.Windows.Forms.Label();
+            this.lblDoctorVisitDetails = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // btnDoctorCancelVisit
             // 
-            this.button1.Location = new System.Drawing.Point(86, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDoctorCancelVisit.Location = new System.Drawing.Point(147, 137);
+            this.btnDoctorCancelVisit.Name = "btnDoctorCancelVisit";
+            this.btnDoctorCancelVisit.Size = new System.Drawing.Size(128, 32);
+            this.btnDoctorCancelVisit.TabIndex = 0;
+            this.btnDoctorCancelVisit.Text = "Cancel Visit";
+            this.btnDoctorCancelVisit.UseVisualStyleBackColor = true;
+            this.btnDoctorCancelVisit.Click += new System.EventHandler(this.btnDoctorCancelVisit_Click);
             // 
-            // button2
+            // btnDoctorFinalizeVisit
             // 
-            this.button2.Location = new System.Drawing.Point(77, 106);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDoctorFinalizeVisit.Location = new System.Drawing.Point(13, 137);
+            this.btnDoctorFinalizeVisit.Name = "btnDoctorFinalizeVisit";
+            this.btnDoctorFinalizeVisit.Size = new System.Drawing.Size(128, 32);
+            this.btnDoctorFinalizeVisit.TabIndex = 1;
+            this.btnDoctorFinalizeVisit.Text = "Finalize Visit";
+            this.btnDoctorFinalizeVisit.UseVisualStyleBackColor = true;
+            this.btnDoctorFinalizeVisit.Click += new System.EventHandler(this.btnDoctorFinalizeVisit_Click);
             // 
-            // button3
+            // btnDoctorReturn
             // 
-            this.button3.Location = new System.Drawing.Point(86, 172);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDoctorReturn.Location = new System.Drawing.Point(147, 195);
+            this.btnDoctorReturn.Name = "btnDoctorReturn";
+            this.btnDoctorReturn.Size = new System.Drawing.Size(128, 32);
+            this.btnDoctorReturn.TabIndex = 2;
+            this.btnDoctorReturn.Text = "Go back to all Visits...";
+            this.btnDoctorReturn.UseVisualStyleBackColor = true;
+            this.btnDoctorReturn.Click += new System.EventHandler(this.btnDoctorReturn_Click);
+            // 
+            // lblChooseInfo
+            // 
+            this.lblChooseInfo.AutoSize = true;
+            this.lblChooseInfo.Location = new System.Drawing.Point(13, 13);
+            this.lblChooseInfo.Name = "lblChooseInfo";
+            this.lblChooseInfo.Size = new System.Drawing.Size(132, 13);
+            this.lblChooseInfo.TabIndex = 3;
+            this.lblChooseInfo.Text = "Choose an action for  visit:";
+            // 
+            // lblDoctorVisitDetails
+            // 
+            this.lblDoctorVisitDetails.AutoSize = true;
+            this.lblDoctorVisitDetails.Location = new System.Drawing.Point(13, 35);
+            this.lblDoctorVisitDetails.Name = "lblDoctorVisitDetails";
+            this.lblDoctorVisitDetails.Size = new System.Drawing.Size(54, 13);
+            this.lblDoctorVisitDetails.TabIndex = 4;
+            this.lblDoctorVisitDetails.Text = "Loading...";
             // 
             // DetailsDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(287, 258);
+            this.Controls.Add(this.lblDoctorVisitDetails);
+            this.Controls.Add(this.lblChooseInfo);
+            this.Controls.Add(this.btnDoctorReturn);
+            this.Controls.Add(this.btnDoctorFinalizeVisit);
+            this.Controls.Add(this.btnDoctorCancelVisit);
             this.Name = "DetailsDoctorForm";
             this.Text = "DetailsDoctorForm";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnDoctorCancelVisit;
+        private System.Windows.Forms.Button btnDoctorFinalizeVisit;
+        private System.Windows.Forms.Button btnDoctorReturn;
+        private System.Windows.Forms.Label lblChooseInfo;
+        private System.Windows.Forms.Label lblDoctorVisitDetails;
     }
 }
