@@ -70,9 +70,9 @@
             this.lblChooseInfo.AutoSize = true;
             this.lblChooseInfo.Location = new System.Drawing.Point(13, 9);
             this.lblChooseInfo.Name = "lblChooseInfo";
-            this.lblChooseInfo.Size = new System.Drawing.Size(132, 13);
+            this.lblChooseInfo.Size = new System.Drawing.Size(140, 13);
             this.lblChooseInfo.TabIndex = 3;
-            this.lblChooseInfo.Text = "Choose an action for  visit:";
+            this.lblChooseInfo.Text = "Choose an action for visit(s):";
             // 
             // btnDoctorAssignTest
             // 
