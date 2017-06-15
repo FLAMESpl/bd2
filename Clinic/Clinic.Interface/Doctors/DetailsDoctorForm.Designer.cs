@@ -32,6 +32,7 @@
             this.btnDoctorFinalizeVisit = new System.Windows.Forms.Button();
             this.btnDoctorReturn = new System.Windows.Forms.Button();
             this.lblChooseInfo = new System.Windows.Forms.Label();
+            this.btnDoctorAssignTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDoctorCancelVisit
@@ -73,11 +74,22 @@
             this.lblChooseInfo.TabIndex = 3;
             this.lblChooseInfo.Text = "Choose an action for  visit:";
             // 
+            // btnDoctorAssignTest
+            // 
+            this.btnDoctorAssignTest.Location = new System.Drawing.Point(12, 78);
+            this.btnDoctorAssignTest.Name = "btnDoctorAssignTest";
+            this.btnDoctorAssignTest.Size = new System.Drawing.Size(128, 32);
+            this.btnDoctorAssignTest.TabIndex = 4;
+            this.btnDoctorAssignTest.Text = "Assign a lab test";
+            this.btnDoctorAssignTest.UseVisualStyleBackColor = true;
+            this.btnDoctorAssignTest.Click += new System.EventHandler(this.btnDoctorAssignLabTest);
+            // 
             // DetailsDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 104);
+            this.ClientSize = new System.Drawing.Size(487, 152);
+            this.Controls.Add(this.btnDoctorAssignTest);
             this.Controls.Add(this.lblChooseInfo);
             this.Controls.Add(this.btnDoctorReturn);
             this.Controls.Add(this.btnDoctorFinalizeVisit);
@@ -95,5 +107,6 @@
         private System.Windows.Forms.Button btnDoctorFinalizeVisit;
         private System.Windows.Forms.Button btnDoctorReturn;
         private System.Windows.Forms.Label lblChooseInfo;
+        private System.Windows.Forms.Button btnDoctorAssignTest;
     }
 }

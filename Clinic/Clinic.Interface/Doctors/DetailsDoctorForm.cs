@@ -87,5 +87,10 @@ namespace Clinic.Interface.Doctors
         {
             this.Close();
         }
+
+        private void btnDoctorAssignLabTest(object sender, EventArgs e)
+        {
+            System.Windows.Forms.MessageBox.Show("Ok");
+        }
     }
 }

@@ -13,6 +13,10 @@ TODO:
 2. Dokoñczyæ formatkê dla registratorki (jest tam du¿o zrobione, a ja nie ogariam jeszcze co __~miszczu__)
 3. Hopsa do Augustyna na prezêtacyjê
 
+Do poprawy, jeœli starczy czasu:
+* Doktor - Godzina przy wybraniu tego samego dnia siê psuje
+* Wyœwietlanie formatek na œrodku poprzednio otwartego okna
+
 Notatki z ostatniego spotkania (Niektóre s¹ niezrozumia³e, za co przepraszam. Sam czasem nie rozumiem o co biega³o, ale myœlê ¿e wymó¿d¿ymy jakoœ znaczenie __~miszczu__):
 
 TODO: Wykonaæ i pokazaæ ekrany do koñca

@@ -74,9 +74,14 @@ namespace Clinic.Interface.Doctors
         {
             DateTime currently = DateTime.Now;
             DateTime currently2 = DateTime.Today;
-            currently2.AddHours(START_WORKING_HOUR);
+            currently2 = currently2.AddHours(START_WORKING_HOUR);
             DateTime currently3 = DateTime.Today;
-            currently3.AddHours(END_WORKING_HOUR);
+            currently3 = currently3.AddHours(END_WORKING_HOUR);
+            Console.WriteLine("1: "+currently);
+            Console.WriteLine("2: "+currently2);
+            Console.WriteLine("3: "+currently3);
+
+
             if ((currently2 < currently) && (currently < currently3))
             {
                 sourceDailyVisists.Clear();
