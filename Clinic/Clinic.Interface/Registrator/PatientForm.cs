@@ -11,14 +11,16 @@ namespace Clinic.Interface.Registrator
     {
         private ActionType actionType;
         private Patient patient;
+        RegistratorForm ParentForm;
 
-        public PatientForm()
+        public PatientForm(RegistratorForm parentForm)
         {
             InitializeComponent();
             SetupComponent();
+            ParentForm = parentForm;
         }
 
-        public PatientForm(Patient patient, ActionType actionType)
+        public PatientForm(Patient patient, ActionType actionType, RegistratorForm parentForm)
         {
             InitializeComponent();
             SetupComponent();
@@ -29,6 +31,7 @@ namespace Clinic.Interface.Registrator
             labelledInputLastName.Input = patient.Surname;
             labelledInputEvidenceNumber.Input = patient.PESEL;
             bindingSourceAddresses.AddRange(patient.Addresses);
+            ParentForm = parentForm;
         }
 
         private void SetupComponent()
@@ -77,6 +80,8 @@ namespace Clinic.Interface.Registrator
                     break;
             }
 
+            //Hide();
+            ParentForm.RefreshList();
             Close();
         }
     }

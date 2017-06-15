@@ -29,6 +29,13 @@ namespace Clinic.Interface.Registrator
             labelledInputPESEL.Input = patient.PESEL;
         }
 
+        public void ClearInputs()
+        {
+            object sender = new object();
+            EventArgs e = new EventArgs();
+            buttonClear_Click(sender, e);
+        }
+
         private void buttonClear_Click(object sender, EventArgs e)
         {
             labelledInputName.Input = String.Empty;

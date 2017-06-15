@@ -31,6 +31,24 @@ namespace Clinic.Facades.Patients
             }
         }
 
+        //public static int Delete(Patient patient)
+        //{
+        //    using (var db = DataContextFactory.Create())
+        //    {
+        //        try
+        //        {
+        //            db.Patients.DeleteOnSubmit(patient);
+        //            db.SubmitChanges();
+        //        }
+        //        catch (System.Exception e)
+        //        {
+        //            System.Console.WriteLine(e.Message);
+        //            System.Console.WriteLine();
+        //        }
+        //    }
+        //    return 0;
+        //}
+
         public static List<Patient> Match(Patient searchCriteria)
         {
             using (var db = DataContextFactory.Create(x => x.Include<Patient>(p => p.Addresses)))

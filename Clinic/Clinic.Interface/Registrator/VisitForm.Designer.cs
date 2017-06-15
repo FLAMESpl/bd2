@@ -70,7 +70,7 @@ namespace Clinic.Interface.Registrator
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 57F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 192F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.05882F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(656, 425);
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(659, 587);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
             // tableLayoutPanelDoctors
@@ -85,7 +85,7 @@ namespace Clinic.Interface.Registrator
             this.tableLayoutPanelDoctors.Name = "tableLayoutPanelDoctors";
             this.tableLayoutPanelDoctors.RowCount = 1;
             this.tableLayoutPanelDoctors.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelDoctors.Size = new System.Drawing.Size(650, 186);
+            this.tableLayoutPanelDoctors.Size = new System.Drawing.Size(653, 186);
             this.tableLayoutPanelDoctors.TabIndex = 0;
             // 
             // groupBoxDoctor
@@ -94,7 +94,7 @@ namespace Clinic.Interface.Registrator
             this.groupBoxDoctor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxDoctor.Location = new System.Drawing.Point(3, 3);
             this.groupBoxDoctor.Name = "groupBoxDoctor";
-            this.groupBoxDoctor.Size = new System.Drawing.Size(302, 180);
+            this.groupBoxDoctor.Size = new System.Drawing.Size(304, 180);
             this.groupBoxDoctor.TabIndex = 2;
             this.groupBoxDoctor.TabStop = false;
             this.groupBoxDoctor.Text = "Doctor";
@@ -105,7 +105,7 @@ namespace Clinic.Interface.Registrator
             this.listBoxDoctors.FormattingEnabled = true;
             this.listBoxDoctors.Location = new System.Drawing.Point(3, 16);
             this.listBoxDoctors.Name = "listBoxDoctors";
-            this.listBoxDoctors.Size = new System.Drawing.Size(296, 161);
+            this.listBoxDoctors.Size = new System.Drawing.Size(298, 161);
             this.listBoxDoctors.TabIndex = 0;
             this.listBoxDoctors.SelectedValueChanged += new System.EventHandler(this.listBoxDoctors_SelectedValueChanged);
             // 
@@ -113,15 +113,16 @@ namespace Clinic.Interface.Registrator
             // 
             this.groupBoxDate.Controls.Add(this.monthCalendar);
             this.groupBoxDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxDate.Location = new System.Drawing.Point(311, 3);
+            this.groupBoxDate.Location = new System.Drawing.Point(313, 3);
             this.groupBoxDate.Name = "groupBoxDate";
-            this.groupBoxDate.Size = new System.Drawing.Size(336, 180);
+            this.groupBoxDate.Size = new System.Drawing.Size(337, 180);
             this.groupBoxDate.TabIndex = 3;
             this.groupBoxDate.TabStop = false;
             this.groupBoxDate.Text = "Visit date";
             // 
             // monthCalendar
             // 
+            this.monthCalendar.CalendarDimensions = new System.Drawing.Size(2, 1);
             this.monthCalendar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.monthCalendar.Location = new System.Drawing.Point(3, 15);
             this.monthCalendar.MaxSelectionCount = 31;
@@ -147,7 +148,7 @@ namespace Clinic.Interface.Registrator
             this.dataGridViewDailyVisits.Location = new System.Drawing.Point(3, 252);
             this.dataGridViewDailyVisits.Name = "dataGridViewDailyVisits";
             this.dataGridViewDailyVisits.ReadOnly = true;
-            this.dataGridViewDailyVisits.Size = new System.Drawing.Size(650, 170);
+            this.dataGridViewDailyVisits.Size = new System.Drawing.Size(653, 332);
             this.dataGridViewDailyVisits.TabIndex = 1;
             this.dataGridViewDailyVisits.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDailyVisits_CellContentClick);
             // 
@@ -227,7 +228,7 @@ namespace Clinic.Interface.Registrator
             this.groupBoxPatient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxPatient.Location = new System.Drawing.Point(3, 3);
             this.groupBoxPatient.Name = "groupBoxPatient";
-            this.groupBoxPatient.Size = new System.Drawing.Size(650, 51);
+            this.groupBoxPatient.Size = new System.Drawing.Size(653, 51);
             this.groupBoxPatient.TabIndex = 2;
             this.groupBoxPatient.TabStop = false;
             this.groupBoxPatient.Text = "Patient";
@@ -236,7 +237,7 @@ namespace Clinic.Interface.Registrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(656, 425);
+            this.ClientSize = new System.Drawing.Size(659, 587);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Name = "VisitForm";
             this.Text = "Visists";
