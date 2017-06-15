@@ -19,7 +19,6 @@ namespace Clinic.Interface.Doctors
             InitializeComponent();
             doctorId = _docId;
             refreshVisitsAtThisMoment();
-            Console.WriteLine("DoctorForm\nCalendar: " + monthCalendar1.SelectionStart);
         }
 
         private void refreshVisits()
@@ -29,9 +28,7 @@ namespace Clinic.Interface.Doctors
             //this.gbVisits.g
             sourceDailyVisists.Clear();
             sourceDailyVisists.AddRange(visits.Select(v => new DailyVisit(v)));
-            Console.WriteLine("FillVisitsForScheduling:\n" + "doctorId: " + doctorId + "\nrangeStart: " + DateTime.Now + "\nnumberOfVisits: " + 10);
             FillVisitsForScheduling(doctorId, DateTime.Now, 10);
-            Console.WriteLine("RefreshVisits\nCalendar: " + monthCalendar1.SelectionStart);
         }
 
         private void FillVisitsForScheduling(long? doctorId, DateTime startTime, int numberOfVisits)
@@ -84,11 +81,9 @@ namespace Clinic.Interface.Doctors
                 sourceDailyVisists.Clear();
 
                 DateTime roundedNow = new DateTime((DateTime.Now.Ticks / TimeSpan.FromMinutes(15).Ticks) * TimeSpan.FromMinutes(15).Ticks);
-                Console.WriteLine("FillVisitsForScheduling:\n" + "doctorId: " + doctorId + "\roundedNow: " + roundedNow + "\nnumberOfVisits: " + 10);
                 FillVisitsForScheduling(doctorId, roundedNow, 10);
                 System.Windows.Forms.MessageBox.Show("Visits refreshed (this moment)!");
                 monthCalendar1.SelectionStart = DateTime.Today;
-                Console.WriteLine("refreshVisitsAtThisMoment\nCalendar: " + monthCalendar1.SelectionStart);
             }
             else
             {
@@ -115,11 +110,8 @@ namespace Clinic.Interface.Doctors
 
         private void refreshVisitsAtDay(DateTime startSelection)
         {
-            Console.WriteLine("refreshVisitsAtDay\nCalendar: " + monthCalendar1.SelectionStart);
             sourceDailyVisists.Clear();
-
-            //var startTime = DateTime.Now.Date.AddHours(START_WORKING_HOUR);
-            Console.WriteLine("refreshVisitsAtDay:\nCalendar: "+startSelection); //12:10?
+            
             DateTime rangeStart;
             DateTime rangeEnd;
             if (startSelection.Hour == 0)
@@ -132,16 +124,12 @@ namespace Clinic.Interface.Doctors
                 rangeStart = startSelection.AddHours(START_WORKING_HOUR) - startSelection.TimeOfDay;
                 rangeEnd = rangeStart.AddHours(END_WORKING_HOUR - START_WORKING_HOUR);
             }
-            Console.WriteLine("LOL rangeStart after adding hours: " + rangeStart);
             
-            //var endTime = DateTime.Now.Date.AddHours(END_WORKING_HOUR);
             var timeSpan = rangeEnd - rangeStart;
             var numberOfVisits = (int)timeSpan.TotalMinutes / MINUTES_PER_VISIT;
-            Console.WriteLine("FillVisitsForScheduling:\n"+"doctorId: "+doctorId+"\nrangeStart: "+rangeStart+"\nnumberOfVisits: "+numberOfVisits);
             FillVisitsForScheduling(doctorId, rangeStart, numberOfVisits);
-            Console.WriteLine("refreshVisitsAtDay2\nCalendar: " + monthCalendar1.SelectionStart);
 
-            System.Windows.Forms.MessageBox.Show("Visits refreshed (at some date)!");
+            System.Windows.Forms.MessageBox.Show("Visits refreshed at "+startSelection.Day+ "/"+startSelection.Month+"/"+startSelection.Year+"!");
         }
         
 
@@ -150,9 +138,7 @@ namespace Clinic.Interface.Doctors
             //monthCalendar1.SelectionStart -= DateTime.Now.AddMilliseconds(DateTime.Now.TimeOfDay.Ticks);
             //monthCalendar1.SelectionEnd -= DateTime.Now.TimeOfDay.Ticks;
             //DateTime tmpdate = e.Start - DateTime.Now.TimeOfDay;
-            Console.WriteLine("dateSelected - start:\nCalendar: " + monthCalendar1.SelectionStart);
             ShowedCurrentVisitsRecently = false;
-            Console.WriteLine("dateSelected - start:\nCalendar: "+ e.End);
             refreshVisitsAtDay(monthCalendar1.SelectionStart/*SelectionStart*/);
         }
 
