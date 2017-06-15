@@ -92,6 +92,7 @@
             this.textBoxLogin.Name = "textBoxLogin";
             this.textBoxLogin.Size = new System.Drawing.Size(231, 20);
             this.textBoxLogin.TabIndex = 2;
+            this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.logInTrigger);
             // 
             // textBoxPassword
             // 
@@ -101,6 +102,7 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(231, 20);
             this.textBoxPassword.TabIndex = 3;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.logInTrigger);
             // 
             // buttonLogIn
             // 

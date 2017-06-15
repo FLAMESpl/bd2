@@ -2,6 +2,7 @@
 using Clinic.Facades.Users;
 using Clinic.Interface.Admin;
 using Clinic.Interface.Common;
+using Clinic.Interface.Doctors;
 using Clinic.Interface.LabManager;
 using Clinic.Interface.Registrator;
 using System;
@@ -43,11 +44,13 @@ namespace Clinic.Interface.Authentication
                     form = new AdministratorForm();
                     break;
                 case Role.Doctor:
+                    form = new DoctorForm(user.Doctor.Id);
                     break;
                 case Role.Registrator:
                     form = new RegistratorForm();
                     break;
                 case Role.LabAssistant:
+                    //form = new AssistantForm();
                     break;
                 case Role.LabManager:
                     //form = new ManagerForm();
@@ -69,6 +72,14 @@ namespace Clinic.Interface.Authentication
         {
             textBoxLogin.Text = String.Empty;
             textBoxPassword.Text = String.Empty;
+        }
+
+        private void logInTrigger(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                buttonLogIn_Click(sender, e);
+            }
         }
     }
 }
