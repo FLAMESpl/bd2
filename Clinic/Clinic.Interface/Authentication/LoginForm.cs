@@ -28,6 +28,7 @@ namespace Clinic.Interface.Authentication
             else
             {
                 MessageBox.Show("Authentication error");
+                this.ClearInputs();
             }
         }
 
