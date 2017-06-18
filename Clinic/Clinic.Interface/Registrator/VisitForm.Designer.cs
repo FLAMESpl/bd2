@@ -48,12 +48,14 @@ namespace Clinic.Interface.Registrator
             this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bindingSourceDailyVisit = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxPatient = new System.Windows.Forms.GroupBox();
+            this.btnRegVisitsShow = new System.Windows.Forms.Button();
             this.tableLayoutPanelMain.SuspendLayout();
             this.tableLayoutPanelDoctors.SuspendLayout();
             this.groupBoxDoctor.SuspendLayout();
             this.groupBoxDate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDailyVisits)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceDailyVisit)).BeginInit();
+            this.groupBoxPatient.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelMain
@@ -225,6 +227,7 @@ namespace Clinic.Interface.Registrator
             // 
             // groupBoxPatient
             // 
+            this.groupBoxPatient.Controls.Add(this.btnRegVisitsShow);
             this.groupBoxPatient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxPatient.Location = new System.Drawing.Point(3, 3);
             this.groupBoxPatient.Name = "groupBoxPatient";
@@ -232,6 +235,16 @@ namespace Clinic.Interface.Registrator
             this.groupBoxPatient.TabIndex = 2;
             this.groupBoxPatient.TabStop = false;
             this.groupBoxPatient.Text = "Patient";
+            // 
+            // btnRegVisitsShow
+            // 
+            this.btnRegVisitsShow.Location = new System.Drawing.Point(519, 9);
+            this.btnRegVisitsShow.Name = "btnRegVisitsShow";
+            this.btnRegVisitsShow.Size = new System.Drawing.Size(128, 36);
+            this.btnRegVisitsShow.TabIndex = 0;
+            this.btnRegVisitsShow.Text = "Show";
+            this.btnRegVisitsShow.UseVisualStyleBackColor = true;
+            this.btnRegVisitsShow.Click += new System.EventHandler(this.btnRegVisitsShow_Clicked);
             // 
             // VisitForm
             // 
@@ -247,6 +260,7 @@ namespace Clinic.Interface.Registrator
             this.groupBoxDate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDailyVisits)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceDailyVisit)).EndInit();
+            this.groupBoxPatient.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -269,5 +283,6 @@ namespace Clinic.Interface.Registrator
         private System.Windows.Forms.DataGridViewButtonColumn Reserve;
         private System.Windows.Forms.DataGridViewButtonColumn Cancel;
         private System.Windows.Forms.DataGridViewButtonColumn Delete;
+        private System.Windows.Forms.Button btnRegVisitsShow;
     }
 }

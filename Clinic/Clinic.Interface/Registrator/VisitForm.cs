@@ -219,5 +219,10 @@ namespace Clinic.Interface.Registrator
         {
             FillVisits();
         }
+
+        private void btnRegVisitsShow_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
