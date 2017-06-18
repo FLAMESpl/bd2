@@ -4,12 +4,18 @@
 
 Witamy w projekcie z baz danych. Za³o¿eniem projektu jest stworzenie bazy danych dla przychodni.
 
+Formatka doktora jest mniej wiêcej gotowa, zapraszam do sprawdzenia czy jest ok, to porefaktoryzuje (__~miszcz__)
+
 TODO:
 1. Stworzyæ i do³¹czyæ formatki dla (obecnie nie ma dla nich nic):
-* doktora
-* asystenta laboratorium
-* kierownika laboratorium
+* asystenta laboratorium (lechu)
+* kierownika laboratorium (lechu?)
 2. Dokoñczyæ formatkê dla registratorki (jest tam du¿o zrobione, a ja nie ogariam jeszcze co __~miszczu__)
+3. Hopsa do Augustyna na prezêtacyjê
+
+Do poprawy, jeœli starczy czasu:
+* Doktor - Godzina przy wybraniu tego samego dnia siê psuje
+* Wyœwietlanie formatek na œrodku poprzednio otwartego okna
 
 Notatki z ostatniego spotkania (Niektóre s¹ niezrozumia³e, za co przepraszam. Sam czasem nie rozumiem o co biega³o, ale myœlê ¿e wymó¿d¿ymy jakoœ znaczenie __~miszczu__):
 

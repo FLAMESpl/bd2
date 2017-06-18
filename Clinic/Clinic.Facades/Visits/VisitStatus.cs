@@ -2,6 +2,7 @@
 {
     public enum VisitStatus
     {
+        Free,
         Scheduled,
         Finalised,
         Cancelled,
@@ -15,6 +16,8 @@
         {
             switch (code)
             {
+                case "FRE":
+                    return VisitStatus.Free;
                 case "SCH":
                     return VisitStatus.Scheduled;
                 case "CAN":
@@ -32,6 +35,8 @@
         {
             switch (visit)
             {
+                case VisitStatus.Free:
+                    return "FRE";
                 case VisitStatus.Scheduled:
                     return "SCH";
                 case VisitStatus.Finalised:

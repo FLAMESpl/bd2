@@ -120,6 +120,18 @@
     <Compile Include="Common\LabelledTextBox.Designer.cs">
       <DependentUpon>LabelledTextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doctors\DetailsDoctorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\DetailsDoctorForm.Designer.cs">
+      <DependentUpon>DetailsDoctorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors\DoctorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\DoctorForm.Designer.cs">
+      <DependentUpon>DoctorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\ManagerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +201,12 @@
     <EmbeddedResource Include="Common\LabelledTextBox.resx">
       <DependentUpon>LabelledTextBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\DetailsDoctorForm.resx">
+      <DependentUpon>DetailsDoctorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\DoctorForm.resx">
+      <DependentUpon>DoctorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab\ManagerForm.resx">
       <DependentUpon>ManagerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +238,7 @@
     <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
+    <None Include="Properties\DataSources\Clinic.Facades.Visits.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Interface.Admin.UserView.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
