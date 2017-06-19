@@ -28,6 +28,7 @@ namespace Clinic.Interface.Registrator
         public VisitForm()
         {
             InitializeComponent();
+            //patient = null;
         }
 
         public VisitForm(Patient patient, ActionType actionType)
@@ -220,9 +221,71 @@ namespace Clinic.Interface.Registrator
             FillVisits();
         }
 
-        private void btnRegVisitsShow_Clicked(object sender, EventArgs e)
+        public void triggerVisitsRefresh()
+        {
+            RefreshVisits();
+        }
+
+        private void RefreshVisits()
+        {
+            bindingSourceDailyVisit.Clear();
+
+            //var startTime = DateTime.Now.Date.AddHours(START_WORKING_HOUR);
+            //var endTime = DateTime.Now.Date.AddHours(END_WORKING_HOUR);
+            //var timeSpan = new DateTime( (END_WORKING_HOUR - START_WORKING_HOUR);
+            var numberOfVisits = (END_WORKING_HOUR - START_WORKING_HOUR)*60 / MINUTES_PER_VISIT;
+            System.Collections.Generic.List<Clinic.Data.Visit> todayVisits;
+            Patient Roman = null;
+
+            if (patient == null)
+            {
+                Control [] PatientFiltersHandle = groupBoxPatient.Controls.Find("PatientFilters", true);
+                Roman = ((PatientFilters)PatientFiltersHandle[0]).GetPatient();
+                todayVisits = VisitsService.GetInDate(DateTime.Today, Roman);
+            }
+            else
+            {
+                todayVisits = VisitsService.GetInDate(DateTime.Today, patient);
+            }            
+
+            var actualTime = DateTime.Today.AddHours(START_WORKING_HOUR);
+
+            for (int i = 0; i < numberOfVisits; i++)
+            {
+                var visit = todayVisits.SingleOrDefault(v => v.PlannedDate == actualTime);
+                DailyVisit dailyVisit = null;
+                if (visit == null)
+                {
+                    dailyVisit = new DailyVisit(actualTime);
+                }
+                else
+                {
+                    dailyVisit = new DailyVisit(visit);
+                }
+
+                bindingSourceDailyVisit.Add(dailyVisit);
+                actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
+            }
+
+            if (patient != null)
+            {
+                MessageBox.Show("Visits refreshed for patient " + patient.Name + " " + patient.Surname + " PESEL: " + patient.PESEL);
+            }
+            else
+            {
+                MessageBox.Show("Visits refreshed for patient " + Roman.Name + " " + Roman.Surname + " PESEL: " + Roman.PESEL);
+            }
+            
+        }
+
+        private void RefreshVisits(int temp)
         {
 
+        }
+
+        private void btnRegVisitsShow_Clicked(object sender, EventArgs e)
+        {
+            triggerVisitsRefresh();
         }
     }
 }

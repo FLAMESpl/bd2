@@ -33,6 +33,11 @@
             this.buttonSearchAndUpdate = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewPatients = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pESELDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Visit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.bindingSourcePatients = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxPatient = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -40,11 +45,6 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pESELDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Visit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPatients)).BeginInit();
@@ -66,15 +66,15 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.51095F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.489051F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(473, 411);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(473, 573);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // buttonSearchAndUpdate
             // 
             this.buttonSearchAndUpdate.Dock = System.Windows.Forms.DockStyle.Left;
-            this.buttonSearchAndUpdate.Location = new System.Drawing.Point(3, 374);
+            this.buttonSearchAndUpdate.Location = new System.Drawing.Point(3, 521);
             this.buttonSearchAndUpdate.Name = "buttonSearchAndUpdate";
-            this.buttonSearchAndUpdate.Size = new System.Drawing.Size(164, 34);
+            this.buttonSearchAndUpdate.Size = new System.Drawing.Size(164, 49);
             this.buttonSearchAndUpdate.TabIndex = 2;
             this.buttonSearchAndUpdate.Text = "Browse existing visits";
             this.buttonSearchAndUpdate.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 113F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 186F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(467, 365);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(467, 512);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // dataGridViewPatients
@@ -112,9 +112,57 @@
             this.dataGridViewPatients.Location = new System.Drawing.Point(3, 116);
             this.dataGridViewPatients.Name = "dataGridViewPatients";
             this.dataGridViewPatients.ReadOnly = true;
-            this.dataGridViewPatients.Size = new System.Drawing.Size(463, 246);
+            this.dataGridViewPatients.Size = new System.Drawing.Size(463, 393);
             this.dataGridViewPatients.TabIndex = 3;
             this.dataGridViewPatients.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPatients_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn1.FillWeight = 60.56701F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Surname";
+            this.dataGridViewTextBoxColumn2.FillWeight = 60.56701F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Surname";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // pESELDataGridViewTextBoxColumn
+            // 
+            this.pESELDataGridViewTextBoxColumn.DataPropertyName = "PESEL";
+            this.pESELDataGridViewTextBoxColumn.FillWeight = 60.56701F;
+            this.pESELDataGridViewTextBoxColumn.HeaderText = "PESEL";
+            this.pESELDataGridViewTextBoxColumn.Name = "pESELDataGridViewTextBoxColumn";
+            this.pESELDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Visit
+            // 
+            this.Visit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Visit.FillWeight = 257.732F;
+            this.Visit.HeaderText = "";
+            this.Visit.Name = "Visit";
+            this.Visit.ReadOnly = true;
+            this.Visit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Visit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Visit.Text = "Visits";
+            this.Visit.UseColumnTextForButtonValue = true;
+            this.Visit.Width = 50;
+            // 
+            // Edit
+            // 
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Edit.FillWeight = 125.7337F;
+            this.Edit.HeaderText = "";
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Text = "Details";
+            this.Edit.UseColumnTextForButtonValue = true;
+            this.Edit.Width = 50;
             // 
             // bindingSourcePatients
             // 
@@ -194,59 +242,11 @@
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumn1.FillWeight = 60.56701F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Surname";
-            this.dataGridViewTextBoxColumn2.FillWeight = 60.56701F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Surname";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            // 
-            // pESELDataGridViewTextBoxColumn
-            // 
-            this.pESELDataGridViewTextBoxColumn.DataPropertyName = "PESEL";
-            this.pESELDataGridViewTextBoxColumn.FillWeight = 60.56701F;
-            this.pESELDataGridViewTextBoxColumn.HeaderText = "PESEL";
-            this.pESELDataGridViewTextBoxColumn.Name = "pESELDataGridViewTextBoxColumn";
-            this.pESELDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Visit
-            // 
-            this.Visit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Visit.FillWeight = 257.732F;
-            this.Visit.HeaderText = "";
-            this.Visit.Name = "Visit";
-            this.Visit.ReadOnly = true;
-            this.Visit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Visit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Visit.Text = "Visits";
-            this.Visit.UseColumnTextForButtonValue = true;
-            this.Visit.Width = 50;
-            // 
-            // Edit
-            // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Edit.FillWeight = 125.7337F;
-            this.Edit.HeaderText = "";
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Text = "Details";
-            this.Edit.UseColumnTextForButtonValue = true;
-            this.Edit.Width = 50;
-            // 
             // RegistratorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(473, 411);
+            this.ClientSize = new System.Drawing.Size(473, 573);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "RegistratorForm";
             this.Text = "Registrator";

@@ -242,7 +242,7 @@ namespace Clinic.Interface.Registrator
             this.btnRegVisitsShow.Name = "btnRegVisitsShow";
             this.btnRegVisitsShow.Size = new System.Drawing.Size(128, 36);
             this.btnRegVisitsShow.TabIndex = 0;
-            this.btnRegVisitsShow.Text = "Show";
+            this.btnRegVisitsShow.Text = "Show Visits";
             this.btnRegVisitsShow.UseVisualStyleBackColor = true;
             this.btnRegVisitsShow.Click += new System.EventHandler(this.btnRegVisitsShow_Clicked);
             // 

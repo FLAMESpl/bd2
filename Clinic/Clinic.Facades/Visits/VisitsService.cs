@@ -73,6 +73,16 @@ namespace Clinic.Facades.Visits
                 return result.ToList();
             }
         }
+        public static List<Visit> GetInDate(DateTime day, Patient patient)
+        {
+            using (var db = DataContextFactory.Create(x => x.Include<Visit>(v => v.Patient).Include<Visit>(v => v.Doctor)))
+            {
+                var result = db.Visits.Where(v => day.Date == v.PlannedDate.Date);
+                result = result.Where(v => v.Patient.PESEL.Equals(patient.PESEL));
+
+                return result.ToList();
+            }
+        }
 
         public static List<Visit> GetInDateRange(DateTime firstDay, DateTime lastDay)
         {
