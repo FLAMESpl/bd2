@@ -42,5 +42,39 @@ namespace Clinic.Interface.Registrator
             labelledInputSurname.Input = String.Empty;
             labelledInputPESEL.Input = String.Empty;
         }
+
+        public bool isNameEmpty()
+        {
+            if (labelledInputName == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool isSurnameEmpty()
+        {
+            if (labelledInputSurname == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool isPeselEmpty()
+        {
+            if (labelledInputPESEL == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
