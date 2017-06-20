@@ -317,7 +317,7 @@ namespace Clinic.Interface.Registrator
                     Control[] PatientFiltersHandle = groupBoxPatient.Controls.Find("PatientFilters", true);
                     Roman = ((PatientFilters)PatientFiltersHandle[0]).GetPatient();
                     Doctor Andrzej = DoctorsService.GetAll().Find(doc => doc.GetFullName() == listBoxDoctors.Text);
-                    todayVisits = VisitsService.GetInDate(DateTime.Today, Roman).Where(v => v.Doctor == Andrzej);
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, Roman).Where(v => v.Doctor.Id == Andrzej.Id);
                     //todayVisits = VisitsService.GetInDate(DateTime.Now, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
                 }
                 else
