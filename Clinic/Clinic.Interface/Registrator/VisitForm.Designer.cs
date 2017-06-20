@@ -130,6 +130,7 @@ namespace Clinic.Interface.Registrator
             this.monthCalendar.MaxSelectionCount = 31;
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 2;
+            this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
             // 
             // dataGridViewDailyVisits
             // 

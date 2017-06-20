@@ -287,5 +287,124 @@ namespace Clinic.Interface.Registrator
         {
             triggerVisitsRefresh();
         }
+
+        private void refreshVisitsAtDay(DateTime startSelection)
+        {
+            bindingSourceDailyVisit.Clear();
+
+            DateTime rangeStart;
+            DateTime rangeEnd;
+            if (startSelection.Hour == 0)
+            {
+                rangeStart = startSelection.AddHours(START_WORKING_HOUR);
+                rangeEnd = startSelection.AddHours(END_WORKING_HOUR);
+            }
+            else // if startselection is equal to DateTime.Now, bc that has been called most recently
+            {
+                rangeStart = startSelection.AddHours(START_WORKING_HOUR) - startSelection.TimeOfDay;
+                rangeEnd = rangeStart.AddHours(END_WORKING_HOUR - START_WORKING_HOUR);
+            }
+
+            var timeSpan = rangeEnd - rangeStart;
+            var numberOfVisits = (int)timeSpan.TotalMinutes / MINUTES_PER_VISIT;
+            if (listBoxDoctors.SelectedItem != null)
+            {
+                System.Collections.Generic.IEnumerable<Clinic.Data.Visit> todayVisits;
+                Patient Roman = null;
+
+                if (patient == null)
+                {
+                    Control[] PatientFiltersHandle = groupBoxPatient.Controls.Find("PatientFilters", true);
+                    Roman = ((PatientFilters)PatientFiltersHandle[0]).GetPatient();
+                    Doctor Andrzej = DoctorsService.GetAll().Find(doc => doc.GetFullName() == listBoxDoctors.Text);
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, Roman).Where(v => v.Doctor == Andrzej);
+                    //todayVisits = VisitsService.GetInDate(DateTime.Now, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
+                }
+                else
+                {
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, patient);
+                }
+
+                var actualTime = rangeStart; //hours already added in the code above
+
+                for (int i = 0; i < numberOfVisits; i++)
+                {
+                    var visit = todayVisits.SingleOrDefault(v => v.PlannedDate == actualTime);
+                    DailyVisit dailyVisit = null;
+                    if (visit == null)
+                    {
+                        dailyVisit = new DailyVisit(actualTime);
+                    }
+                    else
+                    {
+                        dailyVisit = new DailyVisit(visit);
+                    }
+
+                    bindingSourceDailyVisit.Add(dailyVisit);
+                    actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
+                }
+
+                if (patient != null)
+                {
+                    MessageBox.Show("Visits refreshed for patient " + patient.Name + " " + patient.Surname + " PESEL: " + patient.PESEL);
+                }
+                else
+                {
+                    MessageBox.Show("Visits refreshed for patient " + Roman.Name + " " + Roman.Surname + " PESEL: " + Roman.PESEL);
+                }
+            }
+            else
+            {
+                System.Collections.Generic.List<Clinic.Data.Visit> todayVisits;
+                Patient Roman = null;
+
+                if (patient == null)
+                {
+                    Control[] PatientFiltersHandle = groupBoxPatient.Controls.Find("PatientFilters", true);
+                    Roman = ((PatientFilters)PatientFiltersHandle[0]).GetPatient();
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, Roman);
+                }
+                else
+                {
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, patient);
+                }
+
+                var actualTime = rangeStart;
+
+                for (int i = 0; i < numberOfVisits; i++)
+                {
+                    var visit = todayVisits.SingleOrDefault(v => v.PlannedDate == actualTime);
+                    DailyVisit dailyVisit = null;
+                    if (visit == null)
+                    {
+                        dailyVisit = new DailyVisit(actualTime);
+                    }
+                    else
+                    {
+                        dailyVisit = new DailyVisit(visit);
+                    }
+
+                    bindingSourceDailyVisit.Add(dailyVisit);
+                    actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
+                }
+
+                if (patient != null)
+                {
+                    MessageBox.Show("Visits refreshed for patient " + patient.Name + " " + patient.Surname + " PESEL: " + patient.PESEL);
+                }
+                else
+                {
+                    MessageBox.Show("Visits refreshed for patient " + Roman.Name + " " + Roman.Surname + " PESEL: " + Roman.PESEL);
+                }
+            }
+            
+
+            System.Windows.Forms.MessageBox.Show("Visits refreshed at " + startSelection.Day + "/" + startSelection.Month + "/" + startSelection.Year + "!");
+        }
+
+        private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            refreshVisitsAtDay(e.Start);
+        }
     }
 }
