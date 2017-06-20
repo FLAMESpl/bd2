@@ -226,37 +226,68 @@ namespace Clinic.Interface.Registrator
             RefreshVisits();
         }
 
-        private void RefreshVisits()
+        private void RefreshVisits(DateTime? startSelectionCalendar = null)
         {
             bindingSourceDailyVisit.Clear();
 
+            // get parameters numberofvisit, visitduration
             //var startTime = DateTime.Now.Date.AddHours(START_WORKING_HOUR);
             //var endTime = DateTime.Now.Date.AddHours(END_WORKING_HOUR);
             //var timeSpan = new DateTime( (END_WORKING_HOUR - START_WORKING_HOUR);
             var numberOfVisits = (END_WORKING_HOUR - START_WORKING_HOUR)*60 / MINUTES_PER_VISIT;
-            System.Collections.Generic.List<Clinic.Data.Visit> todayVisits;
-            Patient Roman = null;
 
-            if (patient == null)
+            System.Collections.Generic.IEnumerable<Clinic.Data.Visit> todayVisits = null;
+            Patient Roman = null;
+            Doctor Andrzej = null;//1
+            DateTime givenDate = DateTime.MinValue;//
+
+            if (startSelectionCalendar.HasValue)//
             {
-                Control [] PatientFiltersHandle = groupBoxPatient.Controls.Find("PatientFilters", true);
-                Roman = ((PatientFilters)PatientFiltersHandle[0]).GetPatient();
-                todayVisits = VisitsService.GetInDate(DateTime.Today, Roman);
+                givenDate = startSelectionCalendar.Value.AddHours(START_WORKING_HOUR); //2
             }
             else
             {
-                todayVisits = VisitsService.GetInDate(DateTime.Today, patient);
-            }            
+                givenDate = DateTime.Today.AddHours(START_WORKING_HOUR);
+            }
 
-            var actualTime = DateTime.Today.AddHours(START_WORKING_HOUR);
 
+            if (listBoxDoctors.SelectedItem != null)
+            {
+
+                Andrzej = DoctorsService.GetAll().Find(doc => doc.GetFullName() == listBoxDoctors.Text);//3
+                //which type of form are we in
+                if (patient == null) //we are in the search patient form
+                {
+                    Control[] PatientFiltersHandle = groupBoxPatient.Controls.Find("PatientFilters", true);
+                    Roman = ((PatientFilters)PatientFiltersHandle[0]).GetPatient();
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, Roman).Where(v => v.Doctor.Id == Andrzej.Id);
+                }
+                else //we are in the particular patient form
+                {
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, patient).Where(v => v.Doctor.Id == Andrzej.Id);
+                }
+            }
+            else
+            {
+                //TODO if doctor is not highlighted in the doctor box
+                //TODO delete refreshAtDay()
+                //TODO delete click and selection change events
+                //TODO add buttons cancel and delete functionality
+                //TODO think about refactoring doctor
+                if (patient != null)
+                {
+
+                }
+            }
+
+            // prepare dailyvisit data view
             for (int i = 0; i < numberOfVisits; i++)
             {
-                var visit = todayVisits.SingleOrDefault(v => v.PlannedDate == actualTime);
+                var visit = todayVisits.SingleOrDefault(v => v.PlannedDate == givenDate);
                 DailyVisit dailyVisit = null;
                 if (visit == null)
                 {
-                    dailyVisit = new DailyVisit(actualTime);
+                    dailyVisit = new DailyVisit(givenDate);
                 }
                 else
                 {
@@ -264,9 +295,10 @@ namespace Clinic.Interface.Registrator
                 }
 
                 bindingSourceDailyVisit.Add(dailyVisit);
-                actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
+                givenDate = givenDate.AddMinutes(MINUTES_PER_VISIT);
             }
 
+            // prompt user
             if (patient != null)
             {
                 MessageBox.Show("Visits refreshed for patient " + patient.Name + " " + patient.Surname + " PESEL: " + patient.PESEL);
@@ -316,8 +348,8 @@ namespace Clinic.Interface.Registrator
                 {
                     Control[] PatientFiltersHandle = groupBoxPatient.Controls.Find("PatientFilters", true);
                     Roman = ((PatientFilters)PatientFiltersHandle[0]).GetPatient();
-                    Doctor Andrzej = DoctorsService.GetAll().Find(doc => doc.GetFullName() == listBoxDoctors.Text);
-                    todayVisits = VisitsService.GetInDate(DateTime.Today, Roman).Where(v => v.Doctor.Id == Andrzej.Id);
+                    Doctor Andrzej = DoctorsService.GetAll().Find(doc => doc.GetFullName() == listBoxDoctors.Text); //1
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, Roman).Where(v => v.Doctor.Id == Andrzej.Id); //2
                     //todayVisits = VisitsService.GetInDate(DateTime.Now, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
                 }
                 else
@@ -325,7 +357,7 @@ namespace Clinic.Interface.Registrator
                     todayVisits = VisitsService.GetInDate(DateTime.Today, patient);
                 }
 
-                var actualTime = rangeStart; //hours already added in the code above
+                var actualTime = rangeStart; //hours already added in the code above //3
 
                 for (int i = 0; i < numberOfVisits; i++)
                 {
@@ -355,6 +387,7 @@ namespace Clinic.Interface.Registrator
             }
             else
             {
+                #region probably delete this
                 System.Collections.Generic.List<Clinic.Data.Visit> todayVisits;
                 Patient Roman = null;
 
@@ -396,6 +429,7 @@ namespace Clinic.Interface.Registrator
                 {
                     MessageBox.Show("Visits refreshed for patient " + Roman.Name + " " + Roman.Surname + " PESEL: " + Roman.PESEL);
                 }
+                #endregion
             }
             
 
