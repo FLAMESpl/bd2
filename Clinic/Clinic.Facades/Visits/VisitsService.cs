@@ -82,5 +82,14 @@ namespace Clinic.Facades.Visits
                 return result.ToList();
             }
         }
+
+        public static Visit GetByVisitId(long id)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                Visit result = (Visit) db.Visits.Where(v => v.Id == id).First();
+                return result;
+            }
+        }
     }
 }

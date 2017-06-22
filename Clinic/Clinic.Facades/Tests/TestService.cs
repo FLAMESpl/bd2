@@ -55,7 +55,7 @@ namespace Clinic.Facades.Tests
 
         public static List<LaboratoryTest> GetAllScheduled()
         {
-            using (var db = DataContextFactory.Create())
+            using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.LaboratoryTests)))
             {
                 var result = db.LaboratoryTests.Where(t => t.Status == TestStatus.Scheduled.ToCode());
                 return result.ToList();

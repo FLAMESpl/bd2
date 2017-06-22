@@ -21,7 +21,7 @@ namespace Clinic.Interface.LabManager
             InitializeComponent();
         }
 
-        private void ManagerForm_Load(object sender, EventArgs e)
+        private void RefreshList()
         {
             dataGridViewTests.DataSource = TestService.GetAllExecuted();
             dataGridViewTests.Columns["Id"].Visible = false;
@@ -31,11 +31,20 @@ namespace Clinic.Interface.LabManager
             dataGridViewTests.Columns["IdLabAssistant"].Visible = false;
             dataGridViewTests.Columns["IdLabManager"].Visible = false;
             dataGridViewTests.Columns["IdVisit"].Visible = false;
+            dataGridViewTests.Columns["Visit"].Visible = false;
+            dataGridViewTests.Columns["TestDictionary"].Visible = false;
+            dataGridViewTests.Columns["LabAssistant"].Visible = false;
+            dataGridViewTests.Refresh();
+        }
+
+        private void ManagerForm_Load(object sender, EventArgs e)
+        {
+            RefreshList();
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            dataGridViewTests.Refresh();
+            RefreshList();
         }
 
         private void buttonAcceptTest_Click(object sender, EventArgs e)
@@ -55,6 +64,7 @@ namespace Clinic.Interface.LabManager
                     test.ResolutionDate = DateTime.Now;
                     test.IdLabManager = ActiveUser.Id;
                     TestService.UpdateAsManager(test);
+                    RefreshList();
                 }
             }
         }

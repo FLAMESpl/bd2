@@ -42,15 +42,17 @@
             this.testDictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clinicDataSet = new Clinic.Interface.clinicDataSet();
             this.testDictionaryTableAdapter = new Clinic.Interface.clinicDataSetTableAdapters.TestDictionaryTableAdapter();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDictionaryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 6;
@@ -69,7 +71,7 @@
             // lblChooseInfo
             // 
             this.lblChooseInfo.AutoSize = true;
-            this.lblChooseInfo.Location = new System.Drawing.Point(14, 149);
+            this.lblChooseInfo.Location = new System.Drawing.Point(10, 149);
             this.lblChooseInfo.Name = "lblChooseInfo";
             this.lblChooseInfo.Size = new System.Drawing.Size(140, 13);
             this.lblChooseInfo.TabIndex = 3;
@@ -151,13 +153,21 @@
             // 
             this.testDictionaryTableAdapter.ClearBeforeFill = true;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(13, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(462, 134);
+            this.panel1.TabIndex = 8;
+            // 
             // DetailsDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(524, 446);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridTestDictionary);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDoctorAssignTest);
             this.Controls.Add(this.lblChooseInfo);
             this.Controls.Add(this.btnDoctorReturn);
@@ -169,6 +179,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDictionaryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +201,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Panel panel1;
     }
 }
