@@ -276,7 +276,23 @@ namespace Clinic.Interface.Registrator
                 //TODO think about refactoring doctor
                 if (patient != null)
                 {
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, patient);
+                }
+                else
+                {
+                    Control[] PatientFiltersHandle = groupBoxPatient.Controls.Find("PatientFilters", true);
+                    Roman = ((PatientFilters)PatientFiltersHandle[0]).GetPatient();
 
+                    todayVisits = VisitsService.GetInDate(DateTime.Today, Roman);
+
+                    //if (Roman.Name != null)
+                    //{
+                    //    todayVisits = todayVisits.Where(v => v.Patient.Name.Contains(Roman.Name));
+
+                    //    //var users = UsersService.Match(userFilters.GetUser());
+                    //    //sourceUsers.Clear();
+                    //    //sourceUsers.AddRange(users.Select(u => new UserView(u)));
+                    //}
                 }
             }
 

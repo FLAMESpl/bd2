@@ -62,6 +62,11 @@ namespace Clinic.Facades.Visits
             }
         }
 
+        public static void Match(Patient patient)
+        {
+
+        }
+
         public static List<Visit> GetInDate(DateTime day, long? doctorId = null)
         {
             using (var db = DataContextFactory.Create(x => x.Include<Visit>(v => v.Patient).Include<Visit>(v => v.Doctor)))
@@ -78,7 +83,9 @@ namespace Clinic.Facades.Visits
             using (var db = DataContextFactory.Create(x => x.Include<Visit>(v => v.Patient).Include<Visit>(v => v.Doctor)))
             {
                 var result = db.Visits.Where(v => day.Date == v.PlannedDate.Date);
-                result = result.Where(v => v.Patient.PESEL.Equals(patient.PESEL));
+                result = result.Where(v => v.Patient.PESEL.Contains(patient.PESEL));
+                result = result.Where(v => v.Patient.Name.Contains(patient.Name));
+                result = result.Where(v => v.Patient.Surname.Contains(patient.Surname));
 
                 return result.ToList();
             }
