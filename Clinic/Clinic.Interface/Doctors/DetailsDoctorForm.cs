@@ -97,10 +97,12 @@ namespace Clinic.Interface.Doctors
             foreach (DataGridViewRow row in selectedTests)
             {
                 LaboratoryTest newTest = new LaboratoryTest();
-                newTest.Code = row.Cells[0].ToString();
+                newTest.Code = row.Cells[0].Value.ToString();
                 newTest.DoctorNotes = "Zieloni pięćset";
                 newTest.ComissionDate = DateTime.Now;
                 newTest.Status = TestStatus.Scheduled.ToCode();
+                newTest.ManagerNotes = "Żółci tysiąc";
+                newTest.IdVisit = 10L;
                 TestService.Add(newTest);
                 testamountadded++;
             }
