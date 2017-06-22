@@ -33,6 +33,8 @@ namespace Clinic.Interface.Lab
             dataGridViewTests.Columns["IdLabManager"].Visible = false;
             dataGridViewTests.Columns["IdVisit"].Visible = false;
             dataGridViewTests.Columns["Code"].Visible = false;
+            dataGridViewTests.Columns["Visit"].Visible = false;
+            dataGridViewTests.Columns["TestDictionary"].Visible = false;
         }
 
         private void buttonInputResults_Click(object sender, EventArgs e)
