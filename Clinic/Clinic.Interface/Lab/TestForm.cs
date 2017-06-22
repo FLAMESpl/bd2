@@ -7,35 +7,34 @@ namespace Clinic.Interface.Lab
 {
     public partial class TestForm : ClinicForm
     {
-        private LaboratoryTest test;
+        public string returnedValue;
+        public bool testAccepted;
 
         public TestForm()
         {
-            InitializeComponent();
-        }
-
-        public TestForm(LaboratoryTest laboratoryTest)
-        {
-            test = laboratoryTest;
+            returnedValue = string.Empty;
             InitializeComponent();
         }
 
         private void buttonAcceptTest_Click(object sender, EventArgs e)
         {
-            test.Status = TestStatus.Approved.ToCode();
-            test.ManagerNotes = labelledTextBoxComment.Input;
+            returnedValue = labelledTextBoxComment.Input;
+            testAccepted = true;
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
             Close();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             Close();
         }
 
         private void buttonCancelTest_Click(object sender, EventArgs e)
         {
-            test.Status = TestStatus.CancelledByManager.ToCode();
-            test.ManagerNotes = labelledTextBoxComment.Input;
+            returnedValue = labelledTextBoxComment.Input;
+            testAccepted = false;
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
             Close();
         }
     }

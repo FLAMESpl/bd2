@@ -32,7 +32,6 @@ namespace Clinic.Interface.Lab
             dataGridViewTests.Columns["IdLabAssistant"].Visible = false;
             dataGridViewTests.Columns["IdLabManager"].Visible = false;
             dataGridViewTests.Columns["IdVisit"].Visible = false;
-            dataGridViewTests.Columns["Code"].Visible = false;
         }
 
         private void buttonInputResults_Click(object sender, EventArgs e)
@@ -50,6 +49,21 @@ namespace Clinic.Interface.Lab
                     TestService.UpdateAsAssistant(test);
                 }
             }
+        }
+
+        private void buttonCancelTest_Click(object sender, EventArgs e)
+        {
+            LaboratoryTest test = new LaboratoryTest();
+            test.Id = (long)dataGridViewTests.SelectedRows[0].Cells["Id"].Value;
+            test.ExecutionDate = DateTime.Now;
+            test.Status = TestStatus.CancelledByAssistant.ToCode();
+            test.IdLabAssistant = ActiveUser.Id;
+            TestService.UpdateAsAssistant(test);
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            dataGridViewTests.Refresh();
         }
     }
 }
