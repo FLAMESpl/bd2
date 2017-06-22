@@ -1,9 +1,11 @@
-﻿using Clinic.Facades.Visits;
+﻿using Clinic.Data;
+using Clinic.Facades.Tests;
+using Clinic.Facades.Visits;
 using Clinic.Interface.Common;
 using Clinic.Interface.Common.Helpers;
 using System;
 using System.Linq;
-
+using System.Windows.Forms;
 
 namespace Clinic.Interface.Doctors
 {
@@ -90,7 +92,26 @@ namespace Clinic.Interface.Doctors
 
         private void btnDoctorAssignLabTest(object sender, EventArgs e)
         {
-            System.Windows.Forms.MessageBox.Show("Ok");
+            DataGridViewSelectedRowCollection selectedTests = dataGridTestDictionary.SelectedRows;
+            int testamountadded = 0;
+            foreach (DataGridViewRow row in selectedTests)
+            {
+                LaboratoryTest newTest = new LaboratoryTest();
+                newTest.Code = row.Cells[0].ToString();
+                newTest.DoctorNotes = "Zieloni pięćset";
+                newTest.ComissionDate = DateTime.Now;
+                newTest.Status = TestStatus.Scheduled.ToCode();
+                TestService.Add(newTest);
+                testamountadded++;
+            }
+            MessageBox.Show("Added "+testamountadded+" tests.");
+        }
+
+        private void DetailsDoctorForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'clinicDataSet.TestDictionary' table. You can move, or remove it, as needed.
+            this.testDictionaryTableAdapter.Fill(this.clinicDataSet.TestDictionary);
+
         }
     }
 }
