@@ -58,7 +58,6 @@
             this.dataGridViewTests.Name = "dataGridViewTests";
             this.dataGridViewTests.Size = new System.Drawing.Size(599, 285);
             this.dataGridViewTests.TabIndex = 0;
-            this.dataGridViewTests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // PatientFirstName
             // 
@@ -129,6 +128,7 @@
             this.buttonRefresh.TabIndex = 6;
             this.buttonRefresh.Text = "Refresh Tests";
             this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
             // ManagerForm
             // 
@@ -140,6 +140,7 @@
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "ManagerForm";
             this.Text = "ManagerForm";
+            this.Load += new System.EventHandler(this.ManagerForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

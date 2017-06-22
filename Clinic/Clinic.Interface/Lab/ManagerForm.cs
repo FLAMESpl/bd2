@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Clinic.Interface.Common;
 using Clinic.Data;
 using Clinic.Interface.Lab;
+using Clinic.Facades.Tests;
 
 namespace Clinic.Interface.LabManager
 {
@@ -20,13 +21,19 @@ namespace Clinic.Interface.LabManager
             InitializeComponent();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void RefreshTable()
         {
-            /*LaboratoryTest test = new LaboratoryTest();
-            using (var form = new TestForm(test))
-            {
-                form.ShowDialog(ActiveUser);
-            }*/
+            var executed = TestService.GetAllScheduled();
+        }
+
+        private void ManagerForm_Load(object sender, EventArgs e)
+        {
+            RefreshTable();
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshTable();
         }
     }
 }

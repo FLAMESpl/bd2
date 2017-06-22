@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Clinic.Facades.Tests
 {
-    class TestService
+    public static class TestService
     {
         public static void Add(LaboratoryTest test)
         {
