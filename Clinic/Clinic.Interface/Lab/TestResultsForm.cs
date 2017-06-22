@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Clinic.Data;
+using Clinic.Interface.Common;
 
 namespace Clinic.Interface.Lab
 {
-    public partial class TestResultsForm : Form
+    public partial class TestResultsForm : ClinicForm
     {
         public string returnedValue;
 

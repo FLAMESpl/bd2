@@ -22,6 +22,11 @@ namespace Clinic.Interface.Lab
 
         private void AssistantForm_Load(object sender, EventArgs e)
         {
+            RefreshList();
+        }
+
+        private void RefreshList()
+        {
             dataGridViewTests.DataSource = TestService.GetAllScheduled();
             dataGridViewTests.Columns["Id"].Visible = false;
             dataGridViewTests.Columns["Result"].Visible = false;
@@ -32,9 +37,10 @@ namespace Clinic.Interface.Lab
             dataGridViewTests.Columns["IdLabAssistant"].Visible = false;
             dataGridViewTests.Columns["IdLabManager"].Visible = false;
             dataGridViewTests.Columns["IdVisit"].Visible = false;
-            dataGridViewTests.Columns["Code"].Visible = false;
             dataGridViewTests.Columns["Visit"].Visible = false;
             dataGridViewTests.Columns["TestDictionary"].Visible = false;
+            dataGridViewTests.Columns["LabAssistant"].Visible = false;
+            dataGridViewTests.Refresh();
         }
 
         private void buttonInputResults_Click(object sender, EventArgs e)
@@ -50,8 +56,24 @@ namespace Clinic.Interface.Lab
                     test.Status = TestStatus.Executed.ToCode();
                     test.IdLabAssistant = ActiveUser.Id;
                     TestService.UpdateAsAssistant(test);
+                    RefreshList();
                 }
             }
+        }
+
+        private void buttonCancelTest_Click(object sender, EventArgs e)
+        {
+            LaboratoryTest test = new LaboratoryTest();
+            test.Id = (long)dataGridViewTests.SelectedRows[0].Cells["Id"].Value;
+            test.ExecutionDate = DateTime.Now;
+            test.Status = TestStatus.CancelledByAssistant.ToCode();
+            test.IdLabAssistant = ActiveUser.Id;
+            TestService.UpdateAsAssistant(test);
+        }
+
+        private void buttonRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshList();
         }
     }
 }

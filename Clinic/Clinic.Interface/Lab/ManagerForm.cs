@@ -21,19 +21,52 @@ namespace Clinic.Interface.LabManager
             InitializeComponent();
         }
 
-        private void RefreshTable()
+        private void RefreshList()
         {
-            var executed = TestService.GetAllExecuted();
+            dataGridViewTests.DataSource = TestService.GetAllExecuted();
+            dataGridViewTests.Columns["Id"].Visible = false;
+            dataGridViewTests.Columns["ManagerNotes"].Visible = false;
+            dataGridViewTests.Columns["ResolutionDate"].Visible = false;
+            dataGridViewTests.Columns["Status"].Visible = false;
+            dataGridViewTests.Columns["IdLabAssistant"].Visible = false;
+            dataGridViewTests.Columns["IdLabManager"].Visible = false;
+            dataGridViewTests.Columns["IdVisit"].Visible = false;
+            dataGridViewTests.Columns["Visit"].Visible = false;
+            dataGridViewTests.Columns["TestDictionary"].Visible = false;
+            dataGridViewTests.Columns["LabAssistant"].Visible = false;
+            dataGridViewTests.Refresh();
         }
 
         private void ManagerForm_Load(object sender, EventArgs e)
         {
-            RefreshTable();
+            RefreshList();
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
-            RefreshTable();
+            RefreshList();
+        }
+
+        private void buttonAcceptTest_Click(object sender, EventArgs e)
+        {
+            using (var form = new TestForm())
+            {
+                
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LaboratoryTest test = new LaboratoryTest();
+                    test.Id = (long)dataGridViewTests.SelectedRows[0].Cells["Id"].Value;
+                    if (form.testAccepted)
+                        test.Status = TestStatus.Approved.ToCode();
+                    else
+                        test.Status = TestStatus.CancelledByManager.ToCode();
+                    test.ManagerNotes = form.returnedValue;
+                    test.ResolutionDate = DateTime.Now;
+                    test.IdLabManager = ActiveUser.Id;
+                    TestService.UpdateAsManager(test);
+                    RefreshList();
+                }
+            }
         }
     }
 }
