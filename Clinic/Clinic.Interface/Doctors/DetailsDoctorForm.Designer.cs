@@ -36,15 +36,15 @@
             this.btnDoctorFinalizeVisit = new System.Windows.Forms.Button();
             this.btnDoctorCancelVisit = new System.Windows.Forms.Button();
             this.dataGridTestDictionary = new System.Windows.Forms.DataGridView();
-            this.clinicDataSet = new Clinic.Interface.clinicDataSet();
-            this.testDictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.testDictionaryTableAdapter = new Clinic.Interface.clinicDataSetTableAdapters.TestDictionaryTableAdapter();
             this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testDictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clinicDataSet = new Clinic.Interface.clinicDataSet();
+            this.testDictionaryTableAdapter = new Clinic.Interface.clinicDataSetTableAdapters.TestDictionaryTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDictionaryBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -119,20 +119,6 @@
             this.dataGridTestDictionary.Size = new System.Drawing.Size(348, 150);
             this.dataGridTestDictionary.TabIndex = 7;
             // 
-            // clinicDataSet
-            // 
-            this.clinicDataSet.DataSetName = "clinicDataSet";
-            this.clinicDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // testDictionaryBindingSource
-            // 
-            this.testDictionaryBindingSource.DataMember = "TestDictionary";
-            this.testDictionaryBindingSource.DataSource = this.clinicDataSet;
-            // 
-            // testDictionaryTableAdapter
-            // 
-            this.testDictionaryTableAdapter.ClearBeforeFill = true;
-            // 
             // codeDataGridViewTextBoxColumn
             // 
             this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
@@ -151,6 +137,20 @@
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             // 
+            // testDictionaryBindingSource
+            // 
+            this.testDictionaryBindingSource.DataMember = "TestDictionary";
+            this.testDictionaryBindingSource.DataSource = this.clinicDataSet;
+            // 
+            // clinicDataSet
+            // 
+            this.clinicDataSet.DataSetName = "clinicDataSet";
+            this.clinicDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // testDictionaryTableAdapter
+            // 
+            this.testDictionaryTableAdapter.ClearBeforeFill = true;
+            // 
             // DetailsDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,8 +167,8 @@
             this.Text = "DetailsDoctorForm";
             this.Load += new System.EventHandler(this.DetailsDoctorForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDictionaryBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
