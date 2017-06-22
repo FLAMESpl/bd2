@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Clinic.Interface.Common;
 using Clinic.Data;
+using Clinic.Facades.Tests;
 
 namespace Clinic.Interface.Lab
 {
@@ -29,7 +22,7 @@ namespace Clinic.Interface.Lab
 
         private void buttonAcceptTest_Click(object sender, EventArgs e)
         {
-            test.Status = "ACCEPTED";
+            test.Status = TestStatus.Approved.ToCode();
             test.ManagerNotes = labelledTextBoxComment.Input;
             Close();
         }
@@ -41,7 +34,7 @@ namespace Clinic.Interface.Lab
 
         private void buttonCancelTest_Click(object sender, EventArgs e)
         {
-            test.Status = "CANCELLED";
+            test.Status = TestStatus.CancelledByManager.ToCode();
             test.ManagerNotes = labelledTextBoxComment.Input;
             Close();
         }

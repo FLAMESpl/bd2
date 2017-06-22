@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tests\TestService.cs" />
+    <Compile Include="Tests\TestStatus.cs" />
     <Compile Include="Users\AuthenticationResult.cs" />
     <Compile Include="Users\AuthenticationService.cs" />
     <Compile Include="Users\Role.cs" />

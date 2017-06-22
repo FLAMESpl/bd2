@@ -22,11 +22,11 @@ namespace Clinic.Interface.LabManager
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            LaboratoryTest test = new LaboratoryTest();
+            /*LaboratoryTest test = new LaboratoryTest();
             using (var form = new TestForm(test))
             {
                 form.ShowDialog(ActiveUser);
-            }
+            }*/
         }
     }
 }
