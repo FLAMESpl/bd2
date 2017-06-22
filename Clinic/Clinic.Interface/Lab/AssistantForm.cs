@@ -1,4 +1,6 @@
-﻿using Clinic.Facades.Tests;
+﻿using Clinic.Data;
+using Clinic.Facades.Tests;
+using Clinic.Interface.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Clinic.Interface.Lab
 {
-    public partial class AssistantForm : Form
+    public partial class AssistantForm : ClinicForm
     {
         public AssistantForm()
         {
@@ -31,6 +33,23 @@ namespace Clinic.Interface.Lab
             dataGridViewTests.Columns["IdLabManager"].Visible = false;
             dataGridViewTests.Columns["IdVisit"].Visible = false;
             dataGridViewTests.Columns["Code"].Visible = false;
+        }
+
+        private void buttonInputResults_Click(object sender, EventArgs e)
+        {
+            using (var form = new TestResultsForm())
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LaboratoryTest test = new LaboratoryTest();
+                    test.Id = (long)dataGridViewTests.SelectedRows[0].Cells["Id"].Value;
+                    test.Result = form.returnedValue;
+                    test.ExecutionDate = DateTime.Now;
+                    test.Status = TestStatus.Executed.ToCode();
+                    test.IdLabAssistant = ActiveUser.Id;
+                    TestService.UpdateAsAssistant(test);
+                }
+            }
         }
     }
 }

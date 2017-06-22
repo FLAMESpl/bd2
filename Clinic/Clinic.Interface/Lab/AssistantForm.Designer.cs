@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridViewTests = new System.Windows.Forms.DataGridView();
+            this.buttonInputResults = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).BeginInit();
             this.SuspendLayout();
             // 
@@ -37,17 +38,28 @@
             this.dataGridViewTests.AllowUserToAddRows = false;
             this.dataGridViewTests.AllowUserToDeleteRows = false;
             this.dataGridViewTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTests.Location = new System.Drawing.Point(11, 15);
+            this.dataGridViewTests.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewTests.Name = "dataGridViewTests";
             this.dataGridViewTests.ReadOnly = true;
             this.dataGridViewTests.Size = new System.Drawing.Size(515, 237);
             this.dataGridViewTests.TabIndex = 0;
             // 
+            // buttonInputResults
+            // 
+            this.buttonInputResults.Location = new System.Drawing.Point(130, 276);
+            this.buttonInputResults.Name = "buttonInputResults";
+            this.buttonInputResults.Size = new System.Drawing.Size(94, 29);
+            this.buttonInputResults.TabIndex = 1;
+            this.buttonInputResults.Text = "Input test results";
+            this.buttonInputResults.UseVisualStyleBackColor = true;
+            this.buttonInputResults.Click += new System.EventHandler(this.buttonInputResults_Click);
+            // 
             // AssistantForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 367);
+            this.ClientSize = new System.Drawing.Size(540, 323);
+            this.Controls.Add(this.buttonInputResults);
             this.Controls.Add(this.dataGridViewTests);
             this.Name = "AssistantForm";
             this.Text = "AssistantForm";
@@ -60,5 +72,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewTests;
+        private System.Windows.Forms.Button buttonInputResults;
     }
 }
