@@ -103,15 +103,20 @@ namespace Clinic.Interface.Doctors
             int testamountadded = 0;
             foreach (DataGridViewRow row in selectedTests)
             {
-                LaboratoryTest newTest = new LaboratoryTest();
-                newTest.Code = row.Cells[0].Value.ToString();
-                newTest.DoctorNotes = "Zieloni pięćset";
-                newTest.ComissionDate = DateTime.Now;
-                newTest.Status = TestStatus.Scheduled.ToCode();
-                newTest.ManagerNotes = "Żółci tysiąc";
-                newTest.IdVisit = 10L;
-                TestService.Add(newTest);
-                testamountadded++;
+                foreach (DataGridViewRow visit in SelectedVisits)
+                {
+                    LaboratoryTest newTest = new LaboratoryTest();
+                    newTest.Code = row.Cells[0].Value.ToString();
+                    newTest.DoctorNotes = "Zieloni pięćset";
+                    newTest.ComissionDate = DateTime.Now;
+                    newTest.Status = TestStatus.Scheduled.ToCode();
+                    newTest.ManagerNotes = "Żółci tysiąc";
+                    newTest.IdVisit = long.Parse(visit.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString());
+                    //newTest.Visit = VisitsService.GetByVisitId(newTest.IdVisit);
+                    //Console.WriteLine("Visit ID: "+newTest.IdVisit+", id through 'Visit' component: "+newTest.Visit.Id);
+                    TestService.Add(newTest);
+                    testamountadded++;
+                }
             }
             MessageBox.Show("Added "+testamountadded+" tests.");
         }
