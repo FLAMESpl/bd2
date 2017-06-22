@@ -128,5 +128,10 @@ namespace Clinic.Interface.Doctors
            //this.testDictionaryTableAdapter.Fill(this.clinicDataSet.TestDictionary);
 
         }
+
+        private void btnDetailsPhysicalTest_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(":)");
+        }
     }
 }
