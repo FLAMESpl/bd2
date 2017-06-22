@@ -109,7 +109,7 @@ namespace Clinic.Interface.Doctors
                 newTest.ComissionDate = DateTime.Now;
                 newTest.Status = TestStatus.Scheduled.ToCode();
                 newTest.ManagerNotes = "Żółci tysiąc";
-                newTest.IdVisit = 10L;
+                newTest.IdVisit = 1L;
                 TestService.Add(newTest);
                 testamountadded++;
             }

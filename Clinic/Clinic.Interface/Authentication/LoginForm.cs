@@ -3,6 +3,7 @@ using Clinic.Facades.Users;
 using Clinic.Interface.Admin;
 using Clinic.Interface.Common;
 using Clinic.Interface.Doctors;
+using Clinic.Interface.Lab;
 using Clinic.Interface.LabManager;
 using Clinic.Interface.Registrator;
 using System;
@@ -50,7 +51,7 @@ namespace Clinic.Interface.Authentication
                     form = new RegistratorForm();
                     break;
                 case Role.LabAssistant:
-                    //form = new AssistantForm();
+                    form = new AssistantForm();
                     break;
                 case Role.LabManager:
                     form = new ManagerForm();
