@@ -23,7 +23,7 @@ namespace Clinic.Interface.LabManager
 
         private void RefreshTable()
         {
-            var executed = TestService.GetAllScheduled();
+            var executed = TestService.GetAllExecuted();
         }
 
         private void ManagerForm_Load(object sender, EventArgs e)

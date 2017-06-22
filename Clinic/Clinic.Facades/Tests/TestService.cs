@@ -25,7 +25,7 @@ namespace Clinic.Facades.Tests
             }
         }
 
-        public static void Update(LaboratoryTest test)
+        public static void UpdateAsAssistant(LaboratoryTest test)
         {
             using (var db = DataContextFactory.Create())
             {
@@ -33,10 +33,21 @@ namespace Clinic.Facades.Tests
 
                 oldTest.ExecutionDate = test.ExecutionDate;
                 oldTest.IdLabAssistant = test.IdLabAssistant;
+                oldTest.Result = test.Result;
+                oldTest.Status = test.Status;
+                db.SubmitChanges();
+            }
+        }
+
+        public static void UpdateAsManager(LaboratoryTest test)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var oldTest = db.LaboratoryTests.Where(p => p.Id == test.Id).Single();
+
+                oldTest.ResolutionDate = test.ResolutionDate;
                 oldTest.IdLabManager = test.IdLabManager;
                 oldTest.ManagerNotes = test.ManagerNotes;
-                oldTest.ResolutionDate = test.ResolutionDate;
-                oldTest.Result = test.Result;
                 oldTest.Status = test.Status;
                 db.SubmitChanges();
             }

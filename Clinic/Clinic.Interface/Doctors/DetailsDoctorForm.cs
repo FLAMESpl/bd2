@@ -116,7 +116,7 @@ namespace Clinic.Interface.Doctors
                     //Console.WriteLine("Visit ID: "+newTest.IdVisit+", id through 'Visit' component: "+newTest.Visit.Id);
                     TestService.Add(newTest);
                     testamountadded++;
-                }
+                
             }
             MessageBox.Show("Added "+testamountadded+" tests.");
         }
