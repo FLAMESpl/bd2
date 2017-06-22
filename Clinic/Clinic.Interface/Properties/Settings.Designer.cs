@@ -26,7 +26,7 @@ namespace Clinic.Interface.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NYX\\MSSQL2K14;Initial Catalog=clinic;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=clinic;Integrated Security=True")]
         public string clinicConnectionString {
             get {
                 return ((string)(this["clinicConnectionString"]));

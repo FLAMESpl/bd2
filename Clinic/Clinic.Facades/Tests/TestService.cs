@@ -7,6 +7,15 @@ namespace Clinic.Facades.Tests
 {
     public static class TestService
     {
+        public static List<TestDictionary> GetDictionary()
+        {
+            using (var db = DataContextFactory.Create(x => x.Include<LaboratoryTest>(y => y.TestDictionary)))
+            {
+                var results = db.TestDictionaries;
+                return results.ToList();
+            }
+        }
+
         public static void Add(LaboratoryTest test)
         {
             using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.LaboratoryTests)))
