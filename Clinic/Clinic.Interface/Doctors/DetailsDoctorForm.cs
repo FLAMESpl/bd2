@@ -16,6 +16,8 @@ namespace Clinic.Interface.Doctors
 
         public DetailsDoctorForm(System.Windows.Forms.DataGridView datGridVisits)
         {
+            //dataGridTestDictionary.c = TestService.GetDictionary();
+
             InitializeComponent();
             SelectedVisits = datGridVisits.SelectedRows;
             StatusColumnIndex = datGridVisits.Columns["statusDataGridViewTextBoxColumn"].Index;
@@ -25,13 +27,18 @@ namespace Clinic.Interface.Doctors
             //    this.DatGridDetailsSelectedRows.Rows.Insert(gridindex, SelectedVisits);
             //    gridindex++;
             //}
+
+            var testyZeSlownika = TestService.GetDictionary(); //UsersService.Match(userFilters.GetUser());
+            //testDictionaryBindingSource.Clear();
+            testDictionaryBindingSource.DataSource = testyZeSlownika;
+            //testDictionaryBindingSource.AddRange(testyZeSlownika.Select(x => x));
         }
 
         void NoRowsSelectedMessage()
         {
             System.Windows.Forms.MessageBox.Show(
                 this,
-                "You have not selected any rows. To select them, go back to the previous window and select rows on the left panel (the one with the trangular arrow).",
+                "You have not selected any rows. To select them, go back to the previous window and select rows on the left panel (the one with the triangular arrow).",
                 "No rows selected.",
                 System.Windows.Forms.MessageBoxButtons.OK,
                 System.Windows.Forms.MessageBoxIcon.Warning
@@ -112,7 +119,7 @@ namespace Clinic.Interface.Doctors
         private void DetailsDoctorForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'clinicDataSet.TestDictionary' table. You can move, or remove it, as needed.
-            this.testDictionaryTableAdapter.Fill(this.clinicDataSet.TestDictionary);
+           //this.testDictionaryTableAdapter.Fill(this.clinicDataSet.TestDictionary);
 
         }
     }
