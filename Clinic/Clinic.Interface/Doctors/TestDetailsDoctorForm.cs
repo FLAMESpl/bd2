@@ -28,6 +28,8 @@ namespace Clinic.Interface.Doctors
             ScheduledTestsBindingSource.AddRange(TestService.GetTestsOfStatus(TestStatus.Scheduled));
             ApprovedTestsBindingSource.Clear();
             ApprovedTestsBindingSource.AddRange(TestService.GetTestsOfStatus(TestStatus.Approved));
+            PhysicalTestBindingSource.Clear();
+            PhysicalTestBindingSource.AddRange(TestService.GetPhysicalTests());
         }
 
         private void btnTestDetailsDoctorReturn_Click(object sender, EventArgs e)
@@ -42,14 +44,25 @@ namespace Clinic.Interface.Doctors
 
             foreach (DataGridViewRow row in SelectedTests)
             {
-                LaboratoryTest newTest = new LaboratoryTest();
-                newTest.Code = row.Cells[0].Value.ToString();
-                newTest.DoctorNotes = "Zieloni pięćset";
-                newTest.ComissionDate = DateTime.Now;
-                newTest.Status = TestStatus.Scheduled.ToCode();
-                newTest.ManagerNotes = "Żółci tysiąc";
-                newTest.IdVisit = long.Parse(Row.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString());
-                TestService.Add(newTest);
+                if (row.Cells["typeDataGridViewTextBoxColumn"].Value.ToString() == "L")
+                {
+                    LaboratoryTest newTest = new LaboratoryTest();
+                    newTest.Code = row.Cells[0].Value.ToString();
+                    newTest.DoctorNotes = "Zieloni pięćset";
+                    newTest.ComissionDate = DateTime.Now;
+                    newTest.Status = TestStatus.Scheduled.ToCode();
+                    newTest.ManagerNotes = "Żółci tysiąc";
+                    newTest.IdVisit = long.Parse(Row.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString());
+                    TestService.Add(newTest);
+                }
+                else
+                {
+                    PhysicalTest newTest = new PhysicalTest();
+                    newTest.Code = row.Cells[0].Value.ToString();
+                    newTest.Result = "Empty";
+                    newTest.IdVisit = long.Parse(Row.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString());
+                    TestService.Add(newTest);
+                }
                 testamountadded++;
             }
 
@@ -85,7 +98,18 @@ namespace Clinic.Interface.Doctors
             ScheduledTestsBindingSource.AddRange(TestService.GetTestsOfStatus(TestStatus.Scheduled));
             ApprovedTestsBindingSource.Clear();
             ApprovedTestsBindingSource.AddRange(TestService.GetTestsOfStatus(TestStatus.Approved));
+            PhysicalTestBindingSource.Clear();
+            PhysicalTestBindingSource.AddRange(TestService.GetPhysicalTests());
             MessageBox.Show("All data refreshed!");
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (true)
+            {
+
+            }
+            MessageBox.Show(":P");
         }
     }
 }

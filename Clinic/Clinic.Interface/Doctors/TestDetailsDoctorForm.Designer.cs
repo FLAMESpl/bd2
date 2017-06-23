@@ -32,19 +32,11 @@
             this.TestDictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ScheduledTestsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ApprovedTestsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.PhysicalTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnTestDetailsDoctorRefresh = new System.Windows.Forms.Button();
             this.tabScheduledTests = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridViewScheduled = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridViewExecutedTests = new System.Windows.Forms.DataGridView();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridTestDictionary = new System.Windows.Forms.DataGridView();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDoctorAssignTest = new System.Windows.Forms.Button();
-            this.btnTestDetailsDoctorReturn = new System.Windows.Forms.Button();
             this.codeDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorNotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.comissionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,6 +52,8 @@
             this.labAssistantDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.visitDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testDictionaryDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridViewExecutedTests = new System.Windows.Forms.DataGridView();
             this.codeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.doctorNotesDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,15 +69,34 @@
             this.labAssistantDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.visitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testDictionaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnTestDetailsDoctorRefresh = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridTestDictionary = new System.Windows.Forms.DataGridView();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDoctorAssignTest = new System.Windows.Forms.Button();
+            this.btnTestDetailsDoctorReturn = new System.Windows.Forms.Button();
+            this.codeDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditPhysicalTest = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idVisitDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visitDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testDictionaryDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.TestDictionaryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduledTestsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovedTestsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhysicalTestBindingSource)).BeginInit();
             this.tabScheduledTests.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScheduled)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExecutedTests)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).BeginInit();
@@ -101,10 +114,25 @@
             // 
             this.ApprovedTestsBindingSource.DataSource = typeof(Clinic.Data.LaboratoryTest);
             // 
+            // PhysicalTestBindingSource
+            // 
+            this.PhysicalTestBindingSource.DataSource = typeof(Clinic.Data.PhysicalTest);
+            // 
+            // btnTestDetailsDoctorRefresh
+            // 
+            this.btnTestDetailsDoctorRefresh.Location = new System.Drawing.Point(474, 457);
+            this.btnTestDetailsDoctorRefresh.Name = "btnTestDetailsDoctorRefresh";
+            this.btnTestDetailsDoctorRefresh.Size = new System.Drawing.Size(168, 29);
+            this.btnTestDetailsDoctorRefresh.TabIndex = 16;
+            this.btnTestDetailsDoctorRefresh.Text = "Refresh all data in window";
+            this.btnTestDetailsDoctorRefresh.UseVisualStyleBackColor = true;
+            this.btnTestDetailsDoctorRefresh.Click += new System.EventHandler(this.btnTestDetailsDoctorRefresh_Click);
+            // 
             // tabScheduledTests
             // 
             this.tabScheduledTests.Controls.Add(this.tabPage1);
             this.tabScheduledTests.Controls.Add(this.tabPage2);
+            this.tabScheduledTests.Controls.Add(this.tabPage3);
             this.tabScheduledTests.Location = new System.Drawing.Point(12, 12);
             this.tabScheduledTests.Name = "tabScheduledTests";
             this.tabScheduledTests.SelectedIndex = 0;
@@ -124,6 +152,8 @@
             // 
             // dataGridViewScheduled
             // 
+            this.dataGridViewScheduled.AllowUserToAddRows = false;
+            this.dataGridViewScheduled.AllowUserToDeleteRows = false;
             this.dataGridViewScheduled.AutoGenerateColumns = false;
             this.dataGridViewScheduled.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewScheduled.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -148,118 +178,6 @@
             this.dataGridViewScheduled.Name = "dataGridViewScheduled";
             this.dataGridViewScheduled.Size = new System.Drawing.Size(857, 194);
             this.dataGridViewScheduled.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dataGridViewExecutedTests);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(863, 200);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Finished tests";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewExecutedTests
-            // 
-            this.dataGridViewExecutedTests.AutoGenerateColumns = false;
-            this.dataGridViewExecutedTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewExecutedTests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codeDataGridViewTextBoxColumn1,
-            this.doctorNotesDataGridViewTextBoxColumn1,
-            this.idDataGridViewTextBoxColumn,
-            this.comissionDateDataGridViewTextBoxColumn1,
-            this.resultDataGridViewTextBoxColumn,
-            this.resolutionDateDataGridViewTextBoxColumn1,
-            this.managerNotesDataGridViewTextBoxColumn1,
-            this.executionDateDataGridViewTextBoxColumn1,
-            this.statusDataGridViewTextBoxColumn1,
-            this.idVisitDataGridViewTextBoxColumn,
-            this.idLabManagerDataGridViewTextBoxColumn1,
-            this.idLabAssistantDataGridViewTextBoxColumn1,
-            this.labAssistantDataGridViewTextBoxColumn1,
-            this.visitDataGridViewTextBoxColumn,
-            this.testDictionaryDataGridViewTextBoxColumn});
-            this.dataGridViewExecutedTests.DataSource = this.ApprovedTestsBindingSource;
-            this.dataGridViewExecutedTests.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewExecutedTests.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewExecutedTests.Name = "dataGridViewExecutedTests";
-            this.dataGridViewExecutedTests.Size = new System.Drawing.Size(857, 194);
-            this.dataGridViewExecutedTests.TabIndex = 0;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.groupBox1);
-            this.groupBox2.Controls.Add(this.btnDoctorAssignTest);
-            this.groupBox2.Location = new System.Drawing.Point(15, 225);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(417, 306);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Assign new tests";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dataGridTestDictionary);
-            this.groupBox1.Location = new System.Drawing.Point(6, 19);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(404, 237);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Assign more tests:";
-            // 
-            // dataGridTestDictionary
-            // 
-            this.dataGridTestDictionary.AutoGenerateColumns = false;
-            this.dataGridTestDictionary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridTestDictionary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codeDataGridViewTextBoxColumn,
-            this.typeDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn});
-            this.dataGridTestDictionary.DataSource = this.TestDictionaryBindingSource;
-            this.dataGridTestDictionary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridTestDictionary.Location = new System.Drawing.Point(3, 16);
-            this.dataGridTestDictionary.Name = "dataGridTestDictionary";
-            this.dataGridTestDictionary.Size = new System.Drawing.Size(398, 218);
-            this.dataGridTestDictionary.TabIndex = 8;
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // btnDoctorAssignTest
-            // 
-            this.btnDoctorAssignTest.Location = new System.Drawing.Point(9, 267);
-            this.btnDoctorAssignTest.Name = "btnDoctorAssignTest";
-            this.btnDoctorAssignTest.Size = new System.Drawing.Size(128, 32);
-            this.btnDoctorAssignTest.TabIndex = 9;
-            this.btnDoctorAssignTest.Text = "Assign lab test to Visit(s)";
-            this.btnDoctorAssignTest.UseVisualStyleBackColor = true;
-            this.btnDoctorAssignTest.Click += new System.EventHandler(this.btnDoctorAssignTest_Click);
-            // 
-            // btnTestDetailsDoctorReturn
-            // 
-            this.btnTestDetailsDoctorReturn.Location = new System.Drawing.Point(474, 492);
-            this.btnTestDetailsDoctorReturn.Name = "btnTestDetailsDoctorReturn";
-            this.btnTestDetailsDoctorReturn.Size = new System.Drawing.Size(168, 32);
-            this.btnTestDetailsDoctorReturn.TabIndex = 10;
-            this.btnTestDetailsDoctorReturn.Text = "Go back to Visit details...";
-            this.btnTestDetailsDoctorReturn.UseVisualStyleBackColor = true;
-            this.btnTestDetailsDoctorReturn.Click += new System.EventHandler(this.btnTestDetailsDoctorReturn_Click);
             // 
             // codeDataGridViewTextBoxColumn2
             // 
@@ -363,6 +281,46 @@
             this.testDictionaryDataGridViewTextBoxColumn1.Name = "testDictionaryDataGridViewTextBoxColumn1";
             this.testDictionaryDataGridViewTextBoxColumn1.Visible = false;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridViewExecutedTests);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(863, 200);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Finished tests";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewExecutedTests
+            // 
+            this.dataGridViewExecutedTests.AllowUserToAddRows = false;
+            this.dataGridViewExecutedTests.AllowUserToDeleteRows = false;
+            this.dataGridViewExecutedTests.AutoGenerateColumns = false;
+            this.dataGridViewExecutedTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewExecutedTests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codeDataGridViewTextBoxColumn1,
+            this.doctorNotesDataGridViewTextBoxColumn1,
+            this.idDataGridViewTextBoxColumn,
+            this.comissionDateDataGridViewTextBoxColumn1,
+            this.resultDataGridViewTextBoxColumn,
+            this.resolutionDateDataGridViewTextBoxColumn1,
+            this.managerNotesDataGridViewTextBoxColumn1,
+            this.executionDateDataGridViewTextBoxColumn1,
+            this.statusDataGridViewTextBoxColumn1,
+            this.idVisitDataGridViewTextBoxColumn,
+            this.idLabManagerDataGridViewTextBoxColumn1,
+            this.idLabAssistantDataGridViewTextBoxColumn1,
+            this.labAssistantDataGridViewTextBoxColumn1,
+            this.visitDataGridViewTextBoxColumn,
+            this.testDictionaryDataGridViewTextBoxColumn});
+            this.dataGridViewExecutedTests.DataSource = this.ApprovedTestsBindingSource;
+            this.dataGridViewExecutedTests.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewExecutedTests.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewExecutedTests.Name = "dataGridViewExecutedTests";
+            this.dataGridViewExecutedTests.Size = new System.Drawing.Size(857, 194);
+            this.dataGridViewExecutedTests.TabIndex = 0;
+            // 
             // codeDataGridViewTextBoxColumn1
             // 
             this.codeDataGridViewTextBoxColumn1.DataPropertyName = "Code";
@@ -461,15 +419,165 @@
             this.testDictionaryDataGridViewTextBoxColumn.Name = "testDictionaryDataGridViewTextBoxColumn";
             this.testDictionaryDataGridViewTextBoxColumn.Visible = false;
             // 
-            // btnTestDetailsDoctorRefresh
+            // tabPage3
             // 
-            this.btnTestDetailsDoctorRefresh.Location = new System.Drawing.Point(474, 457);
-            this.btnTestDetailsDoctorRefresh.Name = "btnTestDetailsDoctorRefresh";
-            this.btnTestDetailsDoctorRefresh.Size = new System.Drawing.Size(168, 29);
-            this.btnTestDetailsDoctorRefresh.TabIndex = 16;
-            this.btnTestDetailsDoctorRefresh.Text = "Refresh all data in window";
-            this.btnTestDetailsDoctorRefresh.UseVisualStyleBackColor = true;
-            this.btnTestDetailsDoctorRefresh.Click += new System.EventHandler(this.btnTestDetailsDoctorRefresh_Click);
+            this.tabPage3.Controls.Add(this.dataGridView1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(863, 200);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Physical tests";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codeDataGridViewTextBoxColumn3,
+            this.resultDataGridViewTextBoxColumn2,
+            this.btnEditPhysicalTest,
+            this.idDataGridViewTextBoxColumn2,
+            this.idVisitDataGridViewTextBoxColumn2,
+            this.visitDataGridViewTextBoxColumn2,
+            this.testDictionaryDataGridViewTextBoxColumn2});
+            this.dataGridView1.DataSource = this.PhysicalTestBindingSource;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(863, 200);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Controls.Add(this.btnDoctorAssignTest);
+            this.groupBox2.Location = new System.Drawing.Point(15, 225);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(417, 306);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Assign new tests";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dataGridTestDictionary);
+            this.groupBox1.Location = new System.Drawing.Point(6, 19);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(404, 237);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Assign more tests:";
+            // 
+            // dataGridTestDictionary
+            // 
+            this.dataGridTestDictionary.AllowUserToAddRows = false;
+            this.dataGridTestDictionary.AllowUserToDeleteRows = false;
+            this.dataGridTestDictionary.AutoGenerateColumns = false;
+            this.dataGridTestDictionary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridTestDictionary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codeDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn});
+            this.dataGridTestDictionary.DataSource = this.TestDictionaryBindingSource;
+            this.dataGridTestDictionary.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridTestDictionary.Location = new System.Drawing.Point(3, 16);
+            this.dataGridTestDictionary.Name = "dataGridTestDictionary";
+            this.dataGridTestDictionary.Size = new System.Drawing.Size(398, 218);
+            this.dataGridTestDictionary.TabIndex = 8;
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // btnDoctorAssignTest
+            // 
+            this.btnDoctorAssignTest.Location = new System.Drawing.Point(9, 267);
+            this.btnDoctorAssignTest.Name = "btnDoctorAssignTest";
+            this.btnDoctorAssignTest.Size = new System.Drawing.Size(128, 32);
+            this.btnDoctorAssignTest.TabIndex = 9;
+            this.btnDoctorAssignTest.Text = "Assign lab test to Visit(s)";
+            this.btnDoctorAssignTest.UseVisualStyleBackColor = true;
+            this.btnDoctorAssignTest.Click += new System.EventHandler(this.btnDoctorAssignTest_Click);
+            // 
+            // btnTestDetailsDoctorReturn
+            // 
+            this.btnTestDetailsDoctorReturn.Location = new System.Drawing.Point(474, 492);
+            this.btnTestDetailsDoctorReturn.Name = "btnTestDetailsDoctorReturn";
+            this.btnTestDetailsDoctorReturn.Size = new System.Drawing.Size(168, 32);
+            this.btnTestDetailsDoctorReturn.TabIndex = 10;
+            this.btnTestDetailsDoctorReturn.Text = "Go back to Visit details...";
+            this.btnTestDetailsDoctorReturn.UseVisualStyleBackColor = true;
+            this.btnTestDetailsDoctorReturn.Click += new System.EventHandler(this.btnTestDetailsDoctorReturn_Click);
+            // 
+            // codeDataGridViewTextBoxColumn3
+            // 
+            this.codeDataGridViewTextBoxColumn3.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn3.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn3.Name = "codeDataGridViewTextBoxColumn3";
+            // 
+            // resultDataGridViewTextBoxColumn2
+            // 
+            this.resultDataGridViewTextBoxColumn2.DataPropertyName = "Result";
+            this.resultDataGridViewTextBoxColumn2.HeaderText = "Result";
+            this.resultDataGridViewTextBoxColumn2.Name = "resultDataGridViewTextBoxColumn2";
+            // 
+            // btnEditPhysicalTest
+            // 
+            this.btnEditPhysicalTest.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.btnEditPhysicalTest.HeaderText = "Actions";
+            this.btnEditPhysicalTest.MinimumWidth = 150;
+            this.btnEditPhysicalTest.Name = "btnEditPhysicalTest";
+            this.btnEditPhysicalTest.ReadOnly = true;
+            this.btnEditPhysicalTest.Text = "Show and Edit Result ->";
+            this.btnEditPhysicalTest.ToolTipText = "Click to edit the physical test";
+            this.btnEditPhysicalTest.UseColumnTextForButtonValue = true;
+            this.btnEditPhysicalTest.Width = 150;
+            // 
+            // idDataGridViewTextBoxColumn2
+            // 
+            this.idDataGridViewTextBoxColumn2.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn2.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
+            this.idDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // idVisitDataGridViewTextBoxColumn2
+            // 
+            this.idVisitDataGridViewTextBoxColumn2.DataPropertyName = "IdVisit";
+            this.idVisitDataGridViewTextBoxColumn2.HeaderText = "IdVisit";
+            this.idVisitDataGridViewTextBoxColumn2.Name = "idVisitDataGridViewTextBoxColumn2";
+            this.idVisitDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // visitDataGridViewTextBoxColumn2
+            // 
+            this.visitDataGridViewTextBoxColumn2.DataPropertyName = "Visit";
+            this.visitDataGridViewTextBoxColumn2.HeaderText = "Visit";
+            this.visitDataGridViewTextBoxColumn2.Name = "visitDataGridViewTextBoxColumn2";
+            this.visitDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // testDictionaryDataGridViewTextBoxColumn2
+            // 
+            this.testDictionaryDataGridViewTextBoxColumn2.DataPropertyName = "TestDictionary";
+            this.testDictionaryDataGridViewTextBoxColumn2.HeaderText = "TestDictionary";
+            this.testDictionaryDataGridViewTextBoxColumn2.Name = "testDictionaryDataGridViewTextBoxColumn2";
+            this.testDictionaryDataGridViewTextBoxColumn2.Visible = false;
             // 
             // TestDetailsDoctorForm
             // 
@@ -485,11 +593,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.TestDictionaryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduledTestsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovedTestsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PhysicalTestBindingSource)).EndInit();
             this.tabScheduledTests.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScheduled)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewExecutedTests)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).EndInit();
@@ -546,5 +657,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn visitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn testDictionaryDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnTestDetailsDoctorRefresh;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource PhysicalTestBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEditPhysicalTest;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idVisitDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visitDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testDictionaryDataGridViewTextBoxColumn2;
     }
 }

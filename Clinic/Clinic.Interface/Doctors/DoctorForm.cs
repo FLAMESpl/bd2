@@ -81,7 +81,11 @@ namespace Clinic.Interface.Doctors
                 sourceDailyVisists.Clear();
 
                 DateTime roundedNow = new DateTime((DateTime.Now.Ticks / TimeSpan.FromMinutes(15).Ticks) * TimeSpan.FromMinutes(15).Ticks);
-                FillVisitsForScheduling(doctorId, roundedNow, 10);
+                long amountUntilWorkEnd = (currently3.Ticks - roundedNow.Ticks) / TimeSpan.FromMinutes(15).Ticks;
+
+                if (amountUntilWorkEnd > 10) amountUntilWorkEnd = 10L;
+
+                FillVisitsForScheduling(doctorId, roundedNow, Convert.ToInt32(amountUntilWorkEnd));
                 System.Windows.Forms.MessageBox.Show("Visits refreshed (this moment)!");
                 monthCalendar1.SelectionStart = DateTime.Today;
             }
