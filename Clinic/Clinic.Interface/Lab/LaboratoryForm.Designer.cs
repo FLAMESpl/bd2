@@ -29,46 +29,37 @@
         private void InitializeComponent()
         {
             this.dataGridViewTests = new System.Windows.Forms.DataGridView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonAcceptTest = new System.Windows.Forms.Button();
+            this.buttonAddTests = new System.Windows.Forms.Button();
             this.buttonRefresh = new System.Windows.Forms.Button();
+            this.buttonAcceptTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewTests
             // 
             this.dataGridViewTests.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTests.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewTests.Location = new System.Drawing.Point(12, 38);
             this.dataGridViewTests.MultiSelect = false;
             this.dataGridViewTests.Name = "dataGridViewTests";
             this.dataGridViewTests.ReadOnly = true;
             this.dataGridViewTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTests.Size = new System.Drawing.Size(599, 285);
-            this.dataGridViewTests.TabIndex = 0;
+            this.dataGridViewTests.TabIndex = 9;
             // 
-            // flowLayoutPanel1
+            // buttonAddTests
             // 
-            this.flowLayoutPanel1.Controls.Add(this.dataGridViewTests);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(602, 288);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // buttonAcceptTest
-            // 
-            this.buttonAcceptTest.Location = new System.Drawing.Point(99, 322);
-            this.buttonAcceptTest.Name = "buttonAcceptTest";
-            this.buttonAcceptTest.Size = new System.Drawing.Size(140, 23);
-            this.buttonAcceptTest.TabIndex = 5;
-            this.buttonAcceptTest.Text = "Accept/Cancel Test";
-            this.buttonAcceptTest.UseVisualStyleBackColor = true;
-            this.buttonAcceptTest.Click += new System.EventHandler(this.buttonAcceptTest_Click);
+            this.buttonAddTests.Location = new System.Drawing.Point(471, 10);
+            this.buttonAddTests.Name = "buttonAddTests";
+            this.buttonAddTests.Size = new System.Drawing.Size(140, 22);
+            this.buttonAddTests.TabIndex = 8;
+            this.buttonAddTests.Text = "Add tests to dictionary";
+            this.buttonAddTests.UseVisualStyleBackColor = true;
+            this.buttonAddTests.Click += new System.EventHandler(this.buttonAddTests_Click);
             // 
             // buttonRefresh
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(354, 322);
+            this.buttonRefresh.Location = new System.Drawing.Point(374, 340);
             this.buttonRefresh.Name = "buttonRefresh";
             this.buttonRefresh.Size = new System.Drawing.Size(110, 23);
             this.buttonRefresh.TabIndex = 7;
@@ -76,31 +67,40 @@
             this.buttonRefresh.UseVisualStyleBackColor = true;
             this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
-            // ManagerForm
+            // buttonAcceptTest
+            // 
+            this.buttonAcceptTest.Location = new System.Drawing.Point(104, 340);
+            this.buttonAcceptTest.Name = "buttonAcceptTest";
+            this.buttonAcceptTest.Size = new System.Drawing.Size(140, 23);
+            this.buttonAcceptTest.TabIndex = 5;
+            this.buttonAcceptTest.Text = "Accept/Cancel Test";
+            this.buttonAcceptTest.UseVisualStyleBackColor = true;
+            this.buttonAcceptTest.Click += new System.EventHandler(this.buttonAcceptTest_Click);
+            // 
+            // LaboratoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(629, 388);
+            this.Controls.Add(this.dataGridViewTests);
+            this.Controls.Add(this.buttonAddTests);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.buttonAcceptTest);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Name = "ManagerForm";
-            this.Text = "ManagerForm";
+            this.Name = "LaboratoryForm";
+            this.Text = "Laboratory";
             this.Load += new System.EventHandler(this.LaboratoryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridViewTests;
         private System.Windows.Forms.DataGridViewTextBoxColumn AssignmentDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommDate;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button buttonAcceptTest;
         private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.Button buttonAddTests;
+        private System.Windows.Forms.DataGridView dataGridViewTests;
     }
 }

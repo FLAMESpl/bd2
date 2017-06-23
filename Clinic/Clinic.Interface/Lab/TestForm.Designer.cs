@@ -83,7 +83,7 @@
             this.Controls.Add(this.buttonCancelTest);
             this.Controls.Add(this.buttonAcceptTest);
             this.Name = "TestForm";
-            this.Text = "TestForm";
+            this.Text = "Laboratory test";
             this.ResumeLayout(false);
 
         }

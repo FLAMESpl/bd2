@@ -50,6 +50,10 @@ namespace Clinic.Interface.LabManager
         private void LaboratoryForm_Load(object sender, EventArgs e)
         {
             RefreshList();
+            if (ActiveUser.Role == Role.LabAssistant.ToCode())
+            {
+                buttonAddTests.Enabled = false;
+            }
         }
 
         private void buttonRefresh_Click(object sender, EventArgs e)
@@ -109,6 +113,12 @@ namespace Clinic.Interface.LabManager
                     RefreshList();
                 }
             }
+        }
+
+        private void buttonAddTests_Click(object sender, EventArgs e)
+        {
+            var form = new TestDictionaryForm();
+            form.ShowDialog();
         }
     }
 }

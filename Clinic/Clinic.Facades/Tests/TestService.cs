@@ -16,6 +16,26 @@ namespace Clinic.Facades.Tests
             }
         }
 
+        public static void Add(TestDictionary dict)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                db.TestDictionaries.InsertOnSubmit(dict);
+                db.SubmitChanges();
+            }
+        }
+
+        public static List<TestDictionary> Match(TestDictionary searchCriteria)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var results = db.TestDictionaries.Where(t => t.Name.Contains(searchCriteria.Name)
+                                && t.Type.Contains(searchCriteria.Type)
+                                && t.Code.Contains(searchCriteria.Code));
+                return results.ToList();
+            }
+        }
+
         public static void Add(LaboratoryTest test)
         {
             using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.LaboratoryTests)))
