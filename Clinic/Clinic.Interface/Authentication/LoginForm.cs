@@ -2,6 +2,7 @@
 using Clinic.Facades.Users;
 using Clinic.Interface.Admin;
 using Clinic.Interface.Common;
+using Clinic.Interface.Common.Helpers;
 using Clinic.Interface.Doctors;
 using Clinic.Interface.Lab;
 using Clinic.Interface.LabManager;
@@ -86,18 +87,13 @@ namespace Clinic.Interface.Authentication
             var result = AuthenticationService.Authenticate(textBoxLogin.Text, textBoxPassword.Text);
             if (result.Success)
             {
-                MessageBox.Show($"Logged in as {result.Role.Value.ToDisplayName()}");
-                ChangeUserPassword(result.User);
+                ChangePasswordForm form = new ChangePasswordForm(result.User);
+                form.Show();
             }
             else
             {
                 MessageBox.Show("Authentication error");
             }
-        }
-
-        private void ChangeUserPassword(User user)
-        {
-            throw new NotImplementedException();
         }
     }
 }
