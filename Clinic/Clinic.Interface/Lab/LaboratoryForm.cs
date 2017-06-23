@@ -11,19 +11,29 @@ using Clinic.Interface.Common;
 using Clinic.Data;
 using Clinic.Interface.Lab;
 using Clinic.Facades.Tests;
+using Clinic.Facades.Users;
 
 namespace Clinic.Interface.LabManager
 {
-    public partial class ManagerForm : ClinicForm
+    public partial class LaboratoryForm : ClinicForm
     {
-        public ManagerForm()
+        public LaboratoryForm()
         {
             InitializeComponent();
         }
 
         private void RefreshList()
         {
-            dataGridViewTests.DataSource = TestService.GetAllExecuted();
+            if (ActiveUser.Role == Role.LabManager.ToCode())
+            {
+                dataGridViewTests.DataSource = TestService.GetAllExecuted();
+            }
+            else    //lab assistant
+            {
+                dataGridViewTests.DataSource = TestService.GetAllScheduled();
+                dataGridViewTests.Columns["Result"].Visible = false;
+                dataGridViewTests.Columns["ExecutionDate"].Visible = false;
+            }
             dataGridViewTests.Columns["Id"].Visible = false;
             dataGridViewTests.Columns["ManagerNotes"].Visible = false;
             dataGridViewTests.Columns["ResolutionDate"].Visible = false;
@@ -37,7 +47,7 @@ namespace Clinic.Interface.LabManager
             dataGridViewTests.Refresh();
         }
 
-        private void ManagerForm_Load(object sender, EventArgs e)
+        private void LaboratoryForm_Load(object sender, EventArgs e)
         {
             RefreshList();
         }
@@ -49,9 +59,20 @@ namespace Clinic.Interface.LabManager
 
         private void buttonAcceptTest_Click(object sender, EventArgs e)
         {
-            using (var form = new TestForm())
+            if (ActiveUser.Role == Role.LabManager.ToCode())
             {
-                
+                EditTestAsManager();
+            }
+            else
+            {
+                EditTestAsAssistant();
+            }
+        }
+
+        private void EditTestAsManager()
+        {
+            using (var form = new TestForm("Manager commentary:"))
+            {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LaboratoryTest test = new LaboratoryTest();
@@ -64,6 +85,27 @@ namespace Clinic.Interface.LabManager
                     test.ResolutionDate = DateTime.Now;
                     test.IdLabManager = ActiveUser.Id;
                     TestService.UpdateAsManager(test);
+                    RefreshList();
+                }
+            }
+        }
+
+        private void EditTestAsAssistant()
+        {
+            using (var form = new TestForm("Test result / reason of cancellation:"))
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    LaboratoryTest test = new LaboratoryTest();
+                    test.Id = (long)dataGridViewTests.SelectedRows[0].Cells["Id"].Value;
+                    if (form.testAccepted)
+                        test.Status = TestStatus.Executed.ToCode();
+                    else
+                        test.Status = TestStatus.CancelledByAssistant.ToCode();
+                    test.Result = form.returnedValue;
+                    test.ExecutionDate = DateTime.Now;
+                    test.IdLabAssistant = ActiveUser.Id;
+                    TestService.UpdateAsAssistant(test);
                     RefreshList();
                 }
             }

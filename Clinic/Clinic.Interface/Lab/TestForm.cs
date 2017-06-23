@@ -10,10 +10,11 @@ namespace Clinic.Interface.Lab
         public string returnedValue;
         public bool testAccepted;
 
-        public TestForm()
+        public TestForm(string label)
         {
-            returnedValue = string.Empty;
             InitializeComponent();
+            labelledTextBoxComment.Label = label;
+            returnedValue = string.Empty;
         }
 
         private void buttonAcceptTest_Click(object sender, EventArgs e)

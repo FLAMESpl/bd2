@@ -1,6 +1,6 @@
 ﻿namespace Clinic.Interface.LabManager
 {
-    partial class ManagerForm
+    partial class LaboratoryForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,9 +38,13 @@
             // 
             // dataGridViewTests
             // 
+            this.dataGridViewTests.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTests.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewTests.MultiSelect = false;
             this.dataGridViewTests.Name = "dataGridViewTests";
+            this.dataGridViewTests.ReadOnly = true;
+            this.dataGridViewTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTests.Size = new System.Drawing.Size(599, 285);
             this.dataGridViewTests.TabIndex = 0;
             // 
@@ -76,13 +80,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(629, 388);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.buttonAcceptTest);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "ManagerForm";
             this.Text = "ManagerForm";
-            this.Load += new System.EventHandler(this.ManagerForm_Load);
+            this.Load += new System.EventHandler(this.LaboratoryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

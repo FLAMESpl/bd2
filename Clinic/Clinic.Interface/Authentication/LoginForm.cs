@@ -51,10 +51,8 @@ namespace Clinic.Interface.Authentication
                     form = new RegistratorForm();
                     break;
                 case Role.LabAssistant:
-                    form = new AssistantForm();
-                    break;
                 case Role.LabManager:
-                    form = new ManagerForm();
+                    form = new LaboratoryForm();
                     break;
                 default:
                     break;
