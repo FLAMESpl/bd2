@@ -1,4 +1,5 @@
 ﻿using Clinic.Data.Helpers;
+using Clinic.Interface.Common.Helpers;
 using System.Linq;
 
 namespace Clinic.Facades.Users
@@ -9,7 +10,7 @@ namespace Clinic.Facades.Users
         {
             using (var db = DataContextFactory.Create(u => u.IncludeAllRoles()))
             {
-                var user = db.Users.Where(u => u.Username == username && u.Password == password).SingleOrDefault();
+                var user = db.Users.Where(u => u.Username == username && u.Password == Cryptography.GetCrypt(password)).SingleOrDefault();
                 Role? role = (user == null) ? null : RolesExtensions.GetFromCode(user.Role);
                 return new AuthenticationResult(role, user);
             }
