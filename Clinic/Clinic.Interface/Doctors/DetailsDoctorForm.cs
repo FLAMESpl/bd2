@@ -46,53 +46,53 @@ namespace Clinic.Interface.Doctors
         }
 
         //@Deprecated
-        private void btnDoctorFinalizeVisit_Click(object sender, EventArgs e)
-        {
-            Console.WriteLine(SelectedVisits.Count);
-            if (SelectedVisits.Count != 0)
-            {
-                int updatedcount = 0;
-                foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
-                {
-                    if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
-                    {
-                        row.Cells[StatusColumnIndex].Value = Clinic.Facades.Visits.VisitStatus.Finalised;
-                        updatedcount++;
-                    }
-                }
-                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots finalized!");
-                btnDoctorReturn_Click(sender, e);
-            }
-            else
-            {
-                NoRowsSelectedMessage();
-            }            
+        //private void btnDoctorFinalizeVisit_Click(object sender, EventArgs e)
+        //{
+        //    Console.WriteLine(SelectedVisits.Count);
+        //    if (SelectedVisits.Count != 0)
+        //    {
+        //        int updatedcount = 0;
+        //        foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
+        //        {
+        //            if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
+        //            {
+        //                row.Cells[StatusColumnIndex].Value = Clinic.Facades.Visits.VisitStatus.Finalised;
+        //                updatedcount++;
+        //            }
+        //        }
+        //        System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots finalized!");
+        //        btnDoctorReturn_Click(sender, e);
+        //    }
+        //    else
+        //    {
+        //        NoRowsSelectedMessage();
+        //    }            
 
-        }
+        //}
 
         //@Deprecated
-        private void btnDoctorCancelVisit_Click(object sender, EventArgs e)
-        {
-            if (SelectedVisits.Count != 0)
-            {
-                int updatedcount = 0;
-                foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
-                {
-                    if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
-                    {
-                        row.Cells[StatusColumnIndex].Value = Clinic.Facades.Visits.VisitStatus.Cancelled;
-                        updatedcount++;
-                    }
-                }
-                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots cancelled!");
-                btnDoctorReturn_Click(sender, e);
-            }
-            else
-            {
-                NoRowsSelectedMessage();
-            }
+        //private void btnDoctorCancelVisit_Click(object sender, EventArgs e)
+        //{
+        //    if (SelectedVisits.Count != 0)
+        //    {
+        //        int updatedcount = 0;
+        //        foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
+        //        {
+        //            if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
+        //            {
+        //                row.Cells[StatusColumnIndex].Value = Clinic.Facades.Visits.VisitStatus.Cancelled;
+        //                updatedcount++;
+        //            }
+        //        }
+        //        System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots cancelled!");
+        //        btnDoctorReturn_Click(sender, e);
+        //    }
+        //    else
+        //    {
+        //        NoRowsSelectedMessage();
+        //    }
 
-        }
+        //}
 
         private void btnDoctorReturn_Click(object sender, EventArgs e)
         {
@@ -134,6 +134,12 @@ namespace Clinic.Interface.Doctors
         private void btnDetailsPhysicalTest_Click(object sender, EventArgs e)
         {
             MessageBox.Show(":)");
+        }
+
+        private void btnTestDetails_Click(object sender, EventArgs e)
+        {
+            var TestDetailsForm = new TestDetailsDoctorForm();
+            TestDetailsForm.ShowDialog(ActiveUser);
         }
     }
 }

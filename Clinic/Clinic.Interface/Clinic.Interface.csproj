@@ -137,6 +137,12 @@
     <Compile Include="Doctors\DoctorForm.Designer.cs">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Doctors\TestDetailsDoctorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\TestDetailsDoctorForm.Designer.cs">
+      <DependentUpon>TestDetailsDoctorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\AssistantForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     <EmbeddedResource Include="Doctors\DoctorForm.resx">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\TestDetailsDoctorForm.resx">
+      <DependentUpon>TestDetailsDoctorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab\AssistantForm.resx">
       <DependentUpon>AssistantForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,6 +281,7 @@
     <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.TestDictionary.datasource" />
     <None Include="Properties\DataSources\Clinic.Facades.Visits.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Interface.Admin.UserView.datasource" />
     <None Include="Properties\Settings.settings">
