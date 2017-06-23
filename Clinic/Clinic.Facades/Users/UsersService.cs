@@ -24,19 +24,17 @@ namespace Clinic.Facades.Users
             {
                 var user = db.Users.Single(u => u.Id == updatedUser.Id);
 
-                if (user.Role != updatedUser.Role)
-                {
-                    db.DeleteRoleForUser(user);
-                    user.Role = updatedUser.Role;
-                }
+                db.DeleteRoleForUser(user);
+                user.Role = updatedUser.Role;          
 
                 user.Doctor = updatedUser.Doctor;
                 user.LabAssistant = updatedUser.LabAssistant;
                 user.LabManager = updatedUser.LabManager;
                 user.Registrator = updatedUser.Registrator;
 
-                user.Username = updatedUser.Username;
-                user.Password = updatedUser.Password;
+                user.Username = updatedUser.Username;  
+                if (updatedUser.Password != null)    
+                    user.Password = updatedUser.Password;
 
                 db.SubmitChanges();
             }

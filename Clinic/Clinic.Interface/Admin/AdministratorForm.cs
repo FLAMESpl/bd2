@@ -17,7 +17,7 @@ namespace Clinic.Interface.Admin
         private void EditUser(UserView user)
         {
             using (var form = new UserUpdateForm(user, ActionType.Update))
-            {
+            {                
                 form.ShowDialog();
             }
         }

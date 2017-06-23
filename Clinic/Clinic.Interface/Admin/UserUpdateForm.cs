@@ -3,6 +3,7 @@ using Clinic.Facades.Users;
 using Clinic.Interface.Admin.Events;
 using Clinic.Interface.Admin.RolesFilters;
 using Clinic.Interface.Common;
+using Clinic.Interface.Common.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -37,10 +38,9 @@ namespace Clinic.Interface.Admin
         {
             InitializeComponent();
             InitializeRoleFilters();
-            FillUser(userView);
-
             this.actionType = actionType;
             this.userId = userView.UserId;
+            FillUser(userView);
         }
 
         private void InitializeRoleFilters()
@@ -67,6 +67,7 @@ namespace Clinic.Interface.Admin
                 username = user.Username;
                 user.GetNameAndSurname(out name, out surname);
                 role = RolesExtensions.GetFromCode(user.Role) ?? role;
+                labelledTextBoxPassword.Input = string.Empty;
             }
             else
             {
@@ -97,16 +98,33 @@ namespace Clinic.Interface.Admin
         {
             if (actionType == ActionType.Create)
             {
-                UsersService.Create(CreateUser());
+                if (string.IsNullOrEmpty(labelledTextBoxPassword.Input))
+                {
+                    MessageBox.Show("Enter password!");
+                }
+                else
+                {
+                    UsersService.Create(CreateUser());
+                    Close();
+                }
             }
             else if (actionType == ActionType.Update)
             {
-               
+                if (string.IsNullOrEmpty(labelledTextBoxPassword.Input))
+                {
+                    User user = CreateUser();
+                    user.Password = null;
+                    UsersService.Update(user);
+                    Close();
+                }
+                else
+                {
+                    UsersService.Update(CreateUser());
+                    Close();
+                }
+                
             }
-
-            Close();
         }
-
         private void doneCancelDialog_Cancel(object sender, EventArgs e)
         {
             Close();
@@ -117,8 +135,8 @@ namespace Clinic.Interface.Admin
             var role = userFilters.Role.Value;
             var user = new User
             {
-                Id = userId,
-                Password = "pass",
+                Id = userId,                
+                Password = Cryptography.GetCrypt(labelledTextBoxPassword.Input),
                 Username = userFilters.Username,
                 Role = role.ToCode()
             };
