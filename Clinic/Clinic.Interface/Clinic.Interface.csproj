@@ -275,6 +275,7 @@
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.PhysicalTest.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.TestDictionary.datasource" />
+    <None Include="Properties\DataSources\Clinic.Facades.Tests.TestService.datasource" />
     <None Include="Properties\DataSources\Clinic.Facades.Visits.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Interface.Admin.UserView.datasource" />
     <None Include="Properties\Settings.settings">

@@ -16,6 +16,8 @@ namespace Clinic.Facades.Tests
             }
         }
 
+        //public static List<> gettests?
+
         public static void Add(TestDictionary dict)
         {
             using (var db = DataContextFactory.Create())
@@ -73,6 +75,7 @@ namespace Clinic.Facades.Tests
             }
         }
 
+        //deprecated, use GetTestsOfStatus
         public static List<LaboratoryTest> GetAllScheduled()
         {
             using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.LaboratoryTests)))
@@ -82,11 +85,21 @@ namespace Clinic.Facades.Tests
             }
         }
 
+        //deprecated, use GetTestsOfStatus
         public static List<LaboratoryTest> GetAllExecuted()
         {
             using (var db = DataContextFactory.Create())
             {
                 var result = db.LaboratoryTests.Where(t => t.Status == TestStatus.Executed.ToCode());
+                return result.ToList();
+            }
+        }
+
+        public static List<LaboratoryTest> GetTestsOfStatus(TestStatus queryStatus)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var result = db.LaboratoryTests.Where(t => t.Status == queryStatus.ToCode());
                 return result.ToList();
             }
         }

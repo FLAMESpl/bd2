@@ -20,8 +20,10 @@ namespace Clinic.Interface.Doctors
             InitializeComponent();
             TestDictionaryBindingSource.Clear();
             TestDictionaryBindingSource.AddRange(TestService.GetDictionary());
-            AssignedTestsBindingSource.Clear();
-            AssignedTestsBindingSource.AddRange();
+            ScheduledTestsBindingSource.Clear();
+            ScheduledTestsBindingSource.AddRange(TestService.GetTestsOfStatus(TestStatus.Scheduled));
+            ApprovedTestsBindingSource.Clear();
+            ApprovedTestsBindingSource.AddRange(TestService.GetTestsOfStatus(TestStatus.Approved));
         }
 
         private void btnTestDetailsDoctorReturn_Click(object sender, EventArgs e)
