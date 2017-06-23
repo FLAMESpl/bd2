@@ -3,6 +3,7 @@ using Clinic.Facades.Users;
 using Clinic.Interface.Admin.Events;
 using Clinic.Interface.Admin.RolesFilters;
 using Clinic.Interface.Common;
+using Clinic.Interface.Common.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -118,7 +119,7 @@ namespace Clinic.Interface.Admin
             var user = new User
             {
                 Id = userId,
-                Password = "pass",
+                Password = Cryptography.GetCrypt("pass"),
                 Username = userFilters.Username,
                 Role = role.ToCode()
             };
