@@ -119,7 +119,7 @@ namespace Clinic.Interface.Admin
             var user = new User
             {
                 Id = userId,
-                Password = Cryptography.GetCrypt("pass"),
+                Password = Cryptography.GetCrypt(labelledTextBoxPassword.Input),
                 Username = userFilters.Username,
                 Role = role.ToCode()
             };
