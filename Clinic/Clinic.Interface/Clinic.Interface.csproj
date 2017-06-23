@@ -143,29 +143,23 @@
     <Compile Include="Doctors\TestDetailsDoctorForm.Designer.cs">
       <DependentUpon>TestDetailsDoctorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab\AssistantForm.cs">
+    <Compile Include="Lab\LaboratoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab\AssistantForm.Designer.cs">
-      <DependentUpon>AssistantForm.cs</DependentUpon>
+    <Compile Include="Lab\LaboratoryForm.Designer.cs">
+      <DependentUpon>LaboratoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Lab\ManagerForm.cs">
+    <Compile Include="Lab\TestDictionaryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Lab\ManagerForm.Designer.cs">
-      <DependentUpon>ManagerForm.cs</DependentUpon>
+    <Compile Include="Lab\TestDictionaryForm.Designer.cs">
+      <DependentUpon>TestDictionaryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Lab\TestForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab\TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Lab\TestResultsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Lab\TestResultsForm.Designer.cs">
-      <DependentUpon>TestResultsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrator\DoctorListItem.cs" />
     <Compile Include="Registrator\VisitForm.cs">
@@ -233,17 +227,14 @@
     <EmbeddedResource Include="Doctors\TestDetailsDoctorForm.resx">
       <DependentUpon>TestDetailsDoctorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lab\AssistantForm.resx">
-      <DependentUpon>AssistantForm.cs</DependentUpon>
+    <EmbeddedResource Include="Lab\LaboratoryForm.resx">
+      <DependentUpon>LaboratoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lab\ManagerForm.resx">
-      <DependentUpon>ManagerForm.cs</DependentUpon>
+    <EmbeddedResource Include="Lab\TestDictionaryForm.resx">
+      <DependentUpon>TestDictionaryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lab\TestResultsForm.resx">
-      <DependentUpon>TestResultsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrator\VisitForm.resx">
       <DependentUpon>VisitForm.cs</DependentUpon>
