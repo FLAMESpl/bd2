@@ -280,7 +280,9 @@
     <None Include="Properties\DataSources\Clinic.Data.Address.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.LaboratoryTest.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.PhysicalTest.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.TestDictionary.datasource" />
     <None Include="Properties\DataSources\Clinic.Facades.Visits.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Interface.Admin.UserView.datasource" />

@@ -31,18 +31,12 @@
             this.components = new System.ComponentModel.Container();
             this.btnDoctorAssignTest = new System.Windows.Forms.Button();
             this.btnDoctorReturn = new System.Windows.Forms.Button();
-            this.dataGridTestDictionary = new System.Windows.Forms.DataGridView();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testDictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clinicDataSet = new Clinic.Interface.clinicDataSet();
             this.testDictionaryTableAdapter = new Clinic.Interface.clinicDataSetTableAdapters.TestDictionaryTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbChooseDate = new System.Windows.Forms.ComboBox();
             this.lblDetailsPatientPESEL = new System.Windows.Forms.Label();
             this.lblDetailsPatientSurname = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,10 +44,14 @@
             this.lblDetailsDescription = new System.Windows.Forms.Label();
             this.lblDetailsPatientName = new System.Windows.Forms.Label();
             this.btnTestDetails = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).BeginInit();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridTestDictionary = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.testDictionaryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).BeginInit();
             this.SuspendLayout();
             // 
             // btnDoctorAssignTest
@@ -76,38 +74,6 @@
             this.btnDoctorReturn.UseVisualStyleBackColor = true;
             this.btnDoctorReturn.Click += new System.EventHandler(this.btnDoctorReturn_Click);
             // 
-            // dataGridTestDictionary
-            // 
-            this.dataGridTestDictionary.AutoGenerateColumns = false;
-            this.dataGridTestDictionary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridTestDictionary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codeDataGridViewTextBoxColumn,
-            this.typeDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn});
-            this.dataGridTestDictionary.DataSource = this.testDictionaryBindingSource;
-            this.dataGridTestDictionary.Location = new System.Drawing.Point(646, 105);
-            this.dataGridTestDictionary.Name = "dataGridTestDictionary";
-            this.dataGridTestDictionary.Size = new System.Drawing.Size(348, 150);
-            this.dataGridTestDictionary.TabIndex = 7;
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
             // testDictionaryBindingSource
             // 
             this.testDictionaryBindingSource.DataMember = "TestDictionary";
@@ -126,8 +92,6 @@
             // 
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cmbChooseDate);
             this.groupBox1.Controls.Add(this.lblDetailsPatientPESEL);
             this.groupBox1.Controls.Add(this.lblDetailsPatientSurname);
             this.groupBox1.Controls.Add(this.label2);
@@ -158,23 +122,6 @@
             this.label3.Size = new System.Drawing.Size(70, 13);
             this.label3.TabIndex = 10;
             this.label3.Text = "<description>";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(167, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Choose a Visit:";
-            // 
-            // cmbChooseDate
-            // 
-            this.cmbChooseDate.FormattingEnabled = true;
-            this.cmbChooseDate.Location = new System.Drawing.Point(167, 36);
-            this.cmbChooseDate.Name = "cmbChooseDate";
-            this.cmbChooseDate.Size = new System.Drawing.Size(138, 21);
-            this.cmbChooseDate.TabIndex = 8;
             // 
             // lblDetailsPatientPESEL
             // 
@@ -240,6 +187,38 @@
             this.btnTestDetails.UseVisualStyleBackColor = true;
             this.btnTestDetails.Click += new System.EventHandler(this.btnTestDetails_Click);
             // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // typeDataGridViewTextBoxColumn
+            // 
+            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
+            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
+            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            // 
+            // dataGridTestDictionary
+            // 
+            this.dataGridTestDictionary.AutoGenerateColumns = false;
+            this.dataGridTestDictionary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridTestDictionary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codeDataGridViewTextBoxColumn,
+            this.typeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn});
+            this.dataGridTestDictionary.DataSource = this.testDictionaryBindingSource;
+            this.dataGridTestDictionary.Location = new System.Drawing.Point(646, 105);
+            this.dataGridTestDictionary.Name = "dataGridTestDictionary";
+            this.dataGridTestDictionary.Size = new System.Drawing.Size(348, 150);
+            this.dataGridTestDictionary.TabIndex = 7;
+            // 
             // DetailsDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,11 +232,11 @@
             this.Name = "DetailsDoctorForm";
             this.Text = "DetailsDoctorForm";
             this.Load += new System.EventHandler(this.DetailsDoctorForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.testDictionaryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -265,13 +244,9 @@
         #endregion
         private System.Windows.Forms.Button btnDoctorReturn;
         private System.Windows.Forms.Button btnDoctorAssignTest;
-        private System.Windows.Forms.DataGridView dataGridTestDictionary;
         private clinicDataSet clinicDataSet;
         private System.Windows.Forms.BindingSource testDictionaryBindingSource;
         private clinicDataSetTableAdapters.TestDictionaryTableAdapter testDictionaryTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblDetailsDescription;
         private System.Windows.Forms.Label lblDetailsPatientName;
@@ -279,10 +254,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblDetailsPatientPESEL;
         private System.Windows.Forms.Label lblDetailsPatientSurname;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbChooseDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnTestDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridView dataGridTestDictionary;
     }
 }
