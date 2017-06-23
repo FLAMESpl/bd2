@@ -30,8 +30,8 @@
         {
             this.tableLayoutPanelMain = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxUser = new System.Windows.Forms.GroupBox();
-            this.userFilters = new Clinic.Interface.Admin.UserFilters();
             this.groupBoxRole = new System.Windows.Forms.GroupBox();
+            this.userFilters = new Clinic.Interface.Admin.UserFilters();
             this.doneCancelDialog = new Clinic.Interface.Common.DoneCancelDialog();
             this.labelledTextBoxPassword = new Clinic.Interface.Common.LabelledTextBox();
             this.tableLayoutPanelMain.SuspendLayout();
@@ -54,7 +54,7 @@
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 52F));
             this.tableLayoutPanelMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelMain.Size = new System.Drawing.Size(460, 246);
+            this.tableLayoutPanelMain.Size = new System.Drawing.Size(366, 246);
             this.tableLayoutPanelMain.TabIndex = 0;
             // 
             // groupBoxUser
@@ -63,10 +63,20 @@
             this.groupBoxUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxUser.Location = new System.Drawing.Point(3, 3);
             this.groupBoxUser.Name = "groupBoxUser";
-            this.groupBoxUser.Size = new System.Drawing.Size(454, 69);
+            this.groupBoxUser.Size = new System.Drawing.Size(360, 69);
             this.groupBoxUser.TabIndex = 0;
             this.groupBoxUser.TabStop = false;
             this.groupBoxUser.Text = "User";
+            // 
+            // groupBoxRole
+            // 
+            this.groupBoxRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxRole.Location = new System.Drawing.Point(3, 78);
+            this.groupBoxRole.Name = "groupBoxRole";
+            this.groupBoxRole.Size = new System.Drawing.Size(360, 69);
+            this.groupBoxRole.TabIndex = 1;
+            this.groupBoxRole.TabStop = false;
+            this.groupBoxRole.Text = "Role";
             // 
             // userFilters
             // 
@@ -75,24 +85,14 @@
             this.userFilters.Location = new System.Drawing.Point(3, 16);
             this.userFilters.Name = "userFilters";
             this.userFilters.Role = Clinic.Facades.Users.Role.Registrator;
-            this.userFilters.Size = new System.Drawing.Size(448, 50);
+            this.userFilters.Size = new System.Drawing.Size(354, 50);
             this.userFilters.TabIndex = 0;
             this.userFilters.Username = "";
-            // 
-            // groupBoxRole
-            // 
-            this.groupBoxRole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxRole.Location = new System.Drawing.Point(3, 78);
-            this.groupBoxRole.Name = "groupBoxRole";
-            this.groupBoxRole.Size = new System.Drawing.Size(454, 69);
-            this.groupBoxRole.TabIndex = 1;
-            this.groupBoxRole.TabStop = false;
-            this.groupBoxRole.Text = "Role";
             // 
             // doneCancelDialog
             // 
             this.doneCancelDialog.Dock = System.Windows.Forms.DockStyle.Right;
-            this.doneCancelDialog.Location = new System.Drawing.Point(244, 205);
+            this.doneCancelDialog.Location = new System.Drawing.Point(150, 205);
             this.doneCancelDialog.Name = "doneCancelDialog";
             this.doneCancelDialog.Size = new System.Drawing.Size(213, 38);
             this.doneCancelDialog.TabIndex = 2;
@@ -101,18 +101,18 @@
             // 
             // labelledTextBoxPassword
             // 
-            this.labelledTextBoxPassword.Input = "";
+            this.labelledTextBoxPassword.Input = "pass";
             this.labelledTextBoxPassword.Label = "Password:";
             this.labelledTextBoxPassword.Location = new System.Drawing.Point(3, 153);
             this.labelledTextBoxPassword.Name = "labelledTextBoxPassword";
-            this.labelledTextBoxPassword.Size = new System.Drawing.Size(445, 44);
+            this.labelledTextBoxPassword.Size = new System.Drawing.Size(351, 44);
             this.labelledTextBoxPassword.TabIndex = 3;
             // 
             // UserUpdateForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 246);
+            this.ClientSize = new System.Drawing.Size(366, 246);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Name = "UserUpdateForm";
             this.Text = "User";

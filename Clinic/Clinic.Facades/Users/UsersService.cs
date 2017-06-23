@@ -35,8 +35,9 @@ namespace Clinic.Facades.Users
                 user.LabManager = updatedUser.LabManager;
                 user.Registrator = updatedUser.Registrator;
 
-                user.Username = updatedUser.Username;
-                user.Password = updatedUser.Password;
+                user.Username = updatedUser.Username;  
+                if (updatedUser.Password != null)    
+                    user.Password = updatedUser.Password;
 
                 db.SubmitChanges();
             }
