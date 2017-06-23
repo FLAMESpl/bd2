@@ -71,7 +71,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(498, 459);
+            this.panel1.Size = new System.Drawing.Size(498, 488);
             this.panel1.TabIndex = 5;
             // 
             // gbVisits
@@ -80,7 +80,7 @@
             this.gbVisits.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbVisits.Location = new System.Drawing.Point(0, 192);
             this.gbVisits.Name = "gbVisits";
-            this.gbVisits.Size = new System.Drawing.Size(498, 267);
+            this.gbVisits.Size = new System.Drawing.Size(498, 296);
             this.gbVisits.TabIndex = 1;
             this.gbVisits.TabStop = false;
             this.gbVisits.Text = "Visits for this day";
@@ -102,7 +102,7 @@
             this.datgridVisits.Location = new System.Drawing.Point(3, 16);
             this.datgridVisits.Name = "datgridVisits";
             this.datgridVisits.ReadOnly = true;
-            this.datgridVisits.Size = new System.Drawing.Size(492, 248);
+            this.datgridVisits.Size = new System.Drawing.Size(492, 277);
             this.datgridVisits.TabIndex = 0;
             // 
             // visitIdDataGridViewTextBoxColumn
@@ -178,7 +178,7 @@
             this.tableLayoutPanel1.Controls.Add(this.btnFinalize, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnCancel, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 459);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 488);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -228,6 +228,7 @@
             this.btnFinalize.TabIndex = 5;
             this.btnFinalize.Text = "Finalize Visit(s)";
             this.btnFinalize.UseVisualStyleBackColor = true;
+            this.btnFinalize.Click += new System.EventHandler(this.btnFinalizeVisits_Click);
             // 
             // btnCancel
             // 
@@ -238,12 +239,13 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel Visit(s)";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancelVisits_Click);
             // 
             // DoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 549);
+            this.ClientSize = new System.Drawing.Size(498, 578);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(257, 500);

@@ -45,6 +45,7 @@ namespace Clinic.Interface.Doctors
                 );            
         }
 
+        //@Deprecated
         private void btnDoctorFinalizeVisit_Click(object sender, EventArgs e)
         {
             Console.WriteLine(SelectedVisits.Count);
@@ -69,6 +70,7 @@ namespace Clinic.Interface.Doctors
 
         }
 
+        //@Deprecated
         private void btnDoctorCancelVisit_Click(object sender, EventArgs e)
         {
             if (SelectedVisits.Count != 0)

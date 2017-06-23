@@ -144,8 +144,90 @@ namespace Clinic.Interface.Doctors
 
         private void clickShowDetailsAndActions(object sender, EventArgs e)
         {
-            var detailsForm = new DetailsDoctorForm(datgridVisits);
-            detailsForm.ShowDialog(ActiveUser);
+            if (datgridVisits.SelectedRows.Count == 0)
+                NoRowsSelectedErrorMessage();
+            else
+            {
+                if (datgridVisits.SelectedRows.Count > 1)
+                {
+                    MultipleRowsSelectedErrorMessage();
+                }
+                else
+                {
+                    var detailsForm = new DetailsDoctorForm(datgridVisits);
+                    detailsForm.ShowDialog(ActiveUser);
+                }
+            }
+        }
+
+        private void NoRowsSelectedErrorMessage()
+        {
+            System.Windows.Forms.MessageBox.Show(
+                this,
+                "You have not selected any rows. Select rows on the left panel (the one with the triangular arrow).",
+                "No rows selected.",
+                System.Windows.Forms.MessageBoxButtons.OK,
+                System.Windows.Forms.MessageBoxIcon.Warning
+                );
+        }
+        private void MultipleRowsSelectedErrorMessage()
+        {
+            System.Windows.Forms.MessageBox.Show(
+                this,
+                "You have selected too many rows for this action. Deselect them first on the left panel (the one with the triangular arrow) or choose a single row, then try again.",
+                "Too many rows selected.",
+                System.Windows.Forms.MessageBoxButtons.OK,
+                System.Windows.Forms.MessageBoxIcon.Warning
+                );
+        }
+
+        private void btnFinalizeVisits_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.DataGridViewSelectedRowCollection SelectedVisits = datgridVisits.SelectedRows;
+            int StatusColumnIndex = datgridVisits.Columns["statusDataGridViewTextBoxColumn"].Index;
+
+            Console.WriteLine(SelectedVisits.Count);
+            if (SelectedVisits.Count != 0)
+            {
+                int updatedcount = 0;
+                foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
+                {
+                    if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
+                    {
+                        row.Cells[StatusColumnIndex].Value = Clinic.Facades.Visits.VisitStatus.Finalised;
+                        updatedcount++;
+                    }
+                }
+                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots finalized!");
+            }
+            else
+            {
+                NoRowsSelectedErrorMessage();
+            }
+        }
+
+        private void btnCancelVisits_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.DataGridViewSelectedRowCollection SelectedVisits = datgridVisits.SelectedRows;
+            int StatusColumnIndex = datgridVisits.Columns["statusDataGridViewTextBoxColumn"].Index;
+
+            if (SelectedVisits.Count != 0)
+            {
+                int updatedcount = 0;
+                foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
+                {
+                    if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
+                    {
+                        row.Cells[StatusColumnIndex].Value = Clinic.Facades.Visits.VisitStatus.Cancelled;
+                        updatedcount++;
+                    }
+                }
+                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots cancelled!");
+            }
+            else
+            {
+                NoRowsSelectedErrorMessage();
+            }
         }
     }
 }
