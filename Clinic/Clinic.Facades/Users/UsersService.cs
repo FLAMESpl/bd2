@@ -24,11 +24,8 @@ namespace Clinic.Facades.Users
             {
                 var user = db.Users.Single(u => u.Id == updatedUser.Id);
 
-                if (user.Role != updatedUser.Role)
-                {
-                    db.DeleteRoleForUser(user);
-                    user.Role = updatedUser.Role;
-                }
+                db.DeleteRoleForUser(user);
+                user.Role = updatedUser.Role;          
 
                 user.Doctor = updatedUser.Doctor;
                 user.LabAssistant = updatedUser.LabAssistant;

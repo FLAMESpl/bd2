@@ -115,6 +115,7 @@ namespace Clinic.Interface.Admin
                     User user = CreateUser();
                     user.Password = null;
                     UsersService.Update(user);
+                    Close();
                 }
                 else
                 {
