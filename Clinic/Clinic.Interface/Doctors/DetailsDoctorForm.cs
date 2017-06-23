@@ -30,7 +30,7 @@ namespace Clinic.Interface.Doctors
 
             var testyZeSlownika = TestService.GetDictionary(); //UsersService.Match(userFilters.GetUser());
             //testDictionaryBindingSource.Clear();
-            testDictionaryBindingSource.DataSource = testyZeSlownika;
+            //testDictionaryBindingSource.DataSource = testyZeSlownika;
             //testDictionaryBindingSource.AddRange(testyZeSlownika.Select(x => x));
         }
 
@@ -99,30 +99,30 @@ namespace Clinic.Interface.Doctors
             this.Close();
         }
 
-        private void btnDoctorAssignLabTest(object sender, EventArgs e)
-        {
-            DataGridViewSelectedRowCollection selectedTests = dataGridTestDictionary.SelectedRows;
-            int testamountadded = 0;
-            foreach (DataGridViewRow row in selectedTests)
-            {
-                foreach (DataGridViewRow visit in SelectedVisits)
-                {
-                    LaboratoryTest newTest = new LaboratoryTest();
-                    newTest.Code = row.Cells[0].Value.ToString();
-                    newTest.DoctorNotes = "Zieloni pięćset";
-                    newTest.ComissionDate = DateTime.Now;
-                    newTest.Status = TestStatus.Scheduled.ToCode();
-                    newTest.ManagerNotes = "Żółci tysiąc";
-                    newTest.IdVisit = long.Parse(visit.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString());
-                    //newTest.Visit = VisitsService.GetByVisitId(newTest.IdVisit);
-                    //Console.WriteLine("Visit ID: "+newTest.IdVisit+", id through 'Visit' component: "+newTest.Visit.Id);
-                    TestService.Add(newTest);
-                    testamountadded++;
-                }
+        //private void btnDoctorAssignLabTest(object sender, EventArgs e)
+        //{
+        //    DataGridViewSelectedRowCollection selectedTests = dataGridTestDictionary.SelectedRows;
+        //    int testamountadded = 0;
+        //    foreach (DataGridViewRow row in selectedTests)
+        //    {
+        //        foreach (DataGridViewRow visit in SelectedVisits)
+        //        {
+        //            LaboratoryTest newTest = new LaboratoryTest();
+        //            newTest.Code = row.Cells[0].Value.ToString();
+        //            newTest.DoctorNotes = "Zieloni pięćset";
+        //            newTest.ComissionDate = DateTime.Now;
+        //            newTest.Status = TestStatus.Scheduled.ToCode();
+        //            newTest.ManagerNotes = "Żółci tysiąc";
+        //            newTest.IdVisit = long.Parse(visit.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString());
+        //            //newTest.Visit = VisitsService.GetByVisitId(newTest.IdVisit);
+        //            //Console.WriteLine("Visit ID: "+newTest.IdVisit+", id through 'Visit' component: "+newTest.Visit.Id);
+        //            TestService.Add(newTest);
+        //            testamountadded++;
+        //        }
                 
-            }
-            MessageBox.Show("Added "+testamountadded+" tests.");
-        }
+        //    }
+        //    MessageBox.Show("Added "+testamountadded+" tests.");
+        //}
 
         private void DetailsDoctorForm_Load(object sender, EventArgs e)
         {
@@ -138,7 +138,7 @@ namespace Clinic.Interface.Doctors
 
         private void btnTestDetails_Click(object sender, EventArgs e)
         {
-            var TestDetailsForm = new TestDetailsDoctorForm();
+            var TestDetailsForm = new TestDetailsDoctorForm(SelectedVisits[0]);
             TestDetailsForm.ShowDialog(ActiveUser);
         }
     }

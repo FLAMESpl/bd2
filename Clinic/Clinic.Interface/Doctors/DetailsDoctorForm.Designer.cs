@@ -28,12 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.btnDoctorAssignTest = new System.Windows.Forms.Button();
             this.btnDoctorReturn = new System.Windows.Forms.Button();
-            this.testDictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clinicDataSet = new Clinic.Interface.clinicDataSet();
-            this.testDictionaryTableAdapter = new Clinic.Interface.clinicDataSetTableAdapters.TestDictionaryTableAdapter();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,25 +39,8 @@
             this.lblDetailsDescription = new System.Windows.Forms.Label();
             this.lblDetailsPatientName = new System.Windows.Forms.Label();
             this.btnTestDetails = new System.Windows.Forms.Button();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridTestDictionary = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.testDictionaryBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnDoctorAssignTest
-            // 
-            this.btnDoctorAssignTest.Location = new System.Drawing.Point(817, 285);
-            this.btnDoctorAssignTest.Name = "btnDoctorAssignTest";
-            this.btnDoctorAssignTest.Size = new System.Drawing.Size(128, 32);
-            this.btnDoctorAssignTest.TabIndex = 4;
-            this.btnDoctorAssignTest.Text = "Assign lab test to Visit(s)";
-            this.btnDoctorAssignTest.UseVisualStyleBackColor = true;
-            this.btnDoctorAssignTest.Click += new System.EventHandler(this.btnDoctorAssignLabTest);
             // 
             // btnDoctorReturn
             // 
@@ -73,20 +51,6 @@
             this.btnDoctorReturn.Text = "Go back to all Visits...";
             this.btnDoctorReturn.UseVisualStyleBackColor = true;
             this.btnDoctorReturn.Click += new System.EventHandler(this.btnDoctorReturn_Click);
-            // 
-            // testDictionaryBindingSource
-            // 
-            this.testDictionaryBindingSource.DataMember = "TestDictionary";
-            this.testDictionaryBindingSource.DataSource = this.clinicDataSet;
-            // 
-            // clinicDataSet
-            // 
-            this.clinicDataSet.DataSetName = "clinicDataSet";
-            this.clinicDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // testDictionaryTableAdapter
-            // 
-            this.testDictionaryTableAdapter.ClearBeforeFill = true;
             // 
             // groupBox1
             // 
@@ -187,66 +151,25 @@
             this.btnTestDetails.UseVisualStyleBackColor = true;
             this.btnTestDetails.Click += new System.EventHandler(this.btnTestDetails_Click);
             // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Type";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            // 
-            // dataGridTestDictionary
-            // 
-            this.dataGridTestDictionary.AutoGenerateColumns = false;
-            this.dataGridTestDictionary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridTestDictionary.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codeDataGridViewTextBoxColumn,
-            this.typeDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn});
-            this.dataGridTestDictionary.DataSource = this.testDictionaryBindingSource;
-            this.dataGridTestDictionary.Location = new System.Drawing.Point(646, 105);
-            this.dataGridTestDictionary.Name = "dataGridTestDictionary";
-            this.dataGridTestDictionary.Size = new System.Drawing.Size(348, 150);
-            this.dataGridTestDictionary.TabIndex = 7;
-            // 
             // DetailsDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1065, 517);
+            this.ClientSize = new System.Drawing.Size(523, 517);
             this.Controls.Add(this.btnTestDetails);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridTestDictionary);
-            this.Controls.Add(this.btnDoctorAssignTest);
             this.Controls.Add(this.btnDoctorReturn);
             this.Name = "DetailsDoctorForm";
-            this.Text = "DetailsDoctorForm";
+            this.Text = "s";
             this.Load += new System.EventHandler(this.DetailsDoctorForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.testDictionaryBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.clinicDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button btnDoctorReturn;
-        private System.Windows.Forms.Button btnDoctorAssignTest;
-        private clinicDataSet clinicDataSet;
-        private System.Windows.Forms.BindingSource testDictionaryBindingSource;
-        private clinicDataSetTableAdapters.TestDictionaryTableAdapter testDictionaryTableAdapter;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblDetailsDescription;
         private System.Windows.Forms.Label lblDetailsPatientName;
@@ -257,9 +180,5 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnTestDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridView dataGridTestDictionary;
     }
 }

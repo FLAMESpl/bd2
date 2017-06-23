@@ -75,6 +75,7 @@
             this.labAssistantDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.visitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.testDictionaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnTestDetailsDoctorRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.TestDictionaryBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduledTestsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovedTestsBindingSource)).BeginInit();
@@ -205,7 +206,7 @@
             this.groupBox1.Size = new System.Drawing.Size(404, 237);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Choose tests:";
+            this.groupBox1.Text = "Assign more tests:";
             // 
             // dataGridTestDictionary
             // 
@@ -460,11 +461,22 @@
             this.testDictionaryDataGridViewTextBoxColumn.Name = "testDictionaryDataGridViewTextBoxColumn";
             this.testDictionaryDataGridViewTextBoxColumn.Visible = false;
             // 
+            // btnTestDetailsDoctorRefresh
+            // 
+            this.btnTestDetailsDoctorRefresh.Location = new System.Drawing.Point(474, 457);
+            this.btnTestDetailsDoctorRefresh.Name = "btnTestDetailsDoctorRefresh";
+            this.btnTestDetailsDoctorRefresh.Size = new System.Drawing.Size(168, 29);
+            this.btnTestDetailsDoctorRefresh.TabIndex = 16;
+            this.btnTestDetailsDoctorRefresh.Text = "Refresh all data in window";
+            this.btnTestDetailsDoctorRefresh.UseVisualStyleBackColor = true;
+            this.btnTestDetailsDoctorRefresh.Click += new System.EventHandler(this.btnTestDetailsDoctorRefresh_Click);
+            // 
             // TestDetailsDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(926, 565);
+            this.Controls.Add(this.btnTestDetailsDoctorRefresh);
             this.Controls.Add(this.tabScheduledTests);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnTestDetailsDoctorReturn);
@@ -533,5 +545,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn labAssistantDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn visitDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn testDictionaryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnTestDetailsDoctorRefresh;
     }
 }
