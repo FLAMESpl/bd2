@@ -263,6 +263,7 @@
     <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
+    <None Include="Properties\DataSources\Clinic.Facades.Tests.PatientLaboratoryTest.datasource" />
     <None Include="Properties\DataSources\Clinic.Facades.Visits.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Interface.Admin.UserView.datasource" />
     <None Include="Properties\Settings.settings">

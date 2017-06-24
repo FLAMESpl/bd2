@@ -28,17 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridViewTests = new System.Windows.Forms.DataGridView();
+            this.bindingSourcePatientLaboratoryTests = new System.Windows.Forms.BindingSource(this.components);
             this.buttonAddTests = new System.Windows.Forms.Button();
             this.buttonRefresh = new System.Windows.Forms.Button();
             this.buttonAcceptTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatientLaboratoryTests)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridViewTests
             // 
+            this.dataGridViewTests.AutoGenerateColumns = false;
             this.dataGridViewTests.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTests.DataSource = this.bindingSourcePatientLaboratoryTests;
             this.dataGridViewTests.Location = new System.Drawing.Point(12, 38);
             this.dataGridViewTests.MultiSelect = false;
             this.dataGridViewTests.Name = "dataGridViewTests";
@@ -46,6 +51,10 @@
             this.dataGridViewTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTests.Size = new System.Drawing.Size(599, 285);
             this.dataGridViewTests.TabIndex = 9;
+            // 
+            // bindingSourcePatientLaboratoryTests
+            // 
+            this.bindingSourcePatientLaboratoryTests.DataSource = typeof(Clinic.Facades.Tests.PatientLaboratoryTest);
             // 
             // buttonAddTests
             // 
@@ -91,6 +100,7 @@
             this.Text = "Laboratory";
             this.Load += new System.EventHandler(this.LaboratoryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatientLaboratoryTests)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -102,5 +112,6 @@
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.Button buttonAddTests;
         private System.Windows.Forms.DataGridView dataGridViewTests;
+        private System.Windows.Forms.BindingSource bindingSourcePatientLaboratoryTests;
     }
 }

@@ -12,6 +12,7 @@ using Clinic.Data;
 using Clinic.Interface.Lab;
 using Clinic.Facades.Tests;
 using Clinic.Facades.Users;
+using Clinic.Interface.Common.Helpers;
 
 namespace Clinic.Interface.LabManager
 {
@@ -26,29 +27,23 @@ namespace Clinic.Interface.LabManager
         {
             if (ActiveUser.Role == Role.LabManager.ToCode())
             {
-                dataGridViewTests.DataSource = TestService.GetAllExecuted();
+                bindingSourcePatientLaboratoryTests.Clear();
+                bindingSourcePatientLaboratoryTests.AddRange(TestService.GetAllWithPatient(TestStatus.Executed));
             }
             else    //lab assistant
             {
-                dataGridViewTests.DataSource = TestService.GetAllScheduled();
+                bindingSourcePatientLaboratoryTests.Clear();
+                bindingSourcePatientLaboratoryTests.AddRange(TestService.GetAllWithPatient(TestStatus.Scheduled));
                 dataGridViewTests.Columns["Result"].Visible = false;
                 dataGridViewTests.Columns["ExecutionDate"].Visible = false;
             }
             dataGridViewTests.Columns["Id"].Visible = false;
-            dataGridViewTests.Columns["ManagerNotes"].Visible = false;
-            dataGridViewTests.Columns["ResolutionDate"].Visible = false;
-            dataGridViewTests.Columns["Status"].Visible = false;
-            dataGridViewTests.Columns["IdLabAssistant"].Visible = false;
-            dataGridViewTests.Columns["IdLabManager"].Visible = false;
-            dataGridViewTests.Columns["IdVisit"].Visible = false;
-            dataGridViewTests.Columns["Visit"].Visible = false;
-            dataGridViewTests.Columns["TestDictionary"].Visible = false;
-            dataGridViewTests.Columns["LabAssistant"].Visible = false;
             dataGridViewTests.Refresh();
         }
 
         private void LaboratoryForm_Load(object sender, EventArgs e)
         {
+            dataGridViewTests.AutoGenerateColumns = true;
             RefreshList();
             if (ActiveUser.Role == Role.LabAssistant.ToCode())
             {

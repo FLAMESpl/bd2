@@ -90,5 +90,28 @@ namespace Clinic.Facades.Tests
                 return result.ToList();
             }
         }
+
+        public static List<PatientLaboratoryTest> GetAllWithPatient(TestStatus ts)
+        {
+            using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.LaboratoryTests)))
+            {
+                var result = from t in db.LaboratoryTests
+                             join v in db.Visits on t.IdVisit equals v.Id
+                             join p in db.Patients on v.IdPatient equals p.Id
+                             where t.Status == ts.ToCode()
+                             select new PatientLaboratoryTest
+                             {
+                                 Id = t.Id,
+                                 Code = t.Code,
+                                 CommissionDate = t.ComissionDate,
+                                 ExecutionDate = t.ExecutionDate,
+                                 DoctorNotes = t.DoctorNotes,
+                                 Name = p.Name,
+                                 Surname = p.Surname,
+                                 Result = t.Result
+                             };
+                return result.ToList();
+            }
+        }
     }
 }

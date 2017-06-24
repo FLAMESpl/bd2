@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Cryptography.cs" />
+    <Compile Include="Tests\PatientLaboratoryTest.cs" />
     <Compile Include="Tests\TestService.cs" />
     <Compile Include="Tests\TestStatus.cs" />
     <Compile Include="Tests\TestType.cs" />
