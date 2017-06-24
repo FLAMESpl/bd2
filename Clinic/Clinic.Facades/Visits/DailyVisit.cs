@@ -12,6 +12,7 @@ namespace Clinic.Facades.Visits
         public string Doctor { get; set; }
         public string Patient { get; set; }
         public VisitStatus Status { get; set; }
+        public string Description { get; set; }
 
         public DailyVisit(DateTime visitHour)
         {
@@ -25,6 +26,7 @@ namespace Clinic.Facades.Visits
             Doctor = visit.Doctor.GetFullName();
             Patient = visit.Patient.GetFullName();
             Status = VisitStatusExtensions.GetFromCode(visit.Status);
+            Description = visit.Description;
         }
 
         public void Reserve(long id, string doctor, string patient)

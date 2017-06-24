@@ -8,9 +8,11 @@ namespace Clinic.Facades.Visits
     {
         public static void AssertIsNotOverlappingWithAnotherVisit(this Visit visit, IQueryable<Visit> visits)
         {
+            var removedStatus = VisitStatus.Removed.ToCode();
+            var cancelledStatus = VisitStatus.Cancelled.ToCode();
             foreach (var v in visits)
             {
-                if (v.PlannedDate == visit.PlannedDate)
+                if (v.Status != removedStatus && v.Status != cancelledStatus && v.PlannedDate == visit.PlannedDate)
                 {
                     if (v.IdDoctor == visit.IdDoctor)
                     {

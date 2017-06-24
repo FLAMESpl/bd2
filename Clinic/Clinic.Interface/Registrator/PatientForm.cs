@@ -43,6 +43,13 @@ namespace Clinic.Interface.Registrator
             patient.PESEL = labelledInputEvidenceNumber.Input;
             patient.Surname = labelledInputLastName.Input;
             patient.Addresses.AddRange(bindingSourceAddresses.List.Cast<Address>());
+            foreach (var address in patient.Addresses)
+            {
+                if (address.City == null) address.City = String.Empty;
+                if (address.FlatNumber == null) address.FlatNumber = String.Empty;
+                if (address.HouseNumber == null) address.HouseNumber = String.Empty;
+                if (address.Street == null) address.Street = String.Empty;
+            }
 
             PatientsService.Add(patient);
         }
@@ -54,6 +61,13 @@ namespace Clinic.Interface.Registrator
             patient.Surname = labelledInputLastName.Input;
             patient.Addresses.Clear();
             patient.Addresses.AddRange(bindingSourceAddresses.List.Cast<Address>());
+            foreach (var address in patient.Addresses)
+            {
+                if (address.City == null) address.City = String.Empty;
+                if (address.FlatNumber == null) address.FlatNumber = String.Empty;
+                if (address.HouseNumber == null) address.HouseNumber = String.Empty;
+                if (address.Street == null) address.Street = String.Empty;
+            }
 
             PatientsService.Update(patient);
         }
