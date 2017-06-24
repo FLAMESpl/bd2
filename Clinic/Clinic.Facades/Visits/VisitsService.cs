@@ -59,6 +59,17 @@ namespace Clinic.Facades.Visits
             }
         }
 
+        public static void UpdateDescription(long visitId, string description)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var visit = db.Visits.Single(x => x.Id == visitId);
+                visit.Description = description;
+
+                db.SubmitChanges();
+            }
+        }
+
         public static void Finalise(long id)
         {
             using (var db = DataContextFactory.Create())

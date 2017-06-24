@@ -180,6 +180,12 @@
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrator\DoctorListItem.cs" />
+    <Compile Include="Registrator\VisitDescriptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrator\VisitDescriptionForm.Designer.cs">
+      <DependentUpon>VisitDescriptionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrator\VisitForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +268,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\TestForm.resx">
       <DependentUpon>TestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrator\VisitDescriptionForm.resx">
+      <DependentUpon>VisitDescriptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrator\VisitForm.resx">
       <DependentUpon>VisitForm.cs</DependentUpon>

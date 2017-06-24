@@ -21,6 +21,7 @@ namespace Clinic.Interface.Registrator
         private const string RESERVE_BUTTON = "Reserve";
         private const string CANCEL_BUTTON = "Cancel";
         private const string DELETE_BUTTON = "Delete";
+        private const string EDIT_VISIT = "Edit";
 
         private Patient patient;
         private ActionType actionType;
@@ -58,6 +59,9 @@ namespace Clinic.Interface.Registrator
 
                 dataGridViewDailyVisits.Columns.Remove(RESERVE_BUTTON);
             }
+
+            monthCalendar.SelectionStart = DateTime.Now;
+            monthCalendar.SelectionEnd = DateTime.Now;
 
             FillVisits();
             FillDoctors();
@@ -137,6 +141,19 @@ namespace Clinic.Interface.Registrator
             }
         }
 
+        private void EditVisit(DailyVisit dailyVisit)
+        {
+            if (dailyVisit.VisitId == null)
+                return;
+
+            using (var form = new VisitDescriptionForm(dailyVisit))
+            {
+                string result = form.ShowDialog();
+                if (result != null)
+                    dailyVisit.Description = result;    
+            }
+        }
+
         private void FillVisits()
         {
             bindingSourceDailyVisit.Clear();
@@ -144,19 +161,19 @@ namespace Clinic.Interface.Registrator
             var doctorId = ((DoctorListItem)listBoxDoctors.SelectedItem)?.Id;
             if (doctorId == 0)
                 doctorId = null;
-
-            var startTime = DateTime.Now.Date.AddHours(START_WORKING_HOUR);
-            var endTime = DateTime.Now.Date.AddHours(END_WORKING_HOUR);
-            var timeSpan = endTime - startTime;
-            var numberOfVisits = (int)timeSpan.TotalMinutes / MINUTES_PER_VISIT;
-
+            
             if (actionType == ActionType.Browse)
             {
-                FillVisitsForBrowsing(doctorId, monthCalendar.SelectionStart, monthCalendar.SelectionEnd, patientFilters.GetPatient());
+                FillVisitsForBrowsing(doctorId, monthCalendar.SelectionStart.Date, monthCalendar.SelectionEnd.Date, patientFilters.GetPatient());
             }
             else if (actionType == ActionType.Create)
             {
-                FillVisitsForScheduling(doctorId, startTime, numberOfVisits, monthCalendar.SelectionStart, monthCalendar.SelectionEnd);
+                var startTime = DateTime.Now.Date.AddHours(START_WORKING_HOUR);
+                var endTime = DateTime.Now.Date.AddHours(END_WORKING_HOUR);
+                var timeSpan = endTime - startTime;
+                var numberOfVisits = (int)timeSpan.TotalMinutes / MINUTES_PER_VISIT;
+
+                FillVisitsForScheduling(doctorId, startTime, numberOfVisits, monthCalendar.SelectionStart.Date, monthCalendar.SelectionEnd.Date);
             }
         }
 
@@ -229,8 +246,11 @@ namespace Clinic.Interface.Registrator
                 case DELETE_BUTTON:
                     DeleteVisit((DailyVisit)bindingSourceDailyVisit.Current);
                     break;
-                default:
+                case EDIT_VISIT:
+                    EditVisit((DailyVisit)bindingSourceDailyVisit.Current);
                     break;
+                default:
+                    return;
             }
 
             if (e.RowIndex >= 0 && e.RowIndex < dataGridViewDailyVisits.RowCount)
