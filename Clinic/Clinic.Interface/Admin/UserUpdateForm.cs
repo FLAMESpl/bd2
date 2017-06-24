@@ -1,4 +1,5 @@
 ﻿using Clinic.Data;
+using Clinic.Facades.Common;
 using Clinic.Facades.Users;
 using Clinic.Interface.Admin.Events;
 using Clinic.Interface.Admin.RolesFilters;
@@ -41,6 +42,11 @@ namespace Clinic.Interface.Admin
             this.actionType = actionType;
             this.userId = userView.UserId;
             FillUser(userView);
+            if (actionType == ActionType.Update)
+            {
+                labelledTextBoxPassword.Enabled = false;
+                labelledTextBoxPassword.Visible = false;
+            }
         }
 
         private void InitializeRoleFilters()
@@ -73,7 +79,8 @@ namespace Clinic.Interface.Admin
             {
                 name = String.Empty;
                 surname = String.Empty;
-                username = String.Empty;
+                username = userView.Username;
+                role = userView.Role;
             }
 
             userFilters.Role = role;
@@ -100,31 +107,35 @@ namespace Clinic.Interface.Admin
             {
                 if (string.IsNullOrEmpty(labelledTextBoxPassword.Input))
                 {
-                    MessageBox.Show("Enter password!");
+                    MessageBox.Show("Password is required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    UsersService.Create(CreateUser());
-                    Close();
+                    try
+                    {
+                        UsersService.Create(CreateUser());
+                        Messages.EntityCreated("User");
+                        Close();
+                    }
+                    catch (DomainException exception)
+                    {
+                        exception.ShowMessage();
+                    }
                 }
             }
             else if (actionType == ActionType.Update)
             {
+                var user = CreateUser();
                 if (string.IsNullOrEmpty(labelledTextBoxPassword.Input))
                 {
-                    User user = CreateUser();
                     user.Password = null;
-                    UsersService.Update(user);
-                    Close();
                 }
-                else
-                {
-                    UsersService.Update(CreateUser());
-                    Close();
-                }
-                
+                UsersService.Update(user);
+                Messages.EntityUpdated("User");
+                Close();
             }
         }
+
         private void doneCancelDialog_Cancel(object sender, EventArgs e)
         {
             Close();

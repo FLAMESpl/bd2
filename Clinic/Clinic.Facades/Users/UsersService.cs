@@ -1,5 +1,6 @@
 ﻿using Clinic.Data;
 using Clinic.Data.Helpers;
+using Clinic.Facades.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace Clinic.Facades.Users
         {
             using (var db = DataContextFactory.Create())
             {
+                if (db.Users.Any(u => u.Username == user.Username))
+                    throw new DomainException("Provided username is already taken");
+
                 user.RegistrationDate = db.GetSystemDate();
                 db.Users.InsertOnSubmit(user);
                 db.SubmitChanges();
