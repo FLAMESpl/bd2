@@ -1,4 +1,5 @@
 ﻿using Clinic.Data;
+using Clinic.Facades.Common;
 using Clinic.Facades.Users;
 using Clinic.Interface.Admin.Events;
 using Clinic.Interface.Admin.RolesFilters;
@@ -106,31 +107,35 @@ namespace Clinic.Interface.Admin
             {
                 if (string.IsNullOrEmpty(labelledTextBoxPassword.Input))
                 {
-                    MessageBox.Show("Enter password!");
+                    MessageBox.Show("Password is required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    UsersService.Create(CreateUser());
-                    Close();
+                    try
+                    {
+                        UsersService.Create(CreateUser());
+                        Messages.EntityCreated("User");
+                        Close();
+                    }
+                    catch (DomainException exception)
+                    {
+                        exception.ShowMessage();
+                    }
                 }
             }
             else if (actionType == ActionType.Update)
             {
+                var user = CreateUser();
                 if (string.IsNullOrEmpty(labelledTextBoxPassword.Input))
                 {
-                    User user = CreateUser();
                     user.Password = null;
-                    UsersService.Update(user);
-                    Close();
                 }
-                else
-                {
-                    UsersService.Update(CreateUser());
-                    Close();
-                }
-                
+                UsersService.Update(user);
+                Messages.EntityUpdated("User");
+                Close();
             }
         }
+
         private void doneCancelDialog_Cancel(object sender, EventArgs e)
         {
             Close();

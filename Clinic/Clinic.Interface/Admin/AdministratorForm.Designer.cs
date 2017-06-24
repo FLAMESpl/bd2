@@ -179,7 +179,7 @@
             this.ClientSize = new System.Drawing.Size(302, 344);
             this.Controls.Add(this.tableLayoutPanelMain);
             this.Name = "AdministratorForm";
-            this.Text = "AdministratorForm";
+            this.Text = "Administrator";
             this.tableLayoutPanelMain.ResumeLayout(false);
             this.tableLayoutPanelButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
