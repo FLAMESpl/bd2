@@ -1,8 +1,10 @@
 ﻿using Clinic.Data;
+using Clinic.Facades.Common;
 using Clinic.Facades.Users;
 using Clinic.Interface.Admin.Events;
 using Clinic.Interface.Admin.RolesFilters;
 using Clinic.Interface.Common;
+using Clinic.Interface.Common.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -37,10 +39,14 @@ namespace Clinic.Interface.Admin
         {
             InitializeComponent();
             InitializeRoleFilters();
-            FillUser(userView);
-
             this.actionType = actionType;
             this.userId = userView.UserId;
+            FillUser(userView);
+            if (actionType == ActionType.Update)
+            {
+                labelledTextBoxPassword.Enabled = false;
+                labelledTextBoxPassword.Visible = false;
+            }
         }
 
         private void InitializeRoleFilters()
@@ -67,12 +73,14 @@ namespace Clinic.Interface.Admin
                 username = user.Username;
                 user.GetNameAndSurname(out name, out surname);
                 role = RolesExtensions.GetFromCode(user.Role) ?? role;
+                labelledTextBoxPassword.Input = string.Empty;
             }
             else
             {
                 name = String.Empty;
                 surname = String.Empty;
-                username = String.Empty;
+                username = userView.Username;
+                role = userView.Role;
             }
 
             userFilters.Role = role;
@@ -97,14 +105,35 @@ namespace Clinic.Interface.Admin
         {
             if (actionType == ActionType.Create)
             {
-                UsersService.Create(CreateUser());
+                if (string.IsNullOrEmpty(labelledTextBoxPassword.Input))
+                {
+                    MessageBox.Show("Password is required", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    try
+                    {
+                        UsersService.Create(CreateUser());
+                        Messages.EntityCreated("User");
+                        Close();
+                    }
+                    catch (DomainException exception)
+                    {
+                        exception.ShowMessage();
+                    }
+                }
             }
             else if (actionType == ActionType.Update)
             {
-               
+                var user = CreateUser();
+                if (string.IsNullOrEmpty(labelledTextBoxPassword.Input))
+                {
+                    user.Password = null;
+                }
+                UsersService.Update(user);
+                Messages.EntityUpdated("User");
+                Close();
             }
-
-            Close();
         }
 
         private void doneCancelDialog_Cancel(object sender, EventArgs e)
@@ -117,8 +146,8 @@ namespace Clinic.Interface.Admin
             var role = userFilters.Role.Value;
             var user = new User
             {
-                Id = userId,
-                Password = "pass",
+                Id = userId,                
+                Password = Cryptography.GetCrypt(labelledTextBoxPassword.Input),
                 Username = userFilters.Username,
                 Role = role.ToCode()
             };

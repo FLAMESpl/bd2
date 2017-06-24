@@ -2,6 +2,7 @@
 using Clinic.Facades.Users;
 using Clinic.Interface.Admin;
 using Clinic.Interface.Common;
+using Clinic.Interface.Common.Helpers;
 using Clinic.Interface.Doctors;
 using Clinic.Interface.Lab;
 using Clinic.Interface.LabManager;
@@ -78,6 +79,20 @@ namespace Clinic.Interface.Authentication
             if (e.KeyChar == '\r')
             {
                 buttonLogIn_Click(sender, e);
+            }
+        }
+
+        private void buttonChangePassword_Click(object sender, EventArgs e)
+        {
+            var result = AuthenticationService.Authenticate(textBoxLogin.Text, textBoxPassword.Text);
+            if (result.Success)
+            {
+                ChangePasswordForm form = new ChangePasswordForm(result.User);
+                form.Show();
+            }
+            else
+            {
+                MessageBox.Show("Authentication error");
             }
         }
     }
