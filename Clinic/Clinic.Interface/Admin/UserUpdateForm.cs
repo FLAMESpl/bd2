@@ -41,6 +41,11 @@ namespace Clinic.Interface.Admin
             this.actionType = actionType;
             this.userId = userView.UserId;
             FillUser(userView);
+            if (actionType == ActionType.Update)
+            {
+                labelledTextBoxPassword.Enabled = false;
+                labelledTextBoxPassword.Visible = false;
+            }
         }
 
         private void InitializeRoleFilters()
@@ -73,7 +78,8 @@ namespace Clinic.Interface.Admin
             {
                 name = String.Empty;
                 surname = String.Empty;
-                username = String.Empty;
+                username = userView.Username;
+                role = userView.Role;
             }
 
             userFilters.Role = role;

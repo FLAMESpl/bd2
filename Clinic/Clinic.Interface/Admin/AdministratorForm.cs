@@ -25,8 +25,9 @@ namespace Clinic.Interface.Admin
         private void buttonBrowse_Click(object sender, System.EventArgs e)
         {
             var users = UsersService.Match(userFilters.GetUser());
+            var adminRole = Role.Administrator.ToCode();
             sourceUsers.Clear();
-            sourceUsers.AddRange(users.Select(u => new UserView(u)));
+            sourceUsers.AddRange(users.Where(u => u.Role != adminRole).Select(u => new UserView(u)));
         }
 
         private void dataGridViewUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -44,13 +45,8 @@ namespace Clinic.Interface.Admin
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            var role = userFilters.Role != null ? userFilters.Role.Value.ToCode() : String.Empty;
-            var user = new UserView
-            {
-                Role = role,
-                Username = userFilters.Username
-
-            };
+            var role = userFilters.Role ?? Role.Registrator;
+            var user = new UserView(userFilters.Username, role);
 
             using (var form = new UserUpdateForm(user, ActionType.Create))
             {
