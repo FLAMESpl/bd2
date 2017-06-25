@@ -21,9 +21,11 @@ namespace Clinic.Interface.Registrator
         private const string RESERVE_BUTTON = "Reserve";
         private const string CANCEL_BUTTON = "Cancel";
         private const string DELETE_BUTTON = "Delete";
+        private const string EDIT_VISIT = "Edit";
 
         private Patient patient;
         private ActionType actionType;
+        private PatientFilters patientFilters;
 
         public VisitForm()
         {
@@ -52,11 +54,14 @@ namespace Clinic.Interface.Registrator
             }
             else if (actionType == ActionType.Browse)
             {
-                var patientFilters = new PatientFilters();
+                patientFilters = new PatientFilters();
                 groupBoxPatient.Controls.Add(patientFilters);
 
                 dataGridViewDailyVisits.Columns.Remove(RESERVE_BUTTON);
             }
+
+            monthCalendar.SelectionStart = DateTime.Now;
+            monthCalendar.SelectionEnd = DateTime.Now;
 
             FillVisits();
             FillDoctors();
@@ -97,6 +102,9 @@ namespace Clinic.Interface.Registrator
 
         private void CancelVisit(DailyVisit dailyVisit)
         {
+            if (dailyVisit.Status == VisitStatus.Free)
+                return;
+
             try
             {
                 VisitsService.Cancel(dailyVisit.VisitId.Value);
@@ -110,6 +118,9 @@ namespace Clinic.Interface.Registrator
 
         private void DeleteVisit(DailyVisit dailyVisit)
         {
+            if (dailyVisit.Status == VisitStatus.Free)
+                return;
+
             var result = MessageBox.Show($"Visit for patient {dailyVisit.Patient} will be deleted. Are you sure?", 
                 null, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
@@ -119,11 +130,27 @@ namespace Clinic.Interface.Registrator
             try
             {
                 VisitsService.Delete(dailyVisit.VisitId.Value);
-                dailyVisit.Delete();
+                if (actionType == ActionType.Browse)
+                    bindingSourceDailyVisit.Remove(dailyVisit);
+                else
+                    dailyVisit.Delete();
             }
             catch(DomainException ex)
             {
                 ex.ShowMessage();
+            }
+        }
+
+        private void EditVisit(DailyVisit dailyVisit)
+        {
+            if (dailyVisit.VisitId == null)
+                return;
+
+            using (var form = new VisitDescriptionForm(dailyVisit))
+            {
+                string result = form.ShowDialog();
+                if (result != null)
+                    dailyVisit.Description = result;    
             }
         }
 
@@ -132,49 +159,60 @@ namespace Clinic.Interface.Registrator
             bindingSourceDailyVisit.Clear();
 
             var doctorId = ((DoctorListItem)listBoxDoctors.SelectedItem)?.Id;
-
-            var startTime = DateTime.Now.Date.AddHours(START_WORKING_HOUR);
-            var endTime = DateTime.Now.Date.AddHours(END_WORKING_HOUR);
-            var timeSpan = endTime - startTime;
-            var numberOfVisits = (int)timeSpan.TotalMinutes / MINUTES_PER_VISIT;
-
+            if (doctorId == 0)
+                doctorId = null;
+            
             if (actionType == ActionType.Browse)
             {
-                FillVisitsForBrowsing(doctorId, startTime, numberOfVisits);
+                FillVisitsForBrowsing(doctorId, monthCalendar.SelectionStart.Date, monthCalendar.SelectionEnd.Date, patientFilters.GetPatient());
             }
             else if (actionType == ActionType.Create)
             {
-                FillVisitsForScheduling(doctorId, startTime, numberOfVisits);
+                var startTime = DateTime.Now.Date.AddHours(START_WORKING_HOUR);
+                var endTime = DateTime.Now.Date.AddHours(END_WORKING_HOUR);
+                var timeSpan = endTime - startTime;
+                var numberOfVisits = (int)timeSpan.TotalMinutes / MINUTES_PER_VISIT;
+
+                FillVisitsForScheduling(doctorId, startTime, numberOfVisits, monthCalendar.SelectionStart.Date, monthCalendar.SelectionEnd.Date);
             }
         }
 
-        private void FillVisitsForBrowsing(long? doctorId, DateTime startTime, int numberOfVisits)
+        private void FillVisitsForBrowsing(long? doctorId, DateTime firstDay, DateTime lastDay, Patient patientSearchCriteria)
         {
+            var excludedStatuses = new VisitStatus[] { VisitStatus.Removed };
+            var visits = VisitsService.GetInDateRange(firstDay, lastDay, doctorId, patientSearchCriteria, excludedStatuses);
+            bindingSourceDailyVisit.AddRange(visits.Select(v => new DailyVisit(v)));
         }
 
-        private void FillVisitsForScheduling(long? doctorId, DateTime startTime, int numberOfVisits)
+        private void FillVisitsForScheduling(long? doctorId, DateTime startTime, int numberOfVisitsPerDay, DateTime firstDay, DateTime lastDay)
         {
             if (doctorId == null)
                 return;
 
-            var todayVisits = VisitsService.GetInDate(DateTime.Now, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
-            var actualTime = startTime;
+            var excludedStatuses = new VisitStatus[] { VisitStatus.Removed, VisitStatus.Cancelled };
+            var todayVisits = VisitsService.GetInDateRange(firstDay, lastDay, doctorId, null, excludedStatuses);
+            var actualDay = firstDay;
 
-            for (int i = 0; i < numberOfVisits; i++)
+            for (int j = 0; j < (lastDay - firstDay).Days + 1; j++)
             {
-                var visit = todayVisits.SingleOrDefault(v => v.PlannedDate == actualTime);
-                DailyVisit dailyVisit = null;
-                if (visit == null)
+                var actualTime = actualDay + startTime.TimeOfDay;
+                for (int i = 0; i < numberOfVisitsPerDay; i++)
                 {
-                    dailyVisit = new DailyVisit(actualTime);
-                }
-                else
-                {
-                    dailyVisit = new DailyVisit(visit);
-                }
+                    var visit = todayVisits.SingleOrDefault(v => v.PlannedDate == actualTime);
+                    DailyVisit dailyVisit = null;
+                    if (visit == null)
+                    {
+                        dailyVisit = new DailyVisit(actualTime);
+                    }
+                    else
+                    {
+                        dailyVisit = new DailyVisit(visit);
+                    }
 
-                bindingSourceDailyVisit.Add(dailyVisit);
-                actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
+                    bindingSourceDailyVisit.Add(dailyVisit);
+                    actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
+                }
+                actualDay = actualDay.AddDays(1);
             }
         }
 
@@ -208,14 +246,18 @@ namespace Clinic.Interface.Registrator
                 case DELETE_BUTTON:
                     DeleteVisit((DailyVisit)bindingSourceDailyVisit.Current);
                     break;
-                default:
+                case EDIT_VISIT:
+                    EditVisit((DailyVisit)bindingSourceDailyVisit.Current);
                     break;
+                default:
+                    return;
             }
 
-            grid.InvalidateRow(e.RowIndex);
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridViewDailyVisits.RowCount)
+                grid.InvalidateRow(e.RowIndex);
         }
 
-        private void listBoxDoctors_SelectedValueChanged(object sender, EventArgs e)
+        private void toolButtonRefresh_Click(object sender, EventArgs e)
         {
             FillVisits();
         }

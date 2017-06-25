@@ -59,6 +59,17 @@ namespace Clinic.Facades.Visits
             }
         }
 
+        public static void UpdateDescription(long visitId, string description)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var visit = db.Visits.Single(x => x.Id == visitId);
+                visit.Description = description;
+
+                db.SubmitChanges();
+            }
+        }
+
         public static void Finalise(long id)
         {
             using (var db = DataContextFactory.Create())
@@ -72,24 +83,49 @@ namespace Clinic.Facades.Visits
             }
         }
 
-        public static List<Visit> GetInDate(DateTime day, long? doctorId = null)
+        public static List<Visit> GetInDate(DateTime day, long? doctorId = null, IEnumerable<VisitStatus> excludedStatuses = null)
         {
             using (var db = DataContextFactory.Create(x => x.Include<Visit>(v => v.Patient).Include<Visit>(v => v.Doctor)))
             {
-                var result = db.Visits.Where(v => day.Date == v.PlannedDate.Date);
+                var result = db.Visits
+                    .Where(v => day.Date == v.PlannedDate.Date);
+
                 if (doctorId.HasValue)
                     result = result.Where(v => v.IdDoctor == doctorId.Value);
 
-                return result.ToList();
+                if (excludedStatuses != null)
+                {
+                    var excludedStatusesCodes = excludedStatuses?.Select(s => s.ToCode()).ToList();
+                    result = result.Where(v => !excludedStatusesCodes.Contains(v.Status));
+                }
+
+                return result.OrderBy(v => v.PlannedDate).ToList();
             }
         }
 
-        public static List<Visit> GetInDateRange(DateTime firstDay, DateTime lastDay)
+        public static List<Visit> GetInDateRange(DateTime firstDay, DateTime lastDay, long? doctorId = null, Patient patientSearchCriteria = null, IEnumerable<VisitStatus> excludedStatuses = null)
         {
-            using (var db = DataContextFactory.Create())
+            using (var db = DataContextFactory.Create(x => x.Include<Visit>(v => v.Patient).Include<Visit>(v => v.Doctor)))
             {
-                var result = db.Visits.Where(v => firstDay <= v.PlannedDate && v.PlannedDate >= lastDay);
-                return result.ToList();
+                var result = db.Visits.Where(v => firstDay <= v.PlannedDate && v.PlannedDate <= lastDay);
+
+                if (doctorId.HasValue)
+                    result = result.Where(v => v.IdDoctor == doctorId.Value);
+                
+                if (patientSearchCriteria != null)
+                    result = result.Where(
+                        v => v.Patient.Name.Contains(patientSearchCriteria.Name)
+                        && v.Patient.Surname.Contains(patientSearchCriteria.Surname)
+                        && v.Patient.PESEL.Contains(patientSearchCriteria.PESEL)
+                    );
+
+                if (excludedStatuses != null)
+                {
+                    var excludedStatusesCodes = excludedStatuses?.Select(s => s.ToCode()).ToList();
+                    result = result.Where(v => !excludedStatusesCodes.Contains(v.Status));
+                }
+
+                return result.OrderBy(v => v.PlannedDate).ToList();
             }
         }
 

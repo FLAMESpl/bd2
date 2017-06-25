@@ -1,9 +1,12 @@
 ﻿using Clinic.Data;
+using Clinic.Facades.Common;
 using Clinic.Facades.Patients;
 using Clinic.Interface.Common;
 using Clinic.Interface.Common.Helpers;
 using System;
+using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
 {
@@ -21,20 +24,37 @@ namespace Clinic.Interface.Registrator
         public PatientForm(Patient patient, ActionType actionType)
         {
             InitializeComponent();
-            SetupComponent();
-
             this.actionType = actionType;
             this.patient = patient;
+            SetupComponent();
+
             labelledInputFirstName.Input = patient.Name;
             labelledInputLastName.Input = patient.Surname;
             labelledInputEvidenceNumber.Input = patient.PESEL;
-            bindingSourceAddresses.AddRange(patient.Addresses);
+
+            if (actionType == ActionType.Update)
+                SetupAddresses();
+        }
+
+        private void SetupAddresses()
+        {
+            bindingSourceAddresses.AddRange(patient.Addresses.OrderBy(x => x.IsValid));
         }
 
         private void SetupComponent()
         {
             doneCancelDialog.Cancel += Cancel;
             doneCancelDialog.Done += Done;
+            addressFilters.AddButtonEnabled = (actionType == ActionType.Update);
+            if (actionType == ActionType.Update)
+            {
+                Height += 250;
+            }
+            else
+            {
+                dataGridViewAddresses.Enabled = false;
+                dataGridViewAddresses.Visible = false;
+            }
         }
 
         private void CreatePatient()
@@ -42,7 +62,7 @@ namespace Clinic.Interface.Registrator
             patient.Name = labelledInputFirstName.Input;
             patient.PESEL = labelledInputEvidenceNumber.Input;
             patient.Surname = labelledInputLastName.Input;
-            patient.Addresses.AddRange(bindingSourceAddresses.List.Cast<Address>());
+            patient.Addresses.Add(addressFilters.GetAddress());
 
             PatientsService.Add(patient);
         }
@@ -52,8 +72,7 @@ namespace Clinic.Interface.Registrator
             patient.Name = labelledInputFirstName.Input;
             patient.PESEL = labelledInputEvidenceNumber.Input;
             patient.Surname = labelledInputLastName.Input;
-            patient.Addresses.Clear();
-            patient.Addresses.AddRange(bindingSourceAddresses.List.Cast<Address>());
+            patient.Addresses.AddRange(bindingSourceAddresses.Cast<Address>());
 
             PatientsService.Update(patient);
         }
@@ -65,19 +84,36 @@ namespace Clinic.Interface.Registrator
 
         private void Done(object sender, EventArgs e)
         {
-            switch (actionType)
+            try
             {
-                case ActionType.Create:
-                    CreatePatient();
-                    break;
-                case ActionType.Update:
-                    UpdatePatient();
-                    break;
-                default:
-                    break;
+                switch (actionType)
+                {
+                    case ActionType.Create:
+                        CreatePatient();
+                        Messages.EntityCreated("Patient");
+                        Close();
+                        break;
+                    case ActionType.Update:
+                        UpdatePatient();
+                        Messages.EntityUpdated("Patient");
+                        Close();
+                        break;
+                    default:
+                        break;
+                }
             }
+            catch (DomainException ex)
+            {
+                ex.ShowMessage();
+            }
+        }
 
-            Close();
+        private void addressFilters_AddressAdded(object sender, EventArgs e)
+        {
+            foreach (var addr in bindingSourceAddresses.Cast<Address>())
+                addr.IsValid = false;
+
+            bindingSourceAddresses.List.Insert(0, addressFilters.GetAddress());
         }
     }
 }

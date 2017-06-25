@@ -7,9 +7,6 @@ namespace Clinic.Interface.Registrator
 {
     public partial class PatientFilters : UserControl
     {
-        public int MyProperty { get; set; }
-        public List<Button> aMyProperty { get; set; }
-
         public PatientFilters()
         {
             InitializeComponent();

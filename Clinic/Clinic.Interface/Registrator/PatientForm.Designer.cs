@@ -35,12 +35,13 @@
             this.labelledInputLastName = new Clinic.Interface.Common.LabelledTextBox();
             this.labelledInputEvidenceNumber = new Clinic.Interface.Common.LabelledTextBox();
             this.dataGridViewAddresses = new System.Windows.Forms.DataGridView();
-            this.doneCancelDialog = new Clinic.Interface.Common.DoneCancelDialog();
             this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.houseNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.flatNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FlatNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceAddresses = new System.Windows.Forms.BindingSource(this.components);
+            this.doneCancelDialog = new Clinic.Interface.Common.DoneCancelDialog();
+            this.addressFilters = new Clinic.Interface.Registrator.AddressFilters();
             this.tableLayoutPanel.SuspendLayout();
             this.flowLayoutPanelPatientDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAddresses)).BeginInit();
@@ -50,19 +51,20 @@
             // tableLayoutPanel
             // 
             this.tableLayoutPanel.ColumnCount = 1;
-            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.Controls.Add(this.flowLayoutPanelPatientDetails, 0, 0);
-            this.tableLayoutPanel.Controls.Add(this.dataGridViewAddresses, 0, 1);
-            this.tableLayoutPanel.Controls.Add(this.doneCancelDialog, 0, 2);
+            this.tableLayoutPanel.Controls.Add(this.dataGridViewAddresses, 0, 2);
+            this.tableLayoutPanel.Controls.Add(this.doneCancelDialog, 0, 3);
+            this.tableLayoutPanel.Controls.Add(this.addressFilters, 0, 1);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
-            this.tableLayoutPanel.RowCount = 3;
+            this.tableLayoutPanel.RowCount = 4;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(450, 269);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(552, 202);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // flowLayoutPanelPatientDetails
@@ -73,7 +75,7 @@
             this.flowLayoutPanelPatientDetails.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanelPatientDetails.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanelPatientDetails.Name = "flowLayoutPanelPatientDetails";
-            this.flowLayoutPanelPatientDetails.Size = new System.Drawing.Size(444, 50);
+            this.flowLayoutPanelPatientDetails.Size = new System.Drawing.Size(546, 50);
             this.flowLayoutPanelPatientDetails.TabIndex = 0;
             // 
             // labelledInputFirstName
@@ -111,21 +113,13 @@
             this.cityDataGridViewTextBoxColumn,
             this.streetDataGridViewTextBoxColumn,
             this.houseNumberDataGridViewTextBoxColumn,
-            this.flatNumberDataGridViewTextBoxColumn});
+            this.FlatNumber});
             this.dataGridViewAddresses.DataSource = this.bindingSourceAddresses;
             this.dataGridViewAddresses.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewAddresses.Location = new System.Drawing.Point(3, 59);
+            this.dataGridViewAddresses.Location = new System.Drawing.Point(3, 115);
             this.dataGridViewAddresses.Name = "dataGridViewAddresses";
-            this.dataGridViewAddresses.Size = new System.Drawing.Size(444, 168);
+            this.dataGridViewAddresses.Size = new System.Drawing.Size(546, 45);
             this.dataGridViewAddresses.TabIndex = 1;
-            // 
-            // doneCancelDialog
-            // 
-            this.doneCancelDialog.Dock = System.Windows.Forms.DockStyle.Right;
-            this.doneCancelDialog.Location = new System.Drawing.Point(208, 233);
-            this.doneCancelDialog.Name = "doneCancelDialog";
-            this.doneCancelDialog.Size = new System.Drawing.Size(239, 33);
-            this.doneCancelDialog.TabIndex = 2;
             // 
             // cityDataGridViewTextBoxColumn
             // 
@@ -142,24 +136,42 @@
             // houseNumberDataGridViewTextBoxColumn
             // 
             this.houseNumberDataGridViewTextBoxColumn.DataPropertyName = "HouseNumber";
-            this.houseNumberDataGridViewTextBoxColumn.HeaderText = "HouseNumber";
+            this.houseNumberDataGridViewTextBoxColumn.HeaderText = "House Number";
             this.houseNumberDataGridViewTextBoxColumn.Name = "houseNumberDataGridViewTextBoxColumn";
             // 
-            // flatNumberDataGridViewTextBoxColumn
+            // FlatNumber
             // 
-            this.flatNumberDataGridViewTextBoxColumn.DataPropertyName = "FlatNumber";
-            this.flatNumberDataGridViewTextBoxColumn.HeaderText = "FlatNumber";
-            this.flatNumberDataGridViewTextBoxColumn.Name = "flatNumberDataGridViewTextBoxColumn";
+            this.FlatNumber.DataPropertyName = "FlatNumber";
+            this.FlatNumber.HeaderText = "Flat Number";
+            this.FlatNumber.Name = "FlatNumber";
             // 
             // bindingSourceAddresses
             // 
             this.bindingSourceAddresses.DataSource = typeof(Clinic.Data.Address);
             // 
+            // doneCancelDialog
+            // 
+            this.doneCancelDialog.Dock = System.Windows.Forms.DockStyle.Right;
+            this.doneCancelDialog.Location = new System.Drawing.Point(310, 166);
+            this.doneCancelDialog.Name = "doneCancelDialog";
+            this.doneCancelDialog.Size = new System.Drawing.Size(239, 33);
+            this.doneCancelDialog.TabIndex = 2;
+            // 
+            // addressFilters
+            // 
+            this.addressFilters.AddButtonEnabled = true;
+            this.addressFilters.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addressFilters.Location = new System.Drawing.Point(3, 59);
+            this.addressFilters.Name = "addressFilters";
+            this.addressFilters.Size = new System.Drawing.Size(546, 50);
+            this.addressFilters.TabIndex = 3;
+            this.addressFilters.AddressAdded += new System.EventHandler(this.addressFilters_AddressAdded);
+            // 
             // PatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(450, 269);
+            this.ClientSize = new System.Drawing.Size(552, 202);
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "PatientForm";
             this.Text = "Patient";
@@ -181,9 +193,11 @@
         private System.Windows.Forms.DataGridView dataGridViewAddresses;
         private Common.DoneCancelDialog doneCancelDialog;
         private System.Windows.Forms.BindingSource bindingSourceAddresses;
+        private System.Windows.Forms.DataGridViewTextBoxColumn flatNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn streetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn houseNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn flatNumberDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FlatNumber;
+        private AddressFilters addressFilters;
     }
 }
