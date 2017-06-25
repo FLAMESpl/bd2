@@ -11,7 +11,7 @@ namespace Clinic.Facades.Tests
     {
         public static List<TestDictionary> GetDictionary()
         {
-            using (var db = DataContextFactory.Create(x => x.Include<LaboratoryTest>(y => y.TestDictionary)))
+            using (var db = DataContextFactory.Create())
             {
                 var results = db.TestDictionaries;
                 return results.ToList();
@@ -59,7 +59,7 @@ namespace Clinic.Facades.Tests
 
         public static void Add(LaboratoryTest test)
         {
-            using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.LaboratoryTests)))
+            using (var db = DataContextFactory.Create())
             {
                 db.LaboratoryTests.InsertOnSubmit(test);
                 db.SubmitChanges();
@@ -68,7 +68,7 @@ namespace Clinic.Facades.Tests
 
         public static void Add(PhysicalTest test)
         {
-            using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.PhysicalTests))) //not needed
+            using (var db = DataContextFactory.Create())
             {
                 db.PhysicalTests.InsertOnSubmit(test);
                 db.SubmitChanges();
@@ -120,15 +120,6 @@ namespace Clinic.Facades.Tests
                 var oldTest = db.PhysicalTests.Where(p => p.Id == test.Id).Single();
                 oldTest.Result = test.Result;
                 db.SubmitChanges();
-            }
-        }
-        
-        public static List<LaboratoryTest> GetAll(TestStatus ts)
-        {
-            using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.LaboratoryTests)))
-            {
-                var result = db.LaboratoryTests.Where(t => t.Status == ts.ToCode());
-                return result.ToList();
             }
         }
 
