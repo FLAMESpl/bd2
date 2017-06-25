@@ -21,6 +21,10 @@ namespace Clinic.Facades.Tests
         {
             get; set;
         }
+        public string PESEL
+        {
+            get; set;
+        }
         public string Test
         {
             get; set;

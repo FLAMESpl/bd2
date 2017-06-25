@@ -123,7 +123,7 @@ namespace Clinic.Facades.Tests
             }
         }
 
-        public static List<PatientLaboratoryTest> MatchWithPatient(string name, string surname, TestStatus ts)
+        public static List<PatientLaboratoryTest> MatchWithPatient(string name, string surname, string pesel, TestStatus ts)
         {
             using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.LaboratoryTests)))
             {
@@ -134,6 +134,7 @@ namespace Clinic.Facades.Tests
                              where t.Status == ts.ToCode()
                              where SqlMethods.Like(p.Name, "%" + name + "%")
                              where SqlMethods.Like(p.Surname, "%" + surname + "%")
+                             where SqlMethods.Like(p.PESEL, "%" + pesel + "%")
                              select new PatientLaboratoryTest
                              {
                                  Id = t.Id,
@@ -143,6 +144,7 @@ namespace Clinic.Facades.Tests
                                  DoctorNotes = t.DoctorNotes,
                                  Name = p.Name,
                                  Surname = p.Surname,
+                                 PESEL = p.PESEL,
                                  Result = t.Result
                              };
                 return result.ToList();

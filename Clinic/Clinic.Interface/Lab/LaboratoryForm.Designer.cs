@@ -30,14 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewTests = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.testDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commissionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doctorNotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.executionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourcePatientLaboratoryTests = new System.Windows.Forms.BindingSource(this.components);
             this.buttonAddTests = new System.Windows.Forms.Button();
             this.buttonAcceptTest = new System.Windows.Forms.Button();
@@ -46,6 +38,16 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.labelledTextBoxSurname = new Clinic.Interface.Common.LabelledTextBox();
             this.labelledTextBoxName = new Clinic.Interface.Common.LabelledTextBox();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PESEL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commissionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorNotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.executionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelledTextBoxPESEL = new Clinic.Interface.Common.LabelledTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatientLaboratoryTests)).BeginInit();
             this.groupBoxPatient.SuspendLayout();
@@ -60,6 +62,7 @@
             this.idDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn,
             this.surnameDataGridViewTextBoxColumn,
+            this.PESEL,
             this.testDataGridViewTextBoxColumn,
             this.commissionDateDataGridViewTextBoxColumn,
             this.doctorNotesDataGridViewTextBoxColumn,
@@ -73,6 +76,83 @@
             this.dataGridViewTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTests.Size = new System.Drawing.Size(599, 285);
             this.dataGridViewTests.TabIndex = 9;
+            // 
+            // bindingSourcePatientLaboratoryTests
+            // 
+            this.bindingSourcePatientLaboratoryTests.DataSource = typeof(Clinic.Facades.Tests.PatientLaboratoryTest);
+            this.bindingSourcePatientLaboratoryTests.CurrentChanged += new System.EventHandler(this.bindingSourcePatientLaboratoryTests_CurrentChanged);
+            // 
+            // buttonAddTests
+            // 
+            this.buttonAddTests.Location = new System.Drawing.Point(391, 415);
+            this.buttonAddTests.Name = "buttonAddTests";
+            this.buttonAddTests.Size = new System.Drawing.Size(140, 22);
+            this.buttonAddTests.TabIndex = 8;
+            this.buttonAddTests.Text = "Edit test dictionary";
+            this.buttonAddTests.UseVisualStyleBackColor = true;
+            this.buttonAddTests.Click += new System.EventHandler(this.buttonAddTests_Click);
+            // 
+            // buttonAcceptTest
+            // 
+            this.buttonAcceptTest.Location = new System.Drawing.Point(101, 414);
+            this.buttonAcceptTest.Name = "buttonAcceptTest";
+            this.buttonAcceptTest.Size = new System.Drawing.Size(140, 23);
+            this.buttonAcceptTest.TabIndex = 5;
+            this.buttonAcceptTest.Text = "Accept/Cancel Test";
+            this.buttonAcceptTest.UseVisualStyleBackColor = true;
+            this.buttonAcceptTest.Click += new System.EventHandler(this.buttonAcceptTest_Click);
+            // 
+            // groupBoxPatient
+            // 
+            this.groupBoxPatient.Controls.Add(this.labelledTextBoxPESEL);
+            this.groupBoxPatient.Controls.Add(this.buttonClear);
+            this.groupBoxPatient.Controls.Add(this.buttonSearch);
+            this.groupBoxPatient.Controls.Add(this.labelledTextBoxSurname);
+            this.groupBoxPatient.Controls.Add(this.labelledTextBoxName);
+            this.groupBoxPatient.Location = new System.Drawing.Point(14, 7);
+            this.groupBoxPatient.Name = "groupBoxPatient";
+            this.groupBoxPatient.Size = new System.Drawing.Size(597, 90);
+            this.groupBoxPatient.TabIndex = 10;
+            this.groupBoxPatient.TabStop = false;
+            this.groupBoxPatient.Text = "Patient";
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(456, 51);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(135, 26);
+            this.buttonClear.TabIndex = 3;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(456, 19);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(135, 26);
+            this.buttonSearch.TabIndex = 2;
+            this.buttonSearch.Text = "Search";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // labelledTextBoxSurname
+            // 
+            this.labelledTextBoxSurname.Input = "";
+            this.labelledTextBoxSurname.Label = "Surname";
+            this.labelledTextBoxSurname.Location = new System.Drawing.Point(154, 21);
+            this.labelledTextBoxSurname.Name = "labelledTextBoxSurname";
+            this.labelledTextBoxSurname.Size = new System.Drawing.Size(139, 45);
+            this.labelledTextBoxSurname.TabIndex = 1;
+            // 
+            // labelledTextBoxName
+            // 
+            this.labelledTextBoxName.Input = "";
+            this.labelledTextBoxName.Label = "Name";
+            this.labelledTextBoxName.Location = new System.Drawing.Point(9, 21);
+            this.labelledTextBoxName.Name = "labelledTextBoxName";
+            this.labelledTextBoxName.Size = new System.Drawing.Size(139, 45);
+            this.labelledTextBoxName.TabIndex = 0;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -94,6 +174,13 @@
             this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
             this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
             this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // PESEL
+            // 
+            this.PESEL.DataPropertyName = "PESEL";
+            this.PESEL.HeaderText = "PESEL";
+            this.PESEL.Name = "PESEL";
+            this.PESEL.ReadOnly = true;
             // 
             // testDataGridViewTextBoxColumn
             // 
@@ -130,80 +217,14 @@
             this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
             this.resultDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // bindingSourcePatientLaboratoryTests
+            // labelledTextBoxPESEL
             // 
-            this.bindingSourcePatientLaboratoryTests.DataSource = typeof(Clinic.Facades.Tests.PatientLaboratoryTest);
-            // 
-            // buttonAddTests
-            // 
-            this.buttonAddTests.Location = new System.Drawing.Point(391, 415);
-            this.buttonAddTests.Name = "buttonAddTests";
-            this.buttonAddTests.Size = new System.Drawing.Size(140, 22);
-            this.buttonAddTests.TabIndex = 8;
-            this.buttonAddTests.Text = "Edit test dictionary";
-            this.buttonAddTests.UseVisualStyleBackColor = true;
-            this.buttonAddTests.Click += new System.EventHandler(this.buttonAddTests_Click);
-            // 
-            // buttonAcceptTest
-            // 
-            this.buttonAcceptTest.Location = new System.Drawing.Point(101, 414);
-            this.buttonAcceptTest.Name = "buttonAcceptTest";
-            this.buttonAcceptTest.Size = new System.Drawing.Size(140, 23);
-            this.buttonAcceptTest.TabIndex = 5;
-            this.buttonAcceptTest.Text = "Accept/Cancel Test";
-            this.buttonAcceptTest.UseVisualStyleBackColor = true;
-            this.buttonAcceptTest.Click += new System.EventHandler(this.buttonAcceptTest_Click);
-            // 
-            // groupBoxPatient
-            // 
-            this.groupBoxPatient.Controls.Add(this.buttonClear);
-            this.groupBoxPatient.Controls.Add(this.buttonSearch);
-            this.groupBoxPatient.Controls.Add(this.labelledTextBoxSurname);
-            this.groupBoxPatient.Controls.Add(this.labelledTextBoxName);
-            this.groupBoxPatient.Location = new System.Drawing.Point(14, 7);
-            this.groupBoxPatient.Name = "groupBoxPatient";
-            this.groupBoxPatient.Size = new System.Drawing.Size(597, 90);
-            this.groupBoxPatient.TabIndex = 10;
-            this.groupBoxPatient.TabStop = false;
-            this.groupBoxPatient.Text = "Patient";
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(442, 51);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(135, 26);
-            this.buttonClear.TabIndex = 3;
-            this.buttonClear.Text = "Clear";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(442, 19);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(135, 26);
-            this.buttonSearch.TabIndex = 2;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
-            // 
-            // labelledTextBoxSurname
-            // 
-            this.labelledTextBoxSurname.Input = "";
-            this.labelledTextBoxSurname.Label = "Surname";
-            this.labelledTextBoxSurname.Location = new System.Drawing.Point(190, 21);
-            this.labelledTextBoxSurname.Name = "labelledTextBoxSurname";
-            this.labelledTextBoxSurname.Size = new System.Drawing.Size(192, 45);
-            this.labelledTextBoxSurname.TabIndex = 1;
-            // 
-            // labelledTextBoxName
-            // 
-            this.labelledTextBoxName.Input = "";
-            this.labelledTextBoxName.Label = "Name";
-            this.labelledTextBoxName.Location = new System.Drawing.Point(9, 21);
-            this.labelledTextBoxName.Name = "labelledTextBoxName";
-            this.labelledTextBoxName.Size = new System.Drawing.Size(175, 46);
-            this.labelledTextBoxName.TabIndex = 0;
+            this.labelledTextBoxPESEL.Input = "";
+            this.labelledTextBoxPESEL.Label = "PESEL";
+            this.labelledTextBoxPESEL.Location = new System.Drawing.Point(299, 21);
+            this.labelledTextBoxPESEL.Name = "labelledTextBoxPESEL";
+            this.labelledTextBoxPESEL.Size = new System.Drawing.Size(139, 45);
+            this.labelledTextBoxPESEL.TabIndex = 4;
             // 
             // LaboratoryForm
             // 
@@ -240,10 +261,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn surnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PESEL;
         private System.Windows.Forms.DataGridViewTextBoxColumn testDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn commissionDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorNotesDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn executionDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn;
+        private Common.LabelledTextBox labelledTextBoxPESEL;
     }
 }

@@ -28,14 +28,14 @@ namespace Clinic.Interface.LabManager
             if (ActiveUser.Role == Role.LabManager.ToCode())
             {
                 bindingSourcePatientLaboratoryTests.Clear();
-                bindingSourcePatientLaboratoryTests.AddRange(TestService.MatchWithPatient(labelledTextBoxName.Input, labelledTextBoxSurname.Input, TestStatus.Executed));
+                bindingSourcePatientLaboratoryTests.AddRange(TestService.MatchWithPatient(labelledTextBoxName.Input, labelledTextBoxSurname.Input, labelledTextBoxPESEL.Input, TestStatus.Executed));
             }
             else    //lab assistant
             {
                 bindingSourcePatientLaboratoryTests.Clear();
-                bindingSourcePatientLaboratoryTests.AddRange(TestService.MatchWithPatient(labelledTextBoxName.Input, labelledTextBoxSurname.Input, TestStatus.Scheduled));
-                dataGridViewTests.Columns[6].Visible = false;
+                bindingSourcePatientLaboratoryTests.AddRange(TestService.MatchWithPatient(labelledTextBoxName.Input, labelledTextBoxSurname.Input, labelledTextBoxPESEL.Input, TestStatus.Scheduled));
                 dataGridViewTests.Columns[7].Visible = false;
+                dataGridViewTests.Columns[8].Visible = false;
             }
             dataGridViewTests.Columns[0].Visible = false;
             dataGridViewTests.Refresh();
@@ -120,7 +120,13 @@ namespace Clinic.Interface.LabManager
         {
             labelledTextBoxName.Input = "";
             labelledTextBoxSurname.Input = "";
+            labelledTextBoxPESEL.Input = "";
             RefreshList();
+        }
+
+        private void bindingSourcePatientLaboratoryTests_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
