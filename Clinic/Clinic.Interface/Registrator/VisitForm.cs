@@ -164,7 +164,7 @@ namespace Clinic.Interface.Registrator
             
             if (actionType == ActionType.Browse)
             {
-                FillVisitsForBrowsing(doctorId, monthCalendar.SelectionStart.Date, monthCalendar.SelectionEnd.Date.AddHours(24), patientFilters.GetPatient());
+                FillVisitsForBrowsing(doctorId, monthCalendar.SelectionStart.Date, monthCalendar.SelectionEnd.Date, patientFilters.GetPatient());
             }
             else if (actionType == ActionType.Create)
             {
@@ -180,7 +180,7 @@ namespace Clinic.Interface.Registrator
         private void FillVisitsForBrowsing(long? doctorId, DateTime firstDay, DateTime lastDay, Patient patientSearchCriteria)
         {
             var excludedStatuses = new VisitStatus[] { VisitStatus.Removed };
-            var visits = VisitsService.GetInDateRange(firstDay, lastDay, doctorId, patientSearchCriteria, excludedStatuses);
+            var visits = VisitsService.GetInDateRange(firstDay, lastDay.AddHours(24), doctorId, patientSearchCriteria, excludedStatuses);
             bindingSourceDailyVisit.AddRange(visits.Select(v => new DailyVisit(v)));
         }
 
