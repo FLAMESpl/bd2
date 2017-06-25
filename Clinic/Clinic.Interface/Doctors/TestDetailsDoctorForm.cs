@@ -113,7 +113,9 @@ namespace Clinic.Interface.Doctors
         {
             if (dataGridViewPhysicalTests.Columns.IndexOf(btnEditPhysicalTest) == e.ColumnIndex)
             {
-                MessageBox.Show(":P");
+                EditTextDetailsForm PhysicalResultWindow = new EditTextDetailsForm(dataGridViewPhysicalTests.Rows[e.RowIndex]);
+                //PhysicalResultWindow.SetTextBoxText(.Cells["resultDataGridViewTextBoxColumn2"].Value.ToString());
+                PhysicalResultWindow.ShowDialog(ActiveUser);
             }
         }
     }

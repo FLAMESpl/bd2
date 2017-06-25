@@ -36,7 +36,8 @@ namespace Clinic.Interface.Doctors
             if (doctorId == null)
                 return;
 
-            var todayVisits = VisitsService.GetInDate(DateTime.Now, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
+            //var todayVisits = VisitsService.GetInDate(DateTime.Now, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
+            var todayVisits = VisitsService.GetInDate(startTime, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
             var actualTime = startTime;
 
             for (int i = 0; i < numberOfVisits; i++)

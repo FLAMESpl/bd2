@@ -82,6 +82,16 @@ namespace Clinic.Facades.Tests
             }
         }
 
+        public static void UpdatePhysicalTest(PhysicalTest test)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var oldTest = db.PhysicalTests.Where(p => p.Id == test.Id).Single();
+                oldTest.Result = test.Result;
+                db.SubmitChanges();
+            }
+        }
+
         //deprecated, use GetTestsOfStatus
         public static List<LaboratoryTest> GetAllScheduled()
         {
