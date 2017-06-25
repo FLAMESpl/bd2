@@ -66,6 +66,15 @@ namespace Clinic.Facades.Tests
             }
         }
 
+        public static void Add(PhysicalTest test)
+        {
+            using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.PhysicalTests))) //not needed
+            {
+                db.PhysicalTests.InsertOnSubmit(test);
+                db.SubmitChanges();
+            }
+        }
+
         public static void UpdateAsAssistant(LaboratoryTest test)
         {
             using (var db = DataContextFactory.Create())
@@ -93,6 +102,32 @@ namespace Clinic.Facades.Tests
                 db.SubmitChanges();
             }
         }
+
+        public static void UpdateLaboratoryTestAsDoctor(LaboratoryTest test)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var oldTest = db.LaboratoryTests.Where(p => p.Id == test.Id).Single();
+                oldTest.DoctorNotes = test.DoctorNotes;
+                db.SubmitChanges();
+            }
+        }
+		
+        public static void UpdatePhysicalTest(PhysicalTest test)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var oldTest = db.PhysicalTests.Where(p => p.Id == test.Id).Single();
+                oldTest.Result = test.Result;
+                db.SubmitChanges();
+            }
+        }
+
+        //deprecated, use GetTestsOfStatus
+        public static List<LaboratoryTest> GetAllScheduled()
+
+
+
 
         public static List<LaboratoryTest> GetAll(TestStatus ts)
         {
@@ -125,6 +160,32 @@ namespace Clinic.Facades.Tests
                                  Surname = p.Surname,
                                  Result = t.Result
                              };
+                return result.ToList();
+            }
+        }
+
+        public static List<LaboratoryTest> GetTestsOfStatus(TestStatus queryStatus, long? VisitId = null)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var result = db.LaboratoryTests.Where(t => t.Status == queryStatus.ToCode());
+                if (VisitId != null)
+                {
+                    result = result.Where(t => t.IdVisit == VisitId);
+                }
+                return result.ToList();
+            }
+        }
+
+        public static List<PhysicalTest> GetPhysicalTests(long? VisitId = null)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var result = db.PhysicalTests.Select(x => x); //this select is here just so we dont have to cast three lines below
+                if (VisitId != null)
+                {
+                    result = result.Where(t => t.IdVisit == VisitId);
+                }
                 return result.ToList();
             }
         }

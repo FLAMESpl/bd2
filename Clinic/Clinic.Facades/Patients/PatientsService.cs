@@ -47,5 +47,14 @@ namespace Clinic.Facades.Patients
             db.Addresses.DeleteAllOnSubmit(patient.Addresses);
             patient.Addresses.AddRange(addresses);
         }
+
+        public static Patient GetPatientById(long PatientId)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                Patient results = db.Patients.Where(x => x.Id == PatientId).Single();
+                return results;
+            }
+        }
     }
 }

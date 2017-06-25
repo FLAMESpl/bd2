@@ -143,11 +143,25 @@
     <Compile Include="Doctors\DoctorForm.Designer.cs">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Lab\EditDictionaryForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab\EditDictionaryForm.Designer.cs">
       <DependentUpon>EditDictionaryForm.cs</DependentUpon>
+=======
+    <Compile Include="Doctors\EditTextDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\EditTextDetailsForm.Designer.cs">
+      <DependentUpon>EditTextDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Doctors\TestDetailsDoctorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doctors\TestDetailsDoctorForm.Designer.cs">
+      <DependentUpon>TestDetailsDoctorForm.cs</DependentUpon>
+>>>>>>> adding-doctors-module
     </Compile>
     <Compile Include="Lab\LaboratoryForm.cs">
       <SubType>Form</SubType>
@@ -236,6 +250,12 @@
     <EmbeddedResource Include="Lab\EditDictionaryForm.resx">
       <DependentUpon>EditDictionaryForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\EditTextDetailsForm.resx">
+      <DependentUpon>EditTextDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doctors\TestDetailsDoctorForm.resx">
+      <DependentUpon>TestDetailsDoctorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lab\LaboratoryForm.resx">
       <DependentUpon>LaboratoryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,8 +300,12 @@
     <None Include="Properties\DataSources\Clinic.Data.Address.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Doctor.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.LaboratoryTest.datasource" />
     <None Include="Properties\DataSources\Clinic.Data.Patient.datasource" />
     <None Include="Properties\DataSources\Clinic.Facades.Tests.PatientLaboratoryTest.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.PhysicalTest.datasource" />
+    <None Include="Properties\DataSources\Clinic.Data.TestDictionary.datasource" />
+    <None Include="Properties\DataSources\Clinic.Facades.Tests.TestService.datasource" />
     <None Include="Properties\DataSources\Clinic.Facades.Visits.DailyVisit.datasource" />
     <None Include="Properties\DataSources\Clinic.Interface.Admin.UserView.datasource" />
     <None Include="Properties\Settings.settings">

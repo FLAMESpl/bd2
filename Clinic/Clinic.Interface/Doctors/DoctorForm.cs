@@ -36,7 +36,8 @@ namespace Clinic.Interface.Doctors
             if (doctorId == null)
                 return;
 
-            var todayVisits = VisitsService.GetInDate(DateTime.Now, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
+            //var todayVisits = VisitsService.GetInDate(DateTime.Now, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
+            var todayVisits = VisitsService.GetInDate(startTime, doctorId).Where(v => v.Status != VisitStatus.Removed.ToCode());
             var actualTime = startTime;
 
             for (int i = 0; i < numberOfVisits; i++)
@@ -81,7 +82,11 @@ namespace Clinic.Interface.Doctors
                 sourceDailyVisists.Clear();
 
                 DateTime roundedNow = new DateTime((DateTime.Now.Ticks / TimeSpan.FromMinutes(15).Ticks) * TimeSpan.FromMinutes(15).Ticks);
-                FillVisitsForScheduling(doctorId, roundedNow, 10);
+                long amountUntilWorkEnd = (currently3.Ticks - roundedNow.Ticks) / TimeSpan.FromMinutes(15).Ticks;
+
+                if (amountUntilWorkEnd > 10) amountUntilWorkEnd = 10L;
+
+                FillVisitsForScheduling(doctorId, roundedNow, Convert.ToInt32(amountUntilWorkEnd));
                 System.Windows.Forms.MessageBox.Show("Visits refreshed (this moment)!");
                 monthCalendar1.SelectionStart = DateTime.Today;
             }
@@ -144,8 +149,108 @@ namespace Clinic.Interface.Doctors
 
         private void clickShowDetailsAndActions(object sender, EventArgs e)
         {
-            var detailsForm = new DetailsDoctorForm(datgridVisits);
-            detailsForm.ShowDialog(ActiveUser);
+            if (datgridVisits.SelectedRows.Count == 0)
+                NoRowsSelectedErrorMessage();
+            else
+            {
+                if (datgridVisits.SelectedRows.Count > 1)
+                {
+                    MultipleRowsSelectedErrorMessage();
+                }
+                else
+                {
+                    if (datgridVisits.SelectedRows[0].Cells[2].Value != null)
+                    {
+                        var detailsForm = new DetailsDoctorForm(datgridVisits);
+                        detailsForm.ShowDialog(ActiveUser);
+                    }
+                    else
+                    {
+                        NoVisitSelectedErrorMessage();
+                    }
+                }
+            }
+        }
+
+        private void NoRowsSelectedErrorMessage()
+        {
+            System.Windows.Forms.MessageBox.Show(
+                this,
+                "You have not selected any rows. Select rows on the left panel (the one with the triangular arrow).",
+                "No rows selected.",
+                System.Windows.Forms.MessageBoxButtons.OK,
+                System.Windows.Forms.MessageBoxIcon.Warning
+                );
+        }
+        private void MultipleRowsSelectedErrorMessage()
+        {
+            System.Windows.Forms.MessageBox.Show(
+                this,
+                "You have selected too many rows for this action. Deselect them first on the left panel (the one with the triangular arrow) or choose a single row, then try again.",
+                "Too many rows selected.",
+                System.Windows.Forms.MessageBoxButtons.OK,
+                System.Windows.Forms.MessageBoxIcon.Warning
+                );
+        }
+
+        private void NoVisitSelectedErrorMessage()
+        {
+            System.Windows.Forms.MessageBox.Show(
+                this,
+                "You have selected a row that does not have a Visit. A scheduled Visit will appear as a row with filled \"Patient\" column and status of \"Scheduled\".",
+                "Not an acceptable Visit.",
+                System.Windows.Forms.MessageBoxButtons.OK,
+                System.Windows.Forms.MessageBoxIcon.Warning
+                );
+        }
+
+        private void btnFinalizeVisits_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.DataGridViewSelectedRowCollection SelectedVisits = datgridVisits.SelectedRows;
+            int StatusColumnIndex = datgridVisits.Columns["statusDataGridViewTextBoxColumn"].Index;
+
+            Console.WriteLine(SelectedVisits.Count);
+            if (SelectedVisits.Count != 0)
+            {
+                int updatedcount = 0;
+                foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
+                {
+                    if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
+                    {
+                        VisitsService.Finalise(long.Parse(row.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString()));
+                        updatedcount++;
+                    }
+                }
+                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots finalized!");
+            }
+            else
+            {
+                NoRowsSelectedErrorMessage();
+            }
+        }
+
+        private void btnCancelVisits_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.DataGridViewSelectedRowCollection SelectedVisits = datgridVisits.SelectedRows;
+            int StatusColumnIndex = datgridVisits.Columns["statusDataGridViewTextBoxColumn"].Index;
+
+            if (SelectedVisits.Count != 0)
+            {
+                int updatedcount = 0;
+                foreach (System.Windows.Forms.DataGridViewRow row in SelectedVisits)
+                {
+                    if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
+                    {
+                        VisitsService.Cancel(long.Parse(row.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString()));
+                        updatedcount++;
+                    }
+                }
+                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots cancelled!");
+            }
+            else
+            {
+                NoRowsSelectedErrorMessage();
+            }
         }
     }
 }
