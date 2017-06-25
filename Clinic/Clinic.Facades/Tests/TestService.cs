@@ -122,13 +122,7 @@ namespace Clinic.Facades.Tests
                 db.SubmitChanges();
             }
         }
-
-        //deprecated, use GetTestsOfStatus
-        public static List<LaboratoryTest> GetAllScheduled()
-
-
-
-
+        
         public static List<LaboratoryTest> GetAll(TestStatus ts)
         {
             using (var db = DataContextFactory.Create(x => x.Include<Visit>(y => y.LaboratoryTests)))
