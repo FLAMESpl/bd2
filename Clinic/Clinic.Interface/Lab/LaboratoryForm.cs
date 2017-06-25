@@ -28,16 +28,16 @@ namespace Clinic.Interface.LabManager
             if (ActiveUser.Role == Role.LabManager.ToCode())
             {
                 bindingSourcePatientLaboratoryTests.Clear();
-                bindingSourcePatientLaboratoryTests.AddRange(TestService.GetAllWithPatient(TestStatus.Executed));
+                bindingSourcePatientLaboratoryTests.AddRange(TestService.MatchWithPatient(labelledTextBoxName.Input, labelledTextBoxSurname.Input, TestStatus.Executed));
             }
             else    //lab assistant
             {
                 bindingSourcePatientLaboratoryTests.Clear();
-                bindingSourcePatientLaboratoryTests.AddRange(TestService.GetAllWithPatient(TestStatus.Scheduled));
-                dataGridViewTests.Columns["Result"].Visible = false;
-                dataGridViewTests.Columns["ExecutionDate"].Visible = false;
+                bindingSourcePatientLaboratoryTests.AddRange(TestService.MatchWithPatient(labelledTextBoxName.Input, labelledTextBoxSurname.Input, TestStatus.Scheduled));
+                dataGridViewTests.Columns[6].Visible = false;
+                dataGridViewTests.Columns[7].Visible = false;
             }
-            dataGridViewTests.Columns["Id"].Visible = false;
+            dataGridViewTests.Columns[0].Visible = false;
             dataGridViewTests.Refresh();
         }
 
@@ -49,11 +49,6 @@ namespace Clinic.Interface.LabManager
             {
                 buttonAddTests.Enabled = false;
             }
-        }
-
-        private void buttonRefresh_Click(object sender, EventArgs e)
-        {
-            RefreshList();
         }
 
         private void buttonAcceptTest_Click(object sender, EventArgs e)
@@ -75,7 +70,7 @@ namespace Clinic.Interface.LabManager
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LaboratoryTest test = new LaboratoryTest();
-                    test.Id = (long)dataGridViewTests.SelectedRows[0].Cells["Id"].Value;
+                    test.Id = (long)dataGridViewTests.SelectedRows[0].Cells[0].Value;
                     if (form.testAccepted)
                         test.Status = TestStatus.Approved.ToCode();
                     else
@@ -96,7 +91,7 @@ namespace Clinic.Interface.LabManager
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     LaboratoryTest test = new LaboratoryTest();
-                    test.Id = (long)dataGridViewTests.SelectedRows[0].Cells["Id"].Value;
+                    test.Id = (long)dataGridViewTests.SelectedRows[0].Cells[0].Value;
                     if (form.testAccepted)
                         test.Status = TestStatus.Executed.ToCode();
                     else
@@ -114,6 +109,18 @@ namespace Clinic.Interface.LabManager
         {
             var form = new TestDictionaryForm();
             form.ShowDialog();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            RefreshList();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            labelledTextBoxName.Input = "";
+            labelledTextBoxSurname.Input = "";
+            RefreshList();
         }
     }
 }

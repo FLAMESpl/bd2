@@ -13,11 +13,23 @@ namespace Clinic.Facades.Tests
         {
             get; set;
         }
-        public string Code
+        public string Name
+        {
+            get; set;
+        }
+        public string Surname
+        {
+            get; set;
+        }
+        public string Test
         {
             get; set;
         }
         public DateTime CommissionDate
+        {
+            get; set;
+        }
+        public string DoctorNotes
         {
             get; set;
         }
@@ -26,18 +38,6 @@ namespace Clinic.Facades.Tests
             get; set;
         }
         public string Result
-        {
-            get; set;
-        }
-        public string DoctorNotes
-        {
-            get; set;
-        }
-        public string Name
-        {
-            get; set;
-        }
-        public string Surname
         {
             get; set;
         }
