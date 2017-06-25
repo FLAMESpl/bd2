@@ -82,6 +82,15 @@ namespace Clinic.Facades.Tests
             }
         }
 
+        public static void UpdateLaboratoryTestAsDoctor(LaboratoryTest test)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var oldTest = db.LaboratoryTests.Where(p => p.Id == test.Id).Single();
+                oldTest.DoctorNotes = test.DoctorNotes;
+                db.SubmitChanges();
+            }
+        }
         public static void UpdatePhysicalTest(PhysicalTest test)
         {
             using (var db = DataContextFactory.Create())

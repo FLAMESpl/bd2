@@ -29,29 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.TestDictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ScheduledTestsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ApprovedTestsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.PhysicalTestBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.TestDictionaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnTestDetailsDoctorRefresh = new System.Windows.Forms.Button();
             this.tabScheduledTests = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridViewScheduled = new System.Windows.Forms.DataGridView();
-            this.codeDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doctorNotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comissionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resultDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.executionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.managerNotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resolutionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idVisitDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idLabManagerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idLabAssistantDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labAssistantDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.visitDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.testDictionaryDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridViewExecutedTests = new System.Windows.Forms.DataGridView();
             this.codeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +56,13 @@
             this.testDictionaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridViewPhysicalTests = new System.Windows.Forms.DataGridView();
+            this.codeDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditPhysicalTest = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idVisitDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visitDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testDictionaryDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridTestDictionary = new System.Windows.Forms.DataGridView();
@@ -79,17 +71,26 @@
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDoctorAssignTest = new System.Windows.Forms.Button();
             this.btnTestDetailsDoctorReturn = new System.Windows.Forms.Button();
-            this.codeDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resultDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEditPhysicalTest = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.idDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idVisitDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.visitDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.testDictionaryDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.TestDictionaryBindingSource)).BeginInit();
+            this.codeDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorNotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comissionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEditNotesDataGridViewButtonColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resultDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.executionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.managerNotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resolutionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idVisitDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idLabManagerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idLabAssistantDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labAssistantDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visitDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.testDictionaryDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduledTestsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovedTestsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhysicalTestBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TestDictionaryBindingSource)).BeginInit();
             this.tabScheduledTests.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScheduled)).BeginInit();
@@ -102,10 +103,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTestDictionary)).BeginInit();
             this.SuspendLayout();
             // 
-            // TestDictionaryBindingSource
-            // 
-            this.TestDictionaryBindingSource.DataSource = typeof(Clinic.Data.TestDictionary);
-            // 
             // ScheduledTestsBindingSource
             // 
             this.ScheduledTestsBindingSource.DataSource = typeof(Clinic.Data.LaboratoryTest);
@@ -117,6 +114,10 @@
             // PhysicalTestBindingSource
             // 
             this.PhysicalTestBindingSource.DataSource = typeof(Clinic.Data.PhysicalTest);
+            // 
+            // TestDictionaryBindingSource
+            // 
+            this.TestDictionaryBindingSource.DataSource = typeof(Clinic.Data.TestDictionary);
             // 
             // btnTestDetailsDoctorRefresh
             // 
@@ -160,6 +161,7 @@
             this.codeDataGridViewTextBoxColumn2,
             this.doctorNotesDataGridViewTextBoxColumn,
             this.comissionDateDataGridViewTextBoxColumn,
+            this.btnEditNotesDataGridViewButtonColumn,
             this.idDataGridViewTextBoxColumn1,
             this.resultDataGridViewTextBoxColumn1,
             this.executionDateDataGridViewTextBoxColumn,
@@ -175,111 +177,11 @@
             this.dataGridViewScheduled.DataSource = this.ScheduledTestsBindingSource;
             this.dataGridViewScheduled.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewScheduled.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewScheduled.MultiSelect = false;
             this.dataGridViewScheduled.Name = "dataGridViewScheduled";
             this.dataGridViewScheduled.Size = new System.Drawing.Size(857, 194);
             this.dataGridViewScheduled.TabIndex = 0;
-            // 
-            // codeDataGridViewTextBoxColumn2
-            // 
-            this.codeDataGridViewTextBoxColumn2.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn2.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn2.Name = "codeDataGridViewTextBoxColumn2";
-            // 
-            // doctorNotesDataGridViewTextBoxColumn
-            // 
-            this.doctorNotesDataGridViewTextBoxColumn.DataPropertyName = "DoctorNotes";
-            this.doctorNotesDataGridViewTextBoxColumn.HeaderText = "DoctorNotes";
-            this.doctorNotesDataGridViewTextBoxColumn.Name = "doctorNotesDataGridViewTextBoxColumn";
-            // 
-            // comissionDateDataGridViewTextBoxColumn
-            // 
-            this.comissionDateDataGridViewTextBoxColumn.DataPropertyName = "ComissionDate";
-            this.comissionDateDataGridViewTextBoxColumn.HeaderText = "ComissionDate";
-            this.comissionDateDataGridViewTextBoxColumn.Name = "comissionDateDataGridViewTextBoxColumn";
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // resultDataGridViewTextBoxColumn1
-            // 
-            this.resultDataGridViewTextBoxColumn1.DataPropertyName = "Result";
-            this.resultDataGridViewTextBoxColumn1.HeaderText = "Result";
-            this.resultDataGridViewTextBoxColumn1.Name = "resultDataGridViewTextBoxColumn1";
-            this.resultDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // executionDateDataGridViewTextBoxColumn
-            // 
-            this.executionDateDataGridViewTextBoxColumn.DataPropertyName = "ExecutionDate";
-            this.executionDateDataGridViewTextBoxColumn.HeaderText = "ExecutionDate";
-            this.executionDateDataGridViewTextBoxColumn.Name = "executionDateDataGridViewTextBoxColumn";
-            this.executionDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // managerNotesDataGridViewTextBoxColumn
-            // 
-            this.managerNotesDataGridViewTextBoxColumn.DataPropertyName = "ManagerNotes";
-            this.managerNotesDataGridViewTextBoxColumn.HeaderText = "ManagerNotes";
-            this.managerNotesDataGridViewTextBoxColumn.Name = "managerNotesDataGridViewTextBoxColumn";
-            this.managerNotesDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // resolutionDateDataGridViewTextBoxColumn
-            // 
-            this.resolutionDateDataGridViewTextBoxColumn.DataPropertyName = "ResolutionDate";
-            this.resolutionDateDataGridViewTextBoxColumn.HeaderText = "ResolutionDate";
-            this.resolutionDateDataGridViewTextBoxColumn.Name = "resolutionDateDataGridViewTextBoxColumn";
-            this.resolutionDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idVisitDataGridViewTextBoxColumn1
-            // 
-            this.idVisitDataGridViewTextBoxColumn1.DataPropertyName = "IdVisit";
-            this.idVisitDataGridViewTextBoxColumn1.HeaderText = "IdVisit";
-            this.idVisitDataGridViewTextBoxColumn1.Name = "idVisitDataGridViewTextBoxColumn1";
-            this.idVisitDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // idLabManagerDataGridViewTextBoxColumn
-            // 
-            this.idLabManagerDataGridViewTextBoxColumn.DataPropertyName = "IdLabManager";
-            this.idLabManagerDataGridViewTextBoxColumn.HeaderText = "IdLabManager";
-            this.idLabManagerDataGridViewTextBoxColumn.Name = "idLabManagerDataGridViewTextBoxColumn";
-            this.idLabManagerDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // idLabAssistantDataGridViewTextBoxColumn
-            // 
-            this.idLabAssistantDataGridViewTextBoxColumn.DataPropertyName = "IdLabAssistant";
-            this.idLabAssistantDataGridViewTextBoxColumn.HeaderText = "IdLabAssistant";
-            this.idLabAssistantDataGridViewTextBoxColumn.Name = "idLabAssistantDataGridViewTextBoxColumn";
-            this.idLabAssistantDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // labAssistantDataGridViewTextBoxColumn
-            // 
-            this.labAssistantDataGridViewTextBoxColumn.DataPropertyName = "LabAssistant";
-            this.labAssistantDataGridViewTextBoxColumn.HeaderText = "LabAssistant";
-            this.labAssistantDataGridViewTextBoxColumn.Name = "labAssistantDataGridViewTextBoxColumn";
-            this.labAssistantDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // visitDataGridViewTextBoxColumn1
-            // 
-            this.visitDataGridViewTextBoxColumn1.DataPropertyName = "Visit";
-            this.visitDataGridViewTextBoxColumn1.HeaderText = "Visit";
-            this.visitDataGridViewTextBoxColumn1.Name = "visitDataGridViewTextBoxColumn1";
-            this.visitDataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // testDictionaryDataGridViewTextBoxColumn1
-            // 
-            this.testDictionaryDataGridViewTextBoxColumn1.DataPropertyName = "TestDictionary";
-            this.testDictionaryDataGridViewTextBoxColumn1.HeaderText = "TestDictionary";
-            this.testDictionaryDataGridViewTextBoxColumn1.Name = "testDictionaryDataGridViewTextBoxColumn1";
-            this.testDictionaryDataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewScheduled.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTests_CellContentClick);
             // 
             // tabPage2
             // 
@@ -449,7 +351,59 @@
             this.dataGridViewPhysicalTests.Name = "dataGridViewPhysicalTests";
             this.dataGridViewPhysicalTests.Size = new System.Drawing.Size(863, 200);
             this.dataGridViewPhysicalTests.TabIndex = 0;
-            this.dataGridViewPhysicalTests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridViewPhysicalTests.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTests_CellContentClick);
+            // 
+            // codeDataGridViewTextBoxColumn3
+            // 
+            this.codeDataGridViewTextBoxColumn3.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn3.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn3.Name = "codeDataGridViewTextBoxColumn3";
+            // 
+            // resultDataGridViewTextBoxColumn2
+            // 
+            this.resultDataGridViewTextBoxColumn2.DataPropertyName = "Result";
+            this.resultDataGridViewTextBoxColumn2.HeaderText = "Result";
+            this.resultDataGridViewTextBoxColumn2.Name = "resultDataGridViewTextBoxColumn2";
+            // 
+            // btnEditPhysicalTest
+            // 
+            this.btnEditPhysicalTest.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.btnEditPhysicalTest.HeaderText = "Actions";
+            this.btnEditPhysicalTest.MinimumWidth = 150;
+            this.btnEditPhysicalTest.Name = "btnEditPhysicalTest";
+            this.btnEditPhysicalTest.ReadOnly = true;
+            this.btnEditPhysicalTest.Text = "Show and Edit Result ->";
+            this.btnEditPhysicalTest.ToolTipText = "Click to edit the physical test";
+            this.btnEditPhysicalTest.UseColumnTextForButtonValue = true;
+            this.btnEditPhysicalTest.Width = 150;
+            // 
+            // idDataGridViewTextBoxColumn2
+            // 
+            this.idDataGridViewTextBoxColumn2.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn2.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
+            this.idDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // idVisitDataGridViewTextBoxColumn2
+            // 
+            this.idVisitDataGridViewTextBoxColumn2.DataPropertyName = "IdVisit";
+            this.idVisitDataGridViewTextBoxColumn2.HeaderText = "IdVisit";
+            this.idVisitDataGridViewTextBoxColumn2.Name = "idVisitDataGridViewTextBoxColumn2";
+            this.idVisitDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // visitDataGridViewTextBoxColumn2
+            // 
+            this.visitDataGridViewTextBoxColumn2.DataPropertyName = "Visit";
+            this.visitDataGridViewTextBoxColumn2.HeaderText = "Visit";
+            this.visitDataGridViewTextBoxColumn2.Name = "visitDataGridViewTextBoxColumn2";
+            this.visitDataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // testDictionaryDataGridViewTextBoxColumn2
+            // 
+            this.testDictionaryDataGridViewTextBoxColumn2.DataPropertyName = "TestDictionary";
+            this.testDictionaryDataGridViewTextBoxColumn2.HeaderText = "TestDictionary";
+            this.testDictionaryDataGridViewTextBoxColumn2.Name = "testDictionaryDataGridViewTextBoxColumn2";
+            this.testDictionaryDataGridViewTextBoxColumn2.Visible = false;
             // 
             // groupBox2
             // 
@@ -527,57 +481,114 @@
             this.btnTestDetailsDoctorReturn.UseVisualStyleBackColor = true;
             this.btnTestDetailsDoctorReturn.Click += new System.EventHandler(this.btnTestDetailsDoctorReturn_Click);
             // 
-            // codeDataGridViewTextBoxColumn3
+            // codeDataGridViewTextBoxColumn2
             // 
-            this.codeDataGridViewTextBoxColumn3.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn3.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn3.Name = "codeDataGridViewTextBoxColumn3";
+            this.codeDataGridViewTextBoxColumn2.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn2.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn2.Name = "codeDataGridViewTextBoxColumn2";
             // 
-            // resultDataGridViewTextBoxColumn2
+            // doctorNotesDataGridViewTextBoxColumn
             // 
-            this.resultDataGridViewTextBoxColumn2.DataPropertyName = "Result";
-            this.resultDataGridViewTextBoxColumn2.HeaderText = "Result";
-            this.resultDataGridViewTextBoxColumn2.Name = "resultDataGridViewTextBoxColumn2";
+            this.doctorNotesDataGridViewTextBoxColumn.DataPropertyName = "DoctorNotes";
+            this.doctorNotesDataGridViewTextBoxColumn.HeaderText = "DoctorNotes";
+            this.doctorNotesDataGridViewTextBoxColumn.Name = "doctorNotesDataGridViewTextBoxColumn";
             // 
-            // btnEditPhysicalTest
+            // comissionDateDataGridViewTextBoxColumn
             // 
-            this.btnEditPhysicalTest.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.btnEditPhysicalTest.HeaderText = "Actions";
-            this.btnEditPhysicalTest.MinimumWidth = 150;
-            this.btnEditPhysicalTest.Name = "btnEditPhysicalTest";
-            this.btnEditPhysicalTest.ReadOnly = true;
-            this.btnEditPhysicalTest.Text = "Show and Edit Result ->";
-            this.btnEditPhysicalTest.ToolTipText = "Click to edit the physical test";
-            this.btnEditPhysicalTest.UseColumnTextForButtonValue = true;
-            this.btnEditPhysicalTest.Width = 150;
+            this.comissionDateDataGridViewTextBoxColumn.DataPropertyName = "ComissionDate";
+            this.comissionDateDataGridViewTextBoxColumn.HeaderText = "ComissionDate";
+            this.comissionDateDataGridViewTextBoxColumn.Name = "comissionDateDataGridViewTextBoxColumn";
             // 
-            // idDataGridViewTextBoxColumn2
+            // btnEditNotesDataGridViewButtonColumn
             // 
-            this.idDataGridViewTextBoxColumn2.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn2.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn2.Name = "idDataGridViewTextBoxColumn2";
-            this.idDataGridViewTextBoxColumn2.Visible = false;
+            this.btnEditNotesDataGridViewButtonColumn.HeaderText = "Action";
+            this.btnEditNotesDataGridViewButtonColumn.Name = "btnEditNotesDataGridViewButtonColumn";
+            this.btnEditNotesDataGridViewButtonColumn.Text = "Edit notes ->";
+            this.btnEditNotesDataGridViewButtonColumn.UseColumnTextForButtonValue = true;
             // 
-            // idVisitDataGridViewTextBoxColumn2
+            // idDataGridViewTextBoxColumn1
             // 
-            this.idVisitDataGridViewTextBoxColumn2.DataPropertyName = "IdVisit";
-            this.idVisitDataGridViewTextBoxColumn2.HeaderText = "IdVisit";
-            this.idVisitDataGridViewTextBoxColumn2.Name = "idVisitDataGridViewTextBoxColumn2";
-            this.idVisitDataGridViewTextBoxColumn2.Visible = false;
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.Visible = false;
             // 
-            // visitDataGridViewTextBoxColumn2
+            // resultDataGridViewTextBoxColumn1
             // 
-            this.visitDataGridViewTextBoxColumn2.DataPropertyName = "Visit";
-            this.visitDataGridViewTextBoxColumn2.HeaderText = "Visit";
-            this.visitDataGridViewTextBoxColumn2.Name = "visitDataGridViewTextBoxColumn2";
-            this.visitDataGridViewTextBoxColumn2.Visible = false;
+            this.resultDataGridViewTextBoxColumn1.DataPropertyName = "Result";
+            this.resultDataGridViewTextBoxColumn1.HeaderText = "Result";
+            this.resultDataGridViewTextBoxColumn1.Name = "resultDataGridViewTextBoxColumn1";
+            this.resultDataGridViewTextBoxColumn1.Visible = false;
             // 
-            // testDictionaryDataGridViewTextBoxColumn2
+            // executionDateDataGridViewTextBoxColumn
             // 
-            this.testDictionaryDataGridViewTextBoxColumn2.DataPropertyName = "TestDictionary";
-            this.testDictionaryDataGridViewTextBoxColumn2.HeaderText = "TestDictionary";
-            this.testDictionaryDataGridViewTextBoxColumn2.Name = "testDictionaryDataGridViewTextBoxColumn2";
-            this.testDictionaryDataGridViewTextBoxColumn2.Visible = false;
+            this.executionDateDataGridViewTextBoxColumn.DataPropertyName = "ExecutionDate";
+            this.executionDateDataGridViewTextBoxColumn.HeaderText = "ExecutionDate";
+            this.executionDateDataGridViewTextBoxColumn.Name = "executionDateDataGridViewTextBoxColumn";
+            this.executionDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // managerNotesDataGridViewTextBoxColumn
+            // 
+            this.managerNotesDataGridViewTextBoxColumn.DataPropertyName = "ManagerNotes";
+            this.managerNotesDataGridViewTextBoxColumn.HeaderText = "ManagerNotes";
+            this.managerNotesDataGridViewTextBoxColumn.Name = "managerNotesDataGridViewTextBoxColumn";
+            this.managerNotesDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // resolutionDateDataGridViewTextBoxColumn
+            // 
+            this.resolutionDateDataGridViewTextBoxColumn.DataPropertyName = "ResolutionDate";
+            this.resolutionDateDataGridViewTextBoxColumn.HeaderText = "ResolutionDate";
+            this.resolutionDateDataGridViewTextBoxColumn.Name = "resolutionDateDataGridViewTextBoxColumn";
+            this.resolutionDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idVisitDataGridViewTextBoxColumn1
+            // 
+            this.idVisitDataGridViewTextBoxColumn1.DataPropertyName = "IdVisit";
+            this.idVisitDataGridViewTextBoxColumn1.HeaderText = "IdVisit";
+            this.idVisitDataGridViewTextBoxColumn1.Name = "idVisitDataGridViewTextBoxColumn1";
+            this.idVisitDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // idLabManagerDataGridViewTextBoxColumn
+            // 
+            this.idLabManagerDataGridViewTextBoxColumn.DataPropertyName = "IdLabManager";
+            this.idLabManagerDataGridViewTextBoxColumn.HeaderText = "IdLabManager";
+            this.idLabManagerDataGridViewTextBoxColumn.Name = "idLabManagerDataGridViewTextBoxColumn";
+            this.idLabManagerDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // idLabAssistantDataGridViewTextBoxColumn
+            // 
+            this.idLabAssistantDataGridViewTextBoxColumn.DataPropertyName = "IdLabAssistant";
+            this.idLabAssistantDataGridViewTextBoxColumn.HeaderText = "IdLabAssistant";
+            this.idLabAssistantDataGridViewTextBoxColumn.Name = "idLabAssistantDataGridViewTextBoxColumn";
+            this.idLabAssistantDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // labAssistantDataGridViewTextBoxColumn
+            // 
+            this.labAssistantDataGridViewTextBoxColumn.DataPropertyName = "LabAssistant";
+            this.labAssistantDataGridViewTextBoxColumn.HeaderText = "LabAssistant";
+            this.labAssistantDataGridViewTextBoxColumn.Name = "labAssistantDataGridViewTextBoxColumn";
+            this.labAssistantDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // visitDataGridViewTextBoxColumn1
+            // 
+            this.visitDataGridViewTextBoxColumn1.DataPropertyName = "Visit";
+            this.visitDataGridViewTextBoxColumn1.HeaderText = "Visit";
+            this.visitDataGridViewTextBoxColumn1.Name = "visitDataGridViewTextBoxColumn1";
+            this.visitDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // testDictionaryDataGridViewTextBoxColumn1
+            // 
+            this.testDictionaryDataGridViewTextBoxColumn1.DataPropertyName = "TestDictionary";
+            this.testDictionaryDataGridViewTextBoxColumn1.HeaderText = "TestDictionary";
+            this.testDictionaryDataGridViewTextBoxColumn1.Name = "testDictionaryDataGridViewTextBoxColumn1";
+            this.testDictionaryDataGridViewTextBoxColumn1.Visible = false;
             // 
             // TestDetailsDoctorForm
             // 
@@ -590,10 +601,10 @@
             this.Controls.Add(this.btnTestDetailsDoctorReturn);
             this.Name = "TestDetailsDoctorForm";
             this.Text = "Tests Details";
-            ((System.ComponentModel.ISupportInitialize)(this.TestDictionaryBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduledTestsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovedTestsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhysicalTestBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TestDictionaryBindingSource)).EndInit();
             this.tabScheduledTests.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewScheduled)).EndInit();
@@ -626,21 +637,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.BindingSource ApprovedTestsBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewExecutedTests;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn doctorNotesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn comissionDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn executionDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn managerNotesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resolutionDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idVisitDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idLabManagerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idLabAssistantDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn labAssistantDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn visitDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn testDictionaryDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorNotesDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
@@ -667,5 +663,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idVisitDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn visitDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn testDictionaryDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doctorNotesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comissionDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEditNotesDataGridViewButtonColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resultDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn executionDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn managerNotesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resolutionDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idVisitDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idLabManagerDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idLabAssistantDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn labAssistantDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visitDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn testDictionaryDataGridViewTextBoxColumn1;
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.grpBoxTextBox = new System.Windows.Forms.GroupBox();
-            this.txtBoxPhysicalResult = new System.Windows.Forms.TextBox();
+            this.txtBoxEdit = new System.Windows.Forms.TextBox();
             this.btnPhysicalTestResultCancel = new System.Windows.Forms.Button();
             this.btnPhysicalTestResultSave = new System.Windows.Forms.Button();
             this.grpBoxTextBox.SuspendLayout();
@@ -37,24 +37,24 @@
             // 
             // grpBoxTextBox
             // 
-            this.grpBoxTextBox.Controls.Add(this.txtBoxPhysicalResult);
+            this.grpBoxTextBox.Controls.Add(this.txtBoxEdit);
             this.grpBoxTextBox.Location = new System.Drawing.Point(12, 12);
             this.grpBoxTextBox.Name = "grpBoxTextBox";
             this.grpBoxTextBox.Size = new System.Drawing.Size(451, 170);
             this.grpBoxTextBox.TabIndex = 0;
             this.grpBoxTextBox.TabStop = false;
-            this.grpBoxTextBox.Text = "Test Result:";
+            this.grpBoxTextBox.Text = "Text to edit:";
             // 
-            // txtBoxPhysicalResult
+            // txtBoxEdit
             // 
-            this.txtBoxPhysicalResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtBoxPhysicalResult.Location = new System.Drawing.Point(3, 16);
-            this.txtBoxPhysicalResult.Multiline = true;
-            this.txtBoxPhysicalResult.Name = "txtBoxPhysicalResult";
-            this.txtBoxPhysicalResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBoxPhysicalResult.Size = new System.Drawing.Size(445, 151);
-            this.txtBoxPhysicalResult.TabIndex = 2;
-            this.txtBoxPhysicalResult.Text = "Physical test result";
+            this.txtBoxEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtBoxEdit.Location = new System.Drawing.Point(3, 16);
+            this.txtBoxEdit.Multiline = true;
+            this.txtBoxEdit.Name = "txtBoxEdit";
+            this.txtBoxEdit.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtBoxEdit.Size = new System.Drawing.Size(445, 151);
+            this.txtBoxEdit.TabIndex = 2;
+            this.txtBoxEdit.Text = "Empty";
             // 
             // btnPhysicalTestResultCancel
             // 
@@ -95,7 +95,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grpBoxTextBox;
-        private System.Windows.Forms.TextBox txtBoxPhysicalResult;
+        private System.Windows.Forms.TextBox txtBoxEdit;
         private System.Windows.Forms.Button btnPhysicalTestResultCancel;
         private System.Windows.Forms.Button btnPhysicalTestResultSave;
     }

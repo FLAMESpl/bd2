@@ -15,18 +15,37 @@ namespace Clinic.Interface.Doctors
 {
     public partial class EditTextDetailsForm : ClinicForm
     {
-        DataGridViewRow Row;
+        enum TypeOfTextToEdit
+        {
+            PhysicalResult,
+            LaboratoryComment
+        }
 
-        public EditTextDetailsForm(DataGridViewRow row)
+        DataGridViewRow Row;
+        TypeOfTextToEdit Workmode;
+        
+
+        public EditTextDetailsForm(DataGridViewRow row, PhysicalTest testParameter)
         {
             InitializeComponent();
             Row = row;
             InitResultText(Row.Cells["resultDataGridViewTextBoxColumn2"].Value.ToString());
+            Workmode = TypeOfTextToEdit.PhysicalResult;
+            grpBoxTextBox.Text = "Test result:";
+        }
+
+        public EditTextDetailsForm(DataGridViewRow row, LaboratoryTest testParameter)
+        {
+            InitializeComponent();
+            Row = row;
+            InitResultText(Row.Cells["doctorNotesDataGridViewTextBoxColumn"].Value.ToString());
+            Workmode = TypeOfTextToEdit.LaboratoryComment;
+            grpBoxTextBox.Text = "Doctor notes:";
         }
 
         public void InitResultText(string previousResult)
         {
-            txtBoxPhysicalResult.Text = previousResult;
+            txtBoxEdit.Text = previousResult;
         }
 
         private void btnPhysicalTestResultCancel_Click(object sender, EventArgs e)
@@ -36,11 +55,24 @@ namespace Clinic.Interface.Doctors
 
         private void btnPhysicalTestResultSave_Click(object sender, EventArgs e)
         {
-            PhysicalTest test = new PhysicalTest();
-            test.Id = long.Parse(Row.Cells["idDataGridViewTextBoxColumn2"].Value.ToString());
-            test.Code = Row.Cells["codeDataGridViewTextBoxColumn3"].Value.ToString();
-            test.Result = txtBoxPhysicalResult.Text;
-            TestService.UpdatePhysicalTest(test);
+            switch (Workmode)
+            {
+                case TypeOfTextToEdit.PhysicalResult:
+                    PhysicalTest physicalTest = new PhysicalTest();
+                    physicalTest.Id = long.Parse(Row.Cells["idDataGridViewTextBoxColumn2"].Value.ToString());
+                    physicalTest.Result = txtBoxEdit.Text;
+                    TestService.UpdatePhysicalTest(physicalTest);
+                    break;
+                case TypeOfTextToEdit.LaboratoryComment:
+                    LaboratoryTest laboratoryTest = new LaboratoryTest();
+                    laboratoryTest.Id = long.Parse(Row.Cells["idDataGridViewTextBoxColumn1"].Value.ToString());
+                    laboratoryTest.DoctorNotes = txtBoxEdit.Text;
+                    TestService.UpdateLaboratoryTestAsDoctor(laboratoryTest);
+                    break;
+                default:
+                    break;
+            }
+
             MessageBox.Show("Test result updated!");
         }
     }

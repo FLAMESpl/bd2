@@ -109,13 +109,21 @@ namespace Clinic.Interface.Doctors
             MessageBox.Show("All data refreshed!");
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewTests_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewPhysicalTests.Columns.IndexOf(btnEditPhysicalTest) == e.ColumnIndex)
             {
-                EditTextDetailsForm PhysicalResultWindow = new EditTextDetailsForm(dataGridViewPhysicalTests.Rows[e.RowIndex]);
+                EditTextDetailsForm PhysicalResultWindow = new EditTextDetailsForm(dataGridViewPhysicalTests.Rows[e.RowIndex], new PhysicalTest());
                 //PhysicalResultWindow.SetTextBoxText(.Cells["resultDataGridViewTextBoxColumn2"].Value.ToString());
                 PhysicalResultWindow.ShowDialog(ActiveUser);
+            }
+            else
+            {
+                if (dataGridViewScheduled.Columns.IndexOf(btnEditNotesDataGridViewButtonColumn) == e.ColumnIndex)
+                {
+                    EditTextDetailsForm LaboratoryNotesWindow = new EditTextDetailsForm(dataGridViewScheduled.Rows[e.RowIndex], new LaboratoryTest());
+                    LaboratoryNotesWindow.ShowDialog(ActiveUser);
+                }
             }
         }
     }
