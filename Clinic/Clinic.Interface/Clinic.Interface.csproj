@@ -179,6 +179,12 @@
     <Compile Include="Lab\TestForm.Designer.cs">
       <DependentUpon>TestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registrator\AddressFilters.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Registrator\AddressFilters.Designer.cs">
+      <DependentUpon>AddressFilters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrator\DoctorListItem.cs" />
     <Compile Include="Registrator\VisitDescriptionForm.cs">
       <SubType>Form</SubType>

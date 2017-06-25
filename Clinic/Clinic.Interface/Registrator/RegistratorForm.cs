@@ -3,6 +3,8 @@ using Clinic.Facades.Patients;
 using Clinic.Interface.Common;
 using Clinic.Interface.Common.Helpers;
 using System;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace Clinic.Interface.Registrator
@@ -22,17 +24,20 @@ namespace Clinic.Interface.Registrator
             }
         }
 
-        private void DeletePatient(Patient patient)
-        {
-
-        }
-
         private void AddVisit(Patient patient)
         {
             using (var form = new VisitForm(patient, ActionType.Create))
             {
                 form.ShowDialog(ActiveUser);
             }
+        }
+
+        private void ViewPatient(Patient patient)
+        {
+            var addr = patient.Addresses.Single(a => a.IsValid);
+            var addrLine = $"{addr.City} {addr.Street} {addr.HouseNumber}/{addr.FlatNumber}";
+
+            MessageBox.Show(addrLine, "Addresses", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -68,11 +73,11 @@ namespace Clinic.Interface.Registrator
                 case "Edit":
                     EditPatient((Patient)bindingSourcePatients.Current);
                     break;
-                case "Delete":
-                    DeletePatient((Patient)bindingSourcePatients.Current);
-                    break;
                 case "Visit":
                     AddVisit((Patient)bindingSourcePatients.Current);
+                    break;
+                case "View":
+                    ViewPatient((Patient)bindingSourcePatients.Current);
                     break;
             }
         }

@@ -4,6 +4,8 @@ namespace Clinic.Interface.Common
 {
     public partial class Filters : UserControl
     {
+        protected readonly Padding ClearButtonPadding = new Padding(3, 25, 3, 3);
+
         public Filters()
         {
             InitializeComponent();
@@ -25,11 +27,11 @@ namespace Clinic.Interface.Common
             OnCreate();
             var clearButton = new Button
             {
-                Margin = new Padding(3, 25, 3, 3),
+                Margin = ClearButtonPadding,
                 Text = "Clear",
                 Width = 50
             };
-            
+
             clearButton.Click += (s, e) => OnClear();
             AddControl(clearButton);
         }
