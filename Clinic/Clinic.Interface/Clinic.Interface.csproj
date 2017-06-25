@@ -143,13 +143,12 @@
     <Compile Include="Doctors\DoctorForm.Designer.cs">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Lab\EditDictionaryForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Lab\EditDictionaryForm.Designer.cs">
       <DependentUpon>EditDictionaryForm.cs</DependentUpon>
-=======
+    </Compile>
     <Compile Include="Doctors\EditTextDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,7 +160,6 @@
     </Compile>
     <Compile Include="Doctors\TestDetailsDoctorForm.Designer.cs">
       <DependentUpon>TestDetailsDoctorForm.cs</DependentUpon>
->>>>>>> adding-doctors-module
     </Compile>
     <Compile Include="Lab\LaboratoryForm.cs">
       <SubType>Form</SubType>
