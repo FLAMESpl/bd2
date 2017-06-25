@@ -30,8 +30,8 @@
         {
             this.dataGridViewTests = new System.Windows.Forms.DataGridView();
             this.groupBoxTestType = new System.Windows.Forms.GroupBox();
-            this.radioButtonPhysical = new System.Windows.Forms.RadioButton();
             this.radioButtonLaboratory = new System.Windows.Forms.RadioButton();
+            this.radioButtonPhysical = new System.Windows.Forms.RadioButton();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -64,6 +64,16 @@
             this.groupBoxTestType.TabStop = false;
             this.groupBoxTestType.Text = "Test type";
             // 
+            // radioButtonLaboratory
+            // 
+            this.radioButtonLaboratory.AutoSize = true;
+            this.radioButtonLaboratory.Location = new System.Drawing.Point(6, 47);
+            this.radioButtonLaboratory.Name = "radioButtonLaboratory";
+            this.radioButtonLaboratory.Size = new System.Drawing.Size(75, 17);
+            this.radioButtonLaboratory.TabIndex = 1;
+            this.radioButtonLaboratory.Text = "Laboratory";
+            this.radioButtonLaboratory.UseVisualStyleBackColor = true;
+            // 
             // radioButtonPhysical
             // 
             this.radioButtonPhysical.AutoSize = true;
@@ -76,16 +86,6 @@
             this.radioButtonPhysical.Text = "Physical";
             this.radioButtonPhysical.UseVisualStyleBackColor = true;
             this.radioButtonPhysical.CheckedChanged += new System.EventHandler(this.radioButtonPhysical_CheckedChanged);
-            // 
-            // radioButtonLaboratory
-            // 
-            this.radioButtonLaboratory.AutoSize = true;
-            this.radioButtonLaboratory.Location = new System.Drawing.Point(6, 47);
-            this.radioButtonLaboratory.Name = "radioButtonLaboratory";
-            this.radioButtonLaboratory.Size = new System.Drawing.Size(75, 17);
-            this.radioButtonLaboratory.TabIndex = 1;
-            this.radioButtonLaboratory.Text = "Laboratory";
-            this.radioButtonLaboratory.UseVisualStyleBackColor = true;
             // 
             // buttonSearch
             // 
@@ -148,7 +148,7 @@
             this.Controls.Add(this.labelledTextBoxCode);
             this.Controls.Add(this.dataGridViewTests);
             this.Name = "TestDictionaryForm";
-            this.Text = "Test Dictionary";
+            this.Text = "Test dictionary";
             this.Load += new System.EventHandler(this.TestDictionaryForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).EndInit();
             this.groupBoxTestType.ResumeLayout(false);
