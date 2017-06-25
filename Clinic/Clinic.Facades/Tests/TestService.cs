@@ -102,20 +102,28 @@ namespace Clinic.Facades.Tests
             }
         }
 
-        public static List<LaboratoryTest> GetTestsOfStatus(TestStatus queryStatus)
+        public static List<LaboratoryTest> GetTestsOfStatus(TestStatus queryStatus, long? VisitId = null)
         {
             using (var db = DataContextFactory.Create())
             {
                 var result = db.LaboratoryTests.Where(t => t.Status == queryStatus.ToCode());
+                if (VisitId != null)
+                {
+                    result = result.Where(t => t.IdVisit == VisitId);
+                }
                 return result.ToList();
             }
         }
 
-        public static List<PhysicalTest> GetPhysicalTests()
+        public static List<PhysicalTest> GetPhysicalTests(long? VisitId = null)
         {
             using (var db = DataContextFactory.Create())
             {
-                var result = db.PhysicalTests;
+                var result = db.PhysicalTests.Select(x => x); //this select is here just so we dont have to cast three lines below
+                if (VisitId != null)
+                {
+                    result = result.Where(t => t.IdVisit == VisitId);
+                }
                 return result.ToList();
             }
         }

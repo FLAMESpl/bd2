@@ -158,8 +158,15 @@ namespace Clinic.Interface.Doctors
                 }
                 else
                 {
-                    var detailsForm = new DetailsDoctorForm(datgridVisits);
-                    detailsForm.ShowDialog(ActiveUser);
+                    if (datgridVisits.SelectedRows[0].Cells[2].Value != null)
+                    {
+                        var detailsForm = new DetailsDoctorForm(datgridVisits);
+                        detailsForm.ShowDialog(ActiveUser);
+                    }
+                    else
+                    {
+                        NoVisitSelectedErrorMessage();
+                    }
                 }
             }
         }
@@ -185,6 +192,17 @@ namespace Clinic.Interface.Doctors
                 );
         }
 
+        private void NoVisitSelectedErrorMessage()
+        {
+            System.Windows.Forms.MessageBox.Show(
+                this,
+                "You have selected a row that does not have a Visit. A scheduled Visit will appear as a row with filled \"Patient\" column and status of \"Scheduled\".",
+                "Not an acceptable Visit.",
+                System.Windows.Forms.MessageBoxButtons.OK,
+                System.Windows.Forms.MessageBoxIcon.Warning
+                );
+        }
+
         private void btnFinalizeVisits_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.DataGridViewSelectedRowCollection SelectedVisits = datgridVisits.SelectedRows;
@@ -198,7 +216,7 @@ namespace Clinic.Interface.Doctors
                 {
                     if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
                     {
-                        row.Cells[StatusColumnIndex].Value = Clinic.Facades.Visits.VisitStatus.Finalised;
+                        VisitsService.Finalise(long.Parse(row.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString()));
                         updatedcount++;
                     }
                 }
@@ -222,7 +240,7 @@ namespace Clinic.Interface.Doctors
                 {
                     if (row.Cells[StatusColumnIndex].Value.ToString() == Clinic.Facades.Visits.VisitStatus.Scheduled.ToString())
                     {
-                        row.Cells[StatusColumnIndex].Value = Clinic.Facades.Visits.VisitStatus.Cancelled;
+                        VisitsService.Cancel(long.Parse(row.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString()));
                         updatedcount++;
                     }
                 }

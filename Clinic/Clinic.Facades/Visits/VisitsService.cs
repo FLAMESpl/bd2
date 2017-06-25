@@ -33,6 +33,16 @@ namespace Clinic.Facades.Visits
             }
         }
 
+        public static void Update(Visit updatedVisit) //updates visit diagnosis
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var oldVisit = db.Visits.Single(x => x.Id == updatedVisit.Id);
+                oldVisit.Diagnosis = updatedVisit.Diagnosis;
+                db.SubmitChanges();
+            }
+        }
+
         public static void Delete(long id)
         {
             using (var db = DataContextFactory.Create())
@@ -83,11 +93,11 @@ namespace Clinic.Facades.Visits
             }
         }
 
-        public static Visit GetByVisitId(long id)
+        public static Visit GetVisitById(long id)
         {
             using (var db = DataContextFactory.Create())
             {
-                Visit result = (Visit) db.Visits.Where(v => v.Id == id).First();
+                Visit result = db.Visits.Where(v => v.Id == id).Single();
                 return result;
             }
         }

@@ -34,11 +34,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbVisits = new System.Windows.Forms.GroupBox();
             this.datgridVisits = new System.Windows.Forms.DataGridView();
-            this.visitIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.visitHourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.doctorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbCalendar = new System.Windows.Forms.GroupBox();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -47,6 +42,11 @@
             this.btnShowCurrent = new System.Windows.Forms.Button();
             this.btnFinalize = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patientDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.doctorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visitHourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visitIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.sourceDailyVisists)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dailyVisitBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
@@ -104,47 +104,6 @@
             this.datgridVisits.ReadOnly = true;
             this.datgridVisits.Size = new System.Drawing.Size(492, 277);
             this.datgridVisits.TabIndex = 0;
-            // 
-            // visitIdDataGridViewTextBoxColumn
-            // 
-            this.visitIdDataGridViewTextBoxColumn.DataPropertyName = "VisitId";
-            this.visitIdDataGridViewTextBoxColumn.HeaderText = "VisitId";
-            this.visitIdDataGridViewTextBoxColumn.Name = "visitIdDataGridViewTextBoxColumn";
-            this.visitIdDataGridViewTextBoxColumn.ReadOnly = true;
-            this.visitIdDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // visitHourDataGridViewTextBoxColumn
-            // 
-            this.visitHourDataGridViewTextBoxColumn.DataPropertyName = "VisitHour";
-            this.visitHourDataGridViewTextBoxColumn.HeaderText = "VisitHour";
-            this.visitHourDataGridViewTextBoxColumn.MinimumWidth = 150;
-            this.visitHourDataGridViewTextBoxColumn.Name = "visitHourDataGridViewTextBoxColumn";
-            this.visitHourDataGridViewTextBoxColumn.ReadOnly = true;
-            this.visitHourDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // doctorDataGridViewTextBoxColumn
-            // 
-            this.doctorDataGridViewTextBoxColumn.DataPropertyName = "Doctor";
-            this.doctorDataGridViewTextBoxColumn.HeaderText = "Doctor";
-            this.doctorDataGridViewTextBoxColumn.Name = "doctorDataGridViewTextBoxColumn";
-            this.doctorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.doctorDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // patientDataGridViewTextBoxColumn
-            // 
-            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
-            this.patientDataGridViewTextBoxColumn.HeaderText = "Patient";
-            this.patientDataGridViewTextBoxColumn.MinimumWidth = 150;
-            this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
-            this.patientDataGridViewTextBoxColumn.ReadOnly = true;
-            this.patientDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // gbCalendar
             // 
@@ -241,6 +200,47 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancelVisits_Click);
             // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // patientDataGridViewTextBoxColumn
+            // 
+            this.patientDataGridViewTextBoxColumn.DataPropertyName = "Patient";
+            this.patientDataGridViewTextBoxColumn.HeaderText = "Patient";
+            this.patientDataGridViewTextBoxColumn.MinimumWidth = 150;
+            this.patientDataGridViewTextBoxColumn.Name = "patientDataGridViewTextBoxColumn";
+            this.patientDataGridViewTextBoxColumn.ReadOnly = true;
+            this.patientDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // doctorDataGridViewTextBoxColumn
+            // 
+            this.doctorDataGridViewTextBoxColumn.DataPropertyName = "Doctor";
+            this.doctorDataGridViewTextBoxColumn.HeaderText = "Doctor";
+            this.doctorDataGridViewTextBoxColumn.Name = "doctorDataGridViewTextBoxColumn";
+            this.doctorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.doctorDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // visitHourDataGridViewTextBoxColumn
+            // 
+            this.visitHourDataGridViewTextBoxColumn.DataPropertyName = "VisitHour";
+            this.visitHourDataGridViewTextBoxColumn.HeaderText = "VisitHour";
+            this.visitHourDataGridViewTextBoxColumn.MinimumWidth = 150;
+            this.visitHourDataGridViewTextBoxColumn.Name = "visitHourDataGridViewTextBoxColumn";
+            this.visitHourDataGridViewTextBoxColumn.ReadOnly = true;
+            this.visitHourDataGridViewTextBoxColumn.Width = 150;
+            // 
+            // visitIdDataGridViewTextBoxColumn
+            // 
+            this.visitIdDataGridViewTextBoxColumn.DataPropertyName = "VisitId";
+            this.visitIdDataGridViewTextBoxColumn.HeaderText = "VisitId";
+            this.visitIdDataGridViewTextBoxColumn.Name = "visitIdDataGridViewTextBoxColumn";
+            this.visitIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.visitIdDataGridViewTextBoxColumn.Visible = false;
+            // 
             // DoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,13 +273,13 @@
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.DataGridView datgridVisits;
         private System.Windows.Forms.BindingSource dailyVisitBindingSource;
+        private System.Windows.Forms.Button btnShowCurrent;
+        private System.Windows.Forms.Button btnFinalize;
+        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn visitIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn visitHourDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn doctorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button btnShowCurrent;
-        private System.Windows.Forms.Button btnFinalize;
-        private System.Windows.Forms.Button btnCancel;
     }
 }
