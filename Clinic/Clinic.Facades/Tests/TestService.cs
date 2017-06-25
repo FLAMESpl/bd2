@@ -26,6 +26,17 @@ namespace Clinic.Facades.Tests
             }
         }
 
+        public static void Update(TestDictionary dict)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                var oldDictionary = db.TestDictionaries.Where(x => x.Code == dict.Code).Single();
+                oldDictionary.Name = dict.Name;
+                oldDictionary.Type = dict.Type;
+                db.SubmitChanges();
+            }
+        }
+
         public static List<TestDictionary> Match(TestDictionary searchCriteria)
         {
             using (var db = DataContextFactory.Create())

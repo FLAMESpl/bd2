@@ -30,14 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewTests = new System.Windows.Forms.DataGridView();
-            this.bindingSourcePatientLaboratoryTests = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonAddTests = new System.Windows.Forms.Button();
-            this.buttonAcceptTest = new System.Windows.Forms.Button();
-            this.groupBoxPatient = new System.Windows.Forms.GroupBox();
-            this.buttonClear = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.labelledTextBoxSurname = new Clinic.Interface.Common.LabelledTextBox();
-            this.labelledTextBoxName = new Clinic.Interface.Common.LabelledTextBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.surnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +38,14 @@
             this.doctorNotesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.executionDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resultDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourcePatientLaboratoryTests = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonAddTests = new System.Windows.Forms.Button();
+            this.buttonAcceptTest = new System.Windows.Forms.Button();
+            this.groupBoxPatient = new System.Windows.Forms.GroupBox();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.labelledTextBoxSurname = new Clinic.Interface.Common.LabelledTextBox();
+            this.labelledTextBoxName = new Clinic.Interface.Common.LabelledTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePatientLaboratoryTests)).BeginInit();
             this.groupBoxPatient.SuspendLayout();
@@ -74,6 +74,62 @@
             this.dataGridViewTests.Size = new System.Drawing.Size(599, 285);
             this.dataGridViewTests.TabIndex = 9;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // surnameDataGridViewTextBoxColumn
+            // 
+            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
+            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
+            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // testDataGridViewTextBoxColumn
+            // 
+            this.testDataGridViewTextBoxColumn.DataPropertyName = "Test";
+            this.testDataGridViewTextBoxColumn.HeaderText = "Test";
+            this.testDataGridViewTextBoxColumn.Name = "testDataGridViewTextBoxColumn";
+            this.testDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commissionDateDataGridViewTextBoxColumn
+            // 
+            this.commissionDateDataGridViewTextBoxColumn.DataPropertyName = "CommissionDate";
+            this.commissionDateDataGridViewTextBoxColumn.HeaderText = "Commission date";
+            this.commissionDateDataGridViewTextBoxColumn.Name = "commissionDateDataGridViewTextBoxColumn";
+            this.commissionDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // doctorNotesDataGridViewTextBoxColumn
+            // 
+            this.doctorNotesDataGridViewTextBoxColumn.DataPropertyName = "DoctorNotes";
+            this.doctorNotesDataGridViewTextBoxColumn.HeaderText = "Doctor notes";
+            this.doctorNotesDataGridViewTextBoxColumn.Name = "doctorNotesDataGridViewTextBoxColumn";
+            this.doctorNotesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // executionDateDataGridViewTextBoxColumn
+            // 
+            this.executionDateDataGridViewTextBoxColumn.DataPropertyName = "ExecutionDate";
+            this.executionDateDataGridViewTextBoxColumn.HeaderText = "Execution date";
+            this.executionDateDataGridViewTextBoxColumn.Name = "executionDateDataGridViewTextBoxColumn";
+            this.executionDateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // resultDataGridViewTextBoxColumn
+            // 
+            this.resultDataGridViewTextBoxColumn.DataPropertyName = "Result";
+            this.resultDataGridViewTextBoxColumn.HeaderText = "Result";
+            this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
+            this.resultDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // bindingSourcePatientLaboratoryTests
             // 
             this.bindingSourcePatientLaboratoryTests.DataSource = typeof(Clinic.Facades.Tests.PatientLaboratoryTest);
@@ -84,7 +140,7 @@
             this.buttonAddTests.Name = "buttonAddTests";
             this.buttonAddTests.Size = new System.Drawing.Size(140, 22);
             this.buttonAddTests.TabIndex = 8;
-            this.buttonAddTests.Text = "Add tests to dictionary";
+            this.buttonAddTests.Text = "Edit test dictionary";
             this.buttonAddTests.UseVisualStyleBackColor = true;
             this.buttonAddTests.Click += new System.EventHandler(this.buttonAddTests_Click);
             // 
@@ -148,62 +204,6 @@
             this.labelledTextBoxName.Name = "labelledTextBoxName";
             this.labelledTextBoxName.Size = new System.Drawing.Size(175, 46);
             this.labelledTextBoxName.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // surnameDataGridViewTextBoxColumn
-            // 
-            this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
-            this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
-            this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
-            this.surnameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // testDataGridViewTextBoxColumn
-            // 
-            this.testDataGridViewTextBoxColumn.DataPropertyName = "Test";
-            this.testDataGridViewTextBoxColumn.HeaderText = "Test";
-            this.testDataGridViewTextBoxColumn.Name = "testDataGridViewTextBoxColumn";
-            this.testDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // commissionDateDataGridViewTextBoxColumn
-            // 
-            this.commissionDateDataGridViewTextBoxColumn.DataPropertyName = "CommissionDate";
-            this.commissionDateDataGridViewTextBoxColumn.HeaderText = "Commission date";
-            this.commissionDateDataGridViewTextBoxColumn.Name = "commissionDateDataGridViewTextBoxColumn";
-            this.commissionDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // doctorNotesDataGridViewTextBoxColumn
-            // 
-            this.doctorNotesDataGridViewTextBoxColumn.DataPropertyName = "DoctorNotes";
-            this.doctorNotesDataGridViewTextBoxColumn.HeaderText = "Doctor notes";
-            this.doctorNotesDataGridViewTextBoxColumn.Name = "doctorNotesDataGridViewTextBoxColumn";
-            this.doctorNotesDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // executionDateDataGridViewTextBoxColumn
-            // 
-            this.executionDateDataGridViewTextBoxColumn.DataPropertyName = "ExecutionDate";
-            this.executionDateDataGridViewTextBoxColumn.HeaderText = "Execution date";
-            this.executionDateDataGridViewTextBoxColumn.Name = "executionDateDataGridViewTextBoxColumn";
-            this.executionDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // resultDataGridViewTextBoxColumn
-            // 
-            this.resultDataGridViewTextBoxColumn.DataPropertyName = "Result";
-            this.resultDataGridViewTextBoxColumn.HeaderText = "Result";
-            this.resultDataGridViewTextBoxColumn.Name = "resultDataGridViewTextBoxColumn";
-            this.resultDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // LaboratoryForm
             // 

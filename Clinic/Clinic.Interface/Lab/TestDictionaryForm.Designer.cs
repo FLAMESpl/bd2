@@ -37,6 +37,7 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.labelledTextBoxName = new Clinic.Interface.Common.LabelledTextBox();
             this.labelledTextBoxCode = new Clinic.Interface.Common.LabelledTextBox();
+            this.buttonEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTests)).BeginInit();
             this.groupBoxTestType.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +90,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(11, 108);
+            this.buttonSearch.Location = new System.Drawing.Point(19, 108);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(80, 26);
             this.buttonSearch.TabIndex = 14;
@@ -99,7 +100,7 @@
             // 
             // buttonClear
             // 
-            this.buttonClear.Location = new System.Drawing.Point(124, 108);
+            this.buttonClear.Location = new System.Drawing.Point(105, 108);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(80, 26);
             this.buttonClear.TabIndex = 15;
@@ -109,7 +110,7 @@
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(236, 108);
+            this.buttonAdd.Location = new System.Drawing.Point(191, 108);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(80, 26);
             this.buttonAdd.TabIndex = 16;
@@ -135,11 +136,22 @@
             this.labelledTextBoxCode.Size = new System.Drawing.Size(79, 47);
             this.labelledTextBoxCode.TabIndex = 11;
             // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(277, 108);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(80, 26);
+            this.buttonEdit.TabIndex = 17;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
             // TestDictionaryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(379, 299);
+            this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonSearch);
@@ -168,5 +180,6 @@
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonEdit;
     }
 }

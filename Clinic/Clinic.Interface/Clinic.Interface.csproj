@@ -143,6 +143,12 @@
     <Compile Include="Doctors\DoctorForm.Designer.cs">
       <DependentUpon>DoctorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lab\EditDictionaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lab\EditDictionaryForm.Designer.cs">
+      <DependentUpon>EditDictionaryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Lab\LaboratoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Doctors\DoctorForm.resx">
       <DependentUpon>DoctorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lab\EditDictionaryForm.resx">
+      <DependentUpon>EditDictionaryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lab\LaboratoryForm.resx">
       <DependentUpon>LaboratoryForm.cs</DependentUpon>

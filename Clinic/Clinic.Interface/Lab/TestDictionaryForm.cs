@@ -1,5 +1,6 @@
 ﻿using Clinic.Data;
 using Clinic.Facades.Tests;
+using Clinic.Interface.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -48,15 +49,14 @@ namespace Clinic.Interface.Lab
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            TestDictionary td = new TestDictionary();
-            td.Code = labelledTextBoxCode.Input;
-            td.Name = labelledTextBoxName.Input;
-            if (radioButtonLaboratory.Checked)
-                td.Type = TestType.Laboratory.ToCode();
-            else
-                td.Type = TestType.Physical.ToCode();
-            TestService.Add(td);
-            MessageBox.Show("Test added to dictionary.", "Test added");
+            using (var form = new EditDictionaryForm(ActionType.Create))
+            {
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    TestService.Add(form.td);
+                    MessageBox.Show("Test added to dictionary.", "Test added");
+                }
+            }
             SearchForTests();
         }
 
@@ -68,6 +68,26 @@ namespace Clinic.Interface.Lab
         private void radioButtonPhysical_CheckedChanged(object sender, EventArgs e)
         {
             SearchForTests();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTests.SelectedRows.Count == 0)
+                MessageBox.Show("No tests were selected for edition.", "Error");
+            else
+            {
+                TestDictionary td = new TestDictionary();
+                td.Code = dataGridViewTests.SelectedRows[0].Cells["Code"].Value.ToString();
+                td.Name = dataGridViewTests.SelectedRows[0].Cells["Name"].Value.ToString();
+                td.Type = dataGridViewTests.SelectedRows[0].Cells["Type"].Value.ToString();
+                using (var form = new EditDictionaryForm(ActionType.Update, td))
+                {
+                    if (form.ShowDialog() == DialogResult.OK)
+                    {
+                        TestService.Update(form.td);
+                    }
+                }
+            }
         }
     }
 }
