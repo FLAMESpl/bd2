@@ -3,6 +3,7 @@ using Clinic.Data;
 using Clinic.Data.Helpers;
 using System.Collections.Generic;
 using System.Data.Linq.SqlClient;
+using System;
 
 namespace Clinic.Facades.Tests
 {
@@ -21,8 +22,8 @@ namespace Clinic.Facades.Tests
         {
             using (var db = DataContextFactory.Create())
             {
-                db.TestDictionaries.InsertOnSubmit(dict);
-                db.SubmitChanges();
+                    db.TestDictionaries.InsertOnSubmit(dict);
+                    db.SubmitChanges();
             }
         }
 
@@ -45,6 +46,14 @@ namespace Clinic.Facades.Tests
                                 && t.Type.Contains(searchCriteria.Type)
                                 && t.Code.Contains(searchCriteria.Code));
                 return results.ToList();
+            }
+        }
+
+        public static bool DictionaryRecordAlreadyExists(TestDictionary newRecord)
+        {
+            using (var db = DataContextFactory.Create())
+            {
+                return db.TestDictionaries.Any(td => td.Code == newRecord.Code);
             }
         }
 

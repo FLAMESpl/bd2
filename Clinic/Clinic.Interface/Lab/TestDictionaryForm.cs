@@ -53,11 +53,18 @@ namespace Clinic.Interface.Lab
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    TestService.Add(form.td);
-                    MessageBox.Show("Test added to dictionary.", "Test added");
+                    if (TestService.DictionaryRecordAlreadyExists(form.td))
+                    {
+                        MessageBox.Show("Test with this code already exists in the dictionary.", "Error");
+                    }
+                    else
+                    {
+                        TestService.Add(form.td);
+                        MessageBox.Show("Test added to dictionary.", "Test added");
+                        SearchForTests();
+                    }
                 }
             }
-            SearchForTests();
         }
 
         private void buttonSearch_Click(object sender, EventArgs e)
@@ -73,7 +80,7 @@ namespace Clinic.Interface.Lab
         private void buttonEdit_Click(object sender, EventArgs e)
         {
             if (dataGridViewTests.SelectedRows.Count == 0)
-                MessageBox.Show("No tests were selected for edition.", "Error");
+                MessageBox.Show("No tests were selected for editing.", "Error");
             else
             {
                 TestDictionary td = new TestDictionary();
@@ -85,6 +92,8 @@ namespace Clinic.Interface.Lab
                     if (form.ShowDialog() == DialogResult.OK)
                     {
                         TestService.Update(form.td);
+                        MessageBox.Show("A test with code " + form.td.Code + " was updated in the dictionary.", "Test updated");
+                        SearchForTests();
                     }
                 }
             }
