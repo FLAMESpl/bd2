@@ -164,7 +164,7 @@ namespace Clinic.Interface.Registrator
             
             if (actionType == ActionType.Browse)
             {
-                FillVisitsForBrowsing(doctorId, monthCalendar.SelectionStart.Date, monthCalendar.SelectionEnd.Date, patientFilters.GetPatient());
+                FillVisitsForBrowsing(doctorId, monthCalendar.SelectionStart.Date, monthCalendar.SelectionEnd.Date.AddHours(24), patientFilters.GetPatient());
             }
             else if (actionType == ActionType.Create)
             {
