@@ -87,7 +87,7 @@ namespace Clinic.Interface.Doctors
                 if (amountUntilWorkEnd > 10) amountUntilWorkEnd = 10L;
 
                 FillVisitsForScheduling(doctorId, roundedNow, Convert.ToInt32(amountUntilWorkEnd));
-                System.Windows.Forms.MessageBox.Show("Visits refreshed (this moment)!");
+                //System.Windows.Forms.MessageBox.Show("Visits refreshed (this moment)!");
                 monthCalendar1.SelectionStart = DateTime.Today;
             }
             else
@@ -134,7 +134,7 @@ namespace Clinic.Interface.Doctors
             var numberOfVisits = (int)timeSpan.TotalMinutes / MINUTES_PER_VISIT;
             FillVisitsForScheduling(doctorId, rangeStart, numberOfVisits);
 
-            System.Windows.Forms.MessageBox.Show("Visits refreshed at "+startSelection.Day+ "/"+startSelection.Month+"/"+startSelection.Year+"!");
+            //System.Windows.Forms.MessageBox.Show("Visits refreshed at "+startSelection.Day+ "/"+startSelection.Month+"/"+startSelection.Year+"!");
         }
         
 
@@ -221,7 +221,8 @@ namespace Clinic.Interface.Doctors
                         updatedcount++;
                     }
                 }
-                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots finalized!");
+                //System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots finalized!");
+                refreshCurrentVisitsShowed(sender, e);
             }
             else
             {
@@ -245,7 +246,8 @@ namespace Clinic.Interface.Doctors
                         updatedcount++;
                     }
                 }
-                System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots cancelled!");
+                //System.Windows.Forms.MessageBox.Show(updatedcount + " visit slots cancelled!");
+                refreshCurrentVisitsShowed(sender, e);
             }
             else
             {

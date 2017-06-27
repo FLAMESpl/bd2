@@ -54,10 +54,10 @@ namespace Clinic.Interface.Doctors
                 {
                     LaboratoryTest newTest = new LaboratoryTest();
                     newTest.Code = row.Cells[0].Value.ToString();
-                    newTest.DoctorNotes = "Zieloni pięćset";
+                    newTest.DoctorNotes = "Empty";
                     newTest.ComissionDate = DateTime.Now;
                     newTest.Status = TestStatus.Scheduled.ToCode();
-                    newTest.ManagerNotes = "Żółci tysiąc";
+                    newTest.ManagerNotes = "Empty";
                     newTest.IdVisit = long.Parse(Row.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString());
                     TestService.Add(newTest);
                 }
@@ -65,14 +65,15 @@ namespace Clinic.Interface.Doctors
                 {
                     PhysicalTest newTest = new PhysicalTest();
                     newTest.Code = row.Cells[0].Value.ToString();
-                    newTest.Result = "Not filled yet";
+                    newTest.Result = "Empty";
                     newTest.IdVisit = long.Parse(Row.Cells["visitIdDataGridViewTextBoxColumn"].Value.ToString());
                     TestService.Add(newTest);
                 }
                 testamountadded++;
             }
 
-            MessageBox.Show("Added " + testamountadded + " tests.");
+            //MessageBox.Show("Added " + testamountadded + " tests.");
+            btnTestDetailsDoctorRefresh_Click(sender, e);
 
             //DataGridViewSelectedRowCollection selectedTests = dataGridTestDictionary.SelectedRows;
             //foreach (DataGridViewRow row in selectedTests)
@@ -106,7 +107,7 @@ namespace Clinic.Interface.Doctors
             ApprovedTestsBindingSource.AddRange(TestService.GetTestsOfStatus(TestStatus.Approved, SelectedVisitId));
             PhysicalTestBindingSource.Clear();
             PhysicalTestBindingSource.AddRange(TestService.GetPhysicalTests(SelectedVisitId));
-            MessageBox.Show("All data refreshed!");
+            //MessageBox.Show("All data refreshed!");
         }
 
         private void dataGridViewTests_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -125,6 +126,7 @@ namespace Clinic.Interface.Doctors
                     LaboratoryNotesWindow.ShowDialog(ActiveUser);
                 }
             }
+            btnTestDetailsDoctorRefresh_Click(sender, e);
         }
     }
 }

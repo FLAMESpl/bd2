@@ -30,6 +30,8 @@
         {
             this.btnDoctorReturn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblDetailsVisitDate = new System.Windows.Forms.Label();
+            this.lblInfoVisitDate = new System.Windows.Forms.Label();
             this.grpBoxDetailsDoctorDiagnosis = new System.Windows.Forms.GroupBox();
             this.txtBoxDetailsDiagnosis = new System.Windows.Forms.TextBox();
             this.grpBoxDetailsDescription = new System.Windows.Forms.GroupBox();
@@ -38,10 +40,8 @@
             this.lblDetailsPatientPESEL = new System.Windows.Forms.Label();
             this.lblDetailsPatientSurname = new System.Windows.Forms.Label();
             this.lblDetailsPatientName = new System.Windows.Forms.Label();
-            this.btnSaveDiagnosis = new System.Windows.Forms.Button();
+            this.btnSaveDetails = new System.Windows.Forms.Button();
             this.btnTestDetails = new System.Windows.Forms.Button();
-            this.lblInfoVisitDate = new System.Windows.Forms.Label();
-            this.lblDetailsVisitDate = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpBoxDetailsDoctorDiagnosis.SuspendLayout();
             this.grpBoxDetailsDescription.SuspendLayout();
@@ -74,6 +74,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Visit details";
             // 
+            // lblDetailsVisitDate
+            // 
+            this.lblDetailsVisitDate.AutoSize = true;
+            this.lblDetailsVisitDate.Location = new System.Drawing.Point(203, 31);
+            this.lblDetailsVisitDate.Name = "lblDetailsVisitDate";
+            this.lblDetailsVisitDate.Size = new System.Drawing.Size(36, 13);
+            this.lblDetailsVisitDate.TabIndex = 16;
+            this.lblDetailsVisitDate.Text = "Empty";
+            // 
+            // lblInfoVisitDate
+            // 
+            this.lblInfoVisitDate.AutoSize = true;
+            this.lblInfoVisitDate.Location = new System.Drawing.Point(200, 16);
+            this.lblInfoVisitDate.Name = "lblInfoVisitDate";
+            this.lblInfoVisitDate.Size = new System.Drawing.Size(55, 13);
+            this.lblInfoVisitDate.TabIndex = 15;
+            this.lblInfoVisitDate.Text = "Visit Date:";
+            // 
             // grpBoxDetailsDoctorDiagnosis
             // 
             this.grpBoxDetailsDoctorDiagnosis.Controls.Add(this.txtBoxDetailsDiagnosis);
@@ -93,7 +111,7 @@
             this.txtBoxDetailsDiagnosis.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtBoxDetailsDiagnosis.Size = new System.Drawing.Size(464, 141);
             this.txtBoxDetailsDiagnosis.TabIndex = 12;
-            this.txtBoxDetailsDiagnosis.Text = "To be filled...";
+            this.txtBoxDetailsDiagnosis.Text = "Empty";
             // 
             // grpBoxDetailsDescription
             // 
@@ -107,11 +125,11 @@
             // 
             // txtBoxDetailsDescription
             // 
+            this.txtBoxDetailsDescription.AcceptsReturn = true;
             this.txtBoxDetailsDescription.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtBoxDetailsDescription.Location = new System.Drawing.Point(3, 16);
             this.txtBoxDetailsDescription.Multiline = true;
             this.txtBoxDetailsDescription.Name = "txtBoxDetailsDescription";
-            this.txtBoxDetailsDescription.ReadOnly = true;
             this.txtBoxDetailsDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtBoxDetailsDescription.Size = new System.Drawing.Size(464, 130);
             this.txtBoxDetailsDescription.TabIndex = 1;
@@ -153,15 +171,15 @@
             this.lblDetailsPatientName.TabIndex = 0;
             this.lblDetailsPatientName.Text = "Patient Name";
             // 
-            // btnSaveDiagnosis
+            // btnSaveDetails
             // 
-            this.btnSaveDiagnosis.Location = new System.Drawing.Point(49, 435);
-            this.btnSaveDiagnosis.Name = "btnSaveDiagnosis";
-            this.btnSaveDiagnosis.Size = new System.Drawing.Size(141, 42);
-            this.btnSaveDiagnosis.TabIndex = 2;
-            this.btnSaveDiagnosis.Text = "Save Diagnosis";
-            this.btnSaveDiagnosis.UseVisualStyleBackColor = true;
-            this.btnSaveDiagnosis.Click += new System.EventHandler(this.btnSaveDiagnosis_Click);
+            this.btnSaveDetails.Location = new System.Drawing.Point(49, 435);
+            this.btnSaveDetails.Name = "btnSaveDetails";
+            this.btnSaveDetails.Size = new System.Drawing.Size(141, 42);
+            this.btnSaveDetails.TabIndex = 2;
+            this.btnSaveDetails.Text = "Save Details";
+            this.btnSaveDetails.UseVisualStyleBackColor = true;
+            this.btnSaveDetails.Click += new System.EventHandler(this.btnSaveDiagnosis_Click);
             // 
             // btnTestDetails
             // 
@@ -173,24 +191,6 @@
             this.btnTestDetails.UseVisualStyleBackColor = true;
             this.btnTestDetails.Click += new System.EventHandler(this.btnTestDetails_Click);
             // 
-            // lblInfoVisitDate
-            // 
-            this.lblInfoVisitDate.AutoSize = true;
-            this.lblInfoVisitDate.Location = new System.Drawing.Point(141, 16);
-            this.lblInfoVisitDate.Name = "lblInfoVisitDate";
-            this.lblInfoVisitDate.Size = new System.Drawing.Size(55, 13);
-            this.lblInfoVisitDate.TabIndex = 15;
-            this.lblInfoVisitDate.Text = "Visit Date:";
-            // 
-            // lblDetailsVisitDate
-            // 
-            this.lblDetailsVisitDate.AutoSize = true;
-            this.lblDetailsVisitDate.Location = new System.Drawing.Point(144, 31);
-            this.lblDetailsVisitDate.Name = "lblDetailsVisitDate";
-            this.lblDetailsVisitDate.Size = new System.Drawing.Size(36, 13);
-            this.lblDetailsVisitDate.TabIndex = 16;
-            this.lblDetailsVisitDate.Text = "Empty";
-            // 
             // DetailsDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,11 +199,9 @@
             this.Controls.Add(this.btnTestDetails);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnDoctorReturn);
-            this.Controls.Add(this.btnSaveDiagnosis);
+            this.Controls.Add(this.btnSaveDetails);
             this.Name = "DetailsDoctorForm";
             this.Text = "Visit Details";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DetailsDoctorForm_FormClosing);
-            this.Load += new System.EventHandler(this.DetailsDoctorForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grpBoxDetailsDoctorDiagnosis.ResumeLayout(false);
@@ -218,7 +216,7 @@
         private System.Windows.Forms.Button btnDoctorReturn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblDetailsPatientName;
-        private System.Windows.Forms.Button btnSaveDiagnosis;
+        private System.Windows.Forms.Button btnSaveDetails;
         private System.Windows.Forms.Label lblDetailsPatientPESEL;
         private System.Windows.Forms.Label lblDetailsPatientSurname;
         private System.Windows.Forms.Button btnTestDetails;
