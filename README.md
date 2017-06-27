@@ -1,42 +1,28 @@
 # BD II
 
-### markdown magic
-
 Witamy w projekcie z baz danych. Za³o¿eniem projektu jest stworzenie bazy danych dla przychodni.
 
-Formatka doktora jest mniej wiêcej gotowa, zapraszam do sprawdzenia czy jest ok, to porefaktoryzuje (__~miszcz__)
+27 - 06 - 2017 TODO:
 
-TODO:
-1. Stworzyæ i do³¹czyæ formatki dla (obecnie nie ma dla nich nic):
-* asystenta laboratorium (lechu)
-* kierownika laboratorium (lechu?)
-2. Dokoñczyæ formatkê dla registratorki (jest tam du¿o zrobione, a ja nie ogariam jeszcze co __~miszczu__)
-3. Hopsa do Augustyna na prezêtacyjê
+1. Dodaæ combobox ze statusami w laborantach
+2. Poprawiæ refresh i mboxy w doktorze
 
-Do poprawy, jeœli starczy czasu:
-* Doktor - Godzina przy wybraniu tego samego dnia siê psuje
-* Wyœwietlanie formatek na œrodku poprzednio otwartego okna
+Na nastêpne spotkanie:
 
-Notatki z ostatniego spotkania (Niektóre s¹ niezrozumia³e, za co przepraszam. Sam czasem nie rozumiem o co biega³o, ale myœlê ¿e wymó¿d¿ymy jakoœ znaczenie __~miszczu__):
+1. Plik readme:
+* data
+* przedmiot, sekcja
+* tytu³ projektu
+* sk³ad sekcji
+* Instrukcja "przed uruchomieniem":
+..* instalacja i kofiguracja
+..* jak uruchomiæ bazê
+..* jak wype³niæ wartoœciami (czyli który to skrypt obs³uguje te dwie rzeczy)
 
-TODO: Wykonaæ i pokazaæ ekrany do koñca
- 
-* Przycisk na query w formie - ¿eby nie szukaæ za du¿o
-* Search w formie registratorki o pacjentach
-* Sekcja pacjentów/wizyt: Adresy wskazuj¹ na aktualny adres
-* Okna edycji - przepisuj¹ siê dane (np. gdy dodajemy u¿ytkownika to username, albo przy edycji istniej¹cego powinny siê przepisaæ aktualne)
-* Grid jest niewygodny do edycji pojedynczych pól
-* Ludzie nie lubi¹ uzupe³niaæ tabelek, no chyba ¿e liczbami
-* Przyciski show
-* Tryby formatek - na "Done" ma byæ inna akcja. Decydowaæ ma o tym enum z akcjami
-* Show dialogue mo¿e zwracaæ rezultat, bo jak wracamy, to odœwie¿amy
-* Odœwie¿amy na Done, na cancel nie
-* Porada u lekarza X minut - ka¿da porada ma inny i to jest parametr
-* Po wybaniu lekarza nastêpuje konfiguracja slotów. Wybieramy dzieñ -> program liczy sloty -> wyœwietla, albo trwale (?)
-* Sloty to logika biznesowa (nale¿¹ do Facades)
-* Zbiór stanów w jakim mo¿e byæ slot to wszystkie mo¿liwe stany wizyt + "wolny" ("Add"/"Free")
-* Przycisk "Poka¿"
-* Cancel to nie jest remove bo remove usuwa, cancel powoduje zwrot dokumentow w recepcji
-* Lekarze na liœcie, nie w boxach
-* NIE wprowadzaæ wszystkich informacji na jednej formatce
-* Tryby tygodniowe - wtedy grid musi siê zmieniæ
+2. P³yta CD, a na niej:
+..1. Analiza - pliki StarUMLa
+..2. Diagram bazy (mo¿e byæ zrzut z MSSQL serwera)
+..3. Skrypty do zbudowania i wype³nienia bazy przyk³adowymi danymi
+..4. SRC_CODE czyli pliki solucji
+..5. BIN_RELEASE zbudowana aplikacja
+
