@@ -109,7 +109,7 @@ namespace Clinic.Interface.Doctors
             }
             else
             {
-                refreshVisitsAtDay(monthCalendar1.SelectionStart);
+                refreshVisitsAtDay(dateTimePickerDoctor.Value);
             }
         }
 
@@ -253,6 +253,12 @@ namespace Clinic.Interface.Doctors
             {
                 NoRowsSelectedErrorMessage();
             }
+        }
+
+        private void dateTimePickerDoctor_ValueChanged(object sender, EventArgs e)
+        {
+            ShowedCurrentVisitsRecently = false;
+            refreshVisitsAtDay(dateTimePickerDoctor.Value);
         }
     }
 }
