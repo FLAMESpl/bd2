@@ -36,20 +36,13 @@ namespace Clinic.Interface.Lab
 
         private void SearchForTests()
         {
-            TestDictionary td = new TestDictionary();
-            td.Code = labelledTextBoxCode.Input;
-            td.Name = labelledTextBoxName.Input;
-            if (radioButtonLaboratory.Checked)
-                td.Type = TestType.Laboratory.ToCode();
-            else
-                td.Type = TestType.Physical.ToCode();
-            dataGridViewTests.DataSource = TestService.Match(td);
+            dataGridViewTests.DataSource = TestService.Match(FilterTestDictionary());
             dataGridViewTests.Refresh();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            using (var form = new EditDictionaryForm(ActionType.Create))
+            using (var form = new EditDictionaryForm(ActionType.Create, FilterTestDictionary()))
             {
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -97,6 +90,17 @@ namespace Clinic.Interface.Lab
                     }
                 }
             }
+        }
+        TestDictionary FilterTestDictionary()
+        {
+            TestDictionary td = new TestDictionary();
+            td.Code = labelledTextBoxCode.Input;
+            td.Name = labelledTextBoxName.Input;
+            if (radioButtonLaboratory.Checked)
+                td.Type = TestType.Laboratory.ToCode();
+            else
+                td.Type = TestType.Physical.ToCode();
+            return td;
         }
     }
 }
