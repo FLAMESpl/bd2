@@ -25,13 +25,6 @@ namespace Clinic.Interface.Lab
             InitializeComponent();
         }
 
-        public EditDictionaryForm(ActionType actionType)
-        {
-            td = new TestDictionary();
-            at = actionType;
-            InitializeComponent();
-        }
-
         private void buttonApply_Click(object sender, EventArgs e)
         {
             td.Code = labelledTextBoxCode.Input;
@@ -46,20 +39,18 @@ namespace Clinic.Interface.Lab
 
         private void EditDictionaryForm_Load(object sender, EventArgs e)
         {
+            labelledTextBoxCode.Input = td.Code;
+            labelledTextBoxName.Input = td.Name;
+            if (TestTypeExtensions.GetFromCode(td.Type) == TestType.Laboratory)
+                radioButtonLaboratory.Checked = true;
+            else
+                radioButtonPhysical.Checked = true;
             if (at == ActionType.Update)
             {
-                labelledTextBoxCode.Input = td.Code;
-                labelledTextBoxName.Input = td.Name;
-                if (TestTypeExtensions.GetFromCode(td.Type) == TestType.Laboratory)
-                    radioButtonLaboratory.Checked = true;
-                else
-                    radioButtonPhysical.Checked = true;
                 radioButtonLaboratory.Enabled = false;
                 radioButtonPhysical.Enabled = false;
                 labelledTextBoxCode.Enabled = false;
-            }
-            else
-                radioButtonPhysical.Checked = true;
+            }            
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

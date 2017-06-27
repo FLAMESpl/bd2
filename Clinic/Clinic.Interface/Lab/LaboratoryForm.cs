@@ -21,34 +21,40 @@ namespace Clinic.Interface.LabManager
         public LaboratoryForm()
         {
             InitializeComponent();
+            comboBoxStatus.DataSource = Enum.GetValues(typeof(TestStatus));
         }
-
-        private void RefreshList()
-        {
-            if (ActiveUser.Role == Role.LabManager.ToCode())
-            {
-                bindingSourcePatientLaboratoryTests.Clear();
-                bindingSourcePatientLaboratoryTests.AddRange(TestService.MatchWithPatient(labelledTextBoxName.Input, labelledTextBoxSurname.Input, labelledTextBoxPESEL.Input, TestStatus.Executed));
-            }
-            else    //lab assistant
-            {
-                bindingSourcePatientLaboratoryTests.Clear();
-                bindingSourcePatientLaboratoryTests.AddRange(TestService.MatchWithPatient(labelledTextBoxName.Input, labelledTextBoxSurname.Input, labelledTextBoxPESEL.Input, TestStatus.Scheduled));
-                dataGridViewTests.Columns[7].Visible = false;
-                dataGridViewTests.Columns[8].Visible = false;
-            }
-            dataGridViewTests.Columns[0].Visible = false;
-            dataGridViewTests.Refresh();
-        }
-
+                        
         private void LaboratoryForm_Load(object sender, EventArgs e)
         {
             dataGridViewTests.AutoGenerateColumns = true;
             RefreshList();
             if (ActiveUser.Role == Role.LabAssistant.ToCode())
             {
-                buttonAddTests.Enabled = false;
+                buttonAddTests.Visible = false;
+                comboBoxStatus.SelectedItem = TestStatus.Scheduled;
+                Text = "Laboratory Assistant";
             }
+            else if (ActiveUser.Role == Role.LabManager.ToCode())
+            {
+                comboBoxStatus.SelectedItem = TestStatus.Executed;
+                Text = "Laboratory Manager";
+            }
+        }
+        private void RefreshList()
+        {
+            bindingSourcePatientLaboratoryTests.Clear();
+            bindingSourcePatientLaboratoryTests.AddRange(TestService.MatchWithPatient(
+                labelledTextBoxName.Input,
+                labelledTextBoxSurname.Input,
+                labelledTextBoxPESEL.Input,
+                (TestStatus)comboBoxStatus.SelectedItem));
+            if (ActiveUser.Role == Role.LabAssistant.ToCode())
+            {
+                dataGridViewTests.Columns[7].Visible = false;
+                dataGridViewTests.Columns[8].Visible = false;
+            }
+            dataGridViewTests.Columns[0].Visible = false;
+            dataGridViewTests.Refresh();
         }
 
         private void buttonAcceptTest_Click(object sender, EventArgs e)
@@ -57,7 +63,7 @@ namespace Clinic.Interface.LabManager
             {
                 EditTestAsManager();
             }
-            else
+            else if (ActiveUser.Role == Role.LabAssistant.ToCode())
             {
                 EditTestAsAssistant();
             }
@@ -118,15 +124,48 @@ namespace Clinic.Interface.LabManager
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-            labelledTextBoxName.Input = "";
-            labelledTextBoxSurname.Input = "";
-            labelledTextBoxPESEL.Input = "";
+            labelledTextBoxName.Input = string.Empty;                
+            labelledTextBoxSurname.Input = string.Empty;
+            labelledTextBoxPESEL.Input = string.Empty;
             RefreshList();
         }
-
-        private void bindingSourcePatientLaboratoryTests_CurrentChanged(object sender, EventArgs e)
+        
+        private void comboBoxStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            RefreshList();
+            switch (RolesExtensions.GetFromCode(ActiveUser.Role))
+            {
+                case Role.LabAssistant:
+                    if ((TestStatus)comboBoxStatus.SelectedItem == TestStatus.Scheduled)
+                    {
+                        ShowButtonAcceptTest();
+                    }
+                    else
+                    {
+                        HideButtonAcceptTest();
+                    }        
+                    break;
+                case Role.LabManager:
+                    if ((TestStatus)comboBoxStatus.SelectedItem == TestStatus.Executed)
+                    {
+                        ShowButtonAcceptTest();
+                    }
+                    else
+                    {
+                        HideButtonAcceptTest();
+                    }
+                    break;
+            }
+        }
+        private void HideButtonAcceptTest()
+        {
+            buttonAcceptTest.Enabled = false;
+            buttonAcceptTest.Text = "Not available - change status";
+        }
+        private void ShowButtonAcceptTest()
+        {
+            buttonAcceptTest.Enabled = true;
+            buttonAcceptTest.Text = "Accept/Cancel test";
         }
     }
 }
