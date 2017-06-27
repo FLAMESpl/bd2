@@ -39,6 +39,7 @@ namespace Clinic.Facades.Visits
             {
                 var oldVisit = db.Visits.Single(x => x.Id == updatedVisit.Id);
                 oldVisit.Diagnosis = updatedVisit.Diagnosis;
+                oldVisit.Description = updatedVisit.Description;
                 db.SubmitChanges();
             }
         }
