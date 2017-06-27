@@ -21,11 +21,11 @@ namespace Clinic.Interface.LabManager
         public LaboratoryForm()
         {
             InitializeComponent();
-            comboBoxStatus.DataSource = Enum.GetValues(typeof(TestStatus));
         }
                         
         private void LaboratoryForm_Load(object sender, EventArgs e)
         {
+            comboBoxStatus.DataSource = Enum.GetValues(typeof(TestStatus));
             dataGridViewTests.AutoGenerateColumns = true;
             RefreshList();
             if (ActiveUser.Role == Role.LabAssistant.ToCode())

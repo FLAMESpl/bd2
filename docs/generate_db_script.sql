@@ -175,7 +175,7 @@ CREATE TABLE [dbo].[LaboratoryTest](
 	[Id] [bigint] IDENTITY(1,1) NOT NULL,
 	[DoctorNotes] [nvarchar](max) NULL,
 	[ComissionDate] [datetime] NOT NULL,
-	[Result] [nvarchar](50) NULL,
+	[Result] [nvarchar](max) NULL,
 	[ExecutionDate] [datetime] NULL,
 	[ManagerNotes] [nvarchar](max) NOT NULL,
 	[ResolutionDate] [datetime] NULL,
