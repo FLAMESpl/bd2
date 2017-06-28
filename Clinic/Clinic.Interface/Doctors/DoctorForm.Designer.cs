@@ -116,10 +116,12 @@
             // 
             // dateTimePickerDoctor
             // 
-            this.dateTimePickerDoctor.Location = new System.Drawing.Point(8, 34);
+            this.dateTimePickerDoctor.Location = new System.Drawing.Point(12, 31);
             this.dateTimePickerDoctor.Name = "dateTimePickerDoctor";
-            this.dateTimePickerDoctor.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerDoctor.ShowCheckBox = true;
+            this.dateTimePickerDoctor.Size = new System.Drawing.Size(228, 20);
             this.dateTimePickerDoctor.TabIndex = 0;
+            this.dateTimePickerDoctor.CloseUp += new System.EventHandler(this.dateTimePickerDoctor_CloseUp);
             this.dateTimePickerDoctor.ValueChanged += new System.EventHandler(this.dateTimePickerDoctor_ValueChanged);
             // 
             // tabPage2
@@ -194,7 +196,7 @@
             // visitHourDataGridViewTextBoxColumn
             // 
             this.visitHourDataGridViewTextBoxColumn.DataPropertyName = "VisitHour";
-            this.visitHourDataGridViewTextBoxColumn.HeaderText = "VisitHour";
+            this.visitHourDataGridViewTextBoxColumn.HeaderText = "Visit Time";
             this.visitHourDataGridViewTextBoxColumn.MinimumWidth = 150;
             this.visitHourDataGridViewTextBoxColumn.Name = "visitHourDataGridViewTextBoxColumn";
             this.visitHourDataGridViewTextBoxColumn.ReadOnly = true;
@@ -338,15 +340,15 @@
         private System.Windows.Forms.Button btnShowCurrent;
         private System.Windows.Forms.Button btnFinalize;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn visitIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn visitHourDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn doctorDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerDoctor;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visitIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visitHourDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn doctorDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patientDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
     }
 }

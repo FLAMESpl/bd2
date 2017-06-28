@@ -12,7 +12,14 @@ namespace Clinic.Interface.Doctors
         private const int START_WORKING_HOUR = 8;
         private const int END_WORKING_HOUR = 16;
         private const int MINUTES_PER_VISIT = 15;
-        private bool ShowedCurrentVisitsRecently = true;
+        private VisitViewTypeEnum ShowedCurrentVisitsRecently = VisitViewTypeEnum.Current10;
+
+        private enum VisitViewTypeEnum
+        {
+            Current10,
+            FromCalendar,
+            AllByDoctorId
+        }
 
         public DoctorForm(long _docId)
         {
@@ -51,11 +58,12 @@ namespace Clinic.Interface.Doctors
                 else
                 {
                     dailyVisit = new DailyVisit(visit);
-                }
 
-                sourceDailyVisists.Add(dailyVisit);
-                actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
+                    sourceDailyVisists.Add(dailyVisit);
+                    actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
+                }
             }
+            //System.Windows.Forms.MessageBox.Show("FillVisitsForScheduling");
         }
 
         private void toolButtonRefresh_Click(object sender, System.EventArgs e)
@@ -65,7 +73,7 @@ namespace Clinic.Interface.Doctors
 
         private void clickShowVisitsAtThisMoment(object sender, EventArgs e)
         {
-            ShowedCurrentVisitsRecently = true;
+            ShowedCurrentVisitsRecently = VisitViewTypeEnum.Current10;
             refreshVisitsAtThisMoment();
         }
 
@@ -103,14 +111,32 @@ namespace Clinic.Interface.Doctors
 
         private void refreshCurrentVisitsShowed(object sender, EventArgs e)
         {
-            if (ShowedCurrentVisitsRecently)
+            //System.Windows.Forms.MessageBox.Show("refreshCurrentVisitsShowed");
+            if (ShowedCurrentVisitsRecently == VisitViewTypeEnum.Current10)
             {
                 refreshVisitsAtThisMoment();
+                //System.Windows.Forms.MessageBox.Show("refreshVisitsAtThisMoment");
             }
-            else
+            else if (ShowedCurrentVisitsRecently == VisitViewTypeEnum.FromCalendar)
             {
                 refreshVisitsAtDay(dateTimePickerDoctor.Value);
+                //System.Windows.Forms.MessageBox.Show("refreshVisitsAtDay");
             }
+            else if (ShowedCurrentVisitsRecently == VisitViewTypeEnum.AllByDoctorId)
+            {
+                refreshVisitsAllByDoctorId();
+                //System.Windows.Forms.MessageBox.Show("Visits refreshVisitsAllByDoctorId");
+            }
+        }
+
+        private void refreshVisitsAllByDoctorId()
+        {
+            sourceDailyVisists.Clear();
+            sourceDailyVisists.AddRange(VisitsService.GetInDateRange(DateTime.Today, DateTime.Today.AddDays(31), ActiveUser.Doctor.Id)
+                .Where(x => x.Status == VisitStatus.Scheduled.ToCode()).Select(x => new DailyVisit(x)));
+            //System.Windows.Forms.MessageBox.Show((VisitsService.GetInDateRange(DateTime.Today, DateTime.Today.AddDays(31), ActiveUser.Doctor.Id).Where(x => x.Status == VisitStatus.Scheduled.ToString())).Count().ToString());
+            datgridVisits.Refresh();
+            //System.Windows.Forms.MessageBox.Show("refreshVisitsAllByDoctorId");
         }
 
         private void refreshVisitsAtDay(DateTime startSelection)
@@ -143,7 +169,7 @@ namespace Clinic.Interface.Doctors
             //monthCalendar1.SelectionStart -= DateTime.Now.AddMilliseconds(DateTime.Now.TimeOfDay.Ticks);
             //monthCalendar1.SelectionEnd -= DateTime.Now.TimeOfDay.Ticks;
             //DateTime tmpdate = e.Start - DateTime.Now.TimeOfDay;
-            ShowedCurrentVisitsRecently = false;
+            ShowedCurrentVisitsRecently = VisitViewTypeEnum.FromCalendar;
             refreshVisitsAtDay(monthCalendar1.SelectionStart/*SelectionStart*/);
         }
 
@@ -255,10 +281,21 @@ namespace Clinic.Interface.Doctors
             }
         }
 
+        private void dateTimePickerDoctor_CloseUp(object sender, EventArgs e)
+        {
+            ShowedCurrentVisitsRecently = VisitViewTypeEnum.FromCalendar;
+            refreshVisitsAtDay(dateTimePickerDoctor.Value.Date);
+            //System.Windows.Forms.MessageBox.Show("dateTimePickerDoctor_CloseUp");
+        }
+
         private void dateTimePickerDoctor_ValueChanged(object sender, EventArgs e)
         {
-            ShowedCurrentVisitsRecently = false;
-            refreshVisitsAtDay(dateTimePickerDoctor.Value);
+            if (!dateTimePickerDoctor.Checked)
+            {
+                ShowedCurrentVisitsRecently = VisitViewTypeEnum.AllByDoctorId;
+                refreshVisitsAllByDoctorId();
+                //System.Windows.Forms.MessageBox.Show("dateTimePickerDoctor_ValueChanged");
+            }
         }
     }
 }
