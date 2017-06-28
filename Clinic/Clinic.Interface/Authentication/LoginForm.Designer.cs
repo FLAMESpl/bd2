@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelLogin = new System.Windows.Forms.Label();
-            this.labelPassword = new System.Windows.Forms.Label();
-            this.textBoxLogin = new System.Windows.Forms.TextBox();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.buttonLogIn = new System.Windows.Forms.Button();
-            this.buttonChangePassword = new System.Windows.Forms.Button();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.labelLogin = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,32 +48,49 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxLogin, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBoxPassword, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.buttonLogIn, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.buttonChangePassword, 1, 6);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
+            this.tableLayoutPanel1.RowCount = 7;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(253, 198);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(253, 165);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // labelLogin
+            // buttonLogIn
             // 
-            this.labelLogin.AutoSize = true;
-            this.labelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelLogin.Location = new System.Drawing.Point(11, 19);
-            this.labelLogin.Name = "labelLogin";
-            this.labelLogin.Size = new System.Drawing.Size(231, 24);
-            this.labelLogin.TabIndex = 0;
-            this.labelLogin.Text = "User name";
-            this.labelLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonLogIn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonLogIn.Location = new System.Drawing.Point(136, 122);
+            this.buttonLogIn.Name = "buttonLogIn";
+            this.buttonLogIn.Size = new System.Drawing.Size(106, 32);
+            this.buttonLogIn.TabIndex = 4;
+            this.buttonLogIn.Text = "Log in";
+            this.buttonLogIn.UseVisualStyleBackColor = true;
+            this.buttonLogIn.Click += new System.EventHandler(this.buttonLogIn_Click);
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxPassword.Location = new System.Drawing.Point(11, 98);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(231, 20);
+            this.textBoxPassword.TabIndex = 3;
+            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.logInTrigger);
+            // 
+            // textBoxLogin
+            // 
+            this.textBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxLogin.Location = new System.Drawing.Point(11, 46);
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(231, 20);
+            this.textBoxLogin.TabIndex = 2;
+            this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.logInTrigger);
             // 
             // labelPassword
             // 
@@ -87,53 +103,22 @@
             this.labelPassword.Text = "Password";
             this.labelPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // textBoxLogin
+            // labelLogin
             // 
-            this.textBoxLogin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxLogin.Location = new System.Drawing.Point(11, 46);
-            this.textBoxLogin.Name = "textBoxLogin";
-            this.textBoxLogin.Size = new System.Drawing.Size(231, 20);
-            this.textBoxLogin.TabIndex = 2;
-            this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.logInTrigger);
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxPassword.Location = new System.Drawing.Point(11, 98);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.PasswordChar = '*';
-            this.textBoxPassword.Size = new System.Drawing.Size(231, 20);
-            this.textBoxPassword.TabIndex = 3;
-            this.textBoxPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.logInTrigger);
-            // 
-            // buttonLogIn
-            // 
-            this.buttonLogIn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonLogIn.Location = new System.Drawing.Point(136, 122);
-            this.buttonLogIn.Name = "buttonLogIn";
-            this.buttonLogIn.Size = new System.Drawing.Size(106, 29);
-            this.buttonLogIn.TabIndex = 4;
-            this.buttonLogIn.Text = "Log in";
-            this.buttonLogIn.UseVisualStyleBackColor = true;
-            this.buttonLogIn.Click += new System.EventHandler(this.buttonLogIn_Click);
-            // 
-            // buttonChangePassword
-            // 
-            this.buttonChangePassword.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonChangePassword.Location = new System.Drawing.Point(136, 157);
-            this.buttonChangePassword.Name = "buttonChangePassword";
-            this.buttonChangePassword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.buttonChangePassword.Size = new System.Drawing.Size(106, 30);
-            this.buttonChangePassword.TabIndex = 5;
-            this.buttonChangePassword.Text = "Change password";
-            this.buttonChangePassword.UseVisualStyleBackColor = true;
-            this.buttonChangePassword.Click += new System.EventHandler(this.buttonChangePassword_Click);
+            this.labelLogin.AutoSize = true;
+            this.labelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelLogin.Location = new System.Drawing.Point(11, 19);
+            this.labelLogin.Name = "labelLogin";
+            this.labelLogin.Size = new System.Drawing.Size(231, 24);
+            this.labelLogin.TabIndex = 0;
+            this.labelLogin.Text = "User name";
+            this.labelLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(253, 198);
+            this.ClientSize = new System.Drawing.Size(253, 165);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "LoginForm";
             this.Text = "Home";
@@ -151,6 +136,5 @@
         private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Button buttonLogIn;
-        private System.Windows.Forms.Button buttonChangePassword;
     }
 }

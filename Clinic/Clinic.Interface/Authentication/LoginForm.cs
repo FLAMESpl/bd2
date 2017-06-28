@@ -80,20 +80,6 @@ namespace Clinic.Interface.Authentication
             {
                 buttonLogIn_Click(sender, e);
             }
-        }
-
-        private void buttonChangePassword_Click(object sender, EventArgs e)
-        {
-            var result = AuthenticationService.Authenticate(textBoxLogin.Text, textBoxPassword.Text);
-            if (result.Success)
-            {
-                ChangePasswordForm form = new ChangePasswordForm(result.User);
-                form.Show();
-            }
-            else
-            {
-                MessageBox.Show("Authentication error");
-            }
-        }
+        }        
     }
 }
