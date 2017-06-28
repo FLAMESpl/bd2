@@ -37,7 +37,11 @@ namespace Clinic.Interface.Registrator
             var addr = patient.Addresses.Single(a => a.IsValid);
             var addrLine = $"{addr.City} {addr.Street} {addr.HouseNumber}/{addr.FlatNumber}";
 
-            MessageBox.Show(addrLine, "Addresses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            using (var form = new PatientForm(patient, ActionType.Browse))
+            {
+                form.ShowDialog(ActiveUser);
+            }
+            //MessageBox.Show(addrLine, "Addresses", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)

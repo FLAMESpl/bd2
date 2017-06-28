@@ -32,8 +32,8 @@ namespace Clinic.Interface.Registrator
             labelledInputLastName.Input = patient.Surname;
             labelledInputEvidenceNumber.Input = patient.PESEL;
 
-            if (actionType == ActionType.Update)
-                SetupAddresses();
+            if ((actionType == ActionType.Update) || (actionType == ActionType.Browse))
+                SetupAddresses();                
         }
 
         private void SetupAddresses()
@@ -49,6 +49,16 @@ namespace Clinic.Interface.Registrator
             if (actionType == ActionType.Update)
             {
                 Height += 250;
+            }
+            else if (actionType == ActionType.Browse)
+            {
+                Height += 250;
+                dataGridViewAddresses.ReadOnly = true;
+                doneCancelDialog.Visible = false;
+                addressFilters.Visible = false;
+                labelledInputFirstName.Enabled = false;
+                labelledInputLastName.Enabled = false;
+                labelledInputEvidenceNumber.Enabled = false;
             }
             else
             {
