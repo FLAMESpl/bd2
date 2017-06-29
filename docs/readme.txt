@@ -21,3 +21,13 @@ HOW TO GENERATE A BRAND NEW CLINIC DATABASE
 8a. If using pre-compiled version of client: edit ConnectionString in "Clinic.Interface.exe.config" (default: (local))
 8b. If using project opened in Visual Studio: edit ConnectionStrong in Settings.settings inside project Clinic.Data
 9. Enjoy working Clinic application!
+
+
+USER LOGINS:
+(all users have a default password "pass")
+
+admin - Administrator
+reg1, reg2, reg3 - Registrators
+doc1, doc2, doc3 - Doctors
+lab1, lab2 - Lab assistants
+labman - Lab manager
