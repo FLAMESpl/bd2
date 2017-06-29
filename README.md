@@ -15,7 +15,7 @@ Na następne spotkanie:
 * tytuł projektu
 * skład sekcji
 * Instrukcja "przed uruchomieniem":
-  * instalacja i kofiguracja
+  * instalacja i konfiguracja
   * jak uruchomić bazę
   * jak wypełnić wartościami (czyli który to skrypt obsługuje te dwie rzeczy)
 
