@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnDoctorReturn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblDetailsVisitDate = new System.Windows.Forms.Label();
             this.lblInfoVisitDate = new System.Windows.Forms.Label();
@@ -46,16 +45,6 @@
             this.grpBoxDetailsDoctorDiagnosis.SuspendLayout();
             this.grpBoxDetailsDescription.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnDoctorReturn
-            // 
-            this.btnDoctorReturn.Location = new System.Drawing.Point(367, 440);
-            this.btnDoctorReturn.Name = "btnDoctorReturn";
-            this.btnDoctorReturn.Size = new System.Drawing.Size(128, 32);
-            this.btnDoctorReturn.TabIndex = 2;
-            this.btnDoctorReturn.Text = "Go back to all Visits...";
-            this.btnDoctorReturn.UseVisualStyleBackColor = true;
-            this.btnDoctorReturn.Click += new System.EventHandler(this.btnDoctorReturn_Click);
             // 
             // groupBox1
             // 
@@ -183,9 +172,9 @@
             // 
             // btnTestDetails
             // 
-            this.btnTestDetails.Location = new System.Drawing.Point(233, 440);
+            this.btnTestDetails.Location = new System.Drawing.Point(270, 435);
             this.btnTestDetails.Name = "btnTestDetails";
-            this.btnTestDetails.Size = new System.Drawing.Size(128, 32);
+            this.btnTestDetails.Size = new System.Drawing.Size(169, 42);
             this.btnTestDetails.TabIndex = 9;
             this.btnTestDetails.Text = "Show/Edit tests...";
             this.btnTestDetails.UseVisualStyleBackColor = true;
@@ -198,7 +187,6 @@
             this.ClientSize = new System.Drawing.Size(523, 517);
             this.Controls.Add(this.btnTestDetails);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnDoctorReturn);
             this.Controls.Add(this.btnSaveDetails);
             this.Name = "DetailsDoctorForm";
             this.Text = "Visit Details";
@@ -213,7 +201,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnDoctorReturn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label lblDetailsPatientName;
         private System.Windows.Forms.Button btnSaveDetails;

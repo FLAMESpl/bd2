@@ -44,7 +44,6 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnShowCurrent = new System.Windows.Forms.Button();
             this.btnFinalize = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sourceDailyVisists)).BeginInit();
@@ -167,13 +166,12 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Controls.Add(this.btnRefresh, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnShowCurrent, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnFinalize, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btnCancel, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -190,7 +188,7 @@
             this.btnRefresh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnRefresh.Location = new System.Drawing.Point(3, 3);
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(153, 41);
+            this.btnRefresh.Size = new System.Drawing.Size(233, 41);
             this.btnRefresh.TabIndex = 2;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
@@ -199,31 +197,20 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Location = new System.Drawing.Point(162, 3);
+            this.button1.Location = new System.Drawing.Point(242, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 41);
+            this.button1.Size = new System.Drawing.Size(234, 41);
             this.button1.TabIndex = 3;
             this.button1.Text = "Details and actions";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.clickShowDetailsAndActions);
-            // 
-            // btnShowCurrent
-            // 
-            this.btnShowCurrent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnShowCurrent.Location = new System.Drawing.Point(321, 3);
-            this.btnShowCurrent.Name = "btnShowCurrent";
-            this.btnShowCurrent.Size = new System.Drawing.Size(155, 41);
-            this.btnShowCurrent.TabIndex = 4;
-            this.btnShowCurrent.Text = "Show visits at this moment";
-            this.btnShowCurrent.UseVisualStyleBackColor = true;
-            this.btnShowCurrent.Click += new System.EventHandler(this.clickShowVisitsAtThisMoment);
             // 
             // btnFinalize
             // 
             this.btnFinalize.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFinalize.Location = new System.Drawing.Point(3, 50);
             this.btnFinalize.Name = "btnFinalize";
-            this.btnFinalize.Size = new System.Drawing.Size(153, 37);
+            this.btnFinalize.Size = new System.Drawing.Size(233, 37);
             this.btnFinalize.TabIndex = 5;
             this.btnFinalize.Text = "Finalize Visit(s)";
             this.btnFinalize.UseVisualStyleBackColor = true;
@@ -232,9 +219,9 @@
             // btnCancel
             // 
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancel.Location = new System.Drawing.Point(162, 50);
+            this.btnCancel.Location = new System.Drawing.Point(242, 50);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(153, 37);
+            this.btnCancel.Size = new System.Drawing.Size(234, 37);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel Visit(s)";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -270,7 +257,6 @@
         private System.Windows.Forms.GroupBox gbVisits;
         private System.Windows.Forms.DataGridView datgridVisits;
         private System.Windows.Forms.BindingSource dailyVisitBindingSource;
-        private System.Windows.Forms.Button btnShowCurrent;
         private System.Windows.Forms.Button btnFinalize;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label1;

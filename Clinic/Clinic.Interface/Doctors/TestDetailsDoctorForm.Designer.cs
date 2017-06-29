@@ -86,7 +86,6 @@
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDoctorAssignTest = new System.Windows.Forms.Button();
-            this.btnTestDetailsDoctorReturn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ScheduledTestsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ApprovedTestsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PhysicalTestBindingSource)).BeginInit();
@@ -121,7 +120,7 @@
             // 
             // btnTestDetailsDoctorRefresh
             // 
-            this.btnTestDetailsDoctorRefresh.Location = new System.Drawing.Point(474, 457);
+            this.btnTestDetailsDoctorRefresh.Location = new System.Drawing.Point(473, 492);
             this.btnTestDetailsDoctorRefresh.Name = "btnTestDetailsDoctorRefresh";
             this.btnTestDetailsDoctorRefresh.Size = new System.Drawing.Size(168, 29);
             this.btnTestDetailsDoctorRefresh.TabIndex = 16;
@@ -581,16 +580,6 @@
             this.btnDoctorAssignTest.UseVisualStyleBackColor = true;
             this.btnDoctorAssignTest.Click += new System.EventHandler(this.btnDoctorAssignTest_Click);
             // 
-            // btnTestDetailsDoctorReturn
-            // 
-            this.btnTestDetailsDoctorReturn.Location = new System.Drawing.Point(474, 492);
-            this.btnTestDetailsDoctorReturn.Name = "btnTestDetailsDoctorReturn";
-            this.btnTestDetailsDoctorReturn.Size = new System.Drawing.Size(168, 32);
-            this.btnTestDetailsDoctorReturn.TabIndex = 10;
-            this.btnTestDetailsDoctorReturn.Text = "Go back to Visit details...";
-            this.btnTestDetailsDoctorReturn.UseVisualStyleBackColor = true;
-            this.btnTestDetailsDoctorReturn.Click += new System.EventHandler(this.btnTestDetailsDoctorReturn_Click);
-            // 
             // TestDetailsDoctorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,7 +588,6 @@
             this.Controls.Add(this.btnTestDetailsDoctorRefresh);
             this.Controls.Add(this.tabScheduledTests);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnTestDetailsDoctorReturn);
             this.Name = "TestDetailsDoctorForm";
             this.Text = "Tests Details";
             ((System.ComponentModel.ISupportInitialize)(this.ScheduledTestsBindingSource)).EndInit();
@@ -624,7 +612,6 @@
 
         private System.Windows.Forms.DataGridView dataGridTestDictionary;
         private System.Windows.Forms.Button btnDoctorAssignTest;
-        private System.Windows.Forms.Button btnTestDetailsDoctorReturn;
         private System.Windows.Forms.BindingSource TestDictionaryBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
