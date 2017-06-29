@@ -89,7 +89,6 @@
             this.dateTimePickerDoctor.ShowCheckBox = true;
             this.dateTimePickerDoctor.Size = new System.Drawing.Size(228, 20);
             this.dateTimePickerDoctor.TabIndex = 0;
-            this.dateTimePickerDoctor.CloseUp += new System.EventHandler(this.dateTimePickerDoctor_CloseUp);
             this.dateTimePickerDoctor.ValueChanged += new System.EventHandler(this.dateTimePickerDoctor_ValueChanged);
             // 
             // gbVisits

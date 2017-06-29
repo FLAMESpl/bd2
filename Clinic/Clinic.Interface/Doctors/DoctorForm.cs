@@ -58,10 +58,9 @@ namespace Clinic.Interface.Doctors
                 else
                 {
                     dailyVisit = new DailyVisit(visit);
-
                     sourceDailyVisists.Add(dailyVisit);
-                    actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
                 }
+                actualTime = actualTime.AddMinutes(MINUTES_PER_VISIT);
             }
             //System.Windows.Forms.MessageBox.Show("FillVisitsForScheduling");
         }
@@ -281,20 +280,18 @@ namespace Clinic.Interface.Doctors
             }
         }
 
-        private void dateTimePickerDoctor_CloseUp(object sender, EventArgs e)
-        {
-            ShowedCurrentVisitsRecently = VisitViewTypeEnum.FromCalendar;
-            refreshVisitsAtDay(dateTimePickerDoctor.Value.Date);
-            //System.Windows.Forms.MessageBox.Show("dateTimePickerDoctor_CloseUp");
-        }
-
         private void dateTimePickerDoctor_ValueChanged(object sender, EventArgs e)
         {
-            if (!dateTimePickerDoctor.Checked)
+            if (dateTimePickerDoctor.Checked)
+            {
+                ShowedCurrentVisitsRecently = VisitViewTypeEnum.FromCalendar;
+                refreshVisitsAtDay(dateTimePickerDoctor.Value.Date);
+                //System.Windows.Forms.MessageBox.Show("dateTimePickerDoctor_ValueChanged");
+            }
+            else
             {
                 ShowedCurrentVisitsRecently = VisitViewTypeEnum.AllByDoctorId;
                 refreshVisitsAllByDoctorId();
-                //System.Windows.Forms.MessageBox.Show("dateTimePickerDoctor_ValueChanged");
             }
         }
     }
