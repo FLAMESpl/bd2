@@ -96,7 +96,7 @@ namespace Clinic.Interface.Doctors
 
                 FillVisitsForScheduling(doctorId, roundedNow, Convert.ToInt32(amountUntilWorkEnd));
                 //System.Windows.Forms.MessageBox.Show("Visits refreshed (this moment)!");
-                monthCalendar1.SelectionStart = DateTime.Today;
+                dateTimePickerDoctor.Value = DateTime.Today;
             }
             else
             {
@@ -170,7 +170,7 @@ namespace Clinic.Interface.Doctors
             //monthCalendar1.SelectionEnd -= DateTime.Now.TimeOfDay.Ticks;
             //DateTime tmpdate = e.Start - DateTime.Now.TimeOfDay;
             ShowedCurrentVisitsRecently = VisitViewTypeEnum.FromCalendar;
-            refreshVisitsAtDay(monthCalendar1.SelectionStart/*SelectionStart*/);
+            refreshVisitsAtDay(dateTimePickerDoctor.Value.Date/*SelectionStart*/);
         }
 
         private void clickShowDetailsAndActions(object sender, EventArgs e)
@@ -235,7 +235,7 @@ namespace Clinic.Interface.Doctors
             System.Windows.Forms.DataGridViewSelectedRowCollection SelectedVisits = datgridVisits.SelectedRows;
             int StatusColumnIndex = datgridVisits.Columns["statusDataGridViewTextBoxColumn"].Index;
 
-            Console.WriteLine(SelectedVisits.Count);
+            //Console.WriteLine(SelectedVisits.Count);
             if (SelectedVisits.Count != 0)
             {
                 int updatedcount = 0;
